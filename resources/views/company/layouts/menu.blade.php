@@ -8,11 +8,11 @@
             <div class="user-info">
                 <div class="image">
 
-                    <img  src="{{ asset('images/company/'. $user->photo) }}" width="48" height="48" alt="User" />
+                    <img  src="{{ optional(App\Company::auth())->photo_url }}" width="48" height="48" alt="User" />
                 </div>
                 <div class="info-container">
-                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ $user->name }}</div>
-                    <div class="email"> {{ $user->email }}</div>
+                    <div class="name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ optional(App\Company::auth())->name }}</div>
+                    <div class="email"> {{ optional(App\Company::auth())->email }}</div>
 
                 </div>
             </div>
@@ -57,7 +57,7 @@
                         <ul class="ml-menu">
 
                             <li>
-                                <a href= "{{ route('company.show.posts') }}" >
+                                <a href= "{{ route('company-post.index') }}" >
                                     <span>Show Posts</span>
                                 </a>
 
@@ -66,7 +66,7 @@
                         </ul>
                     </li>
 
-                   
+
 
                  </ul>
             </div>

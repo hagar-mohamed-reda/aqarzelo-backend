@@ -3,13 +3,16 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
- 
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Company extends Model implements Profilable {
 
+class Company extends Authenticatable implements Profilable {
+
+    use Notifiable;
     /**
      * id of the admin company [akar zello]
-     * 
+     *
      * @var String
      */
     public static $ADMIN_COMPANY_ID = 1;
@@ -18,18 +21,18 @@ class Company extends Model implements Profilable {
 
 
     protected $fillable = [
-        'name', 'email', 'password', 
-        'phone', 'photo', 'address', 
-        'cover', 'type', 'active', 
-        'lng', 'lat', 'templete_id', 
-        'city_id', 'area_id', 'service_id', 
-        'attached_file', 'about', 'facebook', 
-        'youtube_link', 'youtube_video', 
-        'twitter', 'whatsapp', 'linkedin', 
+        'name', 'email', 'password',
+        'phone', 'photo', 'address',
+        'cover', 'type', 'active',
+        'lng', 'lat', 'templete_id',
+        'city_id', 'area_id', 'service_id',
+        'attached_file', 'about', 'facebook',
+        'youtube_link', 'youtube_video',
+        'twitter', 'whatsapp', 'linkedin',
         'website', 'website_available_days', 'commercial_no','address', 'api_token'
     ];
 
-    
+
     /**
      * The attributes that are appended to object after loaded from db.
      *
@@ -38,31 +41,33 @@ class Company extends Model implements Profilable {
     protected $appends = [
         'photo_url', 'cover_url'
     ];
-    
-    
+
+
     /**
      * return url of the image of the user
-     * 
+     *
      * @return String
      */
     public function getPhotoUrlAttribute() {
+        if (!$this->photo)
+            return url('images/user.jpg');
         return url('/images/company') . "/" . $this->photo;
-    } 
-    
-    
+    }
+
+
     /**
      * return url of the cover image
-     * 
-     * @return String 
+     *
+     * @return String
      */
     public function getCoverUrlAttribute() {
         return url('/images/company') . "/" . $this->cover;
-    } 
-    
+    }
+
     public function users() {
         return $this->hasMany('App\User');
     }
-    
+
     public function posts() {
         return Post::query()
                 ->join("users", "posts.user_id", "=", "users.id")->
@@ -83,6 +88,10 @@ class Company extends Model implements Profilable {
 
     public function templete() {
         return $this->belongsTo('App\Templete', 'templete_id');
+    }
+
+    public static function auth() {
+        return Company::find(session('company'));
     }
 
     /**

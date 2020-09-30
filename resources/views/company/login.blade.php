@@ -29,14 +29,14 @@
     <div class="login-box">
         <div class="logo">
             <a href="javascript:void(0);">AQAR<b>ZELO</b> </a>
-            <small>Sgin In Aqar Zelo and manage your owen world </small>
+            <small>Sign In Aqar Zelo and manage your own world</small>
         </div>
         <div class="card">
             <div class="body">
                 <form   action="{{route('company.login.submit')}}" id="sign_in" method="POST">
 
                      @csrf
-                    <div class="msg">Company Sgin In</div>
+                    <div class="msg">Company Sign In</div>
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="material-icons">person</i>
@@ -80,6 +80,10 @@
     <!-- Custom Js -->
     <script src="{{ asset('backend/js/admin.js') }}"></script>
     <script src="{{ asset('backend/js/pages/examples/sign-in.js') }}"></script>
+    
+
+    @include('admin.layouts.toastr')
+
 </body>
 
 </html>

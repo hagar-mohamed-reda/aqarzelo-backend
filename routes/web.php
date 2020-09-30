@@ -15,12 +15,16 @@ use Illuminate\Http\Request;
 |
 */
 
+Route::get('/dashboard', 'DashController@show')->name('dashboard2');
 Route::get('/dash', 'DashController@show')->name('dashboard');
 
 
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::group(['prefix' => 'admin'], function () {
+
+
     Auth::routes();
     Route::resource('service', 'ServiceController');
     Route::resource('setting', 'SettingController');
@@ -35,7 +39,7 @@ Route::group(['prefix' => 'admin'], function () {
     Route::resource('area', 'AreaController');
     Route::resource('notifi', 'NotificationController');
     Route::resource('mail', 'MailboxController');
-    
+
     Route::get('template/active/{template}', 'TemplateController@active')->name('template.active');
     Route::get('template/not/active/{template}', 'TemplateController@notActive')->name('template.not_active');
 
@@ -65,27 +69,50 @@ Route::group(['prefix' => 'admin'], function () {
 
 });
 
+
 Route::get('company/login', 'CompanyDashController@login')->name('company.login');
-Route::get('company/dash', 'CompanyDashController@index')->name('company.dash');
 Route::post('company/login', 'CompanyDashController@sign')->name('company.login.submit');
-Route::post('company/logout', 'CompanyDashController@logout')->name('company.logout');
 
-Route::get('company/user/create', 'CompanyDashController@createUser')->name('company.create.user');
-Route::post('company/user/store', 'CompanyDashController@storeUser')->name('company.store.user');
-Route::get('company/user', 'CompanyDashController@getUser')->name('company.user.index');
-Route::get('company/user/edit/{id}', 'CompanyDashController@editUser')->name('company.user.edit');
-Route::post('company/user/update/{id}', 'CompanyDashController@updateUser')->name('company.user.update');
-Route::get('company/user/delete/{id}', 'CompanyDashController@destroyUser')->name('company.user.destroy');
-Route::get('company/post/show', 'CompanyDashController@showPosts')->name('company.show.posts');
+Route::middleware(['company_auth'])->group(function(){
 
-Route::get('company/post/edit/{id}', 'CompanyDashController@editPost')->name('company.post.edit');
-Route::post('company/post/update/{id}', 'CompanyDashController@updatePost')->name('company.post.update');
-Route::get('company/post/delete/{id}', 'CompanyDashController@destroyPost')->name('company.post.destroy');
+    Route::get('/company-post', 'CompanyPostController@index')->name('company-post.index');
+    Route::get('/company-post/create', 'CompanyPostController@create')->name('company-post.create');
+    Route::get('/company-post/{post}/edit', 'CompanyPostController@edit')->name('company-post.edit');
 
+    Route::post('/company-post', 'CompanyPostController@store')->name('company-post.store');
+    Route::put('/company-post/{post}', 'CompanyPostController@update')->name('company-post.update');
+    Route::delete('/company-post/{post}', 'CompanyPostController@destroy')->name('company-post.destroy');
+
+
+    Route::get('company/dash', 'CompanyDashController@index')->name('company.dash');
+    Route::post('company/logout', 'CompanyDashController@logout')->name('company.logout');
+
+    Route::get('company/user/create', 'CompanyDashController@createUser')->name('company.create.user');
+    Route::post('company/user/store', 'CompanyDashController@storeUser')->name('company.store.user');
+    Route::get('company/user', 'CompanyDashController@getUser')->name('company.user.index');
+    Route::get('company/user/edit/{id}', 'CompanyDashController@editUser')->name('company.user.edit');
+    Route::post('company/user/update/{id}', 'CompanyDashController@updateUser')->name('company.user.update');
+    Route::get('company/user/delete/{id}', 'CompanyDashController@destroyUser')->name('company.user.destroy');
+    Route::get('company/post/show', 'CompanyDashController@showPosts')->name('company.show.posts');
+
+    //
+    Route::get('company-post/active/{post}', 'CompanyPostController@active')->name('company-post.active');
+    Route::get('company-post/not/active/{post}', 'CompanyPostController@notActive')->name('company-post.not_active');
+    Route::get('company-post/accepted/{post}', 'CompanyPostController@acceptedPost')->name('company-post.accepted');
+    Route::get('company-post/panding/{post}', 'CompanyPostController@pandingPost')->name('company-post.panding');
+    Route::get('company-post/refused/{post}', 'CompanyPostController@refusedPost')->name('company-post.refused');
+    Route::get('company-post/trash/{post}', 'CompanyPostController@trash')->name('company-post.trash');
+    Route::get('company-post/retreve/{post}', 'CompanyPostController@retreve')->name('company-post.retreve');
+    Route::post('company-post/images/remove/{image}', 'CompanyPostController@removeImage')->name('company-post.removeImage');
+
+    //Route::get('company/post/edit/{id}', 'CompanyDashController@editPost')->name('company.post.edit');
+    //Route::post('company/post/update/{id}', 'CompanyDashController@updatePost')->name('company.post.update');
+    //Route::get('company/post/delete/{id}', 'CompanyDashController@destroyPost')->name('company.post.destroy');
+
+});
 
 
 Route::get('/json-area', 'PostController@areas');
-
 Route::get('/json-area/company', 'CompanyDashController@areas');
 
 

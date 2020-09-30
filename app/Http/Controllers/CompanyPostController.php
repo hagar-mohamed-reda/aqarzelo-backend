@@ -14,18 +14,21 @@ use App\Category;
 use Illuminate\Support\Facades\Auth;
 use App\helper\Helper;
 use Session;
+use App\Company;
 
 
 
 use Illuminate\Http\Request;
 
-class PostController extends Controller
+class CompanyPostController extends Controller
 {
 
 
     public function __construct()
     {
-        $this->middleware('auth');
+        /*if (session('company') == null) {
+            $this->middleware('auth');
+        }*/
     }
 
 
@@ -37,15 +40,13 @@ class PostController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->type == 'admin') {
-            $posts = Post::orderBy('created_at', 'DESC')->get();
-        } else {
-            $id = Auth::user()->id;
-            $posts = Post::where('user_id', '=', $id)->orderBy('created_at', 'DESC')->get();
-        }
+            $usreIds = User::where('company_id', session('company'))->pluck('id')->toArray();
+
+            $posts = Post::whereIn('user_id', $usreIds)->orderBy('created_at', 'DESC')->get();
 
 
-        return view('admin.post.index')->with('post', $posts);
+
+        return view('company.post.index')->with('post', $posts);
     }
 
 
@@ -56,10 +57,18 @@ class PostController extends Controller
      */
     public function create()
     {
+        $company = Company::find(session('company'));
+        $usersIds = User::where('company_id', $company->id)->pluck('id')->toArray();
+        $postCount = Post::whereIn('user_id', $usersIds)->count();
+
+        if (optional($company->service)->max_post <= $postCount) {
+            Session::flash('error', "cant't create more than " . optional($company->service)->max_post . " posts");
+            return back();
+        }
         $city = City::all();
         $category = Category::all();
 
-        return view('admin.post.add', compact('city',  'category'));
+        return view('company.post.add', compact('city',  'category'));
     }
 
 
@@ -69,6 +78,20 @@ class PostController extends Controller
         $city_id = Input::get('city_id');
         $area = Area::where('city_id', '=', $city_id)->get();
         return response()->json($area);
+    }
+
+    public function checkOnPostImages($imageCount) {
+        // check on post images
+        $company = Company::find(session('company'));
+        $usersIds = User::where('company_id', $company->id)->pluck('id')->toArray();
+        $postCount = Post::whereIn('user_id', $usersIds)->count();
+
+        if (optional($company->service)->max_post_image <= $imageCount) {
+            Session::flash('error', "cant't upload more than " . optional($company->service)->max_post_image . " images");
+            return false;
+        }
+
+        return true;
     }
 
 
@@ -81,6 +104,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
 
+        $company = Company::find(session('company'));
+        $usersIds = User::where('company_id', $company->id)->pluck('id')->toArray();
+        $postCount = Post::whereIn('user_id', $usersIds)->count();
+
+        if (optional($company->service)->max_post <= $postCount) {
+            Session::flash('error', "cant't create more than " . optional($company->service)->max_post . " posts");
+            return back();
+        }
         $validator = validator()->make($request->all(), [
             'title' => 'required',
             'finishing_type' => 'required',
@@ -95,8 +126,16 @@ class PostController extends Controller
             Session::flash('error', $validator->errors()->first());
             return back();
         }
+        $imageCount =
+        sizeOf($request->hasFile('mastr_photo')? $request->file('mastr_photo') : []) +
+        sizeOf($request->hasFile('photo')? $request->file('photo') : []) +
+        sizeOf($request->hasFile('360_photo')? $request->file('360_photo') : []);
+        $canUploadImages = $this->checkOnPostImages($imageCount);
 
-        $id = Auth::user()->id;
+        if (!$canUploadImages) {
+            return back();
+        }
+
 
         $post = Post::create([
             'title' => $request->title,
@@ -120,11 +159,12 @@ class PostController extends Controller
             'owner_type' => $request->owner_type,
             'finishing_type' => $request->finishing_type,
             'category_id' => $request->category_id,
-            'user_id' => $id,
+            'user_id' => $request->user_id,
             'city_id' => $request->city_id,
             'area_id' => $request->area_id,
             'price' => $request->price,
         ]);
+
 
         if($request->hasFile('mastr_photo')){
 
@@ -188,7 +228,7 @@ class PostController extends Controller
         $area = Area::all();
         $category = Category::all();
 
-        return view('admin.post.edit', compact('city',  'area', 'category', 'post'));
+        return view('company.post.edit', compact('city',  'area', 'category', 'post'));
     }
 
 
@@ -212,9 +252,18 @@ class PostController extends Controller
             'space' => 'required|numeric',
         ]);
 
-
         if ($validator->fails()) {
             Session::flash('error', $validator->errors()->first());
+            return back();
+        }
+        $imageCount =
+        sizeOf($request->hasFile('mastr_photo')? $request->file('mastr_photo') : []) +
+        sizeOf($request->hasFile('photo')? $request->file('photo') : []) +
+        $post->images()->count() +
+        sizeOf($request->hasFile('360_photo')? $request->file('360_photo') : []);
+        $canUploadImages = $this->checkOnPostImages($imageCount);
+
+        if (!$canUploadImages) {
             return back();
         }
 
@@ -242,6 +291,7 @@ class PostController extends Controller
         $post->city_id = $request->city_id;
         $post->area_id = $request->area_id;
         $post->price = $request->price;
+        $post->user_id = $request->user_id;
 
 
 
@@ -291,7 +341,7 @@ class PostController extends Controller
 
         $post->update();
         Session::flash('success', 'You Edit Post Successfuly  :)');
-        return redirect()->route('post.index');
+        return redirect()->route('company-post.index');
     }
 
     public function removeImage(Request $request, Image $image) {
@@ -316,7 +366,8 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
 
-       // DB::statement("delete from images where post_id='$post->id' ");
+        return $this->trash($post);
+        /*
        $images = $post->images;
        foreach ($images as $image) {
            try{
@@ -326,20 +377,13 @@ class PostController extends Controller
 
        $post->images()->delete();
 
-        $post->delete();
-        Session::flash('warning', 'You Deleted Post Successfuly  :)');
+       $post->delete();
 
-        return redirect()->back();
+       Session::flash('warning', 'You Deleted Post Successfuly  :) from destrop');
 
-
+       return redirect()->back();
+       */
     }
-
-
-
-
-
-
-
 
 
     public function active(Post $post)
@@ -369,7 +413,7 @@ class PostController extends Controller
         $post->update();
 
         $message_ar = trans("تم الموافقه علي منشورك من قبل الادمن ");
-        $message_en = trans("admin accepted your post ");
+        $message_en = trans("company accepted your post ");
 
         // notify the user
         $post->user->notify(
@@ -397,7 +441,7 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-      public function trash(Post $post)
+    public function trash(Post $post)
     {
         $post->status   = 'user_trash';
         $post->update();
@@ -406,7 +450,7 @@ class PostController extends Controller
         return redirect()->back();
     }
 
-       public function retreve(Post $post)
+    public function retreve(Post $post)
     {
         $post->status   = 'accepted';
         $post->update();

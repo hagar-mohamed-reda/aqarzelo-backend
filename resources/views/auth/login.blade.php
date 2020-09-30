@@ -82,6 +82,7 @@
     <!-- Custom Js -->
     <script src="{{ asset('backend/js/admin.js') }}"></script>
     <script src="{{ asset('backend/js/pages/examples/sign-in.js') }}"></script>
+    @include('admin.layouts.toastr')
 </body>
 
 </html>

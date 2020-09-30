@@ -33,14 +33,34 @@
     <nav class="navbar">
         <div class="container-fluid">
             <div class="navbar-header">
+                <a class="navbar-brand" href="">
+                    <img src="{{ url('/images/logo2.png') }}" width="30px" style="padding: 2px" >
+                </a>
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" href="">  <img src="{{ url('/images/logo2.png') }}" width="30px" style="padding: 2px" > </a>
+            </div>
+            <div class="navbar-header" style="padding: 20px" >
+                <span class="label label-info w3-large w3-round" style="margin-left: 5px;margin-right: 5px" >
+                    <i class="fa fa-user-circle" style="padding: 3px" ></i>
+                    max users :
+                    {{ optional(App\Company::auth())->users()->count() }} / {{ optional(optional(App\Company::auth())->service)->max_user }}
+                </span>
+                <span class="label label-primary w3-large w3-round" style="margin-left: 5px;margin-right: 5px" >
+                    <i class="fa fa-rss" style="padding: 3px" ></i>
+                    max posts :
+                    {{ optional(App\Company::auth())->posts()->count() }} / {{ optional(optional(App\Company::auth())->service)->max_post }}
+                </span>
+                <span class="label label-warning w3-large w3-round" style="margin-left: 5px;margin-right: 5px" >
+                    <i class="fa fa-image" style="padding: 3px" ></i>
+                    max post images :
+                    {{ optional(optional(App\Company::auth())->service)->max_post_image }}
+                </span>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
                     <!-- Call Search -->
-
+                    <li>
+                    </li>
 
                     <!-- #END# Tasks -->
                      <li>

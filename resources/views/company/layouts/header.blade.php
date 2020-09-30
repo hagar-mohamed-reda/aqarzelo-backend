@@ -29,6 +29,7 @@
     <link href="{{ asset('backend/plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.css') }}" rel="stylesheet">
  <link href="{{ asset('backend/css/toaster.min.css') }}" rel="stylesheet">
 
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
@@ -37,6 +38,7 @@
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('backend/css/themes/all-themes.css') }}" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ url('/website') }}/css/w3.css">
 
      <script src="http://malsup.github.com/jquery.form.js"></script>
 

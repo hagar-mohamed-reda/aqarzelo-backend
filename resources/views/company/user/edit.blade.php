@@ -16,11 +16,11 @@
                             </h2>
                             <ul class="header-dropdown m-r--5">
                              <a href= "{{ route('company.user.index') }}" style="color:white;" >
-                            <button type="button" class="btn btn-info"> 
+                            <button type="button" class="btn btn-info">
                             show all
                                   </button>
                                </a>
-                              
+
                            </ul>
 
                         </div>
@@ -132,6 +132,8 @@
 
 
 
+                                 <!--
+
                               <div class="col-sm-4">
                                   <label for="templete_id">Select template</label>
                                         <select   id="templete_id" name="templete_id"  class="form-control">
@@ -143,7 +145,7 @@
                                      @endforeach
                                    </select>
                                   </div>
-
+                                -->
 
 
 
@@ -249,7 +251,7 @@
                                     <textarea id="about"    value="{{ $users->about }}" name="about" class="md-textarea form-control" rows="14">{{ $users->about }}</textarea>
                                       </div>
 
-                                       <div class="form-group w3-display-container" >
+                                       <div class="col-sm-6 form-group w3-display-container" >
                                       <label> Select user Location  </label>
                                        <input type="hidden"  value="{{ $users->lng }}" id="lng" name="lng" >
                                        <input type="hidden"  value="{{ $users->lat }}" id="lat" name="lat" >

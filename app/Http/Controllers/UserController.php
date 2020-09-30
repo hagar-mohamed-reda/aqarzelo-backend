@@ -18,13 +18,13 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
 
-    
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-   
+
     /**
      * Display a listing of the resource.
      *
@@ -61,7 +61,7 @@ class UserController extends Controller
     {
         $validator =   validator()->make($request->all(), [
             'name' => 'required',
-             'email' => 'required|email|unique:users',
+            'email' => 'required|email|unique:users',
             'phone' => 'required|size:11|unique:users',
             'password' => 'required|min:8',
             'photo' => 'required|mimes:jpeg,jpg,bmp,png',
@@ -141,8 +141,8 @@ class UserController extends Controller
     public function update(Request $request, User $user)
     {
 
-      
-     
+
+
         /*
         $user->name = $request->name;
         $user->email = $request->email;
@@ -164,15 +164,15 @@ class UserController extends Controller
         $user->whatsapp = $request->whatsapp;
         $user->website_available_days = $request->website_available_days;
         */
-        
+
          $data = $request->all();
         $data = Arr::except($request->all(), ["password","email"]);
-        
+
          $user->update($data);
-        
+
         if ($request->has("password") && $request->password) {
             $user->update([
-                "password" => bcrypt($request->password)        
+                "password" => bcrypt($request->password)
             ]);
         }
 
@@ -221,11 +221,11 @@ class UserController extends Controller
         else{
             $user->delete();
             Session::flash('success', 'You Delete This User  Successfuly  :)');
-    
+
             return redirect()->back();
-       
+
         }
-       
+
     }
 
     public function active(User $user)

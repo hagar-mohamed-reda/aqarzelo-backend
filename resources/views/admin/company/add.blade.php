@@ -108,7 +108,7 @@
                                  </div>
 
 
-
+                                 <!--
                               <div class="col-sm-6">
                                   <label for="template_id">Select template</label>
                                         <select   id="templete_id" name="templete_id"  class="form-control">
@@ -117,6 +117,7 @@
                                      @endforeach
                                    </select>
                                   </div>
+                                -->
 
                              <div class="col-sm-6">
 

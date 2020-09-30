@@ -25,7 +25,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dash';
+    protected $redirectTo = '/dashboard';
     public function logout(Request $request)
     {
         $this->guard()->logout();

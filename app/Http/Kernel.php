@@ -51,6 +51,7 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $routeMiddleware = [
+        'company_auth' => \App\Http\Middleware\CompanyAuth::class,
         'mobile' => \App\Http\Middleware\Mobile::class,
         'auth' => \App\Http\Middleware\Authenticate::class,
         'api_auth' => \App\Http\Middleware\ApiAuth::class,

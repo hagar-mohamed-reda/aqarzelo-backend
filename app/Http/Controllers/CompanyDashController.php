@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\Auth;
 use App\Company;
 use App\Service;
 use App\User;
@@ -24,8 +25,8 @@ use Session;
 class CompanyDashController extends Controller
 {
 
-    
-    
+
+
 
 
     /**
@@ -46,15 +47,15 @@ class CompanyDashController extends Controller
             return view("company.login");
         }
         else{
-            
+
         $user = Company::find($company);
 
 
         return view("company.layouts.menu", compact("user"));
- 
+
 
         }
-           
+
    }
 
     //// function to get all user belongs to a company .
@@ -68,13 +69,13 @@ class CompanyDashController extends Controller
             return view("company.login");
         }
         else{
-              
+
         $user = Company::find($company);
         $users = User::select('*')->where('company_id', $company)->get();
         return view("company.user.index", compact("user", 'users'));
-   
+
         }
-           
+
  }
 
 
@@ -96,7 +97,7 @@ class CompanyDashController extends Controller
             })->where('users.company_id', $company)->get();
             $post_counts = count($post_count);
             return view("company", compact("user", 'user_count', 'post_counts'));
-       
+
         }
     }
 
@@ -118,6 +119,12 @@ class CompanyDashController extends Controller
             $users = Company::where("email", $request->email)->first();
 
             if (Hash::check($request->password, $users->password)) {
+                // check if the company active
+                if ($users->active != "active") {
+                    Session::flash('error', 'your profile not active');
+                    return redirect()->back();
+                }
+
                 session(["company" => $users->id]);
                 Session::flash('success', 'You Login Succesfuly .');
 
@@ -151,15 +158,15 @@ class CompanyDashController extends Controller
         }else{
             $user = Company::find($company);
             $city = City::all();
-          $template = Template::all();
-          $area = Area::all();
-  
-          return view('company.user.add', compact('city', 'template', 'area', 'user'));
-   
-        }
-           
+            $template = Template::all();
+            $area = Area::all();
 
-         }
+          return view('company.user.add', compact('city', 'template', 'area', 'user'));
+
+        }
+
+
+    }
     //////////////////////
 
     public function areas()
@@ -179,14 +186,19 @@ class CompanyDashController extends Controller
         else{
             $company = Company::find($companys);
             $count = count($company->users);
-    
+
             if ($company->service->max_user > $count) {
                 $validator =   validator()->make($request->all(), [
                     'name' => 'required',
-                    'email' => 'required|email',
-                    'phone' => 'required|max:11',
+                    'email' => 'required|email|unique:users',
+                    'phone' => 'required|max:11|unique:users',
                     'password' => 'required|min:8',
-    
+
+                ], [
+                    "name.required" => "name is required",
+                    "email.required" => "email is email",
+                    "phone.required" => "phone is required",
+                    "password.required" => "password is required",
                 ]);
                 if ($validator->fails()) {
                     Session::flash('error', $validator->errors()->first());
@@ -224,13 +236,13 @@ class CompanyDashController extends Controller
                 Session::flash('success', 'You add User Successfuly  :)');
                 return back();
             } else {
-                Session::flash('error', 'You Can not add user any more your limite is: ' . $company->service->max_user);
+                Session::flash('error', 'You Can not add user any more your limite is: ' . optional($company->service)->max_user);
                 return back();
             }
 
         }
 
-             
+
     }
 
 
@@ -247,9 +259,9 @@ class CompanyDashController extends Controller
             $area = Area::all();
             $user = Company::find($company);
             return view('company.user.edit', compact('user', 'users', 'area', 'template', 'city'));
-      
+
         }
-           
+
     }
 
     /**
@@ -261,7 +273,7 @@ class CompanyDashController extends Controller
      */
     public function updateUser(Request $request, $id)
 
-    {  
+    {
         $company = session("company");
         if ($company == null)
         {  return view("company.login");
@@ -291,12 +303,12 @@ class CompanyDashController extends Controller
 
          $data = $request->all();
         $data = Arr::except($request->all(), ["password","email"]);
-        
+
          $user->update($data);
-        
+
         if ($request->has("password") && $request->password) {
             $user->update([
-                "password" => bcrypt($request->password)        
+                "password" => bcrypt($request->password)
             ]);
         }
         if ($request->hasFile('photo')) {
@@ -335,7 +347,7 @@ class CompanyDashController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroyUser($id)
-    { 
+    {
         $company = session("company");
         if ($company == null)
         {  return view("company.login");
@@ -351,7 +363,7 @@ class CompanyDashController extends Controller
         else{
             $user->delete();
             Session::flash('success', 'You Delete This User  Successfuly  :)');
-    
+
             return redirect()->back();
         }
     }
@@ -362,23 +374,23 @@ class CompanyDashController extends Controller
     {
         $company = session("company");
         if ($company == null)
-        { 
+        {
             return view("company.login");
         }else{
-                 
+
         $user = Company::find($company);
         $post = Post::select('*', DB::raw('posts.id AS id'))->leftJoin('users', function ($join) {
             $join->on('posts.user_id', '=', 'users.id');
         })->where('users.company_id', $company)->get();
         return view('company.post.index', compact('post', 'user'));
         }
-           
+
 
     }
 
     public function editPost($id)
     {
-       
+
         $company = session("company");
         if ($company == null)
         {
@@ -391,9 +403,9 @@ class CompanyDashController extends Controller
             $category = Category::all();
             $user = Company::find($company);
             return view('company.post.edit', compact('city',  'area', 'category', 'post', 'user'));
-      
+
         }
-            
+
 
     }
 
@@ -431,7 +443,7 @@ class CompanyDashController extends Controller
         $post->bathroom_number = $request->bathroom_number;
         $post->floor_number = $request->floor_number;
         $post->build_date = $request->build_date;
-       
+
         $post->price_per_meter = $request->price_per_meter;
         $post->finishing_type = $request->finishing_type;
         $post->space = $request->space;
@@ -445,8 +457,8 @@ class CompanyDashController extends Controller
         $post->city_id = $request->city_id;
         $post->area_id = $request->area_id;
         //statement for delete all images has a realated with post where check by using $post->id.
-      
-          
+
+
         //statement for delete all images has a realated with post where check by using $post->id.
         if ($request->hasFile('photo')) {
             DB::statement("delete from images where post_id='$post->id' ");
@@ -480,10 +492,10 @@ class CompanyDashController extends Controller
             $a->post_id = $post->id;
             $a->photo = Helper::uploadImg($image, "/posts/");
             $a->save();
-        } 
         }
-      
-      
+        }
+
+
 
         $post->update();
         Session::flash('success', 'You Edit Post Successfuly  :)');
@@ -492,7 +504,7 @@ class CompanyDashController extends Controller
 }
 
     public function destroyPost($id)
-    {  
+    {
         $company = session("company");
         if ($company == null)
         {

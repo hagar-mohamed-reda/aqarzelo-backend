@@ -6,7 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
-use DB; 
+use DB;
 
 class User extends Authenticatable implements Profilable {
 
@@ -18,15 +18,15 @@ class User extends Authenticatable implements Profilable {
      * @var array
      */
     protected $fillable = [
-        'active', 'name', 'email', 
-        'password', 'phone', 'photo', 
-        'cover', 'address', 'api_token', 
-        'company_id', 'lng', 'lat', 'type', 
-        'template_id', 'city_id', 'area_id', 
-        'firebase_token', 'attached_file', 
-        'about', 'facebook', 'youtube_link', 
-        'youtube_video', 'twitter', 'whatsapp', 
-        'linkedin', 'website', 'website_available_days', 
+        'active', 'name', 'email',
+        'password', 'phone', 'photo',
+        'cover', 'address', 'api_token',
+        'company_id', 'lng', 'lat', 'type',
+        'template_id', 'city_id', 'area_id',
+        'firebase_token', 'attached_file',
+        'about', 'facebook', 'youtube_link',
+        'youtube_video', 'twitter', 'whatsapp',
+        'linkedin', 'website', 'website_available_days',
         'sms_code', 'post_id_tmp', 'templete_id', 'is_external'
     ];
 
@@ -39,50 +39,52 @@ class User extends Authenticatable implements Profilable {
         'email_verified_at' => 'datetime',
     ];
 
-    
+
     /**
      * The attributes that are appended to object after loaded from db.
      *
      * @var array
      */
     protected $appends = [
-        'photo_url', 'cover_url' 
+        'photo_url', 'cover_url'
     ];
-     
-    
+
+
     /**
      * return category object
-     * 
+     *
      * @return Category
      */
     public function getCategoryAttribute() {
         return $this->category()->first();
-    } 
-    
-    
+    }
+
+
     /**
      * return url of the image of the user
-     * 
+     *
      * @return String
      */
     public function getPhotoUrlAttribute() {
+        if (!$this->photo)
+            return url('images/user.jpg');
         return url('/images/users') . "/" . $this->photo;
-    } 
-    
-    
+    }
+
+
     /**
      * return url of the cover image
-     * 
-     * @return String 
+     *
+     * @return String
      */
     public function getCoverUrlAttribute() {
         return url('/images/users') . "/" . $this->cover;
-    } 
-    
-    
+    }
+
+
     /**
      * notify all users with the post
-     * 
+     *
      * @param String $title_ar
      * @param String $title_en
      * @param String $body_ar
@@ -94,11 +96,11 @@ class User extends Authenticatable implements Profilable {
         }
     }
 
-    
+
     /**
      * notify the user with new post status
-     * notify the user with notification and firebase notification 
-     * 
+     * notify the user with notification and firebase notification
+     *
      * @param String $title_ar
      * @param String $title_en
      * @param String $body_ar
@@ -117,7 +119,7 @@ class User extends Authenticatable implements Profilable {
                 "user_id" => $this->id,
                 "post_id" => $post_id
             ]);
-  
+
             $data = [
                 "title_ar" => $title_ar,
                 "title_en" => $title_en,
@@ -131,11 +133,11 @@ class User extends Authenticatable implements Profilable {
             return Helper::firebaseNotification($token, $data);
         } catch (Exception $e) {}
     }
-    
-    
+
+
     /**
      * check the user active or not active
-     * 
+     *
      * @return boolean
      */
     public function isActive() {
@@ -144,7 +146,7 @@ class User extends Authenticatable implements Profilable {
 
     /**
      * check the user login or not with api_token
-     * 
+     *
      * @param Request $request
      * @return User $user
      */
@@ -157,7 +159,7 @@ class User extends Authenticatable implements Profilable {
 
     /**
      * send message to a user
-     * 
+     *
      * @param User user
      * @param String message
      */
@@ -169,20 +171,20 @@ class User extends Authenticatable implements Profilable {
         ]);
         // notify the another user
         $user->notify(trans("messages_en.new_message_from", ["user" => $this->name]), trans("messages_en.new_message_from", ["user" => $this->name]), $message, $message, null, $user->id);
-    
+
         return $chat;
     }
-    
-    
+
+
     /**
      * return all chat messages
-     * 
+     *
      * @return Array
      */
     public function messages() {
-        return Chat::where("user_from", $this->id)->orWhere("user_to", $this->id)->get(); 
+        return Chat::where("user_from", $this->id)->orWhere("user_to", $this->id)->get();
     }
-    
+
     public function template() {
         return $this->belongsTo('App\Templete', 'templete_id');
     }
@@ -196,7 +198,7 @@ class User extends Authenticatable implements Profilable {
     }
 
     public function company() {
-        $company = $this->belongsTo('App\Company', 'company_id')? 
+        $company = $this->belongsTo('App\Company', 'company_id')?
         $this->belongsTo('App\Company', 'company_id') : new Company();
         return $company;
     }
@@ -211,7 +213,7 @@ class User extends Authenticatable implements Profilable {
 
     public function mails() {
         return $this->hasMany('App\MailBox');
-    } 
+    }
 
     public function postReviews() {
         return $this->hasMany('App\PostReview');
