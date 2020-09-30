@@ -1,0 +1,1 @@
+[18-Jun-2020 18:55:30 America/Boise] PHP Fatal error:  Class 'Illuminate\Foundation\Testing\TestCase' not found in /home3/sphinxa1/public_html/aqarzelo/tests/TestCase.php on line 7

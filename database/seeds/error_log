@@ -1,0 +1,1 @@
+[21-Jun-2020 07:47:01 America/Boise] PHP Fatal error:  Class 'Illuminate\Database\Seeder' not found in /home3/sphinxa1/public_html/aqarzelo/database/seeds/DatabaseSeeder.php on line 5

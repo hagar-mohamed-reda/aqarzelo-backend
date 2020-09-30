@@ -1,0 +1,56 @@
+[18-Jun-2020 16:21:09 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function resource_path() in /home3/sphinxa1/public_html/aqarzelo/config/view.php:17
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/view.php on line 17
+[18-Jun-2020 16:26:03 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/queue.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/queue.php on line 16
+[18-Jun-2020 17:21:23 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/hashing.php:32
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/hashing.php on line 32
+[18-Jun-2020 20:05:47 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/app.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/app.php on line 16
+[18-Jun-2020 21:20:52 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/logging.php:20
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/logging.php on line 20
+[19-Jun-2020 01:36:21 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/cache.php:21
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/cache.php on line 21
+[19-Jun-2020 04:17:35 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/filesystems.php:16
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/filesystems.php on line 16
+[19-Jun-2020 04:27:21 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/database.php:18
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/database.php on line 18
+[19-Jun-2020 09:12:34 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/broadcasting.php on line 18
+[19-Jun-2020 10:52:56 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/services.php on line 18
+[19-Jun-2020 11:20:13 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/session.php:21
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/session.php on line 21
+[19-Jun-2020 11:46:49 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/mail.php:19
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/mail.php on line 19
+[20-Jun-2020 05:39:08 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/broadcasting.php:18
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/broadcasting.php on line 18
+[07-Jul-2020 02:15:43 America/Boise] PHP Fatal error:  Uncaught Error: Call to undefined function env() in /home3/sphinxa1/public_html/aqarzelo/config/services.php:18
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/config/services.php on line 18

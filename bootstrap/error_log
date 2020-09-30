@@ -1,0 +1,4 @@
+[19-Jun-2020 02:40:45 America/Boise] PHP Fatal error:  Uncaught Error: Class 'Illuminate\Foundation\Application' not found in /home3/sphinxa1/public_html/aqarzelo/bootstrap/app.php:14
+Stack trace:
+#0 {main}
+  thrown in /home3/sphinxa1/public_html/aqarzelo/bootstrap/app.php on line 14
