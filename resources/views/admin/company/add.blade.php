@@ -15,14 +15,14 @@
                                ADD COMPANY
                             </h2>
                             <ul class="header-dropdown m-r--5">
-                            
-                         
+
+
                             <a href= "{{ route('company.index') }}" style="color:white;" >
-                            <button type="button" class="btn btn-info"> 
+                            <button type="button" class="btn btn-info">
                                   Show all
                                   </button>
                                </a>
-                              
+
                            </ul>
 
                         </div>
@@ -88,9 +88,9 @@
                                   <label for="city_id">Select City</label>
                                    <select  id="city_id" name="city_id" class="form-control">
                                           <option id="city_id" value="0" disabled="true" selected="true">=== Select City ===</option>
-                               
+
                                     @foreach($city as $citys)
-                                 
+
                                       <option value="{{ $citys->id }}">{{ $citys->name_en }}</option>
                                      @endforeach
                                    </select>
@@ -225,7 +225,7 @@
                                       </div>
 
 
-                                      <div class="form-group w3-display-container" >
+                                      <div class=" col-sm-6 form-group w3-display-container" >
                                       <label> Select Company Location  </label>
                                        <input type="hidden" id="lng" name="lng" >
                                        <input type="hidden" id="lat" name="lat" >

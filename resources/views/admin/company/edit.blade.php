@@ -15,14 +15,14 @@
                               Edit COMPANY
                             </h2>
                             <ul class="header-dropdown m-r--5">
-                            
-                         
+
+
                             <a href= "{{ route('company.index') }}" style="color:white;" >
-                            <button type="button" class="btn btn-info"> 
+                            <button type="button" class="btn btn-info">
                                   Show all
                                   </button>
                                </a>
-                              
+
                            </ul>
 
                         </div>
@@ -255,7 +255,7 @@
                                     <textarea id="about" value= "{{ $company->about }}"   name="about" class="md-textarea form-control" rows="14">{{ $company->about }}</textarea>
                                       </div>
 
-                                       <div class="form-group " >
+                                       <div class=" col-sm-6 form-group " >
                                       <label> Select Company Location  </label>
                                        <input type="hidden"  value="{{ $company->lng }}" id="lng" name="lng" >
                                        <input type="hidden"  value="{{ $company->lat }}" id="lat" name="lat" >
