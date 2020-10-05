@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
   | is assigned the "api" middleware group. Enjoy building your API!
   |
  */
- 
+
 
 //****************************************************************
 // user api
@@ -20,7 +20,7 @@ use Illuminate\Http\Request;
 
 // auth
 Route::post('/user/register', "Api\user\AuthController@register");
-Route::post('/user/login', "Api\user\AuthController@login"); 
+Route::post('/user/login', "Api\user\AuthController@login");
 Route::post('/user/profile/update', "Api\user\AuthController@updateProfile");
 Route::post('/user/forget-password', "Api\user\AuthController@forgetPassword");
 Route::post('/user/reset-password', "Api\user\AuthController@resetPassword");
@@ -30,7 +30,7 @@ Route::post('/user/external/login', "Api\user\AuthController@loginAsExternalApi"
 
 // company auth
 Route::post('/company/register', "Api\company\AuthController@register");
-Route::post('/company/login', "Api\company\AuthController@login"); 
+Route::post('/company/login', "Api\company\AuthController@login");
 Route::post('/company/profile/update', "Api\company\AuthController@updateProfile");
 Route::post('/company/forget-password', "Api\company\AuthController@forgetPassword");
 Route::post('/company/reset-password', "Api\company\AuthController@resetPassword");
@@ -52,7 +52,7 @@ Route::get('/user/post/get', "Api\user\MainController@getPosts");
 // post api
 //****************************************************************
 Route::post('/post/add', "Api\post\MainController@addPost");
-Route::post('/post/update', "Api\post\MainController@updatePost"); 
+Route::post('/post/update', "Api\post\MainController@updatePost");
 Route::get('/post/search', "Api\post\MainController@search");
 Route::get('/post/recommended', "Api\post\MainController@getRecommended");
 Route::get('/post/get', "Api\post\MainController@get");
@@ -60,13 +60,13 @@ Route::get('/post/add-view', "Api\post\MainController@addView");
 Route::post('/post/add-image', "Api\post\MainController@uploadImage");
 Route::post('/post/remove-image', "Api\post\MainController@removeImage");
 Route::get('/post/image/get', "Api\post\MainController@getImages");
- 
+
 
 
 
 //****************************************************************
 // chat api
-//**************************************************************** 
+//****************************************************************
 Route::post('/chat/send', "Api\ChatController@sendMessage");
 Route::get('/chat/get', "Api\ChatController@getMessages");
 Route::get('/chat/user/get', "Api\ChatController@getUsers");
@@ -75,8 +75,9 @@ Route::get('/chat/user/get', "Api\ChatController@getUsers");
 
 //****************************************************************
 // global api
-//**************************************************************** 
+//****************************************************************
 Route::get('/city/get', "Api\MainController@getCities");
+Route::get('/country/get', "Api\MainController@getCountries");
 Route::get('/area/get', "Api\MainController@getAreas");
 Route::get('/category/get', "Api\MainController@getCategories");
 Route::get('/ads/get', "Api\MainController@getAds");

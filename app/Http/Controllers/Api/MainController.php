@@ -12,23 +12,34 @@ use App\Ads;
 use App\Category;
 use App\User;
 use App\Setting;
+use App\Country;
 
 class MainController extends Controller {
 
     /**
+     * get all countries from db
+     *
+     * @return Array City
+     */
+    public function getCountries() {
+        $countries = Country::all();
+        return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $countries);
+    }
+
+    /**
      * get all city from db
-     * 
+     *
      * @return Array City
      */
     public function getCities() {
-        $cities = City::all(); 
+        $cities = City::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $cities);
     }
-    
-    
+
+
     /**
      * get all area from db
-     * 
+     *
      * @return Array Area
      */
     public function getAreas(Request $request) {
@@ -38,22 +49,22 @@ class MainController extends Controller {
             $areas = Area::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $areas);
     }
-    
-    
+
+
     /**
      * get all categories
-     * 
+     *
      * @return Array Category
      */
     public function getCategories() {
         $categories = Category::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $categories);
     }
-    
-    
+
+
     /**
      * get all active and not expired ads
-     * 
+     *
      * @return Array Ads
      */
     public function getAds() {
@@ -63,35 +74,35 @@ class MainController extends Controller {
                 ->get();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $ads);
     }
-    
-    
+
+
     /**
      * update token of the firebase for user
-     * 
-     * @return Array 
+     *
+     * @return Array
      */
     public function updateFirebaseToken(Request $request) {
         $user = User::auth($request);
 
         if (!$user)
             return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
-        
-        ($user && $request->firebase_token)? $user->update(['firebase_token' => $request->firebase_token]) : null; 
-        
+
+        ($user && $request->firebase_token)? $user->update(['firebase_token' => $request->firebase_token]) : null;
+
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $request->firebase_token);
     }
-     
-    
-    
+
+
+
     /**
      * get all settings
      * get help info or about, contact
-     * 
-     * @return Array 
+     *
+     * @return Array
      */
-    public function getSetting(Request $request) {  
-        $setting = Setting::all(); 
+    public function getSetting(Request $request) {
+        $setting = Setting::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $setting);
     }
-     
+
 }
