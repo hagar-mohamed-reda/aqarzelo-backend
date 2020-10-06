@@ -98,7 +98,7 @@ else
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">{{ __("words.email") }}</h4>
-                  admin@aqarzelo.com
+                  info@aqarzelo.com
                 </div>
               </div>
             </div>
