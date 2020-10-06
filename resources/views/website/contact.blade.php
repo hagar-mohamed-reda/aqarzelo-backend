@@ -85,7 +85,11 @@ else
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">{{ __("words.location") }}</h4>
-                 برج الفؤاد المهندسين
+                    @if (session("locale") == "ar")
+                    37 شارع جامعة الدول العربية-برج الفؤاد الإداري(1) الدور 11-المهندسين
+                    @else
+                    37 Gamaet El Dowal El Arabeya St., El Fouad Building No. (1), 11th floor
+                    @endif
                 </div>
               </div>
             </div>
