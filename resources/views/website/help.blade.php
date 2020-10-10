@@ -2,24 +2,24 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
-@endphp 
-@section("css") 
+@endphp
+@section("css")
 <style>
     .sign-up-button {
         border: 1px solid white!important;
         color: white!important;
         border-radius: 5em!important;
         width: 200px;
-    }  
+    }
     .help-background {
         background-image: url("{{ url('/website/image/help-background.png')  }}");
         background-repeat: no-repeat;
-        background-size: cover; 
-    }  
+        background-size: cover;
+    }
 
     .help-video-background {
         background-image: url("{{ url('/website/image/help-background.jpg')  }}");
@@ -28,10 +28,10 @@ else
         background-position: bottom;
         height: 300px;
         width: 400px;
-        border: 1px solid lightgray; 
+        border: 1px solid lightgray;
     }
     .youtube-icon {
-        border-top-right-radius: 5em; 
+        border-top-right-radius: 5em;
         width: 50px;
         height: 50px;
         padding: 15px;
@@ -46,14 +46,14 @@ else
 </style>
 @endsection
 
-@section("content") 
+@section("content")
 
 
 <div class="modal show help-background" style="z-index: -1;" >
     <br>
     <br>
-    <br> 
-    <br> 
+    <br>
+    <br>
     <br>
     <div class="w3-modal-content shadow w3-round w3-white w3-display-container" style=";padding: 0px!important" >
 
@@ -66,45 +66,75 @@ else
         <div class="row" >
             <div class="w3-col l6 m6 s6 w3-padding" >
                 <div class="w3-padding" >
-                    <table class="w3-table" style="direction: ltr!important;" >
-                        <tr>
-                            <td>
-                                <span class="badge dark-theme-background " >1</span>
-                            </td>
-                            <td class="w3-text-gray" >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industr.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="badge dark-theme-background " >2</span>
-                            </td>
-                            <td class="w3-text-gray" >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industr.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="badge dark-theme-background " >3</span>
-                            </td>
-                            <td class="w3-text-gray" >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industr.
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <span class="badge dark-theme-background " >4</span>
-                            </td>
-                            <td class="w3-text-gray" >
-                                Lorem Ipsum is simply dummy text of the printing and typesetting industr.
-                            </td>
-                        </tr>
-                    </table> 
+
+
+                    @if (session('locale') == "en")
+                    <pre>
+                    * General Post  (FAQ)
+                        1.	How can I create a post?
+                        2.	What are the requirements for uploading a post?
+                        3.	Why is my post pending?
+                        4.	When my post will be approved?
+                        5.	How can I delete my post?
+                        6.	Why my photos not uploading?
+                        7.	How can I upload 360゜view photo?!!!!!!!!!!!!!!!!!!!!!
+
+                    * Selling with AQARZELO (FAQ)
+
+                        1.	How does AQAEZELO work?
+                        2.	What makes AQAEZELO Agents different from other real estate agents?
+                        3.	What are the typical steps in the property-selling process?
+                        4.	How do I upload my post?
+                        5.	How can I delete my post?
+                        6.	Do you offer a trail period?
+                        7.	Can I contact the buyer through AQARZELO?
+
+                    * Buying with AQARZELO (FAQ)
+
+                        1.	How does AQARZELO work?
+                        2.	What makes AQARZELO different from other real estate companies?
+                        3.	What should I look for when visiting a home in person?
+                        4.	Is there anything I can do to see a home in more detail without visiting in person?
+                        5.	What are the typical steps in the home-buying process?
+                        6.	Can I contact the owner through AQARZELO?
+                    </pre>
+
+                    @else
+                    <pre>
+                    * الأسئلة المتكررة حول المنشورات:
+
+                        1. إزاى إنشء منشور؟
+                        2. ايه هي متطلبات المنشور الصحيح؟
+                        3. ليه منشوري مُعلق؟
+                        4. امتى بتٌم الموافقة على منشوري؟
+                        5. إزاى امسح منشوري؟
+                        6. ليه الصور مبتتحملش؟
+                        7.
+
+                    * بيع مع عقار زيلو:
+
+                        1.	ازاى عقار زيلو بيشتغل؟
+                        2.	ايه اللي بيميز عقار زيلو عن باقي منافسيها؟
+                        3.	ايه الخطوات المفروض اعملها عشان ابيع عقار؟
+                        4.	إزاي احمل منشوري؟
+                        5.	إزاي امسح منشوري؟
+                        6.	هل ممكن اتواصل مع المشتري عن طريق عقار زيلو؟
+                        7.	هل عقار زيلو بيوفر فترة تجريبية؟
+
+                    * إشتري مع عقار زيلو:
+                        1.	ازاى عقار زيلو بيشتغل؟
+                        2.	ايه اللي بيميزعقار زيلو عن باقي منافسيها؟
+                        3.	ايه اللي ممكن اعمله عشان اشوف تفاصيل اكتر عن العقار منغير ما أزوره؟
+                        4.	ايه الخطوات المفروض اعملها عشان اشتري عقار؟
+                        5.	هل ممكن اتواصل مع البائع عن طريق عقار زيلو؟
+
+                    </pre>
+                    @endif
                 </div>
             </div>
 
 
-            <div class="w3-col l6 m6 s6  w3-padding"  >  
+            <div class="w3-col l6 m6 s6  w3-padding"  >
                 <div style="" class="help-video-background w3-display-container animated zoomIn" >
                     <div class="w3-display-bottomleft" >
                         <span class="w3-large fa fa-play youtube-icon w3-red shadow" onclick="openYoutubeVideo()" ></span>
@@ -129,7 +159,7 @@ else
 @endsection
 
 @section("js")
-<script> 
+<script>
     function closeYoutubeVideo() {
         $(".youtube-video").fadeOut(600)
     }
@@ -137,8 +167,8 @@ else
     function openYoutubeVideo() {
         $(".youtube-video").fadeIn(600)
     }
-    
-    $(document).ready(function () { 
+
+    $(document).ready(function () {
     });
 </script>
 @endsection
