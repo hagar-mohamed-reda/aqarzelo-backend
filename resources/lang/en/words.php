@@ -9,6 +9,7 @@
 
 return [
     "passwords_not_match" => "passwords not match",
+    "email_or_phone" => "email or phone",
     "repeat_password" => "repeat password",
     "title_ar" => "title arabic",
     "fill_required_data_msg" => "fill required data",

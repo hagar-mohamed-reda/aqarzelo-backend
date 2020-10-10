@@ -8,6 +8,7 @@
 
 return [
     "passwords_not_match" => "كلمات المرور غير متطابقه",
+    "email_or_phone" => "البريد الالكترونى او رقم الهاتف",
     "repeat_password" => "اعد كتابة كلمة المرور",
     "title_ar" => "العنوان بالعربى",
     "fill_required_data_msg" => "من فضلك اكمل الحقول المطلوبه",
@@ -145,7 +146,7 @@ return [
     "email_already_exist" => "البريد موجود بالفعل",
     "phone_already_exist" => "رقم الهاتف موجود بالفعل",
     "enter_your_personal" => "ادخل بياناتك و استمتع بأفضل خدمات مع النخبة",
-    "or_use_your_email_account" => "سجل دخول باستخدام البريد الالكترونى او الهاتف",
+    "or_use_your_email_account" => "سجل دخول باستخدام البريد الالكترونى او رقم الهاتف",
     "cant_add_more_than_n_comment_for_post" => "لا يمكنك إضافة اكثر من :number تعليق للمنشور",
     "password_must_be_at_least_8_character" => "كلمة السر لا تقل عن 8 أحرف",
     "home_page_slide_title" => "عقارات للنخبة بسعر السوق العادل.",
