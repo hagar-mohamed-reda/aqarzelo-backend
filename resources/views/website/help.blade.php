@@ -49,7 +49,7 @@ else
 @section("content")
 
 
-<div class="modal show help-background" style="z-index: -1;" >
+<div class="modal show help-background" style="z-index: -1;overflow: auto!important" >
     <br>
     <br>
     <br>
@@ -69,66 +69,66 @@ else
 
 
                     @if (session('locale') == "en")
-                    <pre>
-                    * General Post  (FAQ)
-                        1.	How can I create a post?
-                        2.	What are the requirements for uploading a post?
-                        3.	Why is my post pending?
-                        4.	When my post will be approved?
-                        5.	How can I delete my post?
-                        6.	Why my photos not uploading?
-                        7.	How can I upload 360゜view photo?!!!!!!!!!!!!!!!!!!!!!
-
-                    * Selling with AQARZELO (FAQ)
-
-                        1.	How does AQAEZELO work?
-                        2.	What makes AQAEZELO Agents different from other real estate agents?
-                        3.	What are the typical steps in the property-selling process?
-                        4.	How do I upload my post?
-                        5.	How can I delete my post?
-                        6.	Do you offer a trail period?
-                        7.	Can I contact the buyer through AQARZELO?
-
-                    * Buying with AQARZELO (FAQ)
-
-                        1.	How does AQARZELO work?
-                        2.	What makes AQARZELO different from other real estate companies?
-                        3.	What should I look for when visiting a home in person?
-                        4.	Is there anything I can do to see a home in more detail without visiting in person?
-                        5.	What are the typical steps in the home-buying process?
-                        6.	Can I contact the owner through AQARZELO?
-                    </pre>
+                    <div  style="direction: ltr!important" >
+                    * General Post  (FAQ) <br>
+                        1.	How can I create a post? <br>
+                        2.	What are the requirements for uploading a post? <br>
+                        3.	Why is my post pending? <br>
+                        4.	When my post will be approved? <br>
+                        5.	How can I delete my post? <br>
+                        6.	Why my photos not uploading? <br>
+                        7.	How can I upload 360゜view photo?!!!!!!!!!!!!!!!!!!!!! <br>
+                        <br>
+                    * Selling with AQARZELO (FAQ) <br>
+                    <br>
+                        1.	How does AQAEZELO work? <br>
+                        2.	What makes AQAEZELO Agents different from other real estate agents? <br>
+                        3.	What are the typical steps in the property-selling process? <br>
+                        4.	How do I upload my post? <br>
+                        5.	How can I delete my post? <br>
+                        6.	Do you offer a trail period? <br>
+                        7.	Can I contact the buyer through AQARZELO? <br>
+                        <br>
+                    * Buying with AQARZELO (FAQ) <br>
+                    <br>
+                        1.	How does AQARZELO work? <br>
+                        2.	What makes AQARZELO different from other real estate companies? <br>
+                        3.	What should I look for when visiting a home in person? <br>
+                        4.	Is there anything I can do to see a home in more detail without visiting in person? <br>
+                        5.	What are the typical steps in the home-buying process? <br>
+                        6.	Can I contact the owner through AQARZELO? <br>
+                    </div>
 
                     @else
-                    <pre>
-                    * الأسئلة المتكررة حول المنشورات:
-
-                        1. إزاى إنشء منشور؟
-                        2. ايه هي متطلبات المنشور الصحيح؟
-                        3. ليه منشوري مُعلق؟
-                        4. امتى بتٌم الموافقة على منشوري؟
-                        5. إزاى امسح منشوري؟
-                        6. ليه الصور مبتتحملش؟
-                        7.
-
-                    * بيع مع عقار زيلو:
-
-                        1.	ازاى عقار زيلو بيشتغل؟
-                        2.	ايه اللي بيميز عقار زيلو عن باقي منافسيها؟
-                        3.	ايه الخطوات المفروض اعملها عشان ابيع عقار؟
-                        4.	إزاي احمل منشوري؟
-                        5.	إزاي امسح منشوري؟
-                        6.	هل ممكن اتواصل مع المشتري عن طريق عقار زيلو؟
-                        7.	هل عقار زيلو بيوفر فترة تجريبية؟
-
-                    * إشتري مع عقار زيلو:
-                        1.	ازاى عقار زيلو بيشتغل؟
-                        2.	ايه اللي بيميزعقار زيلو عن باقي منافسيها؟
-                        3.	ايه اللي ممكن اعمله عشان اشوف تفاصيل اكتر عن العقار منغير ما أزوره؟
-                        4.	ايه الخطوات المفروض اعملها عشان اشتري عقار؟
-                        5.	هل ممكن اتواصل مع البائع عن طريق عقار زيلو؟
-
-                    </pre>
+                    <div  style="direction: rtl!important" >
+                    * الأسئلة المتكررة حول المنشورات: <br>
+                    <br>
+                        1. إزاى إنشء منشور؟ <br>
+                        2. ايه هي متطلبات المنشور الصحيح؟ <br>
+                        3. ليه منشوري مُعلق؟ <br>
+                        4. امتى بتٌم الموافقة على منشوري؟ <br>
+                        5. إزاى امسح منشوري؟ <br>
+                        6. ليه الصور مبتتحملش؟ <br>
+                        7. <br>
+                        <br>
+                    * بيع مع عقار زيلو: <br>
+                    <br>
+                        1.	ازاى عقار زيلو بيشتغل؟ <br>
+                        2.	ايه اللي بيميز عقار زيلو عن باقي منافسيها؟ <br>
+                        3.	ايه الخطوات المفروض اعملها عشان ابيع عقار؟ <br>
+                        4.	إزاي احمل منشوري؟ <br>
+                        5.	إزاي امسح منشوري؟ <br>
+                        6.	هل ممكن اتواصل مع المشتري عن طريق عقار زيلو؟ <br>
+                        7.	هل عقار زيلو بيوفر فترة تجريبية؟ <br>
+                        <br>
+                    * إشتري مع عقار زيلو: <br>
+                        1.	ازاى عقار زيلو بيشتغل؟ <br>
+                        2.	ايه اللي بيميزعقار زيلو عن باقي منافسيها؟ <br>
+                        3.	ايه اللي ممكن اعمله عشان اشوف تفاصيل اكتر عن العقار منغير ما أزوره؟ <br>
+                        4.	ايه الخطوات المفروض اعملها عشان اشتري عقار؟ <br>
+                        5.	هل ممكن اتواصل مع البائع عن طريق عقار زيلو؟ <br>
+                        <br>
+                    </div>
                     @endif
                 </div>
             </div>
