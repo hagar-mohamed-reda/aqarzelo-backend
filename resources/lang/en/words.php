@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -83,7 +83,7 @@ return [
     "location" => "location",
     "done" => "done",
     "help" => "help",
-    "edit" => "edit", 
+    "edit" => "edit",
     "follow_us" => "follow us",
     "arabic" => "arabic",
     "english" => "english",
@@ -91,7 +91,7 @@ return [
     "pending" => "pending",
     "accepted" => "accepted",
     "refused" => "refused",
-    
+
     "price" => "price",
     "space" => "space",
     "category" => "category",
@@ -104,7 +104,7 @@ return [
     "space" => "space",
     "furnished" => "furnished",
     "more_details" => "more details",
-    
+
     "finishing" => "finishing",
     "extra_super_lux" => "extra super lux",
     "super_lux" => "super lux",
@@ -135,13 +135,13 @@ return [
     "youtube_video" => "Youtube Video",
     "twitter" => "Twitter",
     "whatsapp" => "Whatsapp",
-    "linkedin" => "Linkedin", 
-    
-    
+    "linkedin" => "Linkedin",
+
+
     "avg_of_meter_in_city" => "average of meter in {city}",
-    "waiting_posts" => "waiting posts", 
+    "waiting_posts" => "waiting posts",
     "master_photo" => "master photo",
-    "recommended_posts" => "recommended posts",
+    "recommended_posts" => "Recommended Properties",
     "refused_posts" => "refused posts",
     "hello_friends" => "Hello, friends!",
     "create_account" => "create account",
@@ -156,11 +156,11 @@ return [
     "email_already_exist" => "e-mail already exist",
     "phone_already_exist" => "phone already exist",
     "enter_your_personal" => "enter your personal info and start enjoy with us",
-    "or_use_your_email_account" => "or use your e-mail account",
+    "or_use_your_email_account" => "login with your email or phone",
     "cant_add_more_than_n_comment_for_post" => "can't add more than :number comment for post",
     "password_must_be_at_least_8_character" => "password must be at least 8 character",
-    "home_page_slide_title" => "property for elites with fair market Prices.",
-    "search_about_what_you_need" => "search about what you need.",
+    "home_page_slide_title" => "properties for elites with fair market Prices.",
+    "search_about_what_you_need" => "filter",
     "add_master_photo" => "add master photo.",
     "for_help_click_here" => "for help click here.",
     "please_add_one_photo" => "Please add one photo showing the property's appearance from outside.",

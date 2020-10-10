@@ -2,22 +2,22 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 
-@section("css") 
-<link rel="stylesheet" href="{{ url('/website') }}/css/create-site.css"> 
- 
- 
+@section("css")
+<link rel="stylesheet" href="{{ url('/website') }}/css/create-site.css">
+
+
 @endsection
 
-@section("content") 
+@section("content")
 
 
-<div class="modal show login-background" id="siteContainer" style="z-index: -1;padding-top: 70px" > 
+<div class="modal show login-background" id="siteContainer" style="z-index: -1;padding-top: 70px" >
 
     <div class="w3-row step step-1" style="overflow: auto" >
         <div class="w3-col l7 m7 s6 w3-padding"   >
@@ -27,8 +27,8 @@ else
             </div>
             <br>
             <div style="width: 30%;height: 5px;margin-top: 5px;" class="dark-theme-background w3-border-bottom w3-border-gray" ></div>
-            
-            <div id="contentContainer" class="trans3d"> 
+
+            <div id="contentContainer" class="trans3d">
             <center>
                 <center id="carouselContainer" class="trans3d">
                     <figure id="item1" class="carouselItem trans3d">
@@ -54,22 +54,23 @@ else
 
                 <button onclick="window.location='{{ optional(App\Setting::find(9))->value }}'" href="" role="button" class="services-btn fa fa-facebook w3-indigo float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
                 <button onclick="window.location='{{ optional(App\Setting::find(10))->value }}'" href="" role="button" class="services-btn fa fa-twitter w3-cyan float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
+                <button onclick="window.location='{{ optional(App\Setting::find(11))->value }}'" href="" role="button" class="services-btn fa fa-youtube-square w3-red float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
             </div>
-                <center v-if="user" > 
-                    <button 
+                <center v-if="user" >
+                    <button
                         v-if="user.company_id != 1 && user.company_id"
-                        class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInRight fa fa-angle-right" 
+                        class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInRight fa fa-angle-right"
                         style="width: 200px;border: 1px solid #02A2A7;"
                         onclick="gotoStep(2)" > {{ __("words.next") }} </button>
-                </center> 
-  
-  
+                </center>
+
+
 
         </div>
 
         <div class="w3-col l5 m5 s5 w3-display-container" style="height: 100%" >
             <div class="w3-display-topleft dark-theme-background template-loader" style="width: 100%;height: 100%" >
-               
+
                 <center style="margin-top: 45%" >
                     <span class="fa fa-spin fa-spinner w3-text-white w3-large" ></span>
                 </center>
@@ -80,16 +81,16 @@ else
     </div>
 
     <div class="step step-2" style="overflow: auto;display: none;" >
-         <br><br> 
+         <br><br>
         <div class="w3-modal-content shadow w3-round w3-white w3-padding" >
-           
+
             <center class="w3-large" >
                {{ __("words.fill_your_data") }}
            </center>
            <form class="form" action="{{ url('/api/user/profile/update') }}" method="post" >
 
             <input type="hidden" name="api_token" v-model="user.api_token" >
-               
+
             <div class="w3-row">
                 <div class="form-group w3-col l6 m6 s6 w3-padding">
                 <label for="name">{{ __('words.name') }}</label>
@@ -135,7 +136,7 @@ else
                 <div class="form-group w3-col l6 m6 s6 w3-padding">
                     <label for="website">{{ __('words.website') }}</label>
                     <input type="url" class="form-control input-sm" name="website" placeholder="{{ __('words.website') }}" v-model="user.website">
-                </div> 
+                </div>
 
                 <div class="form-group w3-col l6 m6 s6 w3-padding">
                     <label for="about">{{ __('words.about') }}</label>
@@ -144,18 +145,18 @@ else
                 <br>
                 <button class="btn btn-primary w3-block" >{{ __("words.save") }}</button>
                 <br>
-            </div> 
+            </div>
            </form>
                 <center>
-                    <button 
-                        class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInLeft fa fa-angle-left" 
+                    <button
+                        class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInLeft fa fa-angle-left"
                         style="width: 200px;border: 1px solid #02A2A7;"
                         onclick="gotoStep(1)" > {{ __("words.back") }} </button>
-                    <a 
-                        class="light-theme-background w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInRight fa fa-send-o" 
-                        target="_blank" 
+                    <a
+                        class="light-theme-background w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInRight fa fa-send-o"
+                        target="_blank"
                         style="width: 200px;border: 1px solid #02A2A7;" v-bind:href="website_link" > {{ __("words.publish") }} </a>
-                </center> 
+                </center>
         </div>
         <br><br><br>
     </div>
@@ -163,7 +164,7 @@ else
 
 
     <div class="step step-3" style="overflow: auto;display: none;" >
-         <br><br> 
+         <br><br>
         <div class="w3-modal-content modal-sm shadow w3-round w3-white w3-padding" style="width: 60%" >
             <div class="row">
                 <div class="w3-xlarge text-center" >{{ __("words.your_website_published") }}</div>
@@ -171,17 +172,17 @@ else
                 <center>
                     <img src="{{ url('/website/image/websitebuilderformac.jpg') }}" width="80%" class="animated  shadow w3-round" >
                 </center>
-                <br> 
+                <br>
                 <div class="form-inline w3-padding">
                     <label for="email">{{ __('words.your_link') }}</label>
-                    <br> 
+                    <br>
                     <a target="_blank" v-bind:href="website_link" v-html="website_link" ></a>
                 </div>
             </div>
         </div>
         <br>
     </div>
-    
+
 </div>
 
 
@@ -191,8 +192,8 @@ else
 <script src="https://raw.githubusercontent.com/JohnBlazek/codepen-resources/master/3d-carousel/js/libs.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.19.1/TweenMax.min.js"></script>
 <script src="{{ url('/website') }}/js/create-site.js"></script>
- 
-<script> 
+
+<script>
     function showTemplate(template) {
         app.template = template;
         $('.template-loader').show();
@@ -214,7 +215,7 @@ else
 
     var app = null;
     formAjax(true);
-    
+
     $(document).ready(function () {
         setOwlCarousel();
         formAjax(true);
@@ -222,12 +223,12 @@ else
         // load user
         $.get("{{ url('/get-user') }}", function(data){
             app.user = data;
-        }); 
+        });
     });
-    
+
 app = new Vue({
     el: '#siteContainer',
-    data: { 
+    data: {
         template: 2,
         website_link: '',
         user: {}
@@ -242,7 +243,7 @@ app = new Vue({
                     html += "<span class='fa fa-star w3-text-gray' ></span>";
             }
             return html;
-        } 
+        }
     },
     computed: {
         height: function () {

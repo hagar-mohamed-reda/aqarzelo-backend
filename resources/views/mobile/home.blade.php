@@ -1,51 +1,51 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         }
 
         .w3-modal-content {
             background-color: transparent!important;
         }
-        
-             
+
+
             .application-container {
                 border-top-left-radius: 2em;
                 border-top-right-radius: 2em;
                 background-color: white;
                 overflow: hidden;
-                background: #DEDEDE; 
+                background: #DEDEDE;
             }
-            
+
             .application-header {
                 height: 80px;
             }
-        
-        
+
+
         .result-show {
-            bottom: 80px; 
+            bottom: 80px;
             background-color: transparent;
-            overflow-x: auto; 
+            overflow-x: auto;
         }
-        
+
         .result-show-item {
             border-radius: 1em;
             overflow: hidden;
-            background-color: white; 
+            background-color: white;
         }
-        
-        .result-show-item img { 
+
+        .result-show-item img {
             height: 20vh;
         }
 
@@ -57,13 +57,13 @@ else
             width: 100%;
             height: 200px;
         }
-        
+
         .post-show-image-container {
             background-size: cover;
             width: 200%;
             height: 200px;
         }
-        
+
     </style>
 
     <!-- html content -->
@@ -75,7 +75,7 @@ else
                   <img v-bind:src="photo" v-if="api_token" class="w3-circle" onclick="loadPage('phone/setting')" width="30px" >
 
                   <img src="{{ url('/mobile/images/avatar.png') }}" v-if="!api_token" onclick="loadPage('phone/setting')" width="30px" >
-              </a> 
+              </a>
               <a href="#" class="w3-bar-item btn w3-{{ session("direction")=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
                   <img src="{{ url('/mobile/images/bars.png') }}" width="30px" >
               </a>
@@ -83,7 +83,7 @@ else
         </div>
         <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 80) + 'px'" >
             <div id="map" class="w3-block"  style="height: 100%" ></div>
-            
+
             <div  class="application-grad-back w3-display-bottommiddle" >
 
                 <!-- application bottom nav -->
@@ -97,37 +97,37 @@ else
                                 <br>
                                 <div class="w3-padding" >
                                     <div class="" ><b v-html="post.title.substring(0,15)+'..'" ></b></div>
-                                    <span v-html="post.price" ></span>  
+                                    <span v-html="post.price" ></span>
                                     <span v-html="post.space" ></span> M
                                 </div>
                             </div>
-                        </div> 
+                        </div>
                     </div>
                     <br>
 
                 </div>
             </div>
         </div>
-        
-        
-        
 
-    
-        <!-- post show modal --> 
+
+
+
+
+        <!-- post show modal -->
         <div class="modal fade post-show-modal" id="show-post-modal" tabindex="-1" role="dialog" style="z-index: 9999!important">
             <div class="modal-dialog" role="document" style="padding-top: 20%" >
-               
-                <div 
+
+                <div
                 v-bind:data-id="currentPost.id"
                 onclick="$('.post-show-modal').modal('hide');loadPage('phone/post/show?post_id=' + $(this).attr('data-id'))"
-                class="modal-content light-theme-background w3-text-white w3-display-container" 
+                class="modal-content light-theme-background w3-text-white w3-display-container"
                 style="overflow: hidden" >
-                    <img 
-                        v-if="currentPost.images" 
+                    <img
+                        v-if="currentPost.images"
                         v-bind:src="currentPost.images? currentPost.images[0].image : '{{ url('/mobile/images/image.png') }}'" class='w3-block hidden' >
-                    <div 
+                    <div
                         v-bind:style=" 'background-image: url(' + (currentPost.images? currentPost.images[0].image : '{{ url('/mobile/images/image.png') }}') + ')' "
-                        class="post-show-image-container" > 
+                        class="post-show-image-container" >
                     </div>
                     <div class="modal-body" >
                         <div class="w3-large" >
@@ -138,7 +138,7 @@ else
                             <b class="post-show-space" v-if="currentPost.space" v-html='currentPost.space + " M"' ></b>
                         </div>
                     </div>
-                    
+
                     <div class="w3-display-topright w3-padding" >
                         <img class="w3-circle shadow" width="30px" height="30px" v-if="currentPost.user" v-bind:src="currentPost.user.company.photo_url"   >
                     </div>
@@ -149,7 +149,7 @@ else
 
 
     <!-- javascript -->
-    
+
     <script>
         var path = "{{ request()->path }}";
         var lat = null
@@ -158,37 +158,37 @@ else
         var marker = null;
         var markers = [];
         var placeMarker = null;
-        
+
         function loadPosts() {
             var data = $.param(page.search);
             $.get(BASE_URL + "/post/search?"+data, function(r){
                 page.posts = r.data;
-                
+
                 if (r.data.length > 0)
                     last_posts = r.data;
-               
+
                 drawPostsMarkers(page.posts);
-                setTimeout(function(){ 
+                setTimeout(function(){
                     if (page.posts.length > 0)
                         setOwlCarousel();
                 }, 1000);
-                
-                if (page.posts.length <= 0) { 
+
+                if (page.posts.length <= 0) {
                 //    loadFromLastPosts();
                 //} else {
-                
-                    var html = 
+
+                    var html =
                     "<button class='btn-sm btn light-theme-background w3-text-white' onclick='loadRecommendPosts();$(this).hide(500)' >{{ __('words.recommended_posts') }}</button>";
                     successToast("{{ __('words.no_result_found') }} " + html);
-                    //loadRecommendPosts(); 
-                }  
+                    //loadRecommendPosts();
+                }
             });
         }
-        
+
         function loadFromLastPosts() {
             page.posts = last_posts;
             drawPostsMarkers(page.posts);
-            setTimeout(function(){   
+            setTimeout(function(){
                 setOwlCarousel();
             }, 1000);
         }
@@ -198,8 +198,8 @@ else
             $.get(BASE_URL + "/post/recommended", function(r){
                 page.posts = r.data;
                 drawPostsMarkers(page.posts);
-                setTimeout(function(){ 
-                   
+                setTimeout(function(){
+
                     setOwlCarousel();
                 }, 1000);
             });
@@ -212,33 +212,33 @@ else
             var marker = new google.maps.Marker({
                 position: location,
                 map: map,
-                animation: google.maps.Animation.DROP, 
+                animation: google.maps.Animation.DROP,
                 icon: {
                   url: icon,
                   labelOrigin: { x: 12, y: 40}
                 },
-                title: label, 
-                label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '14px', text: label }, 
+                title: label,
+                label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '14px', text: label },
                 labelInBackground: true
             });
-            
+
 
             marker.addListener('click', function () {
                 showCurrentPost(page.posts[postId]);
                 if (action)
                     action();
-            }); 
+            });
             return marker;
         }
         /**
          * set all posts marker on the map
-         * 
+         *
          * @param {Array} posts
          */
         function drawPostsMarkers(posts) {
-       
+
             for (var i = 0; i < posts.length; i++) {
-                var post = posts[i];  
+                var post = posts[i];
 
                 var marker = new addMarker({lat: parseFloat(post.lat), lng: parseFloat(post.lng)}, post.price+"", function(){
                    //new showCurrentPost(post);
@@ -247,9 +247,9 @@ else
                 markers.push(marker);
             }
         }
-        
+
         function showCurrentPost(post) {
-            page.currentPost = post; 
+            page.currentPost = post;
             $('#show-post-modal').modal('show');
         }
 
@@ -280,17 +280,17 @@ else
                 }
             });
         }
-        
+
         function getCurrentLocation() {
             getLocation(function(latlng){
-                lat=latlng.lat; 
-                lng = latlng.lng;  
+                lat=latlng.lat;
+                lng = latlng.lng;
                 var p = new google.maps.LatLng(lat, lng);
                 placeMarker(p, map);
             });
         }
 
-        function initMap() { 
+        function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 30.0455965, lng: 31.2387195},
                 zoom: 12.25,
@@ -362,7 +362,7 @@ else
                 });
                 lat = position.lat();
                 lng = position.lng();
- 
+
                 map.panTo(position);
             }
 
@@ -371,8 +371,8 @@ else
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4ow5PXyqH-gJwe2rzihxG71prgt4NRFQ&libraries=places&callback=initMap"
     async defer></script>
 
-    
-    <script> 
+
+    <script>
         var page = new Vue({
             el: '#page',
             data: {
@@ -393,10 +393,10 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){  
-            
+        });
+
+        $(document).ready(function(){
+
             @if (request()->lng && request()->lat)
                 page.search.lat = {{ request()->lat }};
                 page.search.lng = {{ request()->lng }};
@@ -407,17 +407,17 @@ else
                 page.search.price1 = {{ request()->price1 }};
                 page.search.price2 = {{ request()->price2 }};
             @elseif (request()->bedroom_number)
-                page.search.bedroom_number = {{ request()->bedroom_number }}; 
+                page.search.bedroom_number = {{ request()->bedroom_number }};
             @elseif (request()->bathroom_number)
-                page.search.bathroom_number = {{ request()->bathroom_number }}; 
+                page.search.bathroom_number = {{ request()->bathroom_number }};
             @elseif (request()->city_id)
-                page.search.city_id = {{ request()->city_id }}; 
+                page.search.city_id = {{ request()->city_id }};
             @elseif (request()->area_id)
-                page.search.area_id = {{ request()->area_id }}; 
+                page.search.area_id = {{ request()->area_id }};
             @elseif (request()->category_id)
-                page.search.category_id = {{ request()->category_id }}; 
-            @endif 
-             
+                page.search.category_id = {{ request()->category_id }};
+            @endif
+
             loadPosts();
             //
             $(".home-bottom-nav-item").addClass("light-theme-color");

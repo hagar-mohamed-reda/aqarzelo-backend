@@ -2,9 +2,9 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 
@@ -13,25 +13,25 @@ else
     * {
         text-transform: capitalize!important;
     }
-    
+
 </style>
 
 @endsection
 
-@section("content") 
+@section("content")
 
 
 <div class="slideshow modal show home-background home-modal" >
 
     <div class="home-title-hover w3-display-top{{ session("direction") == "ltr"? 'left' : 'right'  }}" style="z-index: 2;padding-{{ session("direction") == "rtl"? 'right' : 'left'  }}: 0px!important;top: 35%;width:500px" >
         <div class="w3-padding animated fadeInLeft" style="height:220px;padding-{{ session("direction") == "ltr"? 'left' : 'right'  }}: 0px!important;background-color: rgba(2, 170, 169, 0.5)" >
-            <br> 
+            <br>
             <div class="w3-padding w3-jumbo animated fadeInLeft delay-1s" style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"  >
                 <span class="w3-margin-left" ><b>AQAR ZELO</b></span>
             </div>
-            <br> 
+            <br>
             <div class="w3-large w3-text-white" style="padding-{{ session("direction") == "rtl"? 'right' : 'left'  }}: 16px!important;margin: auto;width: 90%;" >
-                <span class="home-slide-detail text-capitalize" style="letter-spacing: 3px" >{{ __("words.home_page_slide_title") }}</span> 
+                <span class="home-slide-detail text-capitalize" style=" " >{{ __("words.home_page_slide_title") }}</span>
             </div>
         </div>
         <br>
@@ -54,7 +54,7 @@ else
     <br>
     <br>
     <br>
-    <br> 
+    <br>
     <div class="slide-image" style="margin-{{ session("direction") == "ltr"? 'left' : 'right'  }}: 25%;width: 65%;" >
 
         <div class="search-container" style="" >
@@ -67,22 +67,22 @@ else
                 <span class="input-group-addon transparent" style="display: none"  >
                     <!--
                     <select class="transparent" style="border-right: 1px solid gray!important" >
-                        <option>{{ __("words.city") }}</option> 
+                        <option>{{ __("words.city") }}</option>
                     </select>
                     <select class="transparent" style="border-right: 1px solid gray!important" >
                         <option>{{ __("words.sell") }}</option>
                         <option>{{ __("words.rent") }}</option>
                     </select>
                     <select class="transparent" style="border: inherit!important" >
-                        <option>{{ __("words.villa") }}</option> 
+                        <option>{{ __("words.villa") }}</option>
                     </select>
                 -->
                 </span>
             </div>
             </form>
         </div>
-        <br> 
-        <img src="{{ url('/website/image/home-slide-image.jpg') }}" class="shadow animated fadeInRight slow" width="100%"  height="430px"  >  
+        <br>
+        <img src="{{ url('/website/image/home-slide-image.jpg') }}" class="shadow animated fadeInRight slow" width="100%"  height="430px"  >
     </div>
     <br>
     <div class="w3-display-bottommiddle " >
@@ -99,7 +99,7 @@ else
                 </a>
                 <a target="_blank" href="https://www.youtube.com/channel/UC8H3FBqJJhehH55i2hcOsgg/" style="padding:5px;" >
                     <i class="fa fa-youtube-play w3-xlarge" ></i>
-                </a> 
+                </a>
             </center>
         </div>
     </div>

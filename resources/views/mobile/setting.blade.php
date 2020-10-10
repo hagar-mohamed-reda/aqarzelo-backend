@@ -1,18 +1,18 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         }
 
         .w3-modal-content {
@@ -28,7 +28,7 @@ else
             margin-bottom: 15px!important;
         }
 
-        .small-height-item { 
+        .small-height-item {
             border: 0px!important;
         }
 
@@ -39,8 +39,8 @@ else
         .small-height-item img {
             width: 10vw!important;
         }
-        
-        
+
+
     </style>
 
     <!-- html content -->
@@ -50,14 +50,14 @@ else
             <div class="w3-bar w3-padding w3-display-container">
               <a href="#" class="w3-bar-item btn w3-{{ session("direction")=='rtl'? 'right' : 'left' }}" onclick="back()" >
                   <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
-              </a>   
+              </a>
               <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.setting') }}</span>
-              </a>   
+              </a>
             </div>
         </div>
         <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 80) + 'px'" >
-            
+
             <ul class="w3-ul" style="padding: 10px" >
 
                 <li class="btn w3-block" onclick="loadPage('phone/login')" v-if='!api_token' >
@@ -88,7 +88,7 @@ else
                     </div>
                 </li>
                 <!-- chat  -->
-                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('phone/chat/users')" style="margin-bottom: 20px!important" >
+                <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('phone/chat/users')" style="margin-bottom: 20px!important" >
                     <a class="w3-bar-item w3-text-gray" href="#">
                         <img src="{{ url('/mobile/images/chat.png') }}" style="margin: 5px" width="30vw" >
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.chat') }}</b>
@@ -123,7 +123,7 @@ else
                 </li>
 
                 <!-- notification  -->
-                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('/phone/notification')" style="margin-bottom: 20px!important" >
+                <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('/phone/notification')" style="margin-bottom: 20px!important" >
                     <a class="w3-bar-item w3-text-gray" href="#">
                         <img src="{{ url('/mobile/images/notification.png') }}" style="margin: 5px" width="30vw" >
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.notification') }}</b>
@@ -145,7 +145,7 @@ else
                         <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
- 
+
                 <!-- help  -->
                 <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('/phone/help')" >
                     <a class="w3-bar-item w3-text-gray" href="#">
@@ -183,19 +183,19 @@ else
                 </li>
             </ul>
         </div>
-        
-        
-        
+
+
+
 
     </div>
 
- 
 
-    
-    <script> 
+
+
+    <script>
         function showLanguageDailog() {
             Swal.fire({
-              title: '{{ __("mobile.language") }}', 
+              title: '{{ __("mobile.language") }}',
               //icon: '',
               showCancelButton: true,
               confirmButtonColor: '#02A2A7',
@@ -206,13 +206,13 @@ else
                 console.log(result);
               if (result.value) {
                 window.location = "?lang=en";
-              } 
+              }
               if (result.dismiss == 'cancel') {
                 window.location = "?lang=ar";
               }
             })
         }
-        
+
         function logout() {
             Swal.fire({
               title: '{{ __("mobile.warning") }}?',
@@ -229,12 +229,12 @@ else
                 loadPage('phone/home');
               }
             })
-            
+
         }
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 api_token: window.localStorage.getItem("api_token"),
                 name: window.localStorage.getItem("name"),
                 photo: window.localStorage.getItem("photo")
@@ -246,10 +246,10 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){  
-             
-              
+        });
+
+        $(document).ready(function(){
+
+
         });
     </script>

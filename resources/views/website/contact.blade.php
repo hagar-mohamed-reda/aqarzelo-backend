@@ -70,12 +70,12 @@ else
 
 
             <div class="w3-col l6 m6 s6 w3-display-container" style="height: 395px" >
-            <iframe class="animated zoomIn" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.038494209326!2d31.1989469!3d30.0509233!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xda99ec6899f9af9e!2z2KjYsdisINin2YTZgdik2KfYryDYp9mE2KfYr9in2LHZig!5e0!3m2!1sar!2seg!4v1582116699037!5m2!1sar!2seg" width="96%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            <iframe class="animated zoomIn" src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13814.038494209326!2d31.1989469!3d30.0509233!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xda99ec6899f9af9e!2z2KjYsdisINin2YTZgdik2KfYryDYp9mE2KfYr9in2LHZig!5e0!3m2!1sar!2seg!4v1582116699037!5m2!1sar!2seg&language={{ session("locale") == 'en'? 'en' : 'ar' }}" width="96%" height="100%" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
              </div>
         </div>
     </div>
-    <div class="modal-dialog modal- " >
-        <div class="w3-row w3-modal-content transparent" >
+    <div class="modal-dialog modal-lg " >
+        <div class="w3-row w3-modal-content transparent"  >
             <div class="w3-col l6 m6 s6 transparent" >
                 <div class="media animated fadeInUp">
                 <div class="media-left">
@@ -88,7 +88,7 @@ else
                     @if (session("locale") == "ar")
                     37 شارع جامعة الدول العربية-برج الفؤاد الإداري(1) الدور 11-المهندسين
                     @else
-                    37 Gamaet El Dowal El Arabeya St., El Fouad Building No. (1), 11th floor
+                    37 Gamaet El Dowal El Arabeya St., El Fouad Building No. (1), 11th floor Mohandessin
                     @endif
                 </div>
               </div>

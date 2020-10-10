@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,9 +12,9 @@ return [
     "title_ar" => "العنوان بالعربى",
     "fill_required_data_msg" => "من فضلك اكمل الحقول المطلوبه",
     "price_per_month" => "السعر/المتر",
-    "create_template_for_company_only" => "متاح فى مصر",
-    "text_appear_in_tooltip_description" => "متاح فى مصر",
-    "text_appear_in_tooltip" => "متاح فى مصر",
+    "create_template_for_company_only" => "متاح للشركات فقط",
+    "text_appear_in_tooltip_description" => "سيكون لنا فروع فى دول اخرى",
+    "text_appear_in_tooltip" => "سيكون لنا فروع فى دول اخرى",
     "home" => "الصفحة الرئيسية",
     "next" => "التالي",
     "back" => "رجوع",
@@ -48,7 +48,7 @@ return [
     "password" => "كلمة المرور",
     "fullname" => "الاسم بالكامل",
     "company" => "الشركة",
-    "title" => "عنوان",
+    "title" => "العنوان بالانجليزيه",
     "category" => "الفئة",
     "price_per_meter" => "السعر/للمتر",
     "building_number" => "السعر",
@@ -58,7 +58,7 @@ return [
     "phone" => "رقم التليفون",
     "address" => "عنوان",
     "no_address" => "بدون عنوان",
-    "google_play" => "المتجر",
+    "google_play" => "متجر جوجل",
     "create_post" => "إنشاء منشور",
     "contact_us" => " تواصل معنا",
     "information" => "معلومات",
@@ -82,7 +82,7 @@ return [
     "help" => "مساعدة",
     "follow_us" => "تابعنا",
     "choose_template" => "اختار القالب",
-    
+
     "price" => "السعر",
     "space" => "المساحه",
     "clear" => "مسح",
@@ -92,7 +92,7 @@ return [
     "bedroom_number" => "عدد غرف النوم",
     "bathroom_number" => "عدد الحمامات",
     "more_details" => "تفاصيل أكتر",
-    
+
     "finishing" => "التشطيب",
     "extra_super_lux" => "إكسترا سوبر لوكس",
     "super_lux" => "سوبر لوكس",
@@ -108,7 +108,7 @@ return [
     "rate_or_comment_the_post" => "قيِّم وعلق على المنشور",
     "your_website_published" => "تم نشر موقعك",
     "send_message_to_post_company" => "أرسل رسالة لصاحب المنشور",
-    
+
     "search_with_city" => "إبحث بالمدينة",
     "search_with_area" => " إبحث بالمنطقة",
     "search_with_finishing_type" => " إبحث على حسب نوع التشطيب",
@@ -125,12 +125,12 @@ return [
     "twitter" => "تويتر",
     "linkedin" => "لينكد إن",
     "whatsapp" => "واتساب",
-    
-    
+
+
     "avg_of_meter_in_city" => "متوسط سعر المتر في {city}",
-    "waiting_posts" => "المنشورات المعلقة", 
+    "waiting_posts" => "المنشورات المعلقة",
     "master_photo" => "الصورة الرئيسية",
-    "recommended_posts" => "أفضل الوحدات",
+    "recommended_posts" => "العقارات الموصى بها",
     "refused_posts" => "المنشورات المرفوضة",
     "hello_friends" => "أهلاً بك في عقار زيلو!",
     "create_account" => "إنشاء حساب",
@@ -145,11 +145,11 @@ return [
     "email_already_exist" => "البريد موجود بالفعل",
     "phone_already_exist" => "رقم الهاتف موجود بالفعل",
     "enter_your_personal" => "ادخل بياناتك و استمتع بأفضل خدمات مع النخبة",
-    "or_use_your_email_account" => "أو إستخدم البرد الخاص بك",
+    "or_use_your_email_account" => "سجل دخول باستخدام البريد الالكترونى او الهاتف",
     "cant_add_more_than_n_comment_for_post" => "لا يمكنك إضافة اكثر من :number تعليق للمنشور",
     "password_must_be_at_least_8_character" => "كلمة السر لا تقل عن 8 أحرف",
     "home_page_slide_title" => "عقارات للنخبة بسعر السوق العادل.",
-    "search_about_what_you_need" => " إبحث عن ما تريد.",
+    "search_about_what_you_need" => " فلتر.",
     "add_master_photo" => "أضف الصورة الرئيسية",
     "for_help_click_here" => "للمساعدة اضغط هنا.",
     "please_add_one_photo" => "من فضلك أضف اجمل صورة للعقار لتجذب الإنتباه لإعلانك ",
