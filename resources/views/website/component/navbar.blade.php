@@ -80,9 +80,21 @@ else
                         <span class="caret"></span>
                     </a>
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
+                    <!--
                     <li class="w3-padding" >
                         {{ __('words.text_appear_in_tooltip_description') }}
                     </li>
+                    -->
+                    @foreach(App\Country::all() as $item)
+                    <li class="w3-display-container" >
+                        <a href="#">
+
+                            <img src="{{ url($item->icon) }}" class="fa w3-round w3-left" width="30px" >
+
+                            <span class="w3-right" >{{ sesion("locale") == "ar"? $item->name_ar : $item->name_en }}</span>
+                        </a>
+                    </li>
+                    @endforeach
                   </ul>
                 </li>
                 <li class="dropdown">
@@ -106,7 +118,7 @@ else
 
                             <img src="{{ url('/images/egypt.png') }}" class="fa w3-round w3-left" width="30px" >
 
-                            العربية
+                            <span class="w3-right" >العربية</span>
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
@@ -115,7 +127,7 @@ else
 
                             <img src="{{ url('/images/english.svg') }}" class="fa w3-round w3-left" width="30px" >
 
-                            English
+                            <span class="w3-right" >English</span>
                         </a>
                     </li>
                   </ul>
