@@ -110,7 +110,7 @@ else
                         <span class="caret"></span>
                     </a>
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
-                    <li class="w3-hover-light-gray w3-padding" style="height: 30px!important">
+                    <li class="w3-hover-light-gray w3-padding" style="height: 40px!important">
                         <a href="{{ url('/locale/ar') }}" class="w3-display-container " >
 
                             <img src="{{ url('/images/egypt.png') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
@@ -118,8 +118,8 @@ else
                             <span class="w3-right" >العربية</span>
                         </a>
                     </li>
-                    <li role="separator" class="divider"></li>
-                    <li class="w3-hover-light-gray w3-padding" style="height: 30px!important" >
+                    <li class="w3-border-bottom w3-border-gray" ></li>
+                    <li class="w3-hover-light-gray w3-padding" style="height: 40px!important" >
                         <a href="{{ url('/locale/en') }}" class="w3-display-container">
 
                             <img src="{{ url('/images/english.jpg') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
