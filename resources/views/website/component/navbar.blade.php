@@ -91,7 +91,7 @@ else
 
                             <img src="{{ url($item->icon) }}" class="fa w3-round w3-left" width="30px" >
 
-                            <span class="w3-right" >{{ sesion("locale") == "ar"? $item->name_ar : $item->name_en }}</span>
+                            <span class="w3-right" >{{ session("locale") == "ar"? $item->name_ar : $item->name_en }}</span>
                         </a>
                     </li>
                     @endforeach
