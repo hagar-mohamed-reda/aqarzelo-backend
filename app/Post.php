@@ -18,7 +18,7 @@ class Post extends Model {
         'lng', 'lat', 'ownar_type', 'phone', 'space', 'price_per_meter', 'payment_method',
         'bedroom_number', 'bathroom_number', 'floor_number', 'finishing_type', 'refused_reason',
         'real_estate_number', 'build_date', 'active', 'has_garden', 'has_parking', 'status', 'city_id',
-        'area_id', 'price', 'furnished', 'title_ar'
+        'area_id', 'price', 'furnished', 'title_ar', 'country_id'
     ];
 
     /**
@@ -27,24 +27,24 @@ class Post extends Model {
      * @var array
      */
     protected $appends = [
-        'category', 'images', 'city', 
-        'area', 'rate', 'views', 
-        'rates', 'chart_data', 'contact_phone', 
+        'category', 'images', 'city',
+        'area', 'rate', 'views',
+        'rates', 'chart_data', 'contact_phone',
         'user_review', 'favourite'
     ];
-    
-    
+
+
     /**
      * return category object
-     * 
+     *
      * @return Category
      */
     public function getFavouriteAttribute() {
         return '';
         /*
         $request = new Request();
-        $user = User::auth($request); 
-         
+        $user = User::auth($request);
+
         return $user;
         if ($user) {
             if (Favourite::where("user_id", $user->id)->where("post_id", $this->id)->count() > 0) {
@@ -56,7 +56,7 @@ class Post extends Model {
 
     /**
      * return category object
-     * 
+     *
      * @return Category
      */
     public function getUserReviewAttribute() {
@@ -65,12 +65,12 @@ class Post extends Model {
 
     /**
      * return category object
-     * 
+     *
      * @return Category
      */
     public function getContactPhoneAttribute() {
         $request = new Request();
-        $user = User::auth($request); 
+        $user = User::auth($request);
 
         try {
             if ($user)
@@ -84,7 +84,7 @@ class Post extends Model {
 
     /**
      * return chart data
-     * 
+     *
      * @return Array
      */
     public function getChartDataAttribute() {
@@ -113,7 +113,7 @@ class Post extends Model {
 
     /**
      * return category object
-     * 
+     *
      * @return Category
      */
     public function getCategoryAttribute() {
@@ -122,24 +122,24 @@ class Post extends Model {
 
     /**
      * return category object
-     * 
+     *
      * @return Array Image
      */
     public function getImagesAttribute() {
         $image = new Image();
         $image->photo = 'post.jpg';
-        
+
         $images = $this->images()->orderBy('updated_at')->get();
-        
+
         if (count($images) > 0)
             return $images;
         else
-            return [$image]; 
+            return [$image];
     }
 
     /**
      * return city object
-     * 
+     *
      * @return City
      */
     public function getCityAttribute() {
@@ -148,7 +148,7 @@ class Post extends Model {
 
     /**
      * return area object
-     * 
+     *
      * @return Area
      */
     public function getAreaAttribute() {
@@ -158,7 +158,7 @@ class Post extends Model {
     /**
      * return rate of the post from user reviews
      * rate = average of the rate
-     * 
+     *
      * @return integer
      */
     public function getRateAttribute() {
@@ -167,7 +167,7 @@ class Post extends Model {
 
     /**
      * return rates of the post
-     * 
+     *
      * @return integer
      */
     public function getRatesAttribute() {
@@ -176,7 +176,7 @@ class Post extends Model {
 
     /**
      * return views of the post
-     * 
+     *
      * @return integer
      */
     public function getViewsAttribute() {
@@ -185,7 +185,7 @@ class Post extends Model {
 
     /**
      * add view for post
-     * 
+     *
      * @param String $token [ip or mac address]
      */
     public function addView($token) {
@@ -202,7 +202,7 @@ class Post extends Model {
     }
 
     public function user() {
-        $user = $this->belongsTo('App\User', 'user_id')? 
+        $user = $this->belongsTo('App\User', 'user_id')?
         $this->belongsTo('App\User', 'user_id') : new User();
         return $user;
     }
