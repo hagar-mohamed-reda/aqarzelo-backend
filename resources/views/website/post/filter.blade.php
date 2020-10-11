@@ -13,7 +13,9 @@
                 </button>
 
                 <div class="hidden filterToggleSidebarBtnText" >
-                    <span class="fa fa-filter" >
+                    <span
+                        class="fa fa-filter light-theme-color"
+                        style="transform: rotate(90deg);padding: 5px;font-size: 20px" >
                         <!--{{ __("words.search_about_what_you_need") }} --->
                     </span>
                 </div>

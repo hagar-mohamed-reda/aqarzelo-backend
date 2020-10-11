@@ -89,8 +89,8 @@ else
                     37 شارع جامعة الدول العربية-برج الفؤاد الإداري(1)
                     <br> الدور 11-المهندسين
                     @else
-                    37 Gamaet El Dowal El Arabeya St., El Fouad Building No. (1),
-                    <br> 11th floor Mohandessin
+                    37 Gamaet El Dowal El Arabeya St., El Fouad
+                    <br> Building No. (1), 11th floor Mohandessin
                     @endif
                 </div>
               </div>

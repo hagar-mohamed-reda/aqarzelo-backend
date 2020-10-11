@@ -66,8 +66,9 @@ else
                 <li class="padding">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"   >
 
-                        <img src="{{ url('/images/egypt.png') }}" data-toggle="tooltip" data-placement="top" title="{{ __('words.text_appear_in_tooltip') }}"  class="fa w3-round" width="25px" >
+                        <img src="{{ url('/images/egypt.png') }}"   class="fa w3-round" width="25px" >
                         <!--
+                            data-toggle="tooltip" data-placement="top" title="{{ __('words.text_appear_in_tooltip') }}"
                        <i class="fa fa-globe" style="font-size: 32px!important;" ></i>
                          <img src="{{ url('/images/world.png') }}" class="fa w3-round" width="30px" >
                         @if(App::getLocale() == "ar")
@@ -100,19 +101,19 @@ else
                         <span class="caret"></span>
                     </a>
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
-                    <li>
+                    <li class="w3-display-container" >
                         <a href="{{ url('/locale/ar') }}">
 
-                            <img src="{{ url('/images/egypt.png') }}" class="fa w3-round" width="30px" >
+                            <img src="{{ url('/images/egypt.png') }}" class="fa w3-round w3-left" width="30px" >
 
                             العربية
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li>
+                    <li class="w3-display-container" >
                         <a href="{{ url('/locale/en') }}">
 
-                            <img src="{{ url('/images/english.svg') }}" class="fa w3-round" width="30px" >
+                            <img src="{{ url('/images/english.svg') }}" class="fa w3-round w3-left" width="30px" >
 
                             English
                         </a>
