@@ -88,7 +88,7 @@ else
                     <br>
                     {{ csrf_field() }}
                     <div class="w3-large text-center text-capitalize w3-text-gray" >
-                        {{ __("words.or_use_your_email_account") }}
+                        {{ __("words.write_your_email") }}
                     </div>
                     <center class="w3-padding" style="width: 82%;margin: auto"  >
                         <div class="w3-display-container   animated fadeInLeft">
