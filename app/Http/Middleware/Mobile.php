@@ -17,8 +17,10 @@ class Mobile
      */
     public function handle(Request $request, Closure $next)
     {
-        if (!session('locale'))
+        if (!session('locale')) {
             session(["locale" => "en"]);
+            App()->setLocale("en");
+        }
 
         if (
             (strpos($request->server('HTTP_USER_AGENT'), 'Android') !== false) ||
