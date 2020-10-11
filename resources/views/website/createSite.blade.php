@@ -55,6 +55,7 @@ else
                 <button onclick="window.location='{{ optional(App\Setting::find(9))->value }}'" href="" role="button" class="services-btn fa fa-facebook w3-indigo float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
                 <button onclick="window.location='{{ optional(App\Setting::find(10))->value }}'" href="" role="button" class="services-btn fa fa-twitter w3-cyan float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
                 <button onclick="window.location='{{ optional(App\Setting::find(11))->value }}'" href="" role="button" class="services-btn fa fa-youtube-square w3-red float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
+                <button onclick="window.location='{{ optional(App\Setting::find(12))->value }}'" href="" role="button" class="services-btn fa fa-instagram w3-purple float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
             </div>
                 <center v-if="user" >
                     <button
