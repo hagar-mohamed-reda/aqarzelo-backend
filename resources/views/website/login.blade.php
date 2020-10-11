@@ -84,7 +84,7 @@ else
                     </center>
                     <br>
                 </form>
-                <form action="{{ url('/forget-password') }}" method="post" class="forgetPassword" style="display: hidden" >
+                <form action="{{ url('/forget-password') }}" method="post" class="forgetPassword" style="display: none" >
                     <br>
                     {{ csrf_field() }}
                     <div class="w3-large text-center text-capitalize w3-text-gray" >

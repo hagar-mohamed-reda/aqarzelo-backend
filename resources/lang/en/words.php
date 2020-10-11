@@ -23,7 +23,7 @@ return [
     "back" => "back",
     "error" => "error",
     "map" => "Map",
-    "ok" => "Pk",
+    "ok" => "ok",
     "cancel" => "cancel",
     "meter" => "meter",
     "login" => "Login",

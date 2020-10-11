@@ -54,7 +54,7 @@ class LoginController extends WebsiteController
         $type = $request->type;
         $user = null;
 
-        $user = User::where("phone", $request->email)->orWhere("email", $request->email)->first();
+        $user = User::where("email", $request->email)->first();
 
 
 
