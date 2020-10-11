@@ -71,14 +71,19 @@ final class Helper {
      */
     public static function sendMail($to, $subject, $message) {
         // use wordwrap() if lines are longer than 70 characters
-        $msg = wordwrap($message,70);
+       // $msg = wordwrap($message,70);
 
-        $msg = str_replace('\n', "", $msg);
+        $msg = str_replace('\n', "", $message);
 
         $sentMessage = "from : info@aqarzelo.com" . "<br>" . $msg;
 
         // send email
         mail($to,$subject,$sentMessage);
+        $headers = "From: info@aqarzelo.com" . "\r\n" .
+        "CC: info@aqarzelo.com";
+
+        mail($to,$subject,$sentMessage,$headers);
+
         /*try {
             $message = str_replace("\n", "\r", $message);
             $subject = str_replace("\n", "\r", $subject);
