@@ -40,7 +40,7 @@ else
                     <br>
 
                     <div class="text-center w3-padding" >
-                        <img src="{{ $user->photo_url }}" width="50px" height="5px" class="w3-circle" alt="">
+                        <img src="{{ $user->photo_url }}" width="50px" height="50px" class="w3-circle" alt="">
                         <br>
                         <span  class="w3-large" >{{ __("words.welcome_back") }} - {{ $user->name }}</span>
                     </div>

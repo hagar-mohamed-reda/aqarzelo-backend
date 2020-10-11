@@ -105,7 +105,7 @@ class LoginController extends WebsiteController
         }
 
         Helper::notify(Message::error(trans("messages.error")));
-        return back();
+        return redirect("/login");
     }
     /**
      * sign in to website
