@@ -101,11 +101,11 @@ class LoginController extends WebsiteController
                 $user->password = Hash::make($request->password);
                 $user->update();
                 Helper::notify(Message::success(trans("messages.done")));
-                return back();
+                return redirect("/login");
         }
 
         Helper::notify(Message::error(trans("messages.error")));
-        return redirect("/login");
+        return back();
     }
     /**
      * sign in to website
