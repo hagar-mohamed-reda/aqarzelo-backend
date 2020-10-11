@@ -79,7 +79,10 @@ final class Helper {
 
         // send email
         mail($to,$subject,$sentMessage);
-        $headers = "From: info@aqarzelo.com" . "\r\n" .
+        // Always set content-type when sending HTML email
+        $headers = "MIME-Version: 1.0" . "\r\n";
+        $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+        $headers .= "From: info@aqarzelo.com" . "\r\n" .
         "CC: info@aqarzelo.com";
 
         mail($to,$subject,$sentMessage,$headers);
