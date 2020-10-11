@@ -64,9 +64,16 @@ class Helper
 
     public static function sendMail($to, $message, $subject)
     {
-        Mail::raw($message, function ($message) use ($subject, $to) {
-            $message->to($to)->subject($subject);
-        });
+
+        // use wordwrap() if lines are longer than 70 characters
+        $msg = wordwrap($message,70);
+
+        $msg = str_replace('\n', "", $msg);
+
+        $sentMessage = "from : info@aqarzelo.com" . "<br>" . $msg;
+
+        // send email
+        mail($to,$subject,$sentMessage);
     }
 
     /**

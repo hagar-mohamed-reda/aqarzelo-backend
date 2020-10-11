@@ -108,6 +108,6 @@ class RegisterController extends WebsiteController
         session(["type" => "COMPANY"]);
 
         Helper::notify(Message::success(trans("messages.done")));
-        return redirect("/sign-up");
+        return redirect("/profile");
     }
 }

@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -59,6 +59,7 @@ function updateProfile() {
     $.post(public_path + "/profile/update", data, function (r) {
         if (r.status == 1) {
             success(r.message_en);
+            window.location.reload();
         } else {
             error(r.message_en);
         }

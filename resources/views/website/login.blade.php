@@ -33,7 +33,7 @@ else
 
         <div class="row" >
             <div class="w3-col l7 m7 s7" >
-                <form action="{{ url('/sign-in') }}" method="post" >
+                <form action="{{ url('/sign-in') }}" method="post" class="login-form" >
                     <br>
                     {{ csrf_field() }}
                     <div class="w3-padding text-center w3-xxxlarge dark-theme-color text-capitalize" >
@@ -73,7 +73,9 @@ else
                         </div>
                     </center>
 
-                    <div class="w3-large text-center text-capitalize w3-text-gray" >
+                    <div
+                    class="w3-large text-center text-capitalize w3-text-gray"
+                    onclick="$('.login-form').slideUp(500);$('.forgetPassword').slideDown(500);" >
                         <a href="#" >{{ __("words.forget_password") }} </a>
                     </div>
                     <br>
@@ -82,6 +84,28 @@ else
                     </center>
                     <br>
                 </form>
+                <form action="{{ url('/forget-password') }}" method="post" class="forgetPassword" style="display: hidden" >
+                    <br>
+                    {{ csrf_field() }}
+                    <div class="w3-large text-center text-capitalize w3-text-gray" >
+                        {{ __("words.or_use_your_email_account") }}
+                    </div>
+                    <center class="w3-padding" style="width: 82%;margin: auto"  >
+                        <div class="w3-display-container   animated fadeInLeft">
+                            <span class="w3-display-topleft w3-padding" ><i class="fa fa-envelope w3-text-gray w3-large" style="margin-top: 60%" ></i></span>
+                            <input type="text" required="" name="email" id="email"  class="w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.email_or_phone") }}'  >
+                        </div>
+                    </center>
+                    <center>
+                        <button class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInUp" style="width: 200px;background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"   >{{ __("words.send") }}</button>
+                        <button
+                        onclick="$('.login-form').slideDown(500);$('.forgetPassword').slideUp(500);"
+                        class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInUp"
+                         style="width: 200px;background-color: gray;color:white"   >{{ __("words.back") }}</button>
+                    </center>
+                    <br>
+                </form>
+
             </div>
 
 

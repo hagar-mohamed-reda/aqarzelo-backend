@@ -55,7 +55,7 @@ else
                 <li class="padding w3-row">
                     <a href="{{ url('/profile') }}" class="navbar-list-item" >
 
-                        <div style="width: 200px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" >
+                        <div style="width: 100px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;" >
                             <img src="{{ App\Profile::auth()->photo_url }}" width="20px" height="20px"  class="w3-circle" > {{ explode(" ", App\Profile::auth()->name)[0] }}</div>
                     </a>
                 </li>
@@ -102,18 +102,18 @@ else
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
                     <li>
                         <a href="{{ url('/locale/ar') }}">
-                            <!--
-                            <img src="{{ url('/website/icons/arabic.png') }}" class="fa w3-round" width="30px" >
-                            -->
+
+                            <img src="{{ url('/images/egypt.png') }}" class="fa w3-round" width="30px" >
+
                             العربية
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
                     <li>
                         <a href="{{ url('/locale/en') }}">
-                            <!--
-                            <img src="{{ url('/website/icons/english.png') }}" class="fa w3-round" width="30px" >
-                            -->
+
+                            <img src="{{ url('/images/english.svg') }}" class="fa w3-round" width="30px" >
+
                             English
                         </a>
                     </li>

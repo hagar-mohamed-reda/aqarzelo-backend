@@ -34,6 +34,9 @@ Route::get('/', 'website\HomeController@index');
 Route::get('/login', 'website\LoginController@index');
 Route::get('/logout', 'website\LoginController@logout');
 Route::post('/sign-in', 'website\LoginController@signIn');
+Route::post('/forget-password', 'website\LoginController@forgetPassword');
+Route::post('/change-password', 'website\LoginController@changePassword');
+Route::get('/change-password', 'website\LoginController@changePasswordPage');
 Route::post('/user/register', 'website\RegisterController@signUpUser');
 Route::post('/company/register', 'website\RegisterController@signUpCompany');
 Route::get('/sign-up', 'website\RegisterController@index');
@@ -54,16 +57,16 @@ Route::get('/create-website', 'website\TemplateController@index');
 Route::get('/help', 'website\HelperController@index');
 Route::get('/get-user', 'website\TemplateController@getUser');
 
-// lang  
+// lang
 Route::get("/locale/{lang}", function($lang){
-	session(["locale" => $lang]); 
+	session(["locale" => $lang]);
 	if ($lang == "en")
 		$direction = "ltr";
 	else
 		$direction = "rtl";
-	
+
 	session(["direction" => $direction]);
-	
+
 	//return session("locale");
 	return back();
 });
@@ -76,5 +79,4 @@ Route::get('/panorama', 'website\PostController@panorama');
 Route::get('/chart', function(){
     return view("website.chart");
 });
- 
- 
+

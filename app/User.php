@@ -27,7 +27,8 @@ class User extends Authenticatable implements Profilable {
         'about', 'facebook', 'youtube_link',
         'youtube_video', 'twitter', 'whatsapp',
         'linkedin', 'website', 'website_available_days',
-        'sms_code', 'post_id_tmp', 'templete_id', 'is_external'
+        'sms_code', 'post_id_tmp', 'templete_id', 'is_external',
+        'verify_code'
     ];
 
     /**
@@ -78,7 +79,7 @@ class User extends Authenticatable implements Profilable {
      * @return String
      */
     public function getCoverUrlAttribute() {
-        return url('/images/users') . "/" . $this->cover;
+        return $this->cover? url('/images/users') . "/" . $this->cover : url('images/cover.jpg');
     }
 
 
