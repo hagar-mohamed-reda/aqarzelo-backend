@@ -17,6 +17,7 @@ class Mobile
      */
     public function handle(Request $request, Closure $next)
     {
+        session(["direction" => "ltr"]);
         if (!session('locale')) {
             session(["locale" => "en"]);
             App()->setLocale("en");
