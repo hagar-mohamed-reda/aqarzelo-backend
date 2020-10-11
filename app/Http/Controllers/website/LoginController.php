@@ -99,6 +99,7 @@ class LoginController extends WebsiteController
 
         if ($user) {
                 $user->password = Hash::make($request->password);
+                $user->verify_code = '';
                 $user->update();
                 Helper::notify(Message::success(trans("messages.done")));
                 return redirect("/login");
