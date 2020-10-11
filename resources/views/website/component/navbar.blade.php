@@ -79,11 +79,11 @@ else
                         -->
                         <span class="caret"></span>
                     </a>
-                  <ul class="dropdown-menu w3-display-container" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
+                  <ul class="dropdown-menu " style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
 
                     @foreach(App\Country::all() as $item)
                     <li role="separator" class="divider"></li>
-                    <li class="w3-display-container" >
+                    <li class="w3-display-container w3-padding" >
                         <a href="#">
 
                             <img src="{{ url($item->icon) }}" class="fa w3-round w3-left" width="30px" >
@@ -110,7 +110,7 @@ else
                         <span class="caret"></span>
                     </a>
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
-                    <li class="w3-display-container" >
+                    <li class="w3-display-container w3-padding" >
                         <a href="{{ url('/locale/ar') }}">
 
                             <img src="{{ url('/images/egypt.png') }}" class="fa w3-round w3-left" width="30px" >
@@ -119,7 +119,7 @@ else
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li class="w3-display-container" >
+                    <li class="w3-display-container w3-padding" >
                         <a href="{{ url('/locale/en') }}">
 
                             <img src="{{ url('/images/english.svg') }}" class="fa w3-round w3-left" width="30px" >
