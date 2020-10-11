@@ -83,8 +83,8 @@ else
 
                     @foreach(App\Country::all() as $item)
                     <li role="separator" class="divider"></li>
-                    <li>
-                        <a href="#" class="w3-display-container w3-padding" >
+                    <li class="w3-hover-light-gray w3-padding" style="height: 30px!important">
+                        <a href="#" class="w3-display-container" >
 
                             <img src="{{ url($item->icon) }}" class="fa w3-round w3-left" width="30px" >
 
@@ -110,8 +110,8 @@ else
                         <span class="caret"></span>
                     </a>
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
-                    <li>
-                        <a href="{{ url('/locale/ar') }}" class="w3-display-container w3-padding" >
+                    <li class="w3-hover-light-gray w3-padding" style="height: 30px!important">
+                        <a href="{{ url('/locale/ar') }}" class="w3-display-container " >
 
                             <img src="{{ url('/images/egypt.png') }}" class="fa w3-round w3-left" width="30px" >
 
@@ -119,8 +119,8 @@ else
                         </a>
                     </li>
                     <li role="separator" class="divider"></li>
-                    <li >
-                        <a href="{{ url('/locale/en') }}" class="w3-display-container w3-padding">
+                    <li class="w3-hover-light-gray w3-padding" style="height: 30px!important" >
+                        <a href="{{ url('/locale/en') }}" class="w3-display-container">
 
                             <img src="{{ url('/images/english.svg') }}" class="fa w3-round w3-left" width="30px" >
 
