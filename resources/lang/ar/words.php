@@ -7,6 +7,7 @@
  */
 
 return [
+    "country" => "الدوله",
     "write_your_email" => "قم بكتابة بريدك الالكترونى",
     "change_your_password" => "قم بكتابة كلمة المرور الجديده",
     "welcome_back" => "مرحبا بك",

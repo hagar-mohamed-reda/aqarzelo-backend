@@ -8,6 +8,7 @@
 
 
 return [
+    "country" => "country",
     "write_your_email" => "write your email",
     "change_your_password" => "change your password",
     "welcome_back" => "welcome back",
