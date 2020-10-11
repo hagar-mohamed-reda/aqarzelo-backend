@@ -79,13 +79,10 @@ else
                         -->
                         <span class="caret"></span>
                     </a>
-                  <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
-                    <!--
-                    <li class="w3-padding" >
-                        {{ __('words.text_appear_in_tooltip_description') }}
-                    </li>
-                    -->
+                  <ul class="dropdown-menu w3-display-container" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
+
                     @foreach(App\Country::all() as $item)
+                    <li role="separator" class="divider"></li>
                     <li class="w3-display-container" >
                         <a href="#">
 
