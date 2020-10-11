@@ -24,7 +24,7 @@ class LoginController extends WebsiteController
 
     public function changePasswordPage(Request $request) {
         $user = User::where("verify_code", $request->verify_code)->first();
-        if (!$user)
+        if (!$user || !$request->verfiy_code)
             return redirect("/login");
 
         return view($this->prefix . ".change-password", compact("user"));

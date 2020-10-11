@@ -8,6 +8,8 @@
 
 
 return [
+    "change_your_password" => "change your password",
+    "welcome_back" => "welcome back",
     "passwords_not_match" => "passwords not match",
     "email_or_phone" => "email or phone",
     "repeat_password" => "repeat password",

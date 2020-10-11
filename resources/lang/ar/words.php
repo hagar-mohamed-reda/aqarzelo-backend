@@ -7,6 +7,8 @@
  */
 
 return [
+    "change_your_password" => "قم بكتابة كلمة المرور الجديده",
+    "welcome_back" => "مرحبا بك",
     "passwords_not_match" => "كلمات المرور غير متطابقه",
     "email_or_phone" => "البريد الالكترونى او رقم الهاتف",
     "repeat_password" => "اعد كتابة كلمة المرور",

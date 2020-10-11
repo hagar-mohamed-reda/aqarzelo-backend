@@ -35,28 +35,37 @@ else
             <div class="w3-col l7 m7 s7" >
 
                     <div class="w3-padding text-center w3-xxxlarge dark-theme-color text-capitalize" >
-                        <span style="font-weight: 500" >{{ __("words.login_to_aqar_zelo") }}</span>
+                        <span style="font-weight: 500" >{{ __("words.change_your_password") }}</span>
                     </div>
                     <br>
 
+                    <div class="text-center w3-padding" >
+                        <img src="{{ $user->photo_url }}" alt="">
+                        <br>
+                        <span  class="w3-large" >{{ __("words.welcome_back") }} - {{ $user->name }}</span>
+                    </div>
 
 
-                <form  action="{{ url('/change-password') }}" method="post" >
-                    <input type="hidden" name="verify_code"  value="{{ $user->verify_code }}" >
-                    @csrf
-                    <div class="w3-display-container   animated fadeInRight">
-                        <span class="w3-display-topleft w3-padding" onclick="$('.password').attr('type') == 'password'? $('.password').attr('type', 'text') :  $('.password').attr('type', 'password')" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
-                        <input type="password" required="" name="password" id='password' class="password w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.password") }}'  >
-                    </div>
-                    <br>
-                    <div class="w3-display-container  animated fadeInLeft">
-                        <span class="w3-display-topleft w3-padding" onclick="showPassword(this)" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
-                        <input type="password" required="" name="password2"   class="password w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.repeat_password") }}'  >
-                    </div>
-                    <center>
-                        <button class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInUp" style="width: 200px;background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"   >{{ __("words.send") }}</button>
-                    </center>
-                </form>
+
+                <div class="w3-padding">
+                    <form  action="{{ url('/change-password') }}" method="post" >
+                        <input type="hidden" name="verify_code"  value="{{ $user->verify_code }}" >
+                        @csrf
+                        <div class="w3-display-container   animated fadeInRight">
+                            <span class="w3-display-topleft w3-padding" onclick="$('.password').attr('type') == 'password'? $('.password').attr('type', 'text') :  $('.password').attr('type', 'password')" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
+                            <input type="password" required="" name="password" id='password' class="password w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.password") }}'  >
+                        </div>
+                        <br>
+                        <div class="w3-display-container  animated fadeInLeft">
+                            <span class="w3-display-topleft w3-padding" onclick="showPassword(this)" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
+                            <input type="password" required="" name="password2"   class="password w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.repeat_password") }}'  >
+                        </div>
+                        <br>
+                        <center>
+                            <button class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInUp" style="width: 200px;background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"   >{{ __("words.send") }}</button>
+                        </center>
+                    </form>
+                </div>
 
             </div>
 
