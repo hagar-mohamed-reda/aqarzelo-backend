@@ -3,7 +3,7 @@
 if (session("locale"))
     App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar");
+    App()->setLocale("en");
 
 @endphp
 <nav class="navbar navbar-default shadow w3-white w3-block navbar-fixed" style="z-index: 15;width: 100%!important" >
