@@ -40,14 +40,12 @@ else
                     <br>
 
                     <div class="text-center w3-padding" >
-                        <img src="{{ $user->photo_url }}" alt="">
+                        <img src="{{ $user->photo_url }}" width="50px" height="5px" class="w3-circle" alt="">
                         <br>
                         <span  class="w3-large" >{{ __("words.welcome_back") }} - {{ $user->name }}</span>
                     </div>
 
-
-
-                <div class="w3-padding">
+                <center class="w3-padding" style="width: 82%;margin: auto">
                     <form  action="{{ url('/change-password') }}" method="post" >
                         <input type="hidden" name="verify_code"  value="{{ $user->verify_code }}" >
                         @csrf
@@ -65,7 +63,7 @@ else
                             <button class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInUp" style="width: 200px;background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"   >{{ __("words.send") }}</button>
                         </center>
                     </form>
-                </div>
+                </center>
 
             </div>
 
