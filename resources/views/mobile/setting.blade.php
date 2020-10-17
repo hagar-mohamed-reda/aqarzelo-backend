@@ -226,7 +226,7 @@ else
             <br>
             <div class="row" >
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="facebook" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-facebook-square w3-text-indigo w3-xxlarge" ></i>
@@ -234,7 +234,7 @@ else
                     {{ __('mobile.facebook') }}
                 </div>
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="whatsapp" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}" data-web
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-whatsapp w3-text-green w3-xxlarge" ></i>
@@ -242,7 +242,7 @@ else
                     {{ __('mobile.whatsapp') }}
                 </div>
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="twitter" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-twitter-square w3-text-cyan w3-xxlarge" ></i>
@@ -250,7 +250,7 @@ else
                     {{ __('mobile.twitter') }}
                 </div>
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="linkedin" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-linkedin-square w3-xxlarge" style="color: #0073b1!important" ></i>
@@ -258,7 +258,7 @@ else
                     {{ __('mobile.linkedin') }}
                 </div>
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="email" v-bind:data-to="user.email" data-subject="aqarzelo website" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-envelope w3-xxlarge w3-text-blue"   ></i>
@@ -266,7 +266,7 @@ else
                     {{ __('mobile.email') }}
                 </div>
                 <div
-                style="margin-bottom: 13px"
+                style="margin-bottom: 30px"
                 data-sharer="telegram" v-bind:data-to="user.phone" data-subject="aqarzelo website" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-telegram w3-xxlarge" style="color: #34ADE1!important"  ></i>
