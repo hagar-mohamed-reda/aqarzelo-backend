@@ -259,7 +259,7 @@ else
             content.style.marginTop = "60%";
 
             body.innerHTML =
-                '<img src="'+imgUrl+'" width="130px" > <br> <div class="text-xlarge" >'+message+'</div><br>';
+                '<img src="'+imgUrl+'" width="130px" > <br> <div class="text-xlarge" >'+message+'</div><br><br>';
 
             content.appendChild(body);
             container.appendChild(content);
@@ -292,6 +292,20 @@ else
             });*/
         }
     </script>
+                    $('.favourite-bottom-nav-item').click(function(){
+                        if (localStorage.getItem('api_token')) {
+                            loadPage('/phone/favourite');
+                        } else {
+                            error('{{ __("mobile.login_first") }}');
+                        }
+                    });
+                    $('.notification-bottom-nav-item').click(function(){
+                        if (localStorage.getItem('api_token')) {
+                            loadPage('/phone/notification');
+                        } else {
+                            error('{{ __("mobile.login_first") }}');
+                        }
+                    });
     <script>
         var app = new Vue({
             el: '#root',
