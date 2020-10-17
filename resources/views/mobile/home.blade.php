@@ -71,13 +71,11 @@ else
         <div class="application-header" >
             <br>
             <div class="w3-bar w3-padding">
-              <a href="#" class="w3-bar-item btn">
-                  <img v-bind:src="photo" v-if="api_token" class="w3-circle" onclick="loadPage('phone/setting')" width="30px" >
-
-                  <img src="{{ url('/mobile/images/avatar.png') }}" v-if="!api_token" onclick="loadPage('phone/setting')" width="30px" >
+              <a href="#" class="w3-bar-item btn" onclick="loadPage('phone/setting')">
+                  <span class="fa fa-cog w3-xlarge w3-text-white" ></span>
               </a>
               <a href="#" class="w3-bar-item btn w3-{{ session("direction")=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
-                  <img src="{{ url('/mobile/images/bars.png') }}" width="30px" >
+                <span class="fa fa-filter w3-xlarge w3-text-white"  ></span>
               </a>
             </div>
         </div>
