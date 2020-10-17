@@ -127,12 +127,19 @@ class Post extends Model {
      */
     public function getImagesAttribute() {
         $image = new Image();
-        $image->photo = 'post.jpg';
+        $image->photo = url('/images/default-image.jpg');
+        $image->image = url('/images/default-image.jpg');
 
         $images = $this->images()->orderBy('updated_at')->get();
 
-        if (count($images) > 0)
+        if (count($images) > 0) {
+            $firstImage = $images[0];
+            if (!file_exists(public_path($firstImage->photo))) {
+                $images[0]->photo = url('/images/default-image.jpg');
+                $images[0]->image = url('/images/default-image.jpg');
+            }
             return $images;
+        }
         else
             return [$image];
     }
