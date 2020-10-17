@@ -75,25 +75,25 @@ else
         <br>
             <ul class="w3-ul filters w3-padding" >
                 <li class="select-item" >
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.country_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.country_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.country") }}</option>
                         @foreach(App\Country::all() as $item)
                         <option value="{{ $item->id }}" >{{ session("direction") == 'rtl'? $item->name_ar : $item->name_en }}</option>
                         @endforeach
                     </select>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.city") }}</option>
                         @foreach(App\City::all() as $city)
                         <option value="{{ $city->id }}" v-if="filter.country_id == '{{ $city->country_id }}'" >{{ session("direction") == 'rtl'? $city->name_ar : $city->name_en }}</option>
                         @endforeach
                     </select>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.area_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.area_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.area") }}</option>
                         @foreach(App\Area::all() as $area)
                         <option value="{{ $area->id }}" v-if="filter.city_id == '{{ $area->city_id }}'" >{{ session("direction") == 'rtl'? $area->name_ar : $area->name_en }}</option>
                         @endforeach
                     </select>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.category_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.category_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
                         <option value="{{ $category->id }}" >{{ session("direction") == 'rtl'? $category->name_ar : $category->name_en }}</option>
@@ -264,6 +264,7 @@ else
             filter: {
                 bedroom_number: 0,
                 bathroom_number: 0,
+                country_id: null,
                 city_id: null,
                 area_id: null,
                 category_id: null,
