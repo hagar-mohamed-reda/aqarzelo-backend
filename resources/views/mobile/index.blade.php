@@ -229,7 +229,7 @@ else
                 timeout: 2000,
                 message: message,
             });*/
-            showTast(message);
+            showTast(message, "error");
         }
 
         function successToast(message) {
@@ -239,7 +239,7 @@ else
                 timeout: 2000,
                 message: message,
             });*/
-            showTast(message);
+            showTast(message, "success");
         }
 
         function showTast(message, type) {
@@ -253,10 +253,10 @@ else
             var imgUrl = type == 'success'? '{{ url("/images/message-success.gif") }}' :  '{{ url("/images/message-error.gif") }}';
 
             //container.style.zIndex = "10";
-            container.className = "modal mobile-message-dialog";
+            container.className = "w3-modal mobile-message-dialog";
             content.className = "modal-dialog modal-sm w3-display-container";
             body.className = "modal-content w3-padding w3-center text-center w3-animate-zoom";
-            content.style.marginTop = "40%";
+            content.style.marginTop = "60%";
 
             body.innerHTML =
                 '<img src="'+imgUrl+'" width="130px" > <br> <div class="text-xlarge" >'+message+'</div>';
@@ -264,7 +264,7 @@ else
             content.appendChild(body);
             container.appendChild(content);
 
-            content.innerHTML +=  '<button onclick="$(".mobile-message-dialog").hide();" style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
+            content.innerHTML +=  '<button onclick="$(\'.mobile-message-dialog\').hide();" style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
 
             document.body.appendChild(container);
             $(".mobile-message-dialog").show();
