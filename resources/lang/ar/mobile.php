@@ -20,6 +20,8 @@ return [
     "twitter" => "تويتر",
     "linkedin" => "لينكد إن",
     "telegram" => "تليجرام ",
+    "pinterest" => "بنترست",
+    "blogger" => "المدونه",
     "profile" => "الملف الشخصى",
     "share_with" => "مشاركة عبر",
     "setting" => "الاعدادات",

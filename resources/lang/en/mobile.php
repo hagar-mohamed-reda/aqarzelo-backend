@@ -23,6 +23,8 @@ return [
     "twitter" => "twitter",
     "linkedin" => "linkedin",
     "telegram" => "telegram",
+    "pinterest" => "pinterest",
+    "blogger" => "blogger",
     "log_in" => "log in",
     "chat" => "chat",
     "edit_profile" => "edit profile",

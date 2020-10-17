@@ -222,7 +222,7 @@ else
         <div
         style="z-index: 2;position: fixed"
         class="w3-display-bottomleft w3-block w3-white shadow w3-animate-bottom w3-padding">
-            <div>{{ __('mobile.share_with') }}</div>
+            <div class="{{ session('locale') == 'ar'? 'text-right' : 'text-left' }}" >{{ __('mobile.share_with') }}</div>
             <br>
             <div class="row" >
                 <div
@@ -261,7 +261,7 @@ else
                 style="margin-bottom: 30px"
                 data-sharer="email" v-bind:data-to="user.email" data-subject="aqarzelo website" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
-                    <i class="fa fa-envelope w3-xxlarge w3-text-blue"   ></i>
+                    <i class="fa fa-envelope w3-xxlarge w3-text-dark-gray"   ></i>
                     <br>
                     {{ __('mobile.email') }}
                 </div>
@@ -272,6 +272,22 @@ else
                     <i class="fa fa-telegram w3-xxlarge" style="color: #34ADE1!important"  ></i>
                     <br>
                     {{ __('mobile.telegram') }}
+                </div>
+                <div
+                style="margin-bottom: 30px"
+                data-sharer="pinterest" data-image="{{ asset('backend/logopng.ico') }}" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-pinterest-square w3-xxlarge" style="color: #CB2029!important" ></i>
+                    <br>
+                    {{ __('mobile.pinterest') }}
+                </div>
+                <div
+                style="margin-bottom: 30px"
+                data-sharer="blogger" data-title="aqarzelo" data-description="aqarzelo website" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-rss w3-text-orange w3-xxlarge" ></i>
+                    <br>
+                    {{ __('mobile.blogger') }}
                 </div>
             </div>
         </div>
