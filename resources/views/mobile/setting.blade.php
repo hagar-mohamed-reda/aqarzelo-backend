@@ -118,7 +118,7 @@ else
                     </a>
                 </li>
                 <!-- change password  -->
-                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('phone/change-password')" style="margin-bottom: 20px!important" v-if='api_token' >
+                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('phone/change-password')" v-if='api_token' >
                     <a class="w3-bar-item w3-text-gray" href="#">
                         <img src="{{ url('/mobile/images/change_password.png') }}" style="margin: 5px" width="30vw" >
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.change_password') }}</b>
@@ -129,7 +129,7 @@ else
                     </a>
                 </li>
                 <!-- my posts  -->
-                <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('phone/profile')"  >
+                <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('phone/profile')" style="margin-bottom: 20px!important"  >
                     <a class="w3-bar-item w3-text-gray" href="#">
                         <span class="fa fa-picture-o w3-blue w3-circle w3-text-white"
                         style="margin: 5px;width:10vw;height: 10vw;padding: 10px" ></span>
