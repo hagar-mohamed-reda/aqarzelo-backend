@@ -16,6 +16,7 @@ return [
     "facebook" => "فيسبوك",
     "global" => "عام",
     "share" => "مشاركه",
+    "profile" => "الملف الشخصى",
     "share_with" => "مشاركة عبر",
     "setting" => "الاعدادات",
     "log_in" => "تسجيل الدخول",

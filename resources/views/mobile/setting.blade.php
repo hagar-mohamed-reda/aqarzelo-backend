@@ -43,6 +43,7 @@ else
 
         .w3-ul li {
             height: 53px!important;
+            border: none!important;
         }
     </style>
 
@@ -102,7 +103,7 @@ else
                     </a>
                 </li>
 
-                <li>
+                <li style="padding: 28px;" >
                     <b>{{ __('mobile.profile') }}</b>
                 </li>
                 <!-- edit profile  -->
@@ -140,7 +141,7 @@ else
                     </a>
                 </li>
 
-                <li>
+                <li style="padding: 28px;" >
                     <b>{{ __('mobile.global') }}</b>
                 </li>
                 <!-- language  -->
@@ -182,7 +183,8 @@ else
                 <!-- share  -->
                 <li class="w3-bar btn w3-block small-height-item"  onclick="$('#shareModal').show()" >
                     <a class="w3-bar-item w3-text-gray" href="#">
-                        <span class="fa fa-share-alt light-theme-background w3-circle"  style="margin: 5px" width="30vw" ></span>
+                        <span class="fa fa-share-alt light-theme-background w3-circle w3-text-white"
+                        style="margin: 5px;width:10vw;height: 10vw;padding: 10px" ></span>
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.share') }}</b>
                     </a>
 
@@ -218,13 +220,13 @@ else
 
         </div>
         <div
-        style="z-index: 2"
-        class="w3-modal-content w3-display-bottomleft w3-block w3-white shadow w3-animate-bottom">
+        style="z-index: 2;position: fixed"
+        class="w3-display-bottomleft w3-block w3-white shadow w3-animate-bottom w3-padding">
             <div>{{ __('mobile.share_with') }}</div>
             <br>
             <div class="row" >
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
-                    <i class="fa fa-facebook-square w3-text-indigo w3-large" ></i>
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-facebook-square w3-text-indigo w3-xxlarge" ></i>
                     <br>
                     {{ __('mobile.facebook') }}
                 </div>

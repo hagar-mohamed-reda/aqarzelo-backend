@@ -17,6 +17,7 @@ return [
     "global" => "global",
     "share" => "share",
     "share_with" => "share_with",
+    "profile" => "profile",
     "setting" => "setting",
     "log_in" => "log in",
     "chat" => "chat",
