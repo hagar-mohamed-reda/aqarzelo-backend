@@ -393,7 +393,8 @@ application-grad-back
                 <div class="w3-row related-post" style="height: 190px;overflow: auto;">
                     <div class="w3-padding w3-row" style="width: 2100px;height: 190px"  >
                         @foreach($relatedPosts as $p)
-                        <div style="padding: 5px;width: 210px;float: left"   >
+                        <div style="padding: 5px;width: 210px;float: left"
+                        onclick="loadPage('phone/post/show?post_id={{ $p->id }}')"    >
                             <div class="shadow w3-round w3-white" >
                                 <div
                                     style="background-size: cover;background-image: url({{  $p->images[0]? $p->images[0]->image :  url('/mobile/images/image.png') }});width: 100%;height: 110px"
