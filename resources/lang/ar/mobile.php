@@ -22,6 +22,7 @@ return [
     "telegram" => "تليجرام ",
     "pinterest" => "بنترست",
     "blogger" => "المدونه",
+    "email_" => "البريد",
     "profile" => "الملف الشخصى",
     "share_with" => "مشاركة عبر",
     "setting" => "الاعدادات",

@@ -231,7 +231,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-facebook-square w3-text-indigo w3-xxlarge" ></i>
                     <br>
-                    {{ __('mobile.facebook') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.facebook') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -239,7 +239,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-whatsapp w3-text-green w3-xxlarge" ></i>
                     <br>
-                    {{ __('mobile.whatsapp') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.whatsapp') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -247,7 +247,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-twitter-square w3-text-cyan w3-xxlarge" ></i>
                     <br>
-                    {{ __('mobile.twitter') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.twitter') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -255,7 +255,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-linkedin-square w3-xxlarge" style="color: #0073b1!important" ></i>
                     <br>
-                    {{ __('mobile.linkedin') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.linkedin') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -263,7 +263,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-envelope w3-xxlarge w3-text-dark-gray"   ></i>
                     <br>
-                    {{ __('mobile.email') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.email_') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -271,7 +271,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-telegram w3-xxlarge" style="color: #34ADE1!important"  ></i>
                     <br>
-                    {{ __('mobile.telegram') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.telegram') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -279,7 +279,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-pinterest-square w3-xxlarge" style="color: #CB2029!important" ></i>
                     <br>
-                    {{ __('mobile.pinterest') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.pinterest') }}</span>
                 </div>
                 <div
                 style="margin-bottom: 30px"
@@ -287,7 +287,7 @@ else
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-rss w3-text-orange w3-xxlarge" ></i>
                     <br>
-                    {{ __('mobile.blogger') }}
+                    <span style="font-size: 12px!important" >{{ __('mobile.blogger') }}</span>
                 </div>
             </div>
         </div>
