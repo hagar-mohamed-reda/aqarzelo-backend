@@ -391,7 +391,7 @@ application-grad-back
             <li >
                 <b class="w3-large text-capitalize" >{{ __('mobile.related_posts') }}</b>
                 <div class="w3-row related-post" style="height: 190px;overflow: auto;">
-                    <div class="w3-padding w3-row" style="width: 2100px;height: 190px"  >
+                    <div class="w3-padding w3-row" style="width: 2300px;height: 190px"  >
                         @foreach($relatedPosts as $p)
                         <div style="padding: 5px;width: 210px;float: left"
                         onclick="loadPage('phone/post/show?post_id={{ $p->id }}')"    >
