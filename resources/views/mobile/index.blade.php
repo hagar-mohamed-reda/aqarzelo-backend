@@ -291,7 +291,6 @@ else
                 message: html,
             });*/
         }
-    </script>
                     $('.favourite-bottom-nav-item').click(function(){
                         if (localStorage.getItem('api_token')) {
                             loadPage('/phone/favourite');
@@ -306,6 +305,7 @@ else
                             error('{{ __("mobile.login_first") }}');
                         }
                     });
+    </script>
     <script>
         var app = new Vue({
             el: '#root',
