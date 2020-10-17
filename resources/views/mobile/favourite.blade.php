@@ -1,18 +1,18 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         }
 
         .w3-modal-content {
@@ -28,7 +28,7 @@ else
             margin-bottom: 15px!important;
         }
 
-        .small-height-item { 
+        .small-height-item {
             border: 0px!important;
         }
 
@@ -49,7 +49,7 @@ else
             border-radius: 6px;
             overflow: hidden;
             background-color: white;
-            margin-bottom: 5px; 
+            margin-bottom: 5px;
         }
 
         .favourite-li {
@@ -58,8 +58,8 @@ else
             border: 0px!important;
 
         }
-        
-        
+
+
     </style>
 
     <!-- html content -->
@@ -69,48 +69,48 @@ else
             <div class="w3-bar w3-padding w3-display-container">
               <a href="#" class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
-              </a>   
+              </a>
               <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.favourites') }}</span>
-              </a>   
+              </a>
             </div>
         </div>
-        <div class="w3-display-container favourite-container" v-bind:style="'height: ' + (height - 80) + 'px'" >
+        <div class="application-container w3-display-container favourite-container w3-white" v-bind:style="'height: ' + (height - 80) + 'px'" >
             <ul class="w3-ul w3-row">
-                <li 
-                v-for="post in posts"  
+                <li
+                v-for="post in posts"
                 class="w3-col l6 m6 s6 animated fadeInUp favourite-li"   >
-                    <div 
-                    onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))" 
+                    <div
+                    onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))"
                     v-bind:data-id="post.post.id"
                     class=" shadow light-theme-background-hover favourite-item">
-                        <img v-if="post.post.images[0]" 
-                        height="100px" 
-                        width="100%" 
+                        <img v-if="post.post.images[0]"
+                        height="100px"
+                        width="100%"
                         v-bind:src="post.post.images[0].image" >
                         <div class="w3-padding" >
                             <div v-html="post.post.title.substring(0, 15) + '..'" ></div>
-                            <div v-html="post.post.space + ' M'" class="w3-text-gray w3-tiny" ></div> 
+                            <div v-html="post.post.space + ' M'" class="w3-text-gray w3-tiny" ></div>
                             <div v-html="format(post.post.price)" class="w3-text-gray w3-tiny" ></div>
                         </div>
                     </div>
                 </li>
 
             </ul>
-            
+
             <!-- application bottom nav -->
             @include("mobile.bottomNav")
         </div>
-        
-        
-        
+
+
+
 
     </div>
 
- 
 
-    
-    <script>  
+
+
+    <script>
 
         function loadPosts() {
             var data = {
@@ -124,7 +124,7 @@ else
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 posts: [],
                 loading: true
             },
@@ -138,9 +138,9 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){   
+        });
+
+        $(document).ready(function(){
             loadPosts();
             //
             $(".favourite-bottom-nav-item").addClass("light-theme-color");
