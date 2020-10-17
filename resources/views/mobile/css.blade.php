@@ -3,7 +3,7 @@
 
     if (!session("locale"))
         session(["locale" => "en"]);
-        
+
     if (!session("direction"))
         session(["direction" => "ltr"]);
 
@@ -29,7 +29,7 @@ endif
 <link rel="stylesheet" href="{{ url('/website') }}/css/bootstrap-slider.min.css">
 
 <link rel="stylesheet" href="{{ url('/website') }}/css/owl.carousel.min.css">
-  
+
 <link rel="stylesheet" href="{{ url('/website') }}/css/owl.theme.default.min.css">
 
 <link rel="stylesheet" href="{{ url('/website') }}/css/photo-sphere-viewer.min.css">
@@ -42,12 +42,14 @@ endif
 
 <link href="https://fonts.googleapis.com/css?family=Amiri|Cairo|Katibeh|Markazi+Text|Scheherazade&display=swap" rel="stylesheet">
 
-<link rel="icon" href="{{ asset('backend/logopng.ico') }}"  type="image/x-icon">  
+<link rel="icon" href="{{ asset('backend/logopng.ico') }}"  type="image/x-icon">
 
-  
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+
 <style>
-    *, .font { 
-        font-family: 'Cairo', sans-serif; 
+    *, .font {
+        font-family: 'Cairo', sans-serif;
     }
 
 </style>
@@ -60,7 +62,7 @@ endif
 
     // max uploaded image size
     var MAX_UPLOADED_IMAGE = 3; // 3 MB
-    
+
     // langauge of the app
     var LANG = "{{ session('locale') }}";
 

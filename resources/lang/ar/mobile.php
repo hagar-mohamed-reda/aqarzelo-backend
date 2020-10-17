@@ -1,17 +1,18 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 
 return [
-    "what_do_you_want_the_application_to_open_on_the_map" => "ماذا تريد أن يفتح التطبيق على الخريطة",
+    "what_do_you_want_the_application_to_open_on_the_map" => "ما الموقع الذى تريد فتح التطبيق عليه؟",
     "current_location" => "الموقع الحالى",
     "go_location" => "الذهاب الى موقع",
     "choose_location" => "اختيار موقع",
     "done" => "تمت العمليه بنجاح",
+    "done_" => "تم",
     "setting" => "الاعدادات",
     "log_in" => "تسجيل الدخول",
     "chat" => "الدردشه",
@@ -19,12 +20,12 @@ return [
     "change_password" => "تغير كلمة المرور",
     "notification" => "الاشعارات",
     "language" => "اللغه",
-    "help" => "المساعده", 
+    "help" => "المساعده",
     "contact" => "التواصل",
     "logout" => "تسجيل الخروج",
 
     "login" => "تسجيل الدخول",
-    "email_or_phone" => "الهاتف او البريد الالكترونى", 
+    "email_or_phone" => "الهاتف او البريد الالكترونى",
     "password" => "كلمة المرور",
     "forget_password" => "هل نسيت كلمة المرور",
     "dont_have_account" => "لا املك حساب",
@@ -32,10 +33,10 @@ return [
     "confirm_password" => "تاكيد كلمة المرور",
     "username" => "اسم المستخدم",
     "register" => "انشاء حساب",
- 
+
     "passwords_dont_match" => "كلمات السر ليست متطابقه",
     "notifications" => "الاشعارات",
-    "favourites" => "المفضله",  
+    "favourites" => "المفضله",
     "follow_us" => "تابعنا",
     "contact_us" => "تواصل معنا",
     "posts" => "المنشورات",
@@ -57,14 +58,14 @@ return [
     "analysis" => "الاحصائيات",
     "avg_of_price" => "متوسط السعر فى ",
     "error" => "خطا ما",
-    "login_first" => "سجل الدخول اولا", 
+    "login_first" => "سجل الدخول اولا",
     "comment" => "التعليق",
     "write_comment" => "اكتب تعليق",
     "create_post" => "انشاء حساب",
     "first_image_is_the_master" => "الصوره الاوله هى الرئيسيه",
     "upload_master_image" => "قم برفع الصوره الرئيسيه",
     "camera" => "الكاميرا",
-    "upload_normal_image" => "قم برفع باقى الصور", 
+    "upload_normal_image" => "قم برفع باقى الصور",
     "upload_360_image" => "قم برفع صور البانوراما",
     "next" => "التالى",
     "post_title" => "عنوان المنشور",
@@ -78,7 +79,7 @@ return [
     "space" => "المساحه",
     "in_meter" => "بالمتر",
     "bedroom_number" => "عدد غرف النوم",
-    "bathroom_number" => "عدد الحمامات", 
+    "bathroom_number" => "عدد الحمامات",
     "price" => "السعر",
     "location" => "الموقع",
     "map" => "الخريطه",

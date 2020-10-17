@@ -1,6 +1,6 @@
 <?php
 
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -12,6 +12,7 @@ return [
     "go_location" => "go location",
     "choose_location" => "choose location",
     "done" => "done",
+    "done_" => "done",
     "setting" => "setting",
     "log_in" => "log in",
     "chat" => "chat",
@@ -19,7 +20,7 @@ return [
     "change_password" => "change password",
     "notification" => "notification",
     "language" => "language",
-    "help" => "help", 
+    "help" => "help",
     "contact" => "contact",
     "logout" => "logout",
 
@@ -69,7 +70,7 @@ return [
     "first_image_is_the_master" => "first image is the master",
     "upload_master_image" => "upload master image",
     "camera" => "camera",
-    "upload_normal_image" => "upload normal image", 
+    "upload_normal_image" => "upload normal image",
     "upload_360_image" => "upload 360 image",
     "next" => "next",
     "post_title" => "post title",

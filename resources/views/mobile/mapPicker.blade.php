@@ -1,9 +1,9 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
@@ -11,7 +11,7 @@ else
 
     .map {
         background-image: url({{ url('/mobile/images/background.png') }});
-        background-size: 100% 100%; 
+        background-size: 100% 100%;
         background-repeat: no-repeat;
         width: 100%;
         }
@@ -25,7 +25,7 @@ else
             height: 60px;
             border-radius: 10em;
         }
-        
+
         .breadcrumb {
             height: 60px;
             padding-top: 20px;
@@ -36,34 +36,34 @@ else
 
     <!-- html content -->
     <div class="map" id="page" v-bind:style="'height: ' + height + 'px'" >
-         
+
         <ol class="breadcrumb  w3-display-topleft w3-block light-theme-background shadow">
-            <li><a href="#" class="text-uppercase w3-xlarge w3-text-white fa fa-angle-left" ></a></li>
-            
-            <li><a href="#" class="text-uppercase w3-large w3-text-white" >{{ __('mobile.choose_location') }}</a></li> 
-                  
-        </ol> 
+            <li><a href="#" class="text-uppercase w3-xlarge w3-text-white fa fa-angle-left" onclick="back()" ></a></li>
+
+            <li><a href="#" class="text-uppercase w3-large w3-text-white" >{{ __('mobile.choose_location') }}</a></li>
+
+        </ol>
 
         <div id="map" class="w3-block" v-bind:style="'height: ' + height + 'px'" ></div>
 
-        <div class="w3-display-bottommiddle button-container w3-block w3-padding text-capitalize" > 
+        <div class="w3-display-bottommiddle button-container w3-block w3-padding text-capitalize" >
             <div style="direction: rtl!important" >
-                <button 
+                <button
                     onclick="getCurrentLocation()"
                     style="margin-right: 11px"
                     class="animated fadeInRight text-capitalize btn light-theme-background w3-xlarge w3-text-white shadow current-location-btn" >
-                    <span class="fa fa-arrows" ></span>
-                </button> 
+                    <span class="material-icons">gps_fixed</span>
+                </button>
             </div>
             <br>
             <br>
 
             <div class="w3-padding" >
-                <button 
+                <button
                     onclick="done()"
                     class="animated fadeInUp text-capitalize btn light-theme-background w3-block w3-xlarge w3-text-white w3-round-xlarge shadow done-location-btn" >
-                    {{ __('mobile.done') }}
-                </button> 
+                    {{ __('mobile.done_') }}
+                </button>
             </div>
         </div>
     </div>
@@ -87,17 +87,17 @@ else
 
             loadPage(path + "?lat=" + lat + "&lng=" + lng);
         }
-        
+
         function getCurrentLocation() {
             getLocation(function(latlng){
-                lat=latlng.lat; 
-                lng = latlng.lng;  
+                lat=latlng.lat;
+                lng = latlng.lng;
                 var p = new google.maps.LatLng(lat, lng);
                 placeMarker(p, map);
             });
         }
 
-        function initMap() { 
+        function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
                 center: {lat: 30.0455965, lng: 31.2387195},
                 zoom: 14
@@ -118,7 +118,7 @@ else
                 });
                 lat = position.lat();
                 lng = position.lng();
- 
+
                 map.panTo(position);
             }
 
