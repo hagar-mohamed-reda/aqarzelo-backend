@@ -259,13 +259,16 @@ else
             content.style.marginTop = "60%";
 
             body.innerHTML =
-                '<img src="'+imgUrl+'" width="130px" > <br> <div class="text-xlarge" >'+message+'</div>';
+                '<img src="'+imgUrl+'" width="130px" > <br> <div class="text-xlarge" >'+message+'</div><br>';
 
             content.appendChild(body);
             container.appendChild(content);
 
             content.innerHTML +=  '<button onclick="$(\'.mobile-message-dialog\').hide();" style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
 
+            container.onclick= function(){
+                $(".mobile-message-dialog").hide();
+            };
             document.body.appendChild(container);
             $(".mobile-message-dialog").show();
             /*
@@ -325,6 +328,7 @@ else
 
             // load splash screen
             loadSplash();
+
         });
     </script>
 </html>
