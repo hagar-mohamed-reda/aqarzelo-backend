@@ -42,7 +42,7 @@ else
 
 
         .w3-ul li {
-            height: 53px!important;
+            height: 13vw!important;
             border: none!important;
         }
     </style>
