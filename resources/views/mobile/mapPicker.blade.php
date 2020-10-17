@@ -50,7 +50,7 @@ else
             <div style="direction: rtl!important" >
                 <button
                     onclick="getCurrentLocation()"
-                    style="margin-right: 11px"
+                    style="margin-right: 11px;padding: 16px!important"
                     class="animated fadeInRight text-capitalize btn light-theme-background w3-xlarge w3-text-white shadow current-location-btn" >
                     <span class="material-icons">gps_fixed</span>
                 </button>

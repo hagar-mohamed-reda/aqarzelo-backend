@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Notification extends Model {
 
-    
+
     /**
      * The attributes that are mass assignable.
      *
@@ -16,27 +17,37 @@ class Notification extends Model {
         'title', 'body', 'post_id', 'user_id', 'seen', 'title_ar', 'body_ar'
     ];
 
-    
+
     /**
      * The attributes that are appended to object after loaded from db.
      *
      * @var array
      */
     protected $appends = [
-        'post'
+        'post', 'diff_time'
     ];
-     
-    
+
+
     /**
      * return post attribute as Object
-     * 
+     *
      * @return Post $post
      */
     public function getPostAttribute() {
         return $this->post()->first();
     }
-    
-    
+
+    /**
+     * return diffrent time readable for human
+     *
+     * @return Post $post
+     */
+    public function getDiffTimeAttribute() {
+        //$time = Carbon::parse($this->created_at);
+        return Carbon::parse($this->created_at)->diffForHumans();
+    }
+
+
     public function user() {
         return $this->belongsTo('App\User', 'user_id');
     }
