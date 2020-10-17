@@ -14,15 +14,15 @@ $recommends = $c->getRecommended(new Illuminate\Http\Request);
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .page { 
-        background-size: 100% 100%; 
+    .page {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
         background-color: white;
         overflow: auto;
@@ -60,18 +60,18 @@ else
     }
 
 
-        .result-show { 
+        .result-show {
             background-color: transparent;
-            overflow: hidden; 
+            overflow: hidden;
         }
-        
+
         .result-show-item {
             border-radius: 1em;
             overflow: hidden;
-            background-color: white; 
+            background-color: white;
         }
-        
-        .result-show-item img { 
+
+        .result-show-item img {
             height: 140px!important;
         }
 
@@ -80,9 +80,9 @@ else
             background-size: 100%;
             background-position: bottom;
             background-repeat: no-repeat;
-            width: 100%; 
-        } 
-        
+            width: 100%;
+        }
+
         .image-viewers .padding-top {
             padding-top: 40%!important;
         }
@@ -95,7 +95,7 @@ else
             background-color: #02A2A7!important;
             color: white!important;
         }
-        
+
         .image-viewers .owl-next {
             position: fixed;
             right: 20px;
@@ -104,41 +104,41 @@ else
             background-color: #02A2A7!important;
             color: white!important;
         }
-        
+
         .image-viewers .owl-next span, .image-viewers .owl-prev span {
             padding: 5px!important;
         }
-        
+
 </style>
 
 
 <!-- html content -->
 <div class="page" id="page" v-bind:style="'height: ' + height + 'px'" >
-    
 
-<div 
-class="modal fade image-viewers w3-display-container" 
+
+<div
+class="modal fade image-viewers w3-display-container w3-white"
 style="z-index: 999999!important;background-color: #06D9B2!important!important;" >
-    
+
     <div class="w3-display-topright w3-padding" style="z-index: 99999999;position: fixed!important" onclick="$('.image-viewers').modal('hide')" >
         <span class="fa fa-close w3-xlarge btn dark-theme-background w3-text-white shadow" > </span>
     </div>
-    
+
     <div class="owl-carousel owl-theme image-viewers-carousel" style="width: 100%;direction: ltr!important" >
                 @foreach($post->images as $image)
-                <div class="item" > 
+                <div class="item" >
                     <div class="" >
                         @if ($image->is_360)
-                        <iframe 
-                            allowfullscreen  
+                        <iframe
+                            allowfullscreen
                             src="https://aqarzelo.com/public/panorama?image={{ $image->image }}"
-                            v-bind:height="(height) + 'px'" 
+                            v-bind:height="(height) + 'px'"
                             width="100%" ></iframe>
                         @else
-                        <img src="{{ $image->image }}"  class="w3-block padding-top" > 
+                        <img src="{{ $image->image }}"  class="w3-block padding-top" onload="calculateTop(this)" >
                         @endif
                     </div>
-                </div> 
+                </div>
                 @endforeach
     </div>
 </div>
@@ -154,9 +154,9 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
             @foreach($post->images as $image)
             <div class="item"  onclick="$('.image-viewers').modal('show')"  >
                 <div class="" >
-                    <img src="{{ $image->image }}" height="300px" class="w3-block" > 
+                    <img src="{{ $image->image }}" height="300px" class="w3-block" >
                 </div>
-            </div> 
+            </div>
             @endforeach
         </div>
         <br>
@@ -185,13 +185,13 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
         <div class="w3-display-topmiddle form-inline w3-block" style="top: 280px;z-index: 4" >
             <table class="w3-table" >
                 <tr>
-                    <td><span style="width: 20px" ></span></td> 
+                    <td><span style="width: 20px" ></span></td>
                     <td>
-                        <input 
-                        type="text"  
-                        onclick="showCommentSection()" 
-                        class="form-control input-sm shadow" 
-                        placeholder="{{ __('mobile.comment') }}..." 
+                        <input
+                        type="text"
+                        onclick="showCommentSection()"
+                        class="form-control input-sm shadow"
+                        placeholder="{{ __('mobile.comment') }}..."
                         id="post-comment-input"
                         style="border-radius: 5em!important;width: 180px;" >
                     </td>
@@ -205,15 +205,15 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
                             </button>
                         </div>
                         <div class="comment-buttons" >
-                            <button 
-                            class="close-message-button btn w3-circle btn-sm w3-white shadow" 
-                            onclick="$('.comment-buttons').hide();$('.favourite-chat-buttons').show();$('.post-reviews').hide();$('.post-details').show()" 
+                            <button
+                            class="close-message-button btn w3-circle btn-sm w3-white shadow"
+                            onclick="$('.comment-buttons').hide();$('.favourite-chat-buttons').show();$('.post-reviews').hide();$('.post-details').show()"
                             style="width: 35px;height: 35px;" >
                                     <b class="fa fa-close w3-text-gray" ></b>
                             </button>
-                            <button 
-                            class="send-message-button btn w3-circle btn-sm w3-white shadow" 
-                            onclick="sendComment(this)" 
+                            <button
+                            class="send-message-button btn w3-circle btn-sm w3-white shadow"
+                            onclick="sendComment(this)"
                             style="width: 35px;height: 35px;" >
                                     <b class="fa fa-send w3-text-gray" ></b>
                             </button>
@@ -221,7 +221,7 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
                     </td>
                     <td><span style="width: 20px" ></span></td>
                 </tr>
-            </table>  
+            </table>
 
         </div>
 
@@ -230,27 +230,27 @@ application-grad-back
      -->
 
     <div class="result-show w3-display-bottomleft w3-block " style="z-index: 10;position: fixed;" >
-        <div 
-        class="owl-carousel owl-theme application-grad-back"  
+        <div
+        class="owl-carousel owl-theme application-grad-back"
         id="recommend-carsousel" style="width: 100%;direction: ltr!important" >
-            <div class="item" 
+            <div class="item"
             v-for="post in posts"
             onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))" v-bind:data-id="post.id"
             >
                 <div class="result-show-item" >
-                    <img 
-                    v-if="post.images[0]" 
-                    height="80px" 
-                    class="w3-block" 
+                    <img
+                    v-if="post.images[0]"
+                    height="80px"
+                    class="w3-block"
                     v-bind:src="post.images[0].image" />
                     <div class="w3-padding" >
                         <div class="w3-large" ><b v-html="post.title.substring(0, 10) + '..'" ></b></div>
-                        <span v-html="post.price" ></span>  
+                        <span v-html="post.price" ></span>
                         <span v-html="post.space" ></span> M
-                    </div> 
+                    </div>
                 </div>
                 <br>
-            </div>  
+            </div>
         </div>
     </div>
 
@@ -259,16 +259,16 @@ application-grad-back
 
         <br>
         <ul class="w3-ul nicescroll w3-block w3-padding post-reviews" >
-            @foreach($post->reviews()->get() as $item)  
+            @foreach($post->reviews()->get() as $item)
             @if($item->comment)
             <li>
                 <div class="media">
                   <div class="media-left">
                     <a href="#">
-                      <img 
-                      class="media-object w3-circle" 
+                      <img
+                      class="media-object w3-circle"
                       width="40px"
-                      height="40px" 
+                      height="40px"
                       src="{{ $item->user()->first()->photo_url }}" alt="...">
                     </a>
                   </div>
@@ -289,122 +289,122 @@ application-grad-back
                 <a name="information" ></a>
                 @if ($post->bedroom_number > 0)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-bed" ></span> 
-                    <span >{{ $post->bedroom_number }}</span> 
+                    <span class="fa fa-bed" ></span>
+                    <span >{{ $post->bedroom_number }}</span>
                     {{ __("words.rooms") }}
                 </div>
                 @endif
                 @if ($post->bathroom_number > 0)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-bath" ></span> 
-                    <span  >{{ $post->bathroom_number }}</span> 
+                    <span class="fa fa-bath" ></span>
+                    <span  >{{ $post->bathroom_number }}</span>
                     {{ __("words.bathrooms") }}
                 </div>
                 @endif
-                
+
                 <div class="w3-col l4 m4 s4" >
                     <i class="fa fa-diamond" ></i>
-                    <span >{{ __('words.' . $post->finishing_type) }}</span>  
+                    <span >{{ __('words.' . $post->finishing_type) }}</span>
                 </div>
                 @if ($post->furnished)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-map-o" ></span>  
-                    {{ __("words.furnished") }} 
+                    <span class="fa fa-map-o" ></span>
+                    {{ __("words.furnished") }}
                 </div>
                 @endif
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-male" ></span> 
-                    <span>{{ $post->owner_type }}</span> 
+                    <span class="fa fa-male" ></span>
+                    <span>{{ $post->owner_type }}</span>
                 </div>
                 @if ($post->has_parking)
                 <div class="w3-col l4 m4 s4"  >
-                    <span class="fa fa-taxi" ></span>  
-                    {{ __("words.has_parking") }} 
+                    <span class="fa fa-taxi" ></span>
+                    {{ __("words.has_parking") }}
                 </div>
-                @endif  
+                @endif
                 @if ($post->has_garden)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-leaf" ></span>  
-                    {{ __("words.has_garden") }} 
-                </div>  
+                    <span class="fa fa-leaf" ></span>
+                    {{ __("words.has_garden") }}
+                </div>
                 @endif
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-home" ></span> 
-                    <span  >{{ $post->type }}</span> 
+                    <span class="fa fa-home" ></span>
+                    <span  >{{ $post->type }}</span>
                 </div>
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-cc-visa" ></span> 
-                    <span >{{ $post->payment_method }}</span> 
+                    <span class="fa fa-cc-visa" ></span>
+                    <span >{{ $post->payment_method }}</span>
                 </div>
                 @if ($post->floor_number)
                 <div class="w3-col l4 m4 s4"  >
-                    <span class="fa fa-building" ></span> 
-                    {{ __("words.floor_number") }} <span  >{{ $post->floor_number }}</span> 
+                    <span class="fa fa-building" ></span>
+                    {{ __("words.floor_number") }} <span  >{{ $post->floor_number }}</span>
                 </div>
                 @endif
                 @if ($post->build_date)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-calendar" ></span> 
-                    <span >{{ $post->build_date }}</span> 
-                </div> 
-                @endif
-                
-                @if ($post->city)
-                <div class="w3-col l4 m4 s4"   >
-                    <span class="fa fa-globe" ></span> 
-                    <span>{{ $post->city->name_en }}</span> 
+                    <span class="fa fa-calendar" ></span>
+                    <span >{{ $post->build_date }}</span>
                 </div>
                 @endif
-                
+
+                @if ($post->city)
+                <div class="w3-col l4 m4 s4"   >
+                    <span class="fa fa-globe" ></span>
+                    <span>{{ $post->city->name_en }}</span>
+                </div>
+                @endif
+
                 @if ($post->area)
                 <div class="w3-col l4 m4 s4"   >
-                    <span class="fa fa-map-marker" ></span> 
-                    <span  >{{ $post->area->name_en }}</span> 
+                    <span class="fa fa-map-marker" ></span>
+                    <span  >{{ $post->area->name_en }}</span>
                 </div>
                 @endif
                 @if ($post->category)
                 <div class="w3-col l4 m4 s4" >
-                    <span class="fa fa-sitemap" ></span> 
-                    <span  >{{ $post->category->name_en }}</span> 
+                    <span class="fa fa-sitemap" ></span>
+                    <span  >{{ $post->category->name_en }}</span>
                 </div>
                 @endif
 
-            </li> 
+            </li>
             <li>
                 <div class="w3-xlarge text-capitalize" >{{ __("words.description") }}</div>
                 <div class="w3-large" >
                     {!! str_replace("\n", "<br/>", $post->description) !!}
                 </div>
-            </li> 
+            </li>
             <li>
-                <div class="w3-large" >   
-                    <a class="fa fa-phone light-theme-background btn w3-text-white w3-btn w3-circle shadow" 
+                <div class="w3-large" >
+                    <a class="fa fa-phone light-theme-background btn w3-text-white w3-btn w3-circle shadow"
                        style="width: 50px;height: 50px;border-radius: 5em!important;line-height: 2"
                        href="tel:{{ $post->contact_phone }}"
                        role="button"
                        ></a>
                     <span class="w3-margin-left contact_phone" >{{ $post->contact_phone }}</span>
                 </div>
-                <br>  
+                <br>
                 <div id="map" class="w3-block w3-round" style="height: 200px;width: 100%;" ></div>
-            </li>   
+            </li>
             <li >
                 <b class="w3-large text-capitalize" >{{ __('mobile.related_posts') }}</b>
                 <div class="w3-row related-post" style="height: 190px;overflow: auto;">
                     <div class="w3-padding w3-row" style="width: 2100px;height: 190px"  >
                         @foreach($relatedPosts as $p)
-                        <div style="padding: 5px;width: 200px;float: left"   >
+                        <div style="padding: 5px;width: 210px;float: left"   >
                             <div class="shadow w3-round w3-white" >
-                                <div 
-                                    style="background-size: cover;background-image: url({{  $p->images[0]? $p->images[0]->image :  url('/mobile/images/image.png') }});width: 100%;height: 80px" 
+                                <div
+                                    style="background-size: cover;background-image: url({{  $p->images[0]? $p->images[0]->image :  url('/mobile/images/image.png') }});width: 100%;height: 110px"
                                  >
-                                    
+
                                 </div>
                                 <br>
                                 <div class="w3-padding w3-tiny w3-text-gray" >
                                     <b>{{ substr($p->title, 0, 10) }}..</b>
                                     <br>
-                                    EGP {{ number_format($p->price) }} 
+                                    EGP {{ number_format($p->price) }}
                                     {{ $p->space }} M
                                 </div>
                             </div>
@@ -413,14 +413,14 @@ application-grad-back
                     </div>
                 </div>
             </li>
-            <li> 
+            <li>
                 <b class="w3-large text-capitalize" >{{ __('mobile.analysis') }}</b>
                 <a name="analysis" ></a>
                 <div   id="analysis">
                     <canvas id="currentPostChart" width="100%" ></canvas>
                 </div>
-            </li> 
-            <li> 
+            </li>
+            <li>
                 <b class="w3-large text-capitalize" >{{ __('mobile.avg_of_price') }} {{ $post->city->name_en }}</b>
                 <br><br>
                 <ul class="w3-ul" >
@@ -430,12 +430,12 @@ application-grad-back
                             <b>{{ $post->chart_data["x"][$i] }}</b>
                         </div>
                         <div class="w3-right" >
-                            <b>{{ $post->chart_data["y"][$i] }} EGP</b> 
+                            <b>{{ $post->chart_data["y"][$i] }} EGP</b>
                         </div>
                     </li>
                     @endfor
                 </ul>
-            </li>     
+            </li>
         </ul>
     </div>
 
@@ -443,15 +443,15 @@ application-grad-back
 </div>
 
 
-<!-- javascript --> 
+<!-- javascript -->
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 
 
 <script>
-        function initMap() { 
+        function initMap() {
             map = new google.maps.Map(document.getElementById('map'), {
-                center: {lat: 30.0455965, lng: 31.2387195}, 
+                center: {lat: 30.0455965, lng: 31.2387195},
                 disableDefaultUI: false,
                 zoom: 12.25,
                 maxZoom: 16.25,
@@ -522,11 +522,11 @@ application-grad-back
                 });
                 lat = position.lat();
                 lng = position.lng();
- 
+
                 map.panTo(position);
             }
-            
-            
+
+
             var p = new google.maps.LatLng({{ $post->lat }}, {{ $post->lng }});
             placeMarker(p, map);
 
@@ -541,24 +541,24 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
 
     function showCommentSection() {
         $('.comment-buttons').show();$('.favourite-chat-buttons').hide();$('.post-reviews').show();$('.post-details').hide();
-        $('.result-show')[0].style.bottom = "-250px"; 
+        $('.result-show')[0].style.bottom = "-250px";
     }
 
-        function loadPosts() { 
+        function loadPosts() {
             $.get(BASE_URL + "/post/recommended", function(r){
-                page.posts = r.data; 
-                setTimeout(function(){ 
+                page.posts = r.data;
+                setTimeout(function(){
                     setOwlCarousel2();
                 }, 1000);
             });
         }
-        
+
     function loadChat() {
         if (!app.api_token) {
             Swal.fire({
               icon: 'error',
               title: '{{ __("mobile.error") }}',
-              text: '{{ __("mobile.login_first") }}', 
+              text: '{{ __("mobile.login_first") }}',
             });
             return;
         }
@@ -566,11 +566,11 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             Swal.fire({
               icon: 'error',
               title: '{{ __("mobile.error") }}',
-              text: '{{ __("mobile.you_cant_chat_with_your_self") }}', 
+              text: '{{ __("mobile.you_cant_chat_with_your_self") }}',
             });
             return;
         }
-        
+
         loadPage('phone/chat?user_to={{ $post->user->id }}');
     }
 
@@ -579,7 +579,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             Swal.fire({
               icon: 'error',
               title: '{{ __("mobile.error") }}',
-              text: '{{ __("mobile.login_first") }}', 
+              text: '{{ __("mobile.login_first") }}',
             });
             return;
         }
@@ -592,7 +592,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 Swal.fire({
                   icon: 'success',
                   title: '{{ __("mobile.done") }}',
-                  text: r.message_en, 
+                  text: r.message_en,
                 });
                 $(button).html('<b class="fa fa-heart w3-large w3-text-pink" ></b>')
             }
@@ -600,8 +600,8 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 Swal.fire({
                   icon: 'error',
                   title: '{{ __("mobile.error") }}',
-                  text: r.message_en, 
-                }); 
+                  text: r.message_en,
+                });
             }
         });
     }
@@ -611,7 +611,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             Swal.fire({
               icon: 'error',
               title: '{{ __("mobile.error") }}',
-              text: '{{ __("mobile.login_first") }}', 
+              text: '{{ __("mobile.login_first") }}',
             });
             return;
         }
@@ -619,7 +619,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             Swal.fire({
               icon: 'error',
               title: '{{ __("mobile.error") }}',
-              text: '{{ __("mobile.write_comment") }}', 
+              text: '{{ __("mobile.write_comment") }}',
             });
             return;
         }
@@ -633,7 +633,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 Swal.fire({
                   icon: 'success',
                   title: '{{ __("mobile.done") }}',
-                  text: r.message_en, 
+                  text: r.message_en,
                 });
                 $(".close-message-button").click();
                 loadPage('phone/post/show?post_id={{ $post->id }}');
@@ -642,8 +642,8 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 Swal.fire({
                   icon: 'error',
                   title: '{{ __("mobile.error") }}',
-                  text: r.message_en, 
-                }); 
+                  text: r.message_en,
+                });
             }
         });
     }
@@ -672,7 +672,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
         });
     }
 
-    function setOwlCarousel2() { 
+    function setOwlCarousel2() {
         $('#recommend-carsousel').owlCarousel({
                 loop:true,
                 center:true,
@@ -699,13 +699,13 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 }
         });
     }
-    
+
     function setOwlCarousel3() {
         $('.image-viewers-carousel').owlCarousel({
             loop: true,
             center: true,
             margin: 10,
-            dots: false, 
+            dots: false,
             nav: true,
             responsive: {
                 0: {
@@ -720,8 +720,8 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             }
         });
     }
-    
-    function setCurrentPostChart() { 
+
+    function setCurrentPostChart() {
             var ctx = document.getElementById('currentPostChart').getContext('2d');
             var chart = new Chart(ctx, {
                 // The type of chart we want to create
@@ -737,7 +737,7 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                             label: '{{ __('mobile.avg_of_price') }} {{ $post->city->name_en }}',
                             backgroundColor: 'rgba(2, 169, 168, 0.5)',
                             borderColor: 'rgb(2, 150, 168)',
-                            data: [ 
+                            data: [
                                 @foreach($post->chart_data["y"] as $item)
                                 {{ $item }},
                                 @endforeach
@@ -746,17 +746,22 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 },
                 // Configuration options go here
                 options: {}
-            }); 
+            });
     }
 
     function toggleRecommends(event) {
-        
+
+    }
+
+    function calculateTop(img) {
+        img.style.padding = "0px";
+        img.style.marginTop = (window.innerHeight / 2) - (img.height / 2) + "px";
     }
 
     var page = new Vue({
         el: '#page',
         data: {
-            posts: [],  
+            posts: [],
         },
         methods: {
         },
@@ -766,31 +771,31 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
             }
         }
     });
-    var position = $(window).scrollTop(); 
+    var position = $(window).scrollTop();
 
     $(document).ready(function () {
-        setOwlCarousel(); 
+        setOwlCarousel();
         setOwlCarousel3();
         setCurrentPostChart();
         loadPosts();
         $(".related-post").css("width", window.innerWidth + "px");
 
-    
+
         $(window).scroll(function() {
-            var scroll = $(window).scrollTop();  
+            var scroll = $(window).scrollTop();
             var bottom =  parseInt($('.result-show').css("bottom").replace("px", ""));
             var amount = 40;
-            
+
             //console.log("scroll: "+scroll+"/position: "+position);
 
             if(scroll > position) {
                 if (bottom > -250) {
-                    bottom -= amount;   
-                }   
+                    bottom -= amount;
+                }
             } else {
-                if (bottom < 0) { 
-                    bottom += amount; 
-                } 
+                if (bottom < 0) {
+                    bottom += amount;
+                }
 
             }
 
@@ -798,9 +803,9 @@ var chartTitle = "{{ __('words.avg_of_meter_in_city') }}";
                 bottom = 0;
             }
             position = scroll;
-            $('.result-show')[0].style.bottom = bottom + "px"; 
+            $('.result-show')[0].style.bottom = bottom + "px";
             console.log(bottom);
         });
- 
+
     });
 </script>
