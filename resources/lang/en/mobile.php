@@ -13,6 +13,7 @@ return [
     "choose_location" => "choose location",
     "done" => "done",
     "done_" => "done",
+    "facebook" => "facebook",
     "setting" => "setting",
     "log_in" => "log in",
     "chat" => "chat",

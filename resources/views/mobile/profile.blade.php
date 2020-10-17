@@ -1,18 +1,18 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home {  
-        width: 100%; 
+    .home {
+        width: 100%;
         background-size: 100%;
         background-position: top;
-        background: white; 
+        background: white;
         overflow: auto;
         }
 
@@ -29,7 +29,7 @@ else
             margin-bottom: 15px!important;
         }
 
-        .small-height-item { 
+        .small-height-item {
             border: 0px!important;
         }
 
@@ -41,7 +41,7 @@ else
             width: 10vw!important;
         }
 
-        .application-header { 
+        .application-header {
             background-size: cover;
         }
 
@@ -62,17 +62,17 @@ else
         .profile-tab-button-posts {
             border-top-left-radius: 5em!important;
             border-bottom-left-radius: 5em!important;
-        } 
+        }
         .profile-tab-button-details {
             border-top-right-radius: 5em!important;
             border-bottom-right-radius: 5em!important;
-        } 
-        
+        }
+
         .profile-tab-button-edit {
             border-radius: 5em!important;
             margin-left: 5px!important;
             margin-right: 5px!important;
-        } 
+        }
 
         .tab-item {
             display: none;
@@ -87,13 +87,13 @@ else
             border-radius: 6px;
             overflow: hidden;
             background-color: white;
-            margin-bottom: 5px; 
+            margin-bottom: 5px;
         }
 
         .posts-li {
             margin: 0px!important;
             padding: 5px!important;
-            border: 0px!important; 
+            border: 0px!important;
         }
 
         .information button {
@@ -114,7 +114,7 @@ else
             <div class="w3-bar w3-padding w3-display-container">
               <a href="#" class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-left w3-text-white w3-xlarge shadow" ></span>
-              </a>    
+              </a>
             </div>
             <center class="w3-display-bottommiddle profile-image-container w3-block" >
                 <img v-bind:src="photo" width="130px" class="w3-circle profile-image" onclick="viewImage(this)" >
@@ -123,19 +123,19 @@ else
                 <br><br><br>
                 <div class="w3-center" >
                     <center class="btn-group w3-large w3-block" role="group" aria-label="...">
-                      <button 
-                      type="button" 
-                      onclick="$('.tab-item').hide();$('.my-posts').slideDown(500)" 
+                      <button
+                      type="button"
+                      onclick="$('.tab-item').hide();$('.my-posts').slideDown(500)"
                       class="btn btn-default shadow profile-tab-button-posts">{{ __('mobile.posts') }}</button>
 
-                      <button 
-                      type="button" 
-                      onclick="$('.tab-item').hide();$('.details').slideDown(500)" 
+                      <button
+                      type="button"
+                      onclick="$('.tab-item').hide();$('.details').slideDown(500)"
                       class="btn btn-default shadow profile-tab-button-details">{{ __('mobile.details') }}</button>
 
-                      <button 
-                      type="button" 
-                      onclick="loadPage('phone/profile/edit')" 
+                      <button
+                      type="button"
+                      onclick="loadPage('phone/profile/edit')"
                       class="btn btn-default shadow profile-tab-button-edit">
                           <img src="{{ url('/mobile/images/edit_profile_icon.png') }}" width="20px" >
                       </button>
@@ -146,7 +146,7 @@ else
         <div class="application-container w3-display-container"  v-bind:style="'min-height: ' + (height - 300) + 'px'" >
             <br><br><br><br><br><br><br><br>
             <div class="tab-item my-posts w3-padding" >
-                
+
                 <ul class="w3-ul w3-row">
                     <li class="w3-col l12 m12 s12 w3-padding" v-if="loading" >
                         <center>
@@ -156,15 +156,15 @@ else
 
                     <li v-for="post in posts" class="col-lg-2 col-md-2 col-sm-4 col-xs-6 animated fadeInUp posts-li"   >
                         <div class=" shadow light-theme-background-hover posts-item">
-                            <img v-if="post" 
-                            height="100px" 
-                            width="100%" 
-                            onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))" 
+                            <img v-if="post"
+                            height="100px"
+                            width="100%"
+                            onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))"
                             v-bind:data-id="post.id"
                             v-bind:src="post.images[0]? post.images[0].image: '{{ url('/mobile/images/image.png') }}'" >
                             <div class="w3-padding" >
                                 <div v-html="post.title.substring(0,15)+'..'" ></div>
-                                <div v-html="post.space + ' M'" class="w3-text-gray w3-tiny" ></div> 
+                                <div v-html="post.space + ' M'" class="w3-text-gray w3-tiny" ></div>
                                 <div v-html="format(post.price)" class="w3-text-gray w3-tiny" ></div>
                             </div>
                         </div>
@@ -200,7 +200,8 @@ else
                         </button>
                         <b class="w3-padding w3-large" v-html="user.address" ></b>
                     </li>
-                    <li>
+
+                    <li  v-if="user.company_id > 1" >
                         <button class="w3-circle w3-button dark-theme-background w3-text-white w3-large" >
                             <b class="fa fa-globe" ></b>
                         </button>
@@ -211,16 +212,16 @@ else
                 </ul>
             </div>
         </div>
-        
-        
-        
+
+
+
 
     </div>
 
- 
 
-    
-    <script>  
+
+
+    <script>
 
         function loadPosts() {
             var data = {
@@ -234,7 +235,7 @@ else
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 posts: [],
                 api_token: window.localStorage.getItem("api_token"),
                 user: JSON.parse(window.localStorage.getItem("user")),
@@ -252,10 +253,10 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){  
+        });
+
+        $(document).ready(function(){
              loadPosts();
-              
+
         });
     </script>
