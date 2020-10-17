@@ -253,9 +253,9 @@ else
             var imgUrl = type == 'success'? '{{ url("/images/message-success.gif") }}' :  '{{ url("/images/message-error.gif") }}';
 
             //container.style.zIndex = "10";
-            container.className = "modal fade mobile-message-dialog";
+            container.className = "modal mobile-message-dialog";
             content.className = "modal-dialog modal-sm w3-display-container";
-            body.className = "modal-content w3-padding w3-center text-center";
+            body.className = "modal-content w3-padding w3-center text-center w3-animate-zoom";
             content.style.marginTop = "40%";
 
             body.innerHTML =
@@ -264,10 +264,10 @@ else
             content.appendChild(body);
             container.appendChild(content);
 
-            content.innerHTML +=  '<button style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
+            content.innerHTML +=  '<button onclick="$(".mobile-message-dialog").hide();" style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
 
             document.body.appendChild(container);
-            $(".mobile-message-dialog").modal('show');
+            $(".mobile-message-dialog").show();
             /*
             img = public_path + "/mobile/images/logo.png";
 
