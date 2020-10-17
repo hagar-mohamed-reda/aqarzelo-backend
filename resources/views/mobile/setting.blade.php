@@ -128,6 +128,18 @@ else
                         <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
+                <!-- my posts  -->
+                <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('phone/profile')"  >
+                    <a class="w3-bar-item w3-text-gray" href="#">
+                        <span class="fa fa-picture-o w3-blue w3-circle w3-text-white"
+                        style="margin: 5px;width:10vw;height: 10vw;padding: 10px" ></span>
+                        <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.posts') }}</b>
+                    </a>
+
+                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" href="#">
+                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    </a>
+                </li>
 
                 <!-- notification  -->
                 <li class="w3-bar btn w3-block small-height-item" v-if="api_token" onclick="loadPage('/phone/notification')" style="margin-bottom: 20px!important" >
