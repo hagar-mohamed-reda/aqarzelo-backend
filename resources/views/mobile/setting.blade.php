@@ -285,7 +285,7 @@ else
                 style="margin-bottom: 30px"
                 data-sharer="blogger" data-title="aqarzelo" data-description="aqarzelo website" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
                 class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
-                    <i class="fa fa-rss w3-text-orange w3-xxlarge" ></i>
+                    <i class="fa fa-rss-square w3-text-orange w3-xxlarge" ></i>
                     <br>
                     <span style="font-size: 12px!important" >{{ __('mobile.blogger') }}</span>
                 </div>
