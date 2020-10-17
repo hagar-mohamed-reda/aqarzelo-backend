@@ -65,6 +65,7 @@
             if (
                 !page.post.lng ||
                 !page.post.lat ||
+                !page.post.country_id ||
                 !page.post.city_id ||
                 !page.post.area_id
                 )
