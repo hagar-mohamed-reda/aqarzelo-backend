@@ -250,17 +250,18 @@ else
             var imgUrl = type == 'success'? '{{ url("/images/message-success.gif") }}' :  '{{ url("/images/message-error.gif") }}';
 
             container.style.zIndex = "10";
-            container.className = "modal";
-            content.className = "modal-dialog modal-sm";
+            container.className = "modal fade";
+            content.className = "modal-dialog modal-sm w3-display-container";
             body.className = "modal-content w3-padding w3-center text-center";
+            content.style.marginTop = "40%";
 
             body.innerHTML =
-                '<img src="'+imgUrl+'" width="50px" > <br> <div class="text-large" >'+message+'</div>' +
-                '<button style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-padding text-capitalize btn light-theme-background w3-block w3-large w3-text-white w3-round-xlarge shadow current-location-btn" ></button>'
-            ;
+                '<img src="'+imgUrl+'" width="150px" > <br> <div class="text-xlarge" >'+message+'</div>';
 
             content.appendChild(body);
             container.appendChild(content);
+
+            content.innerHTML +=  '<button style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
 
 
             $(container).modal('show');
