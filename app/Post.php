@@ -133,7 +133,7 @@ class Post extends Model {
 
         if (count($images) > 0) {
             $firstImage = $images[0];
-            if (!file_exists(public_path($firstImage->photo))) {
+            if (!file_exists(public_path('images/posts/' . $firstImage->photo))) {
                 $images[0]->photo = 'default-image.jpg';
             }
             return $images;
