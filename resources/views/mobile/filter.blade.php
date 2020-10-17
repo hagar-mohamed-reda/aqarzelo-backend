@@ -1,19 +1,19 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
-<link rel="stylesheet" href="{{ url('/website') }}/css/post.css"> 
+<link rel="stylesheet" href="{{ url('/website') }}/css/post.css">
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         overflow: auto;
     }
 
@@ -30,28 +30,31 @@ else
         margin-bottom: 15px!important;
     }
 
-    .small-height-item { 
+    .small-height-item {
         border: 0px!important;
     }
 
-    .application-container { 
+    .application-container {
     }
 
     .small-height-item img {
         width: 10vw!important;
     }
-    
+
     .spinner-btn {
         background-color: transparent!important;
         padding: 8px 16px!important;
     }
-    
+
     .spinner-input {
         border-radius: 5em!important;
         width: 70px!important;
         float: none!important;
-    } 
-    
+    }
+
+    .select-item select {
+        margin-bottom: 10px!important;
+    }
 
 </style>
 
@@ -62,34 +65,38 @@ else
         <div class="w3-bar w3-padding w3-display-container">
             <a href="#" class="w3-bar-item btn" onclick="back()" >
                 <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
-            </a>   
+            </a>
             <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
                 <span class="w3-text-white w3-xlarge" >{{ __('mobile.filter') }}</span>
-            </a>   
+            </a>
         </div>
     </div>
     <div class="application-container w3-display-container" v-bind:style="'min-height: ' + (height - 80) + 'px'" >
         <br>
-            <ul class="w3-ul filters w3-padding" > 
-                <li class="select-item" > 
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" > 
+            <ul class="w3-ul filters w3-padding" >
+                <li class="select-item" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.country_id" style="margin-bottom: 7px" >
+                        <option value="null" >{{ __("words.country") }}</option>
+                        @foreach(App\Country::all() as $item)
+                        <option value="{{ $item->id }}" >{{ session("direction") == 'rtl'? $item->name_ar : $item->name_en }}</option>
+                        @endforeach
+                    </select>
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.city") }}</option>
                         @foreach(App\City::all() as $city)
-                        <option value="{{ $city->id }}" >{{ session("direction") == 'rtl'? $city->name_ar : $city->name_en }}</option> 
+                        <option value="{{ $city->id }}" v-if="filter.country_id == '{{ $city->country_id }}'" >{{ session("direction") == 'rtl'? $city->name_ar : $city->name_en }}</option>
                         @endforeach
-                    </select> 
-                    <br>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.area_id" style="margin-bottom: 7px" > 
+                    </select>
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.area_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.area") }}</option>
                         @foreach(App\Area::all() as $area)
-                        <option value="{{ $area->id }}" v-if="filter.city_id == '{{ $area->city_id }}'" >{{ session("direction") == 'rtl'? $area->name_ar : $area->name_en }}</option> 
+                        <option value="{{ $area->id }}" v-if="filter.city_id == '{{ $area->city_id }}'" >{{ session("direction") == 'rtl'? $area->name_ar : $area->name_en }}</option>
                         @endforeach
-                    </select> 
-                    <br>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.category_id" style="margin-bottom: 7px" >  
+                    </select>
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="height: 50px;padding-left:25px!important;padding-right:25px!important" v-model="filter.category_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
-                        <option value="{{ $category->id }}" >{{ session("direction") == 'rtl'? $category->name_ar : $category->name_en }}</option> 
+                        <option value="{{ $category->id }}" >{{ session("direction") == 'rtl'? $category->name_ar : $category->name_en }}</option>
                         @endforeach
                     </select>
                 </li>
@@ -97,9 +104,9 @@ else
                 <li class="w3-row" >
                     <label class="w3-text-gray w3-col l6 m6 s6 w3-large" >
                         <b>{{ __("words.bedroom_number") }}</b>
-                    </label> 
-                    <div class="w3-col l6 m6 s6 w3-display-container" > 
-                        
+                    </label>
+                    <div class="w3-col l6 m6 s6 w3-display-container" >
+
                         <center class="input-group number-bedroom-spinner w3-light-gray  w3-round-xxlarge w3-display-topright" style="width: 150px!important;direction: ltr!important" >
                             <span class="btn input-group-btn spinner-padding" style="padding: 8px 16px!important;"  >
                                 <button class="w3-padding btn  w3-text-gray btn-number-spinner-left w3-circle btn-lg w3-large spinner-btn" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
@@ -109,14 +116,14 @@ else
                                 <button class="w3-padding btn w3-text-gray btn-number-spinner-right w3-circle btn-lg w3-large spinner-btn" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
                             </span>
                         </center>
-                        
+
                     </div>
                 </li>
                 <li class="w3-row" >
                     <label class="w3-text-gray w3-col l6 m6 s6 w3-large" >
                         <b>{{ __("words.bathroom_number") }}</b>
-                    </label>  
-                    <div class="w3-col l6 m6 s6 w3-display-container">  
+                    </label>
+                    <div class="w3-col l6 m6 s6 w3-display-container">
                         <center class="input-group number-bathroom-spinner w3-light-gray  w3-round-xxlarge w3-display-topright" style="width: 150px!important;direction: ltr!important" >
                             <span class="btn input-group-btn spinner-padding" style="padding: 8px 16px!important;"  >
                                 <button class="w3-padding btn  w3-text-gray btn-number-spinner-left w3-circle btn-lg w3-large spinner-btn" data-dir="dwn"><span class="glyphicon glyphicon-minus"></span></button>
@@ -125,13 +132,13 @@ else
                             <span class="btn input-group-btn spinner-padding" style="padding: 8px 16px!important;" >
                                 <button class="w3-padding btn w3-text-gray btn-number-spinner-right w3-circle btn-lg w3-large spinner-btn" data-dir="up"><span class="glyphicon glyphicon-plus"></span></button>
                             </span>
-                        </center> 
+                        </center>
                     </div>
                 </li>
                 <li>
                     <label class="w3-text-gray w3-col l6 m6 s6 w3-large" >
                         <b>{{ __("words.price") }}</b>
-                    </label>   
+                    </label>
                     <br>
                     <br>
                     <div>
@@ -140,13 +147,13 @@ else
                     <div class="w3-display-container" >
                         <b  class="w3-left w3-tiny text-gray" >1000</b>
                         <b class="w3-right w3-tiny text-gray" >1000000</b>
-                    </div> 
+                    </div>
                     <br>
                 </li>
                 <li>
                     <label class="w3-text-gray w3-col l6 m6 s6 w3-large" >
                         <b>{{ __("words.space") }}</b>
-                    </label>   
+                    </label>
                     <br>
                     <br>
                     <div>
@@ -155,22 +162,22 @@ else
                     <div class="w3-display-container" >
                         <b  class="w3-left w3-tiny text-gray" >100</b>
                         <b class="w3-right w3-tiny text-gray" >100000</b>
-                    </div> 
+                    </div>
                     <br>
                 </li>
-                <li class="w3-row" > 
+                <li class="w3-row" >
                     <br>
                     <center>
-                        <button 
+                        <button
                             onclick="search()"
                             style="padding: 8px 16px!important;"
                             class="w3-padding text-capitalize btn light-theme-background w3-block w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >
-                            {{ __('mobile.submit') }}
-                        </button>  
+                            {{ __('mobile.show') }}
+                        </button>
                     </center>
                 </li>
             </ul
-        </div> 
+        </div>
     </div>
 
 
@@ -184,7 +191,7 @@ else
 <script>
     var ranger1 = null;
     var ranger2 = null;
-    
+
     function setFilterSpinnerOptions() {
         // preparse number spinner for bedroom_number
         $(document).on('click', '.filter-modal .number-bedroom-spinner button', function () {
@@ -229,7 +236,7 @@ else
                 .on("slide", changeSpaceSlideValues)
                 .data('slider');
     }
-    
+
     var changePriceSlideValues = function () {
         var prices = $(".price-range").val().split(",");
 
@@ -244,12 +251,12 @@ else
         page.filter.space1 = spaces[0];
         page.filter.space2 = spaces[1];
     }
-    
+
     function search() {
         var data = $.param(page.filter);
         loadPage('phone/home?'+data);
     }
-    
+
     var page = new Vue({
         el: '#page',
         data: {
@@ -272,7 +279,7 @@ else
     });
 
     $(document).ready(function () {
- 
+
         // set spinner of bedroom and bathroom
         setFilterSpinnerOptions();
 

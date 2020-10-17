@@ -26,6 +26,8 @@ return [
     "pinterest" => "pinterest",
     "blogger" => "blogger",
     "email_" => "email",
+    "country" => "country",
+    "show" => "show",
     "log_in" => "log in",
     "chat" => "chat",
     "edit_profile" => "edit profile",
