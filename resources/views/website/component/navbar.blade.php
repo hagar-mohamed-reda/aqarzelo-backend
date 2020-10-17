@@ -122,7 +122,7 @@ else
                     <li class="w3-hover-light-gray w3-padding" style="height: 40px!important" >
                         <a href="{{ url('/locale/en') }}" class="w3-display-container">
 
-                            <img src="{{ url('/images/english.jpg') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
+                            <img src="{{ url('/images/english_flag.jpg') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
 
                             <span class="w3-right" >English</span>
                         </a>

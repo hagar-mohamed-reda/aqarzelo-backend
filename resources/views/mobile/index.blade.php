@@ -221,7 +221,7 @@ else
             return loadPage('phone/home');
         }
 
-        function errorToast(message) {
+        function errorToast(message, action=null) {
             playSound("not2");
 
             /*iziToast.show({
@@ -229,20 +229,20 @@ else
                 timeout: 2000,
                 message: message,
             });*/
-            showTast(message, "error");
+            showTast(message, "error", action=null);
         }
 
-        function successToast(message) {
+        function successToast(message, action=null) {
             playSound("not2");
             /*iziToast.show({
                 class: 'w3-green shadow izitoast',
                 timeout: 2000,
                 message: message,
             });*/
-            showTast(message, "success");
+            showTast(message, "success", action=null);
         }
 
-        function showTast(message, type) {
+        function showTast(message, type, action=null) {
             // remove old
             $(".mobile-message-dialog").remove();
 
@@ -290,6 +290,9 @@ else
                 position: 'bottomCenter',
                 message: html,
             });*/
+            if (action) {
+                action(container);
+            }
         }
     </script>
     <script>

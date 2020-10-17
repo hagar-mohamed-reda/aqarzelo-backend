@@ -48,8 +48,8 @@
                 !page.post.category_id ||
                 !page.post.type ||
                 !page.post.space ||
-                !page.post.bedroom_number ||
-                !page.post.bathroom_number ||
+                (!page.post.bedroom_number && page.post.category_id != '4') ||
+                (!page.post.bathroom_number && page.post.category_id != '4') ||
                 !page.post.price_per_meter ||
                 !page.post.price
                 )

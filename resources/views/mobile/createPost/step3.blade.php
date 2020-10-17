@@ -52,7 +52,7 @@
                                     v-model="post.title_ar"
                                     max="50"
                                     class="form-control w3-round post-title-input" placeholder="{{ __('mobile.write_post_title_ar') }}" >
-                                    <span v-html="post.title? post.title_ar.length : '0'" ></span> / 50
+                                    <span v-html="post.title_ar? post.title_ar.length : '0'" ></span> / 50
                                 </div>
                             </p>
                           </div>
@@ -60,13 +60,13 @@
                         </div>
                         <div
                         class="meta-date w3-display-container"
-                        v-bind:style="post.title? 'background-color: #06D9B2 !important' : 'background-color: white!important' "
+                        v-bind:style="post.title_ar? 'background-color: #06D9B2 !important' : 'background-color: white!important' "
                         onclick="$('.post-timeline-content').hide();$(this).parent().find('.post-timeline-content').toggle()"   >
                             <div class="w3-display-topmiddle w3-padding"
                             style="z-index: 3;padding-top: 10px!important"
                             >
                                 <img src="{{ url('/mobile/images/create-post/title.png') }}"
-                                v-bind:class="post.title? 'invert' : ''"
+                                v-bind:class="post.title_ar? 'invert' : ''"
                                  class="icon" width="30px"  >
                             </div>
                         </div>

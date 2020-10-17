@@ -25,6 +25,7 @@ return [
     "telegram" => "telegram",
     "pinterest" => "pinterest",
     "blogger" => "blogger",
+    "setting" => "setting",
     "email_" => "email",
     "country" => "country",
     "show" => "show",

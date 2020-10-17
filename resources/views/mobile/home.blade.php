@@ -178,6 +178,9 @@ else
                     var html =
                     "<button class='btn-sm btn light-theme-background w3-text-white' onclick='loadRecommendPosts();$(this).hide(500)' >{{ __('words.recommended_posts') }}</button>";
                     successToast("{{ __('words.no_result_found') }} " + html);
+                    $('.mobile-message-dialog button').click(function(){
+                        loadRecommendPosts();
+                    });
                     //loadRecommendPosts();
                 }
             });
