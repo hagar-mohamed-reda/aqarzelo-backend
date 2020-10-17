@@ -266,7 +266,7 @@ else
 
             content.innerHTML +=  '<button style="padding: 8px 16px!important;margin-bottom: -10px" class="w3-display-bottommiddle w3-padding text-capitalize btn light-theme-background w3-large w3-text-white w3-round-xlarge shadow current-location-btn" >{{ __("mobile.ok") }}</button>';
 
-            document.appendChild(container);
+            document.body.appendChild(container);
             $(".mobile-message-dialog").modal('show');
             /*
             img = public_path + "/mobile/images/logo.png";
