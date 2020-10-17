@@ -75,7 +75,10 @@ else
               </a>
             </div>
         </div>
-        <div class="application-container w3-display-container favourite-container w3-white" v-bind:style="'height: ' + (height - 80) + 'px'" >
+        <div
+        class="application-container w3-display-container favourite-container"
+        style="background-color: #fafafa"
+        v-bind:style="'height: ' + (height - 80) + 'px'" >
             <ul class="w3-ul w3-row">
                 <li
                 v-for="post in posts"
