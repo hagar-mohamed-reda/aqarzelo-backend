@@ -298,9 +298,11 @@
                 uploadedImageCount: 1,
                 post: {
                     title: null,
+                    title_ar: null,
                     lat: null,
                     lng: null,
                     category_id: null,
+                    country_id: null,
                     owner_type: null,
                     payment_method: null,
                     finishing_type: null,
