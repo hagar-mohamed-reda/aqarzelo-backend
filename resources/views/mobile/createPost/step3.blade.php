@@ -86,7 +86,7 @@
                                   <span
                                   class="w3-tag w3-white w3-round-xlarge btn light-theme-background-hover"
                                   v-bind:class="post.category_id == '{{ $item->id }}'? 'light-theme-background' : ''"
-                                  onclick="page.post.category_id = '{{ $item->id }}';"
+                                  onclick="page.post.category_id = '{{ $item->id }}';showDependOnCategory()"
                                   style="border: 1px solid #00b0bd;margin: 5px" >{{ session("direction")=='rtl'? $item->name_ar : $item->name_en }}</span>
                                   @endforeach
                               </div>
@@ -223,7 +223,7 @@
                       </div>
                     </div>
                     <!-- Article -->
-                    <div class="timeline-article">
+                    <div class="timeline-article bedroom_number_section">
                       <div class="content-left-container">
                         <div class="content-right">
                           <p>
@@ -255,7 +255,7 @@
                     </div>
                     <!-- // Article -->
                     <!-- Article -->
-                    <div class="timeline-article">
+                    <div class="timeline-article bathroom_number_section">
                       <div class="content-left-container">
                         <div class="content-right">
                           <p>

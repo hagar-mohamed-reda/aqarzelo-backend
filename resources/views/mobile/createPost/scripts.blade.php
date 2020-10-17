@@ -291,6 +291,30 @@
             page.images = page.post.images;
         }
 
+        function showDependOnCategory() {
+            if (page.post.category_id == 6) {
+                $('.float-number-section').hide();
+            }
+            else if (page.post.category_id == 4) {
+                $('.bedroom_number_section').hide();
+                $('.bathroom_number_section').hide();
+                $('.build_date_section').hide();
+                $('.finishing_type_section').hide();
+                $('.float-number-section').hide();
+                //
+                page.post.bedroom_number = 0;
+                page.post.bathroom_number = 0;
+                page.post.finishing_type = 'without_finished';
+            }
+            else {
+                $('.build_date_section').show();
+                $('.finishing_type_section').show();
+                $('.bathroom_number_section').show();
+                $('.bedroom_number_section').show();
+                $('.float-number-section').show();
+            }
+        }
+
         var page = new Vue({
             el: '#page',
             data: {

@@ -215,7 +215,7 @@
       </div>
       <!-- // Article -->
       <!-- Article -->
-      <div class="timeline-article">
+      <div class="timeline-article build_date_section">
         <div class="content-left-container">
           <div class="content-right">
             <p>
@@ -247,7 +247,7 @@
       </div>
       <!-- // Article -->
       <!-- Article -->
-      <div class="timeline-article">
+      <div class="timeline-article float-number-section">
         <div class="content-left-container">
           <div class="content-right">
             <p>
