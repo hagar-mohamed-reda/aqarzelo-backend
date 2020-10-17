@@ -216,7 +216,7 @@ else
         <div
         onclick="$('#shareModal').hide()"
         style="z-index: 1"
-        class="w3-display-topleft w3-block" style="height: 100%;width: 100%" >
+        class="w3-display-topleft w3-block modal" style="height: 100%;width: 100%" >
 
         </div>
         <div
@@ -225,10 +225,47 @@ else
             <div>{{ __('mobile.share_with') }}</div>
             <br>
             <div class="row" >
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                <div
+                data-sharer="facebook" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
                     <i class="fa fa-facebook-square w3-text-indigo w3-xxlarge" ></i>
                     <br>
                     {{ __('mobile.facebook') }}
+                </div>
+                <div
+                data-sharer="whatsapp" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}" data-web
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-whatsapp w3-text-green w3-xxlarge" ></i>
+                    <br>
+                    {{ __('mobile.whatsapp') }}
+                </div>
+                <div
+                data-sharer="twitter" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-twitter-square w3-text-cyan w3-xxlarge" ></i>
+                    <br>
+                    {{ __('mobile.twitter') }}
+                </div>
+                <div
+                data-sharer="linkedin" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-linkedin-square w3-xxlarge" style="color: #0073b1!important" ></i>
+                    <br>
+                    {{ __('mobile.linkedin') }}
+                </div>
+                <div
+                data-sharer="email" v-bind:data-to="user.email" data-subject="aqarzelo website" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-envelope w3-xxlarge w3-text-blue"   ></i>
+                    <br>
+                    {{ __('mobile.email') }}
+                </div>
+                <div
+                data-sharer="telegram" v-bind:data-to="user.phone" data-subject="aqarzelo website" data-title="aqarzelo" data-hashtags="aqarzelo" data-url="{{ url('/') }}"
+                class="col-lg-3 col-md-3 col-sm-3 col-xs-3 text-center" >
+                    <i class="fa fa-telegram w3-xxlarge" style="color: #34ADE1!important"  ></i>
+                    <br>
+                    {{ __('mobile.telegram') }}
                 </div>
             </div>
         </div>
@@ -283,7 +320,8 @@ else
             data: {
                 api_token: window.localStorage.getItem("api_token"),
                 name: window.localStorage.getItem("name"),
-                photo: window.localStorage.getItem("photo")
+                photo: window.localStorage.getItem("photo"),
+                user: JSON.parse(window.localStorage.getItem("user"))
             },
             methods: {
             },
