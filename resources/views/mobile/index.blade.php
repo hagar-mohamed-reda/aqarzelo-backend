@@ -291,20 +291,6 @@ else
                 message: html,
             });*/
         }
-                    $('.favourite-bottom-nav-item').click(function(){
-                        if (localStorage.getItem('api_token')) {
-                            loadPage('/phone/favourite');
-                        } else {
-                            error('{{ __("mobile.login_first") }}');
-                        }
-                    });
-                    $('.notification-bottom-nav-item').click(function(){
-                        if (localStorage.getItem('api_token')) {
-                            loadPage('/phone/notification');
-                        } else {
-                            error('{{ __("mobile.login_first") }}');
-                        }
-                    });
     </script>
     <script>
         var app = new Vue({
