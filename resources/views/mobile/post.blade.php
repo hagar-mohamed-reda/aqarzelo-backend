@@ -135,7 +135,7 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
                             v-bind:height="(height) + 'px'"
                             width="100%" ></iframe>
                         @else
-                        <img src="{{ $image->image }}"  class="w3-block padding-top" onload="calculateTop(this)" >
+                        <img src="{{ $image->image }}"  class="w3-block" onload="calculateTop(this)" >
                         @endif
                     </div>
                 </div>
