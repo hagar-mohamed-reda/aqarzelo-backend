@@ -30,6 +30,8 @@ return [
     "show" => "show",
     "log_in" => "log in",
     "chat" => "chat",
+    "write_post_title_en" => "post title in english",
+    "write_post_title_ar" => "post title in arabic",
     "edit_profile" => "edit profile",
     "change_password" => "change password",
     "notification" => "notification",

@@ -1,9 +1,9 @@
 
 
-    
+
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @include("mobile.createPost.getLocationScripts")
-    <script> 
+    <script>
 
     function setPostSpinner() {
         // preparse number spinner for bedroom_number
@@ -41,17 +41,18 @@
         });
     }
 
-        function validateStep3() { 
+        function validateStep3() {
             if (
                 !page.post.title ||
+                !page.post.title_ar ||
                 !page.post.category_id ||
                 !page.post.type ||
                 !page.post.space ||
                 !page.post.bedroom_number ||
                 !page.post.bathroom_number ||
                 !page.post.price_per_meter ||
-                !page.post.price  
-                )  
+                !page.post.price
+                )
             {
                 errorToast("{{ __('mobile.fill_all_required_data') }}");
                 return false;
@@ -65,8 +66,8 @@
                 !page.post.lng ||
                 !page.post.lat ||
                 !page.post.city_id ||
-                !page.post.area_id  
-                )  
+                !page.post.area_id
+                )
             {
                 errorToast("{{ __('mobile.fill_all_required_data') }}");
                 return false;
@@ -80,8 +81,8 @@
                 !page.post.description ||
                 !page.post.owner_type ||
                 !page.post.payment_method ||
-                !page.post.finishing_type  
-                )  
+                !page.post.finishing_type
+                )
             {
                 errorToast("{{ __('mobile.fill_all_required_data') }}");
                 return false;
@@ -90,10 +91,10 @@
             return true;
         }
 
-        function goto(step) { 
-            if (step == 2) { 
+        function goto(step) {
+            if (step == 2) {
             }
-            
+
             if (step == 4) {
                 if (!validateStep3())
                     return;
@@ -108,7 +109,7 @@
             page.step = step;
         }
 
-        function sendPost() { 
+        function sendPost() {
             if (!validateStep5())
                 return;
             Swal.fire({
@@ -132,7 +133,7 @@
         function getPostParams() {
             var fitlerImages = page.post.images.filter(function(value, index, arr){
                 return value;
-            }); 
+            });
             var post = page.post;
             post.images = null;
             var string = $.param(post);
@@ -144,18 +145,18 @@
         function savePost() {
             if (!app.api_token)
                 return error('{{ __("words.login_first") }}');
-              
+
             images = page.post.images.filter(function(value, index, arr){
                 return value;
-            }); 
+            });
 
-            // show loading 
+            // show loading
             $(".post-loader").show();
-             
+
             var data = "";
-             
+
             data += "api_token=" + app.api_token + "&" + getPostParams();
-              
+
             // reverse array
             images.reverse();
 
@@ -168,26 +169,29 @@
                         successToast(response.message_en);
                     if (LANG == "ar")
                         successToast(response.message_ar);
-                     
-                    // 
+
+                    //
                     for(var i = 0; i < page.post.images.length; i ++) {
-                        images[i].post_id =  response.data.id; 
-                        page.post.images[i].post_id =  response.data.id; 
+                        images[i].post_id =  response.data.id;
+                        page.post.images[i].post_id =  response.data.id;
                     }
 
                     savePostImages(images);
-            
+
                 } else {
                     if (LANG == "en")
                         errorToast(response.message_en);
                     if (LANG == "ar")
                         errorToast(response.message_ar);
+
+                    // show loading
+                    $(".post-loader").show();
                 }
-                
+
             });
         }
 
-        function savePostImages(imgs) { 
+        function savePostImages(imgs) {
             if (imgs.length <= 0)
                 return finish();
 
@@ -200,14 +204,14 @@
             formData.append("is_360", image.is_360);
             formData.append("api_token", app.api_token);
             formData.append("post_id", image.post_id);
-            
+
             $.ajax({
                 url: public_path + "/api/post/add-image",
                 type: 'POST',
                 data: formData,
                 processData: false, // tell jQuery not to process the data
                 contentType: false, // tell jQuery not to set contentType
-                success: function (data) {  
+                success: function (data) {
         //            if (response.status == 1) {
         //                if (LANG == "en")
         //                    success(response.message_en)
@@ -218,7 +222,7 @@
         //                    error(response.message_en)
         //                if (LANG == "ar")
         //                    error(response.message_ar)
-        //            } 
+        //            }
                     page.uploadedImageCount += 1;
                     savePostImages(imgs)
                 }
@@ -229,10 +233,10 @@
             $(".post-loader").hide();
             loadPage('phone/profile');
         }
- 
+
 
         function uploadMaster(input) {
-            
+
             if (!app.api_token) {
                     Swal.fire({
                       title: '{{ __("mobile.warning") }}?',
@@ -248,10 +252,10 @@
                         loadPage('phone/login');
                       }
                     });
-                    
+
                 return false;
             }
-                
+
             var file = input.files[0];
             //console.log(input.files[0]);
             page.post.images[0] = {
@@ -260,7 +264,7 @@
             };
             page.images = page.post.images;
 
-            goto(2); 
+            goto(2);
         }
 
         function uploadImage(input) {
@@ -271,8 +275,8 @@
                 path: URL.createObjectURL(file)
             };
             page.post.images.push(image);
-            page.images = page.post.images; 
-        }   
+            page.images = page.post.images;
+        }
 
         function upload360Image(input) {
             var file = input.files[0];
@@ -283,12 +287,12 @@
                 path: URL.createObjectURL(file)
             };
             page.post.images.push(image);
-            page.images = page.post.images; 
+            page.images = page.post.images;
         }
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 step: 1,
                 uploadedImageCount: 1,
                 post: {
@@ -299,7 +303,7 @@
                     owner_type: null,
                     payment_method: null,
                     finishing_type: null,
-                    type: null, 
+                    type: null,
                     bedroom_number: 0,
                     bathroom_number: 0,
                     images: []
@@ -319,10 +323,10 @@
             watched: {
 
             }
-        }); 
-        
-        $(document).ready(function(){  
-             
+        });
+
+        $(document).ready(function(){
+
             $('.create-post-bottom-nav-item').addClass("light-theme-color");
             setPostSpinner();
         });

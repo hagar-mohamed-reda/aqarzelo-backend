@@ -74,6 +74,8 @@ return [
     "error" => "خطا ما",
     "login_first" => "سجل الدخول اولا",
     "comment" => "التعليق",
+    "write_post_title_en" => "عنوان المنشور بالانجليزيه",
+    "write_post_title_ar" => "عنوان المنشور بالعربيه",
     "write_comment" => "اكتب تعليق",
     "create_post" => "انشاء حساب",
     "first_image_is_the_master" => "الصوره الاوله هى الرئيسيه",

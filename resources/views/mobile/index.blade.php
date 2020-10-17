@@ -252,7 +252,7 @@ else
 
             var imgUrl = type == 'success'? '{{ url("/images/message-success.gif") }}' :  '{{ url("/images/message-error.gif") }}';
 
-            //container.style.zIndex = "10";
+            container.style.zIndex = "9999999999";
             container.className = "w3-modal mobile-message-dialog";
             content.className = "modal-dialog modal-sm w3-display-container";
             body.className = "modal-content w3-padding w3-center text-center w3-animate-zoom";
