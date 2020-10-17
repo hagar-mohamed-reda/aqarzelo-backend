@@ -41,6 +41,9 @@ else
         }
 
 
+        .w3-ul li {
+            height: 53px!important;
+        }
     </style>
 
     <!-- html content -->
@@ -60,7 +63,7 @@ else
 
             <ul class="w3-ul" style="padding: 10px" >
 
-                <li class="btn w3-block" onclick="loadPage('phone/login')" v-if='!api_token' >
+                <li class="btn w3-block" onclick="loadPage('phone/login')" v-if='!api_token' style="margin-bottom: 3px!important"  >
                     <div class="w3-bar w3-block register-item" >
                         <a class="w3-bar-item w3-text-gray" href="#">
                             <img src="{{ url('/mobile/images/avatar.png') }}" width="55vw" >
@@ -73,7 +76,7 @@ else
                     </div>
                 </li>
 
-                <li class="btn w3-block" onclick="loadPage('phone/profile')" v-if='api_token' >
+                <li class="btn w3-block" onclick="loadPage('phone/profile')" v-if='api_token' style="margin-bottom: 3px!important" >
                     <div class="w3-bar w3-block register-item" >
                         <a class="w3-bar-item w3-text-gray" href="#">
                             <img v-bind:src='photo' width="55vw" class="w3-circle" >
@@ -99,6 +102,9 @@ else
                     </a>
                 </li>
 
+                <li>
+                    <b>{{ __('mobile.profile') }}</b>
+                </li>
                 <!-- edit profile  -->
                 <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('phone/profile/edit')" v-if='api_token' >
                     <a class="w3-bar-item w3-text-gray" href="#">
@@ -134,11 +140,26 @@ else
                     </a>
                 </li>
 
+                <li>
+                    <b>{{ __('mobile.global') }}</b>
+                </li>
                 <!-- language  -->
                 <li class="w3-bar btn w3-block small-height-item" onclick="showLanguageDailog()" >
                     <a class="w3-bar-item w3-text-gray" href="#">
                         <img src="{{ url('/mobile/images/lang.png') }}" style="margin: 5px" width="30vw" >
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.language') }}</b>
+                    </a>
+
+                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" href="#">
+                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    </a>
+                </li>
+
+                <!-- contact  -->
+                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('/phone/contact')" >
+                    <a class="w3-bar-item w3-text-gray" href="#">
+                        <img src="{{ url('/mobile/images/contact.png') }}" style="margin: 5px" width="30vw" >
+                        <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.contact') }}</b>
                     </a>
 
                     <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" href="#">
@@ -158,11 +179,11 @@ else
                     </a>
                 </li>
 
-                <!-- contact  -->
-                <li class="w3-bar btn w3-block small-height-item" onclick="loadPage('/phone/contact')" >
+                <!-- share  -->
+                <li class="w3-bar btn w3-block small-height-item"  onclick="$('#shareModal').show()" >
                     <a class="w3-bar-item w3-text-gray" href="#">
-                        <img src="{{ url('/mobile/images/contact.png') }}" style="margin: 5px" width="30vw" >
-                        <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.contact') }}</b>
+                        <span class="fa fa-share-alt light-theme-background w3-circle"  style="margin: 5px" width="30vw" ></span>
+                        <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.share') }}</b>
                     </a>
 
                     <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" href="#">
@@ -189,8 +210,31 @@ else
 
     </div>
 
+    <div class="w3-modal w3-display-container" id="shareModal" >
+        <div
+        onclick="$('#shareModal').hide()"
+        style="z-index: 1"
+        class="w3-display-topleft w3-block" style="height: 100%;width: 100%" >
+
+        </div>
+        <div
+        style="z-index: 2"
+        class="w3-modal-content w3-display-bottomleft w3-block w3-white shadow w3-animate-bottom">
+            <div>{{ __('mobile.share_with') }}</div>
+            <br>
+            <div class="row" >
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3" >
+                    <i class="fa fa-facebook-square w3-text-indigo w3-large" ></i>
+                    <br>
+                    {{ __('mobile.facebook') }}
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+
+    <script src="https://cdn.jsdelivr.net/npm/sharer.js@latest/sharer.min.js"></script>
 
     <script>
         function showLanguageDailog() {
