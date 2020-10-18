@@ -8,6 +8,11 @@
     //if (session("direction") == null)
     //    session(["direction" => "ltr"]);
 
+    if (session("locale") == "ar") {
+        session(["direction" => "rtl"]);
+    } else {
+        session(["direction" => "ltr"]);
+    }
 @endphp
 
 
