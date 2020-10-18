@@ -20,33 +20,33 @@ else
 
 @section("content")
 
-<span class="hidden">{{ session("direction") }}</span>
+<span class="hidden">{{ session("dir") }}</span>
 <span class="hidden">{{ session()->get('locale') }}</span>
 
 
 <div class="slideshow modal show home-background home-modal" >
 
-    <div class="home-title-hover w3-display-top{{ session("direction") == "ltr"? 'left' : 'right'  }}" style="z-index: 2;padding-{{ session("direction") == "rtl"? 'right' : 'left'  }}: 0px!important;top: 35%;width:500px" >
-        <div class="w3-padding animated fadeInLeft" style="height:220px;padding-{{ session("direction") == "ltr"? 'left' : 'right'  }}: 0px!important;background-color: rgba(2, 170, 169, 0.5)" >
+    <div class="home-title-hover w3-display-top{{ session("dir") == "ltr"? 'left' : 'right'  }}" style="z-index: 2;padding-{{ session("dir") == "rtl"? 'right' : 'left'  }}: 0px!important;top: 35%;width:500px" >
+        <div class="w3-padding animated fadeInLeft" style="height:220px;padding-{{ session("dir") == "ltr"? 'left' : 'right'  }}: 0px!important;background-color: rgba(2, 170, 169, 0.5)" >
             <br>
             <div class="w3-padding w3-jumbo animated fadeInLeft delay-1s" style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white"  >
                 <span class="w3-margin-left" ><b>AQAR ZELO</b></span>
             </div>
             <br>
-            <div class="w3-large w3-text-white" style="padding-{{ session("direction") == "rtl"? 'right' : 'left'  }}: 16px!important;margin: auto;width: 90%;" >
+            <div class="w3-large w3-text-white" style="padding-{{ session("dir") == "rtl"? 'right' : 'left'  }}: 16px!important;margin: auto;width: 90%;" >
                 <span class="home-slide-detail text-capitalize" style=" " >{{ __("words.home_page_slide_title") }}</span>
             </div>
         </div>
         <br>
         <br>
         <div class="w3-padding" >
-            <div class=" w3-margin-{{ session("direction") == "ltr"? 'left' : 'right'  }}" >
+            <div class=" w3-margin-{{ session("dir") == "ltr"? 'left' : 'right'  }}" >
                 <a target="_blank" href="https://play.google.com/store/apps/details?id=com.aqarzelo.aqarzelo" role="button" class="w3-btn app-button animated zoomIn" class="shadow" style="margin: 5px"  >
-                    <img src="{{ url('/website/icons/google-store.png') }}" width="20px" style="padding-{{ session("direction") == "ltr"? 'left' : 'right'  }}: 5px" >
+                    <img src="{{ url('/website/icons/google-store.png') }}" width="20px" style="padding-{{ session("dir") == "ltr"? 'left' : 'right'  }}: 5px" >
                     {{ __("words.google_play") }}
                 </a>
                 <a href="#" role="button" class="w3-btn app-button animated zoomIn delay-1s" class="shadow" style="margin: 5px"  >
-                    <img src="{{ url('/website/icons/apple.png') }}"width="20px" style="padding-{{ session("direction") == "rtl"? 'left' : 'right'  }}: 5px" >
+                    <img src="{{ url('/website/icons/apple.png') }}"width="20px" style="padding-{{ session("dir") == "rtl"? 'left' : 'right'  }}: 5px" >
                     {{ __("words.app_store") }}
                 </a>
             </div>
@@ -58,7 +58,7 @@ else
     <br>
     <br>
     <br>
-    <div class="slide-image" style="margin-{{ session("direction") == "ltr"? 'left' : 'right'  }}: 25%;width: 65%;" >
+    <div class="slide-image" style="margin-{{ session("dir") == "ltr"? 'left' : 'right'  }}: 25%;width: 65%;" >
 
         <div class="search-container" style="" >
             <form action="{{ url('map') }}" id="searchForm" >
