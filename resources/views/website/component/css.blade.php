@@ -1,13 +1,15 @@
 
+{{ session('direction') }}
 @php
 
     if (!session("locale"))
         session(["locale" => "ar"]);
 
-    //if (!session("direction"))
-    //    session(["direction" => "ltr"]);
+    if (!session("direction"))
+        session(["direction" => "ltr"]);
 
 @endphp
+
 
 <link rel="stylesheet" href="{{ url('/website') }}/css/animate.css">
 
