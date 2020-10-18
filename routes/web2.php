@@ -67,7 +67,7 @@ Route::get("/locale/{lang}", function($lang){
 		$direction = "rtl";
 
 
-	session(["direction" => $direction]);
+	session(["direction" => "rtl"]);
 
 	//return session("locale");
 	return back();
