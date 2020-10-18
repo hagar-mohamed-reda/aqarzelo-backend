@@ -68,7 +68,7 @@ else
                         </div>
                         <br>
                         <div class="w3-display-container   animated fadeInRight">
-                            <span class="w3-display-topleft w3-padding" onclick="$('.password').attr('type') == 'password'? $('.password').attr('type', 'text') :  $('.password').attr('type', 'password')" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
+                            <span class="w3-display-topleft w3-padding" onclick="showPassword(this)" ><i class="fa fa-eye w3-text-gray w3-large" style="margin-top: 90%" ></i></span>
                             <input type="password" required="" name="password" id='password' class="password w3-input w3-light-gray w3-block w3-round input" placeholder='{{ __("words.password") }}'  >
                         </div>
                     </center>
@@ -138,6 +138,15 @@ else
 
 @section("js")
 <script>
+    function showPassword(input) {
+        if ($(input).parent().find('.password').attr('type') == 'password') {
+            $(input).parent().find('.password').attr('type', 'text');
+            $(input).children()[0].className = "fa fa-eye-slash w3-text-gray w3-large";
+        } else {
+            $(input).parent().find('.password').attr('type', 'password');
+            $(input).children()[0].className = "fa fa-eye w3-text-gray w3-large";
+        }
+    }
 
     $(document).ready(function () {
     });
