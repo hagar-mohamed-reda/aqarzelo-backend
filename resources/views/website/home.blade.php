@@ -21,6 +21,7 @@ else
 @section("content")
 
 <span class="hidden">{{ session("direction") }}</span>
+<span class="hidden">{{ session()->get('locale') }}</span>
 
 
 <div class="slideshow modal show home-background home-modal" >
