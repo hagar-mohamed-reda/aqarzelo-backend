@@ -4,8 +4,8 @@
     if (!session("locale"))
         session(["locale" => "ar"]);
 
-    if (!session("direction"))
-        session(["direction" => "ltr"]);
+    //if (!session("direction"))
+    //    session(["direction" => "ltr"]);
 
 @endphp
 
