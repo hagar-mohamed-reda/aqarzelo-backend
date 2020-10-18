@@ -53,12 +53,18 @@ else
                 <button class="fa fa-ellipsis-h float-btn w3-margin shadow" onclick="$('.services-btn').toggle()" ></button>
 
                 <button onclick="window.location='{{ optional(App\Setting::find(9))->value }}'" href="" role="button"
-                    class="services-btn  w3-indigo float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" >
-                    <img src="{{ url('/images/website_icon/facebook.svg') }}" class="w3-circle" style="width: 100%;height: 100%;" alt="">
+                    class="services-btn  fa w3-indigo float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px;padding: 0px!important;border: none!important" >
+                    <img src="{{ url('/images/website_icon/facebook.webp') }}" class="w3-circle" style="width: 100%;height: 100%;" alt="">
                 </button>
-                <button onclick="window.location='{{ optional(App\Setting::find(10))->value }}'" href="" role="button" class="services-btn fa fa-twitter w3-cyan float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
-                <button onclick="window.location='{{ optional(App\Setting::find(11))->value }}'" href="" role="button" class="services-btn fa fa-youtube-square w3-red float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
-                <button onclick="window.location='{{ optional(App\Setting::find(12))->value }}'" href="" role="button" class="services-btn fa fa-instagram w3-purple float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px" ></button>
+                <button onclick="window.location='{{ optional(App\Setting::find(10))->value }}'" href="" role="button" class="services-btn fa w3-cyan float-btn w3-margin shadow animated fadeInLeft" style="width: 50px;height: 50px;padding: 0px!important;border: none!important" >
+                    <img src="{{ url('/images/website_icon/twitter.png') }}" class="w3-circle" style="width: 100%;height: 100%;" alt="">
+                </button>
+                <button onclick="window.location='{{ optional(App\Setting::find(11))->value }}'" href="" role="button" class="services-btn fa w3-red float-btn w3-margin shadow animated fadeInLeft"  style="width: 50px;height: 50px;padding: 0px!important;border: none!important" >
+                    <img src="{{ url('/images/website_icon/youtube.png') }}" class="w3-circle" style="width: 100%;height: 100%;" alt="">
+                </button>
+                <button onclick="window.location='{{ optional(App\Setting::find(12))->value }}'" href="" role="button" class="services-btn fa w3-purple float-btn w3-margin shadow animated fadeInLeft"  style="width: 50px;height: 50px;padding: 0px!important;border: none!important" >
+                    <img src="{{ url('/images/website_icon/instagram.png') }}" class="w3-circle" style="width: 100%;height: 100%;" alt="">
+                </button>
             </div>
                 <center v-if="user" >
                     <button
