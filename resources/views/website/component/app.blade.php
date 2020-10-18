@@ -1,18 +1,36 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("en"); 
+    App()->setLocale("en");
 
 @endphp
+@php
+
+    //if (session("locale") == null)
+    //    session(["locale" => "en"]);
+
+    //if (session("direction") == null)
+    //    session(["direction" => "ltr"]);
+
+    if (session("locale") == "ar") {
+        //session()->put('direction', 'rtl');
+        session(["dir" => "rtl"]);
+        session(["direction" => "rtl"]);
+    } else {
+       // session()->put('direction', 'ltr');
+        session(["dir" => "ltr"]);
+        session(["direction" => "ltr"]);
+    }
+@endphp
 <!DOCTYPE html>
-<html lang="{{ session('locale')? session('locale'): 'ar' }}" > 
-    <head> 
-        @yield("css") 
+<html lang="{{ session('locale')? session('locale'): 'ar' }}" >
+    <head>
+        @yield("css")
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- css section --> 
+        <!-- css section -->
         @include("website.component.css")
 
         @include("website.component.loader")
@@ -30,25 +48,25 @@ else
         @endif
     </head>
 
-    <body>  
+    <body>
         @include("website.component.navbar")
-         
+
         <div id="root" >
-            
-            @yield("content")  
-            
+
+            @yield("content")
+
         </div>
     </body>
 
 
-    <!-- js section --> 
+    <!-- js section -->
     @include("website.component.js")
 
     @yield("js")
-    
+
     @include("website.component.notify")
 
-    <script> 
+    <script>
         $(document).ready(function(){
             $(".loader").fadeOut();
         });

@@ -1,5 +1,5 @@
 
-<span class="hidden">{{ session("direction") }}</span>
+<span class="hidden">{{ session("dir") }}</span>
 <span class="hidden">{{ session()->get('locale') }}</span>
 @php
 
@@ -10,11 +10,11 @@
     //    session(["direction" => "ltr"]);
 
     if (session("locale") == "ar") {
-        session()->put('direction', 'rtl');
-        //session(["direction" => "rtl"]);
+        //session()->put('direction', 'rtl');
+        session(["dir" => "rtl"]);
     } else {
-        session()->put('direction', 'ltr');
-        //session(["direction" => "ltr"]);
+       // session()->put('direction', 'ltr');
+        session(["dir" => "ltr"]);
     }
 @endphp
 
