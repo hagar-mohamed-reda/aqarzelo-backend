@@ -19,8 +19,8 @@ else
 
 <div class="modal show login-background" id="siteContainer" style="z-index: -1;padding-top: 70px" >
 
-    <div class="w3-row step step-1" style="overflow: auto" >
-        <div class="w3-col l7 m7 s6 w3-padding"   >
+    <div class="row step step-1" style="overflow: auto" >
+        <div class="col-lg-7 col-md-7 col-sm-6 w3-padding"   >
             <span class="w3-xxlarge text-uppercase" >{{ __("words.choose_template") }}</span>
             <div class="alert alert-info" >
                 {{ __("words.create_template_for_company_only") }}
@@ -78,14 +78,17 @@ else
 
         </div>
 
-        <div class="w3-col l5 m5 s5 w3-display-container" style="height: 100%" >
+        <div class="col-lg-5 col-md-5 col-sm-6 w3-display-container" style="height: 100%" >
             <div class="w3-display-topleft dark-theme-background template-loader" style="width: 100%;height: 100%" >
 
                 <center style="margin-top: 45%" >
                     <span class="fa fa-spin fa-spinner w3-text-white w3-large" ></span>
                 </center>
             </div>
-            <iframe v-bind:height="height"  width="100%" src="{{ url('/template2/create/7') }}" onload="$('.template-loader').fadeOut(300)"  class="frame" ></iframe>
+            <iframe v-bind:height="height"
+             width="100%" src="{{ url('/template2/create/7') }}"
+             onload="$('.template-loader').fadeOut(300)"
+             class="frame" ></iframe>
         </div>
 
     </div>
