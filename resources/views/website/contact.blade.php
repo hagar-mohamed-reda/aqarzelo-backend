@@ -74,7 +74,7 @@ else
              </div>
         </div>
     </div>
-    <div class="modal-dialog modal-lg " >
+    <div class="modal-dialog modal-lg test" >
         <div class="w3-row w3-modal-content transparent"  >
             <div class="w3-col l6 m6 s6 transparent" >
                 <div class="media animated fadeInUp">
