@@ -1,11 +1,11 @@
 
-{{ session('direction') }}
+<span class="hidden">{{ session('direction') }}</span>
 @php
 
-    if (!session("locale"))
-        session(["locale" => "ar"]);
+    if (session("locale") == null)
+        session(["locale" => "en"]);
 
-    if (!session("direction"))
+    if (session("direction") == null)
         session(["direction" => "ltr"]);
 
 @endphp

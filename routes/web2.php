@@ -59,7 +59,8 @@ Route::get('/get-user', 'website\TemplateController@getUser');
 
 // lang
 Route::get("/locale/{lang}", function($lang){
-	session(["locale" => $lang]);
+    session(["locale" => $lang]);
+    $direction = "rtl";
 	if ($lang == "en")
 		$direction = "ltr";
 	else
