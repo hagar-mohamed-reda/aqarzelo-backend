@@ -79,7 +79,7 @@ else
               </a>
             </div>
         </div>
-        <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 90) + 'px'" >
+        <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 60) + 'px'" >
             <div id="map" class="w3-block"  style="height: 100%" ></div>
 
             <div  class="application-grad-back w3-display-bottommiddle" >
