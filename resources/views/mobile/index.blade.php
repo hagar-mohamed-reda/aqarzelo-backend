@@ -85,7 +85,7 @@ else
 
             .application-header {
                 height: 65px;
-                background-image: repeating-linear-gradient(to bottom, #02A2A7 15%, #02A2A7 7%, #06D9B2 30%)!important;
+                background-image: repeating-linear-gradient(to bottom, #02A2A7, #06D9B2);
             }
 
             .application-header-no-padding  {
