@@ -86,11 +86,10 @@ else
             }
 
             .application-header {
-                height: 65px!important;
+                height: 65px;
             }
 
-            .application-header .btn,
-            .application-header .w3-bar-item  {
+            .application-header-no-padding  {
                 padding: 0px!important;
             }
 
