@@ -80,11 +80,11 @@ else
                 border-top-right-radius: 2em;
                 background-color: white;
                 overflow: hidden;
-                margin-top: -5px;
+                margin-top: -20px;
             }
 
             .application-header {
-                height: 65px;
+                height: 90px;
                 background-image: repeating-linear-gradient(to bottom, #02A2A7, #06D9B2);
             }
 

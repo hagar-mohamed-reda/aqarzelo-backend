@@ -109,7 +109,7 @@ else
 
     <!-- html content -->
     <div class="home " id="page" v-bind:style="'height: ' + height + 'px;'+'background-image: url(' + user.cover_url + ')'"  >
-        <div class="application-header w3-display-container" style="height: 300px"  >
+        <div class="application-header w3-display-container" style="height: 300px;background: transparent;background-image: none"  >
             <br>
             <div class="w3-bar w3-padding w3-display-container">
               <a href="#" class="w3-bar-item btn" onclick="back()" >

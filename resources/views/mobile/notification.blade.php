@@ -69,7 +69,7 @@ else
               </a>
             </div>
         </div>
-        <div class="application-container w3-display-container notification-container" v-bind:style="'height: ' + (height - 65) + 'px'" >
+        <div class="application-container w3-display-container notification-container" v-bind:style="'height: ' + (height - 90) + 'px'" >
             <ul class="w3-ul">
                 <li v-for="notification in notifications"
                     ontouchstart="recordTouch(event)"
