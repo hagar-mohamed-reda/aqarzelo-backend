@@ -254,7 +254,7 @@ application-grad-back
         </div>
     </div>
 
-    <div class="application-container w3-display-topleft w3-block" style="top: 300px;z-index: 3" >
+    <div class="application-container w3-display-topleft w3-block" style="top: 300px;z-index: 3;margin: 0px!important" >
 
 
         <br>
