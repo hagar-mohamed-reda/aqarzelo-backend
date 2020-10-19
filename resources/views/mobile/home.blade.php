@@ -69,7 +69,6 @@ else
     <!-- html content -->
     <div class="home dark-theme-background" id="page" v-bind:style="'height: ' + height + 'px'" >
         <div class="application-header" >
-            <br>
             <div class="w3-bar w3-padding">
               <a href="#" class="w3-bar-item btn" onclick="loadPage('phone/setting')">
                   <span class="fa fa-cog w3-xlarge w3-text-white" ></span>
