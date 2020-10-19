@@ -83,7 +83,8 @@ else
             }
 
             .application-header {
-                height: 80px;
+                height: 75px!important;
+                background-image: repeating-linear-gradient(to bottom, #02A2A7 15%, #02A2A7 7%, #06D9B2 30%)!important;
             }
 
             .application-bottom-nav {
