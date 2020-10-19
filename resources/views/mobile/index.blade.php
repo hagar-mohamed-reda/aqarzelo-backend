@@ -74,19 +74,18 @@ else
         @endif
 
         <style type="text/css">
-            #page {
-                background-image: repeating-linear-gradient(to bottom, #02A2A7 15%, #02A2A7 7%, #06D9B2 30%)!important;
-            }
 
             .application-container {
                 border-top-left-radius: 2em;
                 border-top-right-radius: 2em;
                 background-color: white;
                 overflow: hidden;
+                margin-top: -5px;
             }
 
             .application-header {
                 height: 65px;
+                background-image: repeating-linear-gradient(to bottom, #02A2A7 15%, #02A2A7 7%, #06D9B2 30%)!important;
             }
 
             .application-header-no-padding  {
