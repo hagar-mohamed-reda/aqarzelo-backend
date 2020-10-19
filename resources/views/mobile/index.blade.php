@@ -90,7 +90,6 @@ else
             }
 
             .application-header .btn,
-            .application-header .w3-bar,
             .application-header .w3-bar-item  {
                 padding: 0px!important;
             }
