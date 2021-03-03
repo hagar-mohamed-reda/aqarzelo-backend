@@ -128,6 +128,17 @@ class AuthController extends Controller {
      * @param Request $request
      * @return void
      */
+    public function loadProfile(Request $request) {
+        $user = User::auth($request); 
+        return $user;
+    }
+
+    /**
+     * update user profile info
+     *
+     * @param Request $request
+     * @return void
+     */
     public function updateProfile(Request $request) {
         $user = User::auth($request);
 

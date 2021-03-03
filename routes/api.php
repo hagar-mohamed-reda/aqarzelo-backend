@@ -17,10 +17,10 @@ use Illuminate\Http\Request;
 //****************************************************************
 // user api
 //****************************************************************
-
 // auth
 Route::post('/user/register', "Api\user\AuthController@register");
 Route::post('/user/login', "Api\user\AuthController@login");
+Route::get('/user/profile/get', "Api\user\AuthController@loadProfile");
 Route::post('/user/profile/update', "Api\user\AuthController@updateProfile");
 Route::post('/user/forget-password', "Api\user\AuthController@forgetPassword");
 Route::post('/user/reset-password', "Api\user\AuthController@resetPassword");
@@ -53,9 +53,11 @@ Route::get('/user/post/get', "Api\user\MainController@getPosts");
 //****************************************************************
 Route::post('/post/add', "Api\post\MainController@addPost");
 Route::post('/post/update', "Api\post\MainController@updatePost");
+Route::post('/post/add/{resource}', "Api\post\MainController@updatePost");
 Route::get('/post/search', "Api\post\MainController@search");
 Route::get('/post/recommended', "Api\post\MainController@getRecommended");
 Route::get('/post/get', "Api\post\MainController@get");
+Route::get('/post/{post}', "Api\post\MainController@load");
 Route::get('/post/add-view', "Api\post\MainController@addView");
 Route::post('/post/add-image', "Api\post\MainController@uploadImage");
 Route::post('/post/remove-image', "Api\post\MainController@removeImage");
@@ -83,3 +85,104 @@ Route::get('/category/get', "Api\MainController@getCategories");
 Route::get('/ads/get', "Api\MainController@getAds");
 Route::get('/setting/get', "Api\MainController@getSetting");
 Route::post('/firebase/update', "Api\MainController@updateFirebaseToken");
+
+
+//****************************************************************
+// admin api
+//****************************************************************
+// 
+
+Route::get('test_login', function(){
+    return App\User::find(1);
+});
+
+
+Route::post('admin/sign', 'Api\dashboard\admin\AuthController@login');
+
+Route::group(["prefix" => "", "middleware" => ["auth:api"]], function() {
+
+//countries start
+    Route::get('dashboard', 'Api\dashboard\admin\DashboardController@index');
+    
+//countries start
+    Route::get('countries', 'Api\dashboard\admin\CountryController@index');
+    Route::post('countries/store', 'Api\dashboard\admin\CountryController@store');
+    Route::post('countries/update/{resource}', 'Api\dashboard\admin\CountryController@update');
+    Route::post('countries/delete/{resource}', 'Api\dashboard\admin\CountryController@destroy');
+
+
+//cities start
+    Route::get('cities', 'Api\dashboard\admin\CityController@index');
+    Route::post('cities/store', 'Api\dashboard\admin\CityController@store');
+    Route::post('cities/update/{resource}', 'Api\dashboard\admin\CityController@update');
+    Route::post('cities/delete/{resource}', 'Api\dashboard\admin\CityController@destroy');
+
+
+//areas start
+    Route::get('areas', 'Api\dashboard\admin\AreaController@index');
+    Route::post('areas/store', 'Api\dashboard\admin\AreaController@store');
+    Route::post('areas/update/{resource}', 'Api\dashboard\admin\AreaController@update');
+    Route::post('areas/delete/{resource}', 'Api\dashboard\admin\AreaController@destroy');
+
+
+//ads start
+    Route::get('ads', 'Api\dashboard\admin\AdsController@index');
+    Route::post('ads/store', 'Api\dashboard\admin\AdsController@store');
+    Route::post('ads/update/{resource}', 'Api\dashboard\admin\AdsController@update');
+    Route::post('ads/delete/{resource}', 'Api\dashboard\admin\AdsController@destroy');
+    
+    
+//categories start
+    Route::get('categories', 'Api\dashboard\admin\CategoryController@index');
+    Route::post('categories/store', 'Api\dashboard\admin\CategoryController@store');
+    Route::post('categories/update/{resource}', 'Api\dashboard\admin\CategoryController@update');
+    Route::post('categories/delete/{resource}', 'Api\dashboard\admin\CategoryController@destroy');
+
+//roles start
+    Route::get('roles', 'Api\dashboard\admin\RoleController@index');
+    Route::post('roles/store', 'Api\dashboard\admin\RoleController@store');
+    Route::post('roles/update/{resource}', 'Api\dashboard\admin\RoleController@update');
+    Route::post('roles/permission/{resource}', 'Api\dashboard\admin\RoleController@updatePermission');
+    Route::post('roles/delete/{resource}', 'Api\dashboard\admin\RoleController@destroy');
+
+//users start
+    Route::get('users', 'Api\dashboard\admin\UserController@index');
+    Route::post('users/store', 'Api\dashboard\admin\UserController@store');
+    Route::post('users/update/{resource}', 'Api\dashboard\admin\UserController@update');
+    Route::post('users/delete/{resource}', 'Api\dashboard\admin\UserController@destroy');
+
+//companies start
+    Route::get('companies', 'Api\dashboard\admin\CompanyController@index');
+    Route::post('companies/store', 'Api\dashboard\admin\CompanyController@store');
+    Route::post('companies/update/{resource}', 'Api\dashboard\admin\CompanyController@update');
+    Route::post('companies/delete/{resource}', 'Api\dashboard\admin\CompanyController@destroy');
+
+//plans start
+    Route::get('plans', 'Api\dashboard\admin\PlanController@index');
+    Route::post('plans/store', 'Api\dashboard\admin\PlanController@store');
+    Route::post('plans/update/{resource}', 'Api\dashboard\admin\PlanController@update');
+    Route::post('plans/delete/{resource}', 'Api\dashboard\admin\PlanController@destroy');
+
+//permissions start
+    Route::get('permissions', 'Api\dashboard\admin\PermissionController@index');
+    Route::post('permissions/store', 'Api\dashboard\admin\PermissionController@store');
+    Route::post('permissions/update/{resource}', 'Api\dashboard\admin\PermissionController@update');
+    Route::post('permissions/delete/{resource}', 'Api\dashboard\admin\PermissionController@destroy');
+
+//PermissionGroup start
+    Route::get('permission-groups', 'Api\dashboard\admin\PermissionGroupController@index');
+    Route::post('permission-groups/store', 'Api\dashboard\admin\PermissionGroupController@store');
+    Route::post('permission-groups/update/{resource}', 'Api\dashboard\admin\PermissionGroupController@update');
+    Route::post('permission-groups/delete/{resource}', 'Api\dashboard\admin\PermissionGroupController@destroy');
+
+// translation
+    Route::get('translation', 'Api\dashboard\admin\TranslationController@index');
+    Route::get('translation/get', 'Api\dashboard\admin\TranslationController@get');
+    Route::post('translation/update', 'Api\dashboard\admin\TranslationController@update');
+
+//posts start
+    Route::get('posts', 'Api\dashboard\admin\PostController@index');
+    Route::post('posts/store', 'Api\dashboard\admin\PostController@store');
+    Route::post('posts/update/{resource}', 'Api\dashboard\admin\PostController@update');
+    Route::post('posts/delete/{resource}', 'Api\dashboard\admin\PostController@destroy');
+});

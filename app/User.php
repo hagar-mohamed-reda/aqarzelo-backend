@@ -7,10 +7,12 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Http\Request;
 use DB;
+use Laratrust\Traits\LaratrustUserTrait;
 
 class User extends Authenticatable implements Profilable {
 
-    use Notifiable;
+    use LaratrustUserTrait;
+    use Notifiable; 
 
     /**
      * The attributes that are mass assignable.
@@ -28,7 +30,7 @@ class User extends Authenticatable implements Profilable {
         'youtube_video', 'twitter', 'whatsapp',
         'linkedin', 'website', 'website_available_days',
         'sms_code', 'post_id_tmp', 'templete_id', 'is_external',
-        'verify_code'
+        'verify_code', 'role_id'
     ];
 
     /**
@@ -47,10 +49,25 @@ class User extends Authenticatable implements Profilable {
      * @var array
      */
     protected $appends = [
-        'photo_url', 'cover_url'
+        'photo_url', 'cover_url', 'can_delete', 'plan'
     ];
 
+    public function getPlanAttribute() {
+        return Plan::where('model_id', $this->id)->where('model_type', $this->type)->first(); 
+    }
+     
+    
+    public function getCanDeleteAttribute() {
+        return !Post::where('user_id', $this->id)->exists();
+    } 
+/*
+    public function getPermissionsAttribute() {
+        $ids = DB::table('permission_role')->where('role_id', optional($this->roles()->first())->id)->pluck('permission_id')->toArray();
 
+        $permissions = Permission::whereIn('id', $ids)->pluck('id', 'name')->toArray();
+        return $permissions;
+    }
+*/
     /**
      * return category object
      *
@@ -154,7 +171,7 @@ class User extends Authenticatable implements Profilable {
     public static function auth(Request $request) {
         if (!$request->api_token)
             return null;
-        $user = User::where("api_token", $request->api_token)->first();
+        $user = User::with(['plan', 'company', 'notifications'])->where("api_token", $request->api_token)->first();
         return $user;
     }
 
@@ -190,18 +207,24 @@ class User extends Authenticatable implements Profilable {
         return $this->belongsTo('App\Templete', 'templete_id');
     }
 
+    public function plan() {
+        return $this->belongsTo('App\Plan', 'plan_id')->where('model_type', $this->type);
+    }
+
     public function city() {
         return $this->belongsTo('App\City', 'city_id');
+    }
+
+    public function role() {
+        return $this->belongsTo('App\Role', 'role_id');
     }
 
     public function area() {
         return $this->belongsTo('App\Area', 'area_id');
     }
 
-    public function company() {
-        $company = $this->belongsTo('App\Company', 'company_id')?
-        $this->belongsTo('App\Company', 'company_id') : new Company();
-        return $company;
+    public function company() { 
+        return $this->belongsTo('App\Company', 'company_id')->select('id', 'name', 'type', 'photo');
     }
 
     public function posts() {
@@ -226,6 +249,25 @@ class User extends Authenticatable implements Profilable {
 
     public function favourites() {
         return $this->hasMany('App\Favourite');
+    }
+    
+    public function getCurrentPlan() {
+        $plan = Plan::where('model_type', $this->type)->where('model_id', $this->id)->first();
+        
+        if (!$plan) {
+            $plan = Plan::where('model_type', $this->type)->first();
+        }
+        
+        if (!$plan) {
+            $plan =Plan::where('model_type', optional($this->company)->type)
+                    ->where('model_id', optional($this->company)->id)->first();
+        }
+        
+        if (!$plan) {
+            $plan =Plan::where('model_type', optional($this->company)->type)->first();
+        }
+        
+        return $plan;
     }
 
 }

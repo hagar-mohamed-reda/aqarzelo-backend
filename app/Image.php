@@ -22,8 +22,13 @@ class Image extends Model {
      * @var array
      */
     protected $appends = [
-        'image', 'src'
+        'image', 'src', 'photo_url'
     ];
+    
+    
+    public function getPhotoUrlAttribute() {
+        return $this->image;
+    }
     
     /**
      * get image attribute

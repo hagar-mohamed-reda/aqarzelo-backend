@@ -14,7 +14,7 @@ class Notification extends Model {
      * @var array
      */
     protected $fillable = [
-        'title', 'body', 'post_id', 'user_id', 'seen', 'title_ar', 'body_ar'
+        'title', 'body', 'post_id', 'user_id', 'seen', 'title_ar', 'body_ar', 'icon'
     ];
 
 
@@ -28,6 +28,15 @@ class Notification extends Model {
     ];
 
 
+    public static function notify($title, $body, $icon) {    
+        self::create([
+            "title" => $title, 
+            "body_ar" => $body, 
+            "body_en" => $body, 
+            "icon" => $icon, 
+            "user_id" => request()->user()->id
+        ]);
+    }
     /**
      * return post attribute as Object
      *

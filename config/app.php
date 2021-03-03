@@ -174,6 +174,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Laratrust\LaratrustServiceProvider::class,
 
     ],
 
@@ -226,6 +227,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Dictionary' => App\Dictionary::class,
+        'Laratrust'   => Laratrust\LaratrustFacade::class,
 
     ],
 

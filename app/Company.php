@@ -24,12 +24,14 @@ class Company extends Authenticatable implements Profilable {
         'name', 'email', 'password',
         'phone', 'photo', 'address',
         'cover', 'type', 'active',
+        
         'lng', 'lat', 'templete_id',
         'city_id', 'area_id', 'service_id',
         'attached_file', 'about', 'facebook',
         'youtube_link', 'youtube_video',
         'twitter', 'whatsapp', 'linkedin',
-        'website', 'website_available_days', 'commercial_no','address', 'api_token'
+        'website', 'website_available_days', 'commercial_no','address', 'api_token', 
+        'type'// developer, broker
     ];
 
 
@@ -39,9 +41,16 @@ class Company extends Authenticatable implements Profilable {
      * @var array
      */
     protected $appends = [
-        'photo_url', 'cover_url'
+        'photo_url', 'cover_url', 'can_delete', 'plan'
     ];
 
+    public function getPlanAttribute() {
+        return $this->plan();
+    }
+
+    public function getCanDeleteAttribute() {
+        return !User::where('company_id', $this->id)->exists();
+    }
 
     /**
      * return url of the image of the user
@@ -64,6 +73,10 @@ class Company extends Authenticatable implements Profilable {
         return url('/images/company') . "/" . $this->cover;
     }
 
+    public function plan() {
+        return Plan::where('model_id', $this->id)->where('model_type', $this->type)->first(); 
+    }
+    
     public function users() {
         return $this->hasMany('App\User');
     }

@@ -10,6 +10,20 @@ class Category extends Model
         'name_ar','name_en', 'icon'
     ];
 
+    protected $appends = [
+        'can_delete'
+    ];
+    
+    public function getCanDeleteAttribute() {
+        return !Post::where('category_id', $this->id)->exists();
+    }
+
+    public static function roles() {
+        return [
+            "name_ar" => "required",
+            "name_en" => "required"
+        ];
+    }
     
     public function posts()
     {

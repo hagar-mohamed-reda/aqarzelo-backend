@@ -17,6 +17,7 @@ class Message
     public static function responseJson($status, $message_en, $message_ar = null, $data = null) {
         return [
             "status" => $status,
+            "message" => __($message_en),
             "message_en" => $message_en,
             "message_ar" => ($message_ar)? $message_ar : $message_en,
             "data" => $data

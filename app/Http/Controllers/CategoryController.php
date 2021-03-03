@@ -45,11 +45,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validator = validator()->make($request->all(), [
-            'name_en' => 'required',
-            'name_ar' => 'required',
-            //'icon' => 'required|mimes:jpeg,jpg,bmp,png',
-        ]);
+        $validator = validator()->make($request->all(), Category::roles());
         if ($validator->fails()) {
             Session::flash('error', $validator->errors()->first());
             return back();

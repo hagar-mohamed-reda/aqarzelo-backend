@@ -13,7 +13,25 @@ class Ads extends Model
      * @var array
      */
     protected $fillable = [
-        'url', 'title_en', 'description_en', 'title_ar', 'description_ar', 'expire_date', 'active', 'photo','logo'
+        'title_ar',
+        'publish_date',
+        'end_date',
+        'time_from',
+        'time_to',
+        'seconds',
+        'url',
+        'country_id',
+        'city_id',
+        'area_id',
+        'description_en',
+        'description_ar',
+        'photo',
+        'lat',
+        'lng',
+        'distance',
+        'created_at',
+        'updated_at',
+        'title_en'
     ];
 
     

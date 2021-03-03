@@ -31,12 +31,22 @@ class MainController extends Controller {
      * @return array $response
      */
     public function addPost(Request $request) {
+
         // check if the user login
         $user = User::auth($request);
 
         if (!$user) {
             return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
         }
+
+        // check on user plan
+        $postNumber = User::where('company_id', $request->user()->company_id)->count();
+        $planPostNumber = optional(optional($request->user())->getCurrentPlan())->max_post;
+
+        if ($postNumber >= $planPostNumber && $request->user()->company_id != 1) {
+            return responseJson(0, __(str_replace('{n}', $planPostNumber, 'your cant create more than {n} posts')));
+        }
+
 
         // if the post is exist update it
         if ($request->has("id")) {
@@ -61,7 +71,7 @@ class MainController extends Controller {
         ]);
 
         if ($validator->fails()) {
-            return Message::error(trans("messages_en.fill_all_post_data"), trans("messages_ar.fill_all_post_data"));
+            return Message::error($validator->errors()->first(), trans("messages_ar.fill_all_post_data"));
         }
 
         try {
@@ -76,17 +86,25 @@ class MainController extends Controller {
                 $data['phone'] = $user->phone;
 
             if (isset($data['has_parking'])) {
-                $data['has_parking'] = $data['has_parking'] = true? 1 : 0;
+                $data['has_parking'] = $data['has_parking'] = true ? 1 : 0;
             }
 
             if (isset($data['has_garden'])) {
-                $data['has_garden'] = $data['has_garden'] = true? 1 : 0;
+                $data['has_garden'] = $data['has_garden'] = true ? 1 : 0;
             }
 
             if (isset($data['furnished'])) {
-                $data['furnished'] = $data['furnished'] = true? 1 : 0;
+                $data['furnished'] = $data['furnished'] = true ? 1 : 0;
             }
             $post = Post::create($data);
+
+            // save images
+            /*foreach ($data['images'] as $item) {
+                if (isset($item['photo_url'])) {
+                    $filename = randToken() . ".png";
+                    $this->base64_to_jpeg($item['photo_url'], $filename);
+                }
+            }*/
 
             // if company of the user is not the admin company the post will be accepted
             if ($user->company) {
@@ -131,6 +149,24 @@ class MainController extends Controller {
         }
     }
 
+    function base64_to_jpeg($base64_string, $output_file) {
+        // open the output file for writing
+        $ifp = fopen($output_file, 'wb');
+
+        // split the string on commas
+        // $data[ 0 ] == "data:image/png;base64"
+        // $data[ 1 ] == <actual base64 string>
+        $data = explode(',', $base64_string);
+
+        // we could add validation here with ensuring count( $data ) > 1
+        fwrite($ifp, base64_decode($data[1]));
+
+        // clean up the file resource
+        fclose($ifp);
+
+        return $output_file;
+    }
+
     /**
      * update post information
      *
@@ -145,26 +181,26 @@ class MainController extends Controller {
             return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
         }
         /*
-        // validate the data
-        $validator = validator()->make($request->all(), [
-            'post_id' => 'required',
-            'title' => 'required',
-            'category_id' => 'required',
-            'type' => 'required',
-            'lng' => 'required',
-            'lat' => 'required',
-            'owner_type' => 'required',
-            'space' => 'required',
-            'price_per_meter' => 'required',
-            'city_id' => 'required',
-            'area_id' => 'required',
-            'payment_method' => 'required',
-            'finishing_type' => 'required',
-        ]);
+          // validate the data
+          $validator = validator()->make($request->all(), [
+          'post_id' => 'required',
+          'title' => 'required',
+          'category_id' => 'required',
+          'type' => 'required',
+          'lng' => 'required',
+          'lat' => 'required',
+          'owner_type' => 'required',
+          'space' => 'required',
+          'price_per_meter' => 'required',
+          'city_id' => 'required',
+          'area_id' => 'required',
+          'payment_method' => 'required',
+          'finishing_type' => 'required',
+          ]);
 
-        if ($validator->fails()) {
-            return Message::error(trans("messages_en.fill_all_post_data"), trans("messages_ar.fill_all_post_data"));
-        }*/
+          if ($validator->fails()) {
+          return Message::error(trans("messages_en.fill_all_post_data"), trans("messages_ar.fill_all_post_data"));
+          } */
 
         try {
             // find the post
@@ -184,15 +220,15 @@ class MainController extends Controller {
             $data = $request->all();
 
             if (isset($data['has_parking'])) {
-                $data['has_parking'] = $data['has_parking'] = true? 1 : 0;
+                $data['has_parking'] = $data['has_parking'] = true ? 1 : 0;
             }
 
             if (isset($data['has_garden'])) {
-                $data['has_garden'] = $data['has_garden'] = true? 1 : 0;
+                $data['has_garden'] = $data['has_garden'] = true ? 1 : 0;
             }
 
             if (isset($data['furnished'])) {
-                $data['furnished'] = $data['furnished'] = true? 1 : 0;
+                $data['furnished'] = $data['furnished'] = true ? 1 : 0;
             }
             // add the user_id
             $data['user_id'] = $user->id;
@@ -200,8 +236,6 @@ class MainController extends Controller {
             // update if exist
             ($post) ? $post->update($data) : null;
 
-            // throw exception if post is null
-            throw_if(!$post, new \Exception(''));
 
             return Message::success($message_en, $message_ar, $post->fresh());
         } catch (Exception $e) {
@@ -238,7 +272,7 @@ class MainController extends Controller {
                 $search = true;
             }
 
-            if ($request->has("price1") && $request->has("price2")  && ($request->price1 != null && $request->price2 != null)) {
+            if ($request->has("price1") && $request->has("price2") && ($request->price1 != null && $request->price2 != null)) {
                 $query = $priceCriteria->filter($query);
                 $search = true;
             }
@@ -253,7 +287,7 @@ class MainController extends Controller {
                 $search = true;
             }
 
-            if ($request->has("space1") && $request->has("space2")  && ($request->space1 != null && $request->space2 != null)) {
+            if ($request->has("space1") && $request->has("space2") && ($request->space1 != null && $request->space2 != null)) {
                 $query = $spaceCriteria->filter($query);
                 $search = true;
             }
@@ -264,7 +298,7 @@ class MainController extends Controller {
             }
 
             if ($request->has("category_id") && $request->category_id != null) {
-                $query->where("category_id",  $request->category_id);
+                $query->where("category_id", $request->category_id);
                 $search = true;
             }
 
@@ -284,7 +318,7 @@ class MainController extends Controller {
             }
 
             if ($request->has("search") && $request->search) {
-                $query = $query->where("title",  'like', "%" . $request->search . "%")->
+                $query = $query->where("title", 'like', "%" . $request->search . "%")->
                         orWhere("description", 'like', "%" . $request->search . "%")->
                         orWhere("finishing_type", 'like', "%" . $request->search . "%")->
                         orWhere("type", 'like', "%" . $request->search . "%")->
@@ -330,8 +364,8 @@ class MainController extends Controller {
 //                    ->where("finishing_type", $request->finishing_type)
 //                    ->get();
             $posts = Post::query()
-                    ->where("status", "=", "accepted")
-                    ->take(15)->get();
+                            ->where("status", "=", "accepted")
+                            ->take(15)->get();
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
         } catch (\Exception $e) {
@@ -365,6 +399,15 @@ class MainController extends Controller {
         }
     }
 
+    /**
+     * return one post with id
+     *
+     * @param Request $request
+     * @return type
+     */
+    public function load(Request $request, Post $post) {
+        return $post;
+    }
 
     /**
      * add view for post with mac_address
@@ -385,14 +428,13 @@ class MainController extends Controller {
 
         $post = Post::find($request->post_id);
 
-        ($post)? $post->addView($request->mac_address) : null;
+        ($post) ? $post->addView($request->mac_address) : null;
 
         if (!$post)
             return Message::error(trans("messages_en.forbidden"), trans("messages_ar.forbidden"));
 
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"));
     }
-
 
     /**
      * upload image of the post
@@ -418,7 +460,7 @@ class MainController extends Controller {
         }
 
         try {
-            $image = $request->id? Image::find($request->id) : new Image();
+            $image = $request->id ? Image::find($request->id) : new Image();
             if (!$image) {
                 $image = new Image();
             }
@@ -453,7 +495,6 @@ class MainController extends Controller {
             return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
         }
     }
-
 
     /**
      * remove image from uploaded image of post
@@ -495,7 +536,6 @@ class MainController extends Controller {
         }
     }
 
-
     /**
      * get all image of the post
      *
@@ -520,4 +560,5 @@ class MainController extends Controller {
 
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $images);
     }
+
 }
