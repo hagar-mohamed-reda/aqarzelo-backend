@@ -86,7 +86,7 @@ class AuthController extends Controller {
             'email' => 'required',
             'password' => 'required|min:8',
                 ] );
-         
+
 
         if ($validator->fails()) {
             $key = $validator->errors()->first();
@@ -107,15 +107,15 @@ class AuthController extends Controller {
                     return Message::error(trans("messages_en.account_not_active"), trans("messages_ar.account_not_active"));
                 }
 
-                //if (!$user->api_token) {
+                if (!$user->api_token) {
                     $user->api_token = Helper::randamToken();
                     $user->update();
-                //}
-                
+                }
+
                 // assign permissions
                 $user->permissions = $user->role->permissions()->pluck('id', 'name')->toArray();
                 $user->current_plan = $user->getCurrentPlan();
-                
+
                 return responseJson(1, trans("messages_en.done"), $user);
             }
         } catch (\Exception $e) {
@@ -249,7 +249,7 @@ class AuthController extends Controller {
                 return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $user->fresh());
             }
         } catch (\Exception $e) {
-            
+
         }
         return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
     }
