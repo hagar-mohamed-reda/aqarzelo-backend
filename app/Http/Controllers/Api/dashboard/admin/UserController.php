@@ -69,7 +69,7 @@ class UserController extends Controller
             $validator =   validator()->make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email|unique:users',
-                'phone' => 'required|size:11|unique:users',
+                'phone' => 'required|unique:users',
                 'password' => 'required|min:8',
                 'photo' => 'mimes:jpeg,jpg,bmp,png'
 
@@ -114,7 +114,7 @@ class UserController extends Controller
             $validator =   validator()->make($request->all(), [
                 'name' => 'required',
                 'email' => 'required|email|unique:users,email,'.$request->id,
-                'phone' => 'required|size:11|unique:users,phone,'.$request->id,
+                'phone' => 'required|unique:users,phone,'.$request->id,
                 'password' => 'required|min:8',
 
             ]);
