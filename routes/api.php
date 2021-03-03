@@ -90,7 +90,7 @@ Route::post('/firebase/update', "Api\MainController@updateFirebaseToken");
 //****************************************************************
 // admin api
 //****************************************************************
-// 
+//
 
 Route::get('test_login', function(){
     return App\User::find(1);
@@ -103,7 +103,7 @@ Route::group(["prefix" => "", "middleware" => ["auth:api"]], function() {
 
 //countries start
     Route::get('dashboard', 'Api\dashboard\admin\DashboardController@index');
-    
+
 //countries start
     Route::get('countries', 'Api\dashboard\admin\CountryController@index');
     Route::post('countries/store', 'Api\dashboard\admin\CountryController@store');
@@ -130,8 +130,8 @@ Route::group(["prefix" => "", "middleware" => ["auth:api"]], function() {
     Route::post('ads/store', 'Api\dashboard\admin\AdsController@store');
     Route::post('ads/update/{resource}', 'Api\dashboard\admin\AdsController@update');
     Route::post('ads/delete/{resource}', 'Api\dashboard\admin\AdsController@destroy');
-    
-    
+
+
 //categories start
     Route::get('categories', 'Api\dashboard\admin\CategoryController@index');
     Route::post('categories/store', 'Api\dashboard\admin\CategoryController@store');
@@ -182,6 +182,7 @@ Route::group(["prefix" => "", "middleware" => ["auth:api"]], function() {
 
 //posts start
     Route::get('posts', 'Api\dashboard\admin\PostController@index');
+    Route::get('posts/{resource}', 'Api\dashboard\admin\PostController@load');
     Route::post('posts/store', 'Api\dashboard\admin\PostController@store');
     Route::post('posts/update/{resource}', 'Api\dashboard\admin\PostController@update');
     Route::post('posts/delete/{resource}', 'Api\dashboard\admin\PostController@destroy');

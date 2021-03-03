@@ -39,7 +39,11 @@ class PostController extends Controller
             $query->whereIn('user_id', $ids);
         }
 
-        return $query->paginate(10);
+        return $query->latest()->paginate(10);
+    }
+
+    public function load(Post $resource) {
+        return $resource;
     }
 
     /**
@@ -69,16 +73,6 @@ class PostController extends Controller
      * @return Response
      */
     public function update(Request $request, Post $resource) {
-        $resource = null;
-
-        $ids = User::where('company_id', $request->user()->company_id)->pluck('id')->toArray();
-        $postNumber = Post::whereIn('user_id', $ids)->count();
-        $planPostNumber = optional(optional($request->user())->getCurrentPlan())->max_post;
-
-        if ($postNumber >= $planPostNumber && $request->user()->company_id != 1) {
-            return responseJson(0, str_replace('{n}', $planPostNumber, __('your cant create more than {n} posts')));
-        }
-
         $request->post_id = $resource->id;
         return (new MainController())->addPost($request);
     }

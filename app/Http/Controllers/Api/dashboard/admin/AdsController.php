@@ -13,46 +13,61 @@ class AdsController extends Controller
 
     public function __construct() {
         // permission
-    } 
+    }
 
     /**
      * return all data in json format
      * @return json
      */
     public function index() {
-        $resources = Ads::latest()->get();
-        return $resources;
+        $query = Ads::latest();
+
+        if (request()->search) {
+            $query
+            ->where('title_ar', "like", "%".request()->title_ar."%")
+            ->orWhere('title_en', "like", "%".request()->title_en."%");
+        }
+
+        if (request()->city_id > 0) {
+            $query->where('city_id', request()->city_id);
+        }
+
+        if (request()->area_id > 0) {
+            $query->where('area_id', request()->area_id);
+        }
+
+        return $resources->get();
     }
- 
+
     /**
      * Ads a newly created resource in storage.
      * @param Request $request
      * @return Response
-     */ 
+     */
     public function store(Request $request) {
         $resource = null;
-        try { 
-              
+        try {
+
             //return dump(toClass($data)->api_token);
             $validator = validator($request->json()->all(), [
-                "title_ar" =>  "required",  
-                "title_en" =>  "required"   
+                "title_ar" =>  "required",
+                "title_en" =>  "required"
             ]);
-            
+
             if ($validator->fails()) {
                 return responseJson(0, $validator->errors()->first());
             }
-            $data = $request->all(); 
-             
-            $resource = Ads::create($data); 
+            $data = $request->all();
+
+            $resource = Ads::create($data);
             watch(__('add Ads ') . $resource->name, "fa fa-image");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
-        
+
         return responseJson(1, __('done'), $resource);
     }
-  
+
 
     /**
      * Update the specified resource in storage.
@@ -61,14 +76,14 @@ class AdsController extends Controller
      * @return Response
      */
     public function update(Request $request, Ads $resource) {
-        try { 
-            $data = $request->all(); 
+        try {
+            $data = $request->all();
             $resource->update($data);
             watch(__('edit Ads ') . $resource->name, "fa fa-image");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
         }
-        
+
         return responseJson(1, __('done'), $resource->fresh());
     }
 
@@ -77,9 +92,9 @@ class AdsController extends Controller
      * @param int $id
      * @return Response
      */
-    public function destroy(Ads $resource) { 
-        try { 
-            watch(__('remove Ads ') . $resource->name, "fa fa-image"); 
+    public function destroy(Ads $resource) {
+        try {
+            watch(__('remove Ads ') . $resource->name, "fa fa-image");
             $resource->delete();
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
