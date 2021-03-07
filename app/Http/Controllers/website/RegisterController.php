@@ -8,6 +8,8 @@ use App\User;
 use App\Company;
 use App\Helper;
 use App\Message;
+use App\Plan;
+use App\PlanAssign;
 
 class RegisterController extends WebsiteController
 {
@@ -18,7 +20,8 @@ class RegisterController extends WebsiteController
      * @return String html of login.
      */
     public function index() {
-        return view($this->prefix . ".register");
+        $plans = Plan::where('model_type', 'agent')->get();
+        return view($this->prefix . ".register", compact("plans"));
     }
 
     /**
@@ -31,7 +34,7 @@ class RegisterController extends WebsiteController
         $validator = validator()->make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'phone' => 'required|size:11|unique:users',
+            'phone' => 'required|unique:users',
             'password' => 'required|min:8',
         ], [
             "name.required" => trans("messages.please_fill_all_data"),
@@ -57,15 +60,33 @@ class RegisterController extends WebsiteController
         $data['active'] = 'active';
         $data['api_token'] = Helper::randamToken();
 
-        $user = User::create($data);
-        $user->password = bcrypt($data['password']);
-        $user->update();
+        if ($request->model_type != 'company') {
+            $user = User::create($data);
+            $user->password = bcrypt($data['password']);
+            $user->update();
 
-        session(["user" => $user->id]);
-        session(["type" => "USER"]);
+            if ($request->plan_id > 0) {
+                PlanAssign::create([
+                    "plan_id" => $request->plan_id,
+                    "model_type" => $request->model_type,
+                    "model_id" => $user->id,
+                    "date" => date('Y-m-d')
+                ]);
+            }
 
-        Helper::notify(Message::success(trans("messages.done")));
-        return redirect("/profile");
+            session(["user" => $user->id]);
+            session(["type" => "USER"]);
+
+            Helper::notify(Message::success(trans("messages.done")));
+            return redirect("/profile");
+        } else {
+            $data['active'] = "not_active";
+            $user = Company::create($data);
+
+            Helper::notify(Message::success(trans("messages.done")));
+            return back();
+        }
+
     }
 
 

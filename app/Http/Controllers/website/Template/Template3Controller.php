@@ -10,9 +10,9 @@ class Template3Controller extends Controller
 {
   public function index($id)
     {
-      $user =User::find($id); 
-      $posts = Post::where('user_id',$id)->get();
-      return view('templates.template3.home',compact('user','posts'));
+        $user =User::first();
+        $posts = Post::where('user_id',$id)->get();
+        return view('templates.template3.home',compact('user','posts'));
     }
 
 

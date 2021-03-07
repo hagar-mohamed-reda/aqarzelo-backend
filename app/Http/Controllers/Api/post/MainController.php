@@ -263,7 +263,7 @@ class MainController extends Controller {
             $bathRoomCriteria = new BathRoomCriteria($request->bathroom_number);
 
             // init query
-            $query = Post::select('*')->where('status', "accepted");
+            $query = Post::select('*')->where('status', "accepted")->where('is_sold', null);
             $posts = [];
             $search = false;
 

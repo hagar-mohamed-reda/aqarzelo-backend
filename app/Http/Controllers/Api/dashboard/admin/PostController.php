@@ -25,8 +25,10 @@ class PostController extends Controller
     public function index() {
         $query = Post::query();
 
-        if (request()->company_id > 0)
-            $query->where('company_id', request()->company_id);
+        if (request()->company_id > 0) {
+            $ids = User::where('company_id', request()->company_id)->pluck('id')->toArray();
+            $query->whereIn('user_id', $ids);
+        }
 
         if (request()->city_id > 0)
             $query->where('city_id', request()->city_id);
@@ -34,7 +36,7 @@ class PostController extends Controller
         if (request()->area_id > 0)
             $query->where('area_id', request()->area_id);
 
-        if (request()->user()->company_id > 1) {
+        if (request()->user()->company_id != 1) {
             $ids = User::where('company_id', request()->user()->company_id)->pluck('id')->toArray();
             $query->whereIn('user_id', $ids);
         }

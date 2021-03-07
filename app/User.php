@@ -12,7 +12,7 @@ use Laratrust\Traits\LaratrustUserTrait;
 class User extends Authenticatable implements Profilable {
 
     use LaratrustUserTrait;
-    use Notifiable; 
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
@@ -53,13 +53,13 @@ class User extends Authenticatable implements Profilable {
     ];
 
     public function getPlanAttribute() {
-        return Plan::where('model_id', $this->id)->where('model_type', $this->type)->first(); 
+        return Plan::where('model_id', $this->id)->where('model_type', $this->type)->first();
     }
-     
-    
+
+
     public function getCanDeleteAttribute() {
         return !Post::where('user_id', $this->id)->exists();
-    } 
+    }
 /*
     public function getPermissionsAttribute() {
         $ids = DB::table('permission_role')->where('role_id', optional($this->roles()->first())->id)->pluck('permission_id')->toArray();
@@ -223,8 +223,8 @@ class User extends Authenticatable implements Profilable {
         return $this->belongsTo('App\Area', 'area_id');
     }
 
-    public function company() { 
-        return $this->belongsTo('App\Company', 'company_id')->select('id', 'name', 'type', 'photo');
+    public function company() {
+        return $this->belongsTo('App\Company', 'company_id')->select('id', 'name', 'type', 'photo', 'active');
     }
 
     public function posts() {
@@ -250,23 +250,23 @@ class User extends Authenticatable implements Profilable {
     public function favourites() {
         return $this->hasMany('App\Favourite');
     }
-    
+
     public function getCurrentPlan() {
         $plan = Plan::where('model_type', $this->type)->where('model_id', $this->id)->first();
-        
+
         if (!$plan) {
             $plan = Plan::where('model_type', $this->type)->first();
         }
-        
+
         if (!$plan) {
             $plan =Plan::where('model_type', optional($this->company)->type)
                     ->where('model_id', optional($this->company)->id)->first();
         }
-        
+
         if (!$plan) {
             $plan =Plan::where('model_type', optional($this->company)->type)->first();
         }
-        
+
         return $plan;
     }
 

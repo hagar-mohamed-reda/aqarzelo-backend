@@ -9,6 +9,8 @@ class Plan extends Model
     protected $fillable = [
         'name_ar',
         'name_en',
+        'description_ar',
+        'description_en',
         'cost',
         'max_post',
         'min_post',
@@ -26,7 +28,7 @@ class Plan extends Model
     protected $appends = [
         'can_delete'
     ];
-    
+
     public function getCanDeleteAttribute() {
         return !Post::where('category_id', $this->id)->exists();
     }
@@ -42,15 +44,15 @@ class Plan extends Model
             "period" => "required",
         ];
     }
-     
+
     public function country() {
         return $this->belongsTo(Country::class);
     }
-     
+
     public function city() {
         return $this->belongsTo(City::class);
     }
-     
+
     public function area() {
         return $this->belongsTo(Area::class);
     }
