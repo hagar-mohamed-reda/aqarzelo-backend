@@ -11,6 +11,7 @@ use App\Post;
 use App\User;
 use App\Http\Controllers\Api\post\MainController;
 
+
 class PostController extends Controller
 {
 
@@ -29,6 +30,12 @@ class PostController extends Controller
             $ids = User::where('company_id', request()->company_id)->pluck('id')->toArray();
             $query->whereIn('user_id', $ids);
         }
+
+        if (request()->search)
+            $query
+            ->where('title_ar', 'like', '%'.request()->search.'%')
+            ->where('title_en', 'like', '%'.request()->search.'%')
+            ->where('description', 'like', '%'.request()->search.'%');
 
         if (request()->city_id > 0)
             $query->where('city_id', request()->city_id);
