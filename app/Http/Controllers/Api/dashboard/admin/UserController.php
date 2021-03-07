@@ -94,6 +94,7 @@ class UserController extends Controller
                 $resource->update();
             }
 
+
             watch(__('add User ') . $resource->name, "fa fa-user");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());

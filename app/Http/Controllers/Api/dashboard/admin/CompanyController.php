@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Company;
+use App\PlanAssign;
 use App\helper\Helper;
 
 class CompanyController extends Controller
@@ -83,6 +84,15 @@ class CompanyController extends Controller
                 $resource->update();
             }
 
+            if ($request->plan_id > 0) {
+                PlanAssign::create([
+                    "plan_id" => $request->plan_id,
+                    "model_type" => $resource->model_type,
+                    "model_id" => $resource->id,
+                    "date" => date('Y-m-d')
+                ]);
+            }
+
             watch(__('add Company ') . $resource->name, "fa fa-bank");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -111,6 +121,15 @@ class CompanyController extends Controller
             if ($request->hasFile('photo')) {
                 $resource->photo = Helper::uploadImg($request->file("photo"), "/company/");
                 $resource->update();
+            }
+
+            if ($request->plan_id > 0) {
+                PlanAssign::create([
+                    "plan_id" => $request->plan_id,
+                    "model_type" => $resource->model_type,
+                    "model_id" => $resource->id,
+                    "date" => date('Y-m-d')
+                ]);
             }
 
             watch(__('edit Company ') . $resource->name, "fa fa-bank");

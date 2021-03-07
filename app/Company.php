@@ -41,11 +41,17 @@ class Company extends Authenticatable implements Profilable {
      * @var array
      */
     protected $appends = [
-        'photo_url', 'cover_url', 'can_delete', 'plan'
+        'photo_url', 'cover_url', 'can_delete', 'plan', 'plan_id'
     ];
 
+    public function getPlanIdAttribute() {
+        $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
+        return optional($item)->plan_id;
+    }
+
     public function getPlanAttribute() {
-        return $this->plan();
+        $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
+        return Plan::where('id', optional($item)->plan_id)->first();
     }
 
     public function getCanDeleteAttribute() {
@@ -71,10 +77,6 @@ class Company extends Authenticatable implements Profilable {
      */
     public function getCoverUrlAttribute() {
         return url('/images/company') . "/" . $this->cover;
-    }
-
-    public function plan() {
-        return Plan::where('model_id', $this->id)->where('model_type', $this->type)->first();
     }
 
     public function users() {
