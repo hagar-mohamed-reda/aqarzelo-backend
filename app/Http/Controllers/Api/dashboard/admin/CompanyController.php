@@ -87,7 +87,7 @@ class CompanyController extends Controller
             if ($request->plan_id > 0) {
                 PlanAssign::create([
                     "plan_id" => $request->plan_id,
-                    "model_type" => $resource->model_type,
+                    "model_type" => $resource->type,
                     "model_id" => $resource->id,
                     "date" => date('Y-m-d')
                 ]);
@@ -126,7 +126,7 @@ class CompanyController extends Controller
             if ($request->plan_id > 0) {
                 PlanAssign::create([
                     "plan_id" => $request->plan_id,
-                    "model_type" => $resource->model_type,
+                    "model_type" => $resource->type,
                     "model_id" => $resource->id,
                     "date" => date('Y-m-d')
                 ]);

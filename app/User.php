@@ -252,20 +252,13 @@ class User extends Authenticatable implements Profilable {
     }
 
     public function getCurrentPlan() {
-        $plan = Plan::where('model_type', $this->type)->where('model_id', $this->id)->first();
+        $item = PlanAssign::where('model_type', $this->type)->where('model_id', $this->id)->first();
 
-        if (!$plan) {
-            $plan = Plan::where('model_type', $this->type)->first();
+        if ($this->type == 'employee') {
+            return optional($this->company)->plan;
         }
 
-        if (!$plan) {
-            $plan =Plan::where('model_type', optional($this->company)->type)
-                    ->where('model_id', optional($this->company)->id)->first();
-        }
-
-        if (!$plan) {
-            $plan =Plan::where('model_type', optional($this->company)->type)->first();
-        }
+        $plan = Plan::find(optional($item)->plan_id);
 
         return $plan;
     }
