@@ -112,7 +112,7 @@ class AuthController extends Controller {
 
 
                 if (!$user->api_token) {
-                    $user->api_token = Helper::randamToken();
+                    $user->api_token = Helper::randamToken() . time();
                     $user->update();
                 }
 
