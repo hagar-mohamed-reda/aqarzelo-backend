@@ -18,7 +18,7 @@ class Post extends Model {
         'lng', 'lat', 'ownar_type', 'phone', 'space', 'price_per_meter', 'payment_method',
         'bedroom_number', 'bathroom_number', 'floor_number', 'finishing_type', 'refused_reason',
         'real_estate_number', 'build_date', 'active', 'has_garden', 'has_parking', 'status', 'city_id',
-        'area_id', 'price', 'furnished', 'title_ar', 'country_id', 'is_admin', 'show_recommended'
+        'area_id', 'price', 'furnished', 'title_ar', 'country_id', 'is_admin', 'show_recommended', 'recommended_sort'
     ];
 
     /**
