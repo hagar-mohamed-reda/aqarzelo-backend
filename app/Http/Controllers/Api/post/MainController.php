@@ -367,14 +367,28 @@ class MainController extends Controller {
                 return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
             }
 
-            $plans = Plan::where('show_logo', '1')->pluck('id')->toArray();
+            $plans = Plan::where('show_recommended', '>', 0)->pluck('id')->toArray();
             $companyIds = PlanAssign::whereIn('plan_id', $plans)->whereIn('model_type', ['developer', 'broker'])->pluck('model_id')->toArray();
-            $userIds = User::whereIn('company_id', $companyIds)->pluck('id')->toArray();
+            $companies = Company::whereIn('id', $companyIds)->get();
 
-            $posts = Post::query()
+            $posts = [];
+            foreach($companies as $company) {
+                $userIds = User::where('company_id', $company->id)->pluck('id')->toArray();
+                $recommendedPosts = Post::query()
+                    ->whereIn('user_id', $userIds)
+                    ->where("status", "=", "accepted")
+                    ->where("show_recommended", "1")
+                    ->take(optional($company->plan)->recommended_post)->get();
+
+                foreach($recommendedPosts as $post) {
+                    $posts[] = $post;
+                }
+            }
+
+            /*$posts = Post::query()
                             ->whereIn('user_id', $userIds)
                             ->where("status", "=", "accepted")
-                            ->take(20)->get();
+                            ->take(20)->get();*/
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
         } catch (\Exception $e) {
