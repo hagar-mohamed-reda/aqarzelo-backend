@@ -271,8 +271,8 @@ class MainController extends Controller {
             // init query
             $query = Post::select('*')
             ->where('status', "accepted")
-            ->whereIn('user_id', $userIds)
-            ->where('is_sold', "!=", 1);
+            ->whereIn('user_id', $userIds);
+            //->where('is_sold', "!=", 1);
 
             $posts = [];
             $search = false;
