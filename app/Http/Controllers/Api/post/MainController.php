@@ -376,9 +376,12 @@ class MainController extends Controller {
                 $userIds = User::where('company_id', $company->id)->pluck('id')->toArray();
                 $recommendedPosts = Post::query()
                     ->whereIn('user_id', $userIds)
-                    ->where("status", "=", "accepted")
+                    ->where("status", "accepted")
                     ->where("show_recommended", "1")
                     ->take(optional($company->plan)->recommended_post)->get();
+
+                return $recommendedPosts;
+
 
                 foreach($recommendedPosts as $post) {
                     $posts[] = $post;
