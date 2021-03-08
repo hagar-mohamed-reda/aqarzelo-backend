@@ -265,8 +265,8 @@ class MainController extends Controller {
             $bathRoomCriteria = new BathRoomCriteria($request->bathroom_number);
 
             // posts not active
-            $companyIds = Company::where('active', 'not_active')->pluck('id')->toArray();
-            $userIds = User::whereIn('company_id', $companyIds)->where('active', 'not_active')->pluck('id')->toArray();
+            $companyIds = Company::where('active', 'active')->pluck('id')->toArray();
+            $userIds = User::whereIn('company_id', $companyIds)->where('active', 'active')->pluck('id')->toArray();
 
             // init query
             $query = Post::select('*')
