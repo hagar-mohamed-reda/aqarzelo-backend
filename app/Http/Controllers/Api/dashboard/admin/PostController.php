@@ -9,6 +9,7 @@ use Illuminate\Routing\Controller;
 use App\helper\Helper;
 use App\Post;
 use App\User;
+use App\Message;
 use App\Http\Controllers\Api\post\MainController;
 
 
