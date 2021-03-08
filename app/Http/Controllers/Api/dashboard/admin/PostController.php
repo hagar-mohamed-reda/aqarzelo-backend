@@ -48,6 +48,10 @@ class PostController extends Controller
             $query->whereIn('user_id', $ids);
         }
 
+        if (request()->show_recommended == '1') {
+            $query->where('show_recommended', '1');
+        }
+
         return $query->latest()->paginate(10);
     }
 

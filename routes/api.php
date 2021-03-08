@@ -58,7 +58,7 @@ Route::get('/post/search', "Api\post\MainController@search");
 Route::get('/post/recommended', "Api\post\MainController@getRecommended");
 Route::get('/post/get', "Api\post\MainController@get");
 Route::get('/post/{post}', "Api\post\MainController@load");
-Route::get('/post/add-view', "Api\post\MainController@addView");
+Route::get('/posts/add-view', "Api\post\MainController@addView");
 Route::post('/post/add-image', "Api\post\MainController@uploadImage");
 Route::post('/post/remove-image', "Api\post\MainController@removeImage");
 Route::get('/post/image/get', "Api\post\MainController@getImages");
