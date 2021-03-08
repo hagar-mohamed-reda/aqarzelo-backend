@@ -45,7 +45,7 @@ class Post extends Model {
     public function getLogoUrlAttribute() {
         $plan = optional(optional($this->user)->company)->plan;
 
-        if ($plan->show_logo == 1)
+        if (optional($plan)->show_logo == 1)
             return optional(optional($this->user)->company)->photo_url;
         return null;
     }
