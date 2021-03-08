@@ -367,7 +367,7 @@ class MainController extends Controller {
                 return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
             }
 
-            $plans = Plan::where('show_recommended', '>', 0)->pluck('id')->toArray();
+            $plans = Plan::where('recommended_post', '>', 0)->pluck('id')->toArray();
             $companyIds = PlanAssign::whereIn('plan_id', $plans)->whereIn('model_type', ['developer', 'broker'])->pluck('model_id')->toArray();
             $companies = Company::whereIn('id', $companyIds)->get();
 
@@ -379,9 +379,6 @@ class MainController extends Controller {
                     ->where("status", "accepted")
                     ->where("show_recommended", "1")
                     ->take(optional($company->plan)->recommended_post)->get();
-
-                return $recommendedPosts;
-
 
                 foreach($recommendedPosts as $post) {
                     $posts[] = $post;
