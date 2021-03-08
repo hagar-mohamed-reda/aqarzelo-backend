@@ -36,7 +36,7 @@ class Post extends Model {
     public function getShowLogoAttribute() {
         $plan = optional(optional($this->user)->company)->plan;
 
-        if ($plan->show_logo == 1)
+        if (optional($plan)->show_logo == 1)
             return 1;
 
         return 0;
