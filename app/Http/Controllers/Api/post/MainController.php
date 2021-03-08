@@ -394,7 +394,7 @@ class MainController extends Controller {
                             ->take(20)->get();*/
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
-        } catch (\Exception $e) {
+        } catch (Exception $e) {
             return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
         }
     }
