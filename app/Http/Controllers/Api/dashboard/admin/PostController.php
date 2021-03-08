@@ -35,7 +35,7 @@ class PostController extends Controller
         if (request()->search)
             $query
             ->where('title_ar', 'like', '%'.request()->search.'%')
-            ->where('title_en', 'like', '%'.request()->search.'%')
+            ->where('title', 'like', '%'.request()->search.'%')
             ->where('description', 'like', '%'.request()->search.'%');
 
         if (request()->city_id > 0)
