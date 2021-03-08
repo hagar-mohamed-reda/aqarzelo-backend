@@ -87,7 +87,50 @@ class PostController extends Controller
      */
     public function update(Request $request, Post $resource) {
         $request->post_id = $resource->id;
-        return (new MainController())->addPost($request);
+        // check if the user login
+        $user = User::auth($request);
+
+        if (!$user) {
+            return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
+        }
+
+        try {
+            // find the post
+            $post = Post::find($request->post_id);
+
+            // remove old images
+            if ($request->is_edit_from_website) {
+                if ($post) {
+                    $post->images()->update(['post_id' => null]);
+                }
+            }
+
+
+            $message_ar = trans("messages_ar.done");
+            $message_en = trans("messages_en.done");
+
+            $data = $request->all();
+
+            if (isset($data['has_parking'])) {
+                $data['has_parking'] = $data['has_parking'] = true ? 1 : 0;
+            }
+
+            if (isset($data['has_garden'])) {
+                $data['has_garden'] = $data['has_garden'] = true ? 1 : 0;
+            }
+
+            if (isset($data['furnished'])) {
+                $data['furnished'] = $data['furnished'] = true ? 1 : 0;
+            }
+
+            // update if exist
+            ($post) ? $post->update($data) : null;
+
+
+            return Message::success($message_en, $message_ar, $post->fresh());
+        } catch (Exception $e) {
+            return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
+        }
     }
 
     /**
