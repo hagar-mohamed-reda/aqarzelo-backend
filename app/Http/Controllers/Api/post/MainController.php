@@ -12,6 +12,8 @@ use App\User;
 use App\Post;
 use App\PostReview;
 use App\Image;
+use App\Plan;
+use App\PlanAssign;
 use App\Http\Controllers\Api\post\criteria\DistanceCriteria;
 use App\Http\Controllers\Api\post\criteria\CityCriteria;
 use App\Http\Controllers\Api\post\criteria\AreaCriteria;
@@ -262,8 +264,16 @@ class MainController extends Controller {
             $bedRoomCriteria = new BedRoomCriteria($request->bedroom_number);
             $bathRoomCriteria = new BathRoomCriteria($request->bathroom_number);
 
+            // posts not active
+            $companyIds = Company::where('active', 'not_active')->pluck('id')->toArray();
+            $userIds = User::whereIn('company_id', $companyIds)->where('active', 'not_active')->pluck('id')->toArray();
+
             // init query
-            $query = Post::select('*')->where('status', "accepted")->where('is_sold', null);
+            $query = Post::select('*')
+            ->where('status', "accepted")
+            ->whereIn('user_id', $userIds)
+            ->where('is_sold', null);
+
             $posts = [];
             $search = false;
 
@@ -354,18 +364,17 @@ class MainController extends Controller {
             ]);
 
             if ($validator->fails()) {
-                throw new \Exception();
+                return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
             }
 
-//            $posts = Post::query()
-//                    ->where("status", "=", "accepted")
-//                    ->where("price", "<=", $request->price)
-//                    ->where("city_id", $request->city_id)
-//                    ->where("finishing_type", $request->finishing_type)
-//                    ->get();
+            $plans = Plan::where('show_logo', '1')->pluck('id')->toArray();
+            $companyIds = PlanAssign::whereIn('plan_id', $plans)->whereIn('model_type', ['developer', 'broker'])->pluck('model_id')->toArray();
+            $userIds = User::whereIn('company_id', $companyIds)->pluck('id')->toArray();
+
             $posts = Post::query()
+                            ->whereIn('user_id', $userIds)
                             ->where("status", "=", "accepted")
-                            ->take(15)->get();
+                            ->take(20)->get();
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
         } catch (\Exception $e) {

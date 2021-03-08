@@ -30,8 +30,26 @@ class Post extends Model {
         'category', 'images', 'city',
         'area', 'rate', 'views',
         'rates', 'chart_data', 'contact_phone',
-        'user_review', 'favourite'
+        'user_review', 'favourite', 'show_logo', 'logo_url'
     ];
+
+    public function getShowLogoAttribute() {
+        $plan = optional(optional($this->user)->company)->plan;
+
+        if ($plan->show_logo == 1)
+            return 1;
+
+        return 0;
+    }
+
+    public function getLogoUrlAttribute() {
+        $plan = optional(optional($this->user)->company)->plan;
+
+        if ($plan->show_logo == 1)
+            return optional(optional($this->user)->company)->photo_url;
+        return null;
+    }
+
 
 
     /**
@@ -207,9 +225,7 @@ class Post extends Model {
     }
 
     public function user() {
-        $user = $this->belongsTo('App\User', 'user_id')?
-        $this->belongsTo('App\User', 'user_id') : new User();
-        return $user;
+        return $this->belongsTo('App\User', 'user_id');
     }
 
     public function city() {

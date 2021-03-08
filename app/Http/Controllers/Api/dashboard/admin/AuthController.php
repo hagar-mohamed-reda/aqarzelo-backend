@@ -107,6 +107,10 @@ class AuthController extends Controller {
                     return Message::error(trans("messages_en.account_not_active"), trans("messages_ar.account_not_active"));
                 }
 
+                if ($user->company->active == "not_active")
+                    return Message::error("company_not_active", trans("company_not_active"));
+
+
                 if (!$user->api_token) {
                     $user->api_token = Helper::randamToken();
                     $user->update();
