@@ -371,19 +371,27 @@ class MainController extends Controller {
             $companyIds = PlanAssign::whereIn('plan_id', $plans)->whereIn('model_type', ['developer', 'broker'])->pluck('model_id')->toArray();
             $companies = Company::whereIn('id', $companyIds)->get();
 
+            $postsIds = [];
             $posts = [];
             foreach($companies as $company) {
                 $userIds = User::where('company_id', $company->id)->pluck('id')->toArray();
-                $recommendedPosts = Post::query()
+                $recommendedPostsIds = Post::query()
                     ->whereIn('user_id', $userIds)
                     ->where("status", "accepted")
                     ->where("show_recommended", "1")
-                    ->take(optional($company->plan)->recommended_post)->get();
+                    ->take(optional($company->plan)->recommended_post)
+                    //->orderBy('recommended_sort')
+                    ->pluck('id')->toArray();
 
-                foreach($recommendedPosts as $post) {
-                    $posts[] = $post;
+                foreach($recommendedPostsIds as $post) {
+                    $postsIds[] = $post;
                 }
             }
+
+            $posts = Post::query()
+                        ->whereIn('id', $posts)
+                        ->orderBy('recommended_sort')
+                        ->get();
 
             /*$posts = Post::query()
                             ->whereIn('user_id', $userIds)
