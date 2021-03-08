@@ -81,6 +81,8 @@ class UserController extends Controller
             if (isset($data['password']))
                 $data['password'] = bcrypt($data['password']);
 
+            $data['api_token'] = randToken();
+
             $resource = User::create($data);
 
             if ($request->role_id > 0) {
