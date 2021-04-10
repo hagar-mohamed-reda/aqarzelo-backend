@@ -57,6 +57,11 @@
                         <option value="{{ $category->id }}" >{{ session("locale")=="en"? $category->name_en : $category->name_ar }}</option>
                         @endforeach
                     </select>
+                    <select class="form-control w3-round" v-model="filter.type" style="margin-bottom: 7px" >
+                        <option value="null" >{{ __("words.sale_&_rent") }}</option>
+                        <option value="sale" >{{ __('sale') }}</option>
+                        <option value="rent" >{{ __('rent') }}</option>
+                    </select>
                 </li>
                 <li>
                     <label class="w3-text-gray" >{{ __("words.price") }}</label>
