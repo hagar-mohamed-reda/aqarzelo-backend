@@ -45,6 +45,7 @@ class CountryController extends Controller {
 
             if ($request->hasFile('icon')) {
                 $resource->icon = Helper::uploadImg($request->file("icon"), "/country/");
+                $resource->update();
             }
 
             watch(__('add Country ') . $resource->name, "fa fa-building-o");
@@ -72,6 +73,7 @@ class CountryController extends Controller {
                 }
 
                 $resource->icon = Helper::uploadImg($request->file("icon"), "/country/");
+                $resource->update();
             }
 
             watch(__('edit Country ') . $resource->name, "fa fa-building-o");
