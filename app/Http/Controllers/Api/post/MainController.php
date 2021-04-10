@@ -400,7 +400,7 @@ class MainController extends Controller {
             foreach($companies as $company) {
                 $userIds = User::where('company_id', $company->id)->pluck('id')->toArray();
                 $recommendedPostsIds = Post::query()
-                    // ->whereIn('user_id', $userIds) 5ly balk ya 3ly ana l3pt hna
+                    ->whereIn('user_id', $userIds)
                     ->where("status", "accepted")
                     ->where("show_recommended", "1")
                     ->take(optional($company->plan)->recommended_post)

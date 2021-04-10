@@ -154,6 +154,6 @@ class LoginController extends WebsiteController
         }
 
         Helper::notify(Message::error(trans("messages.email_or_password_error")));
-        return redirect("/profile");
+        return redirect("/home");
     }
 }
