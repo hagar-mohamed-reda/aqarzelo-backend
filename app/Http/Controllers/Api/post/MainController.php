@@ -98,6 +98,18 @@ class MainController extends Controller {
             if (isset($data['furnished'])) {
                 $data['furnished'] = $data['furnished'] = true ? 1 : 0;
             }
+
+            if (isset($data['show_recommended'])) {
+                $data['show_recommended'] = $data['show_recommended'] = true ? 1 : 0;
+            }
+
+            if (isset($data['is_admin'])) {
+                $data['is_admin'] = $data['is_admin'] = true ? 1 : 0;
+            }
+
+            if (isset($data['is_sold'])) {
+                $data['is_sold'] = $data['is_sold'] = true ? 1 : 0;
+            }
             $post = Post::create($data);
 
             // save images
@@ -231,6 +243,18 @@ class MainController extends Controller {
 
             if (isset($data['furnished'])) {
                 $data['furnished'] = $data['furnished'] = true ? 1 : 0;
+            }
+
+            if (isset($data['show_recommended'])) {
+                $data['show_recommended'] = $data['show_recommended'] = true ? 1 : 0;
+            }
+
+            if (isset($data['is_admin'])) {
+                $data['is_admin'] = $data['is_admin'] = true ? 1 : 0;
+            }
+
+            if (isset($data['is_sold'])) {
+                $data['is_sold'] = $data['is_sold'] = true ? 1 : 0;
             }
             // add the user_id
             $data['user_id'] = $user->id;
