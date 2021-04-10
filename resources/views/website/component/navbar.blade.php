@@ -86,7 +86,7 @@ else
                     <li class="w3-hover-light-gray w3-padding" style="height: 30px!important">
                         <a href="#" class="w3-display-container" >
 
-                            <img src="{{ url($item->icon) }}" class="fa w3-round w3-left" width="30px" >
+                            <img src="{{ url($item->icon_url) }}" class="fa w3-round w3-left" width="30px" >
 
                             <span class="w3-right" >{{ session("locale") == "ar"? $item->name_ar : $item->name_en }}</span>
                         </a>
