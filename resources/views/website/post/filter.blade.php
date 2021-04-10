@@ -33,7 +33,10 @@
                 <br>
                 </li>
                 <li>
-                    <select class="form-control w3-round" v-model="filter.country_id" style="margin-bottom: 7px" >
+                    <select
+                    class="form-control w3-round select2-filter"
+                    onchange="app.filter.country_id=this.value"
+                    v-model="filter.country_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.city") }}</option>
                         @foreach(App\Country::all() as $item)
                         <option value="{{ $item->id }}" >{{ session("locale")=="en"? $item->name_en : $item->name_ar }}</option>
