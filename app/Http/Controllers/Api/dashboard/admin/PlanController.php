@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Plan;
+use App\PlanAssign;
 
 class PlanController extends Controller
 {
@@ -53,6 +54,14 @@ class PlanController extends Controller
             $data = $request->all();
 
             $resource = Plan::create($data);
+
+            PlanAssign::create([
+                "model_id" => $request->model_id,
+                "model_type" => $request->model_type,
+                "plan_id" => $resource->id,
+                "date" => date('Y-m-d')
+            ]);
+
             watch(__('add Plan ') . $resource->name, "fa fa-map");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -79,6 +88,18 @@ class PlanController extends Controller
             }
             $data = $request->all();
             $resource->update($data);
+
+            // delete old
+            PlanAssign::where('model_id', $request->model_id)->where('model_type', $request->model_type)->delete();
+
+            // add new
+            PlanAssign::create([
+                "model_id" => $request->model_id,
+                "model_type" => $request->model_type,
+                "plan_id" => $resource->id,
+                "date" => date('Y-m-d')
+            ]);
+
             watch(__('edit Plan ') . $resource->name, "fa fa-map");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -94,6 +115,10 @@ class PlanController extends Controller
      */
     public function destroy(Plan $resource) {
         try {
+
+            // delete old
+            PlanAssign::where('model_id', $request->model_id)->where('model_type', $request->model_type)->delete();
+
             watch(__('remove Plan ') . $resource->name, "fa fa-map");
             $resource->delete();
         } catch (\Exception $th) {

@@ -393,6 +393,7 @@ class MainController extends Controller {
 
             $plans = Plan::where('recommended_post', '>', 0)->pluck('id')->toArray();
             $companyIds = PlanAssign::whereIn('plan_id', $plans)->whereIn('model_type', ['developer', 'broker'])->pluck('model_id')->toArray();
+
             $companies = Company::whereIn('id', $companyIds)->get();
 
             $postsIds = [];
