@@ -9,6 +9,7 @@ else
 @endphp
 @section("css")
 <link rel="stylesheet" href="{{ url('/website') }}/css/post.css">
+<link rel="stylesheet" href="{{ url('/website') }}/css/select2.min.css">
 
  <style>
     * {
@@ -76,6 +77,7 @@ else
 <script src="{{ url('/website') }}/js/watermark.min.js"></script>
 -->
 <script src="{{ url('/website') }}/js/post.js"></script>
+<script src="{{ url('/website') }}/js/select2.min.js"></script>
 <script>
     // watermark all images
 
