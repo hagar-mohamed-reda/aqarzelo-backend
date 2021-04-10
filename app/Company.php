@@ -41,8 +41,12 @@ class Company extends Authenticatable implements Profilable {
      * @var array
      */
     protected $appends = [
-        'photo_url', 'cover_url', 'can_delete', 'plan', 'plan_id'
+        'photo_url', 'cover_url', 'can_delete', 'plan', 'plan_id', 'country_id'
     ];
+
+    public function getCountryIdAttribute() {
+        return optional($this->city)->country_id;
+    }
 
     public function getPlanIdAttribute() {
         $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();

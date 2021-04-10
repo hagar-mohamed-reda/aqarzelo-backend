@@ -42,11 +42,11 @@ class MainController extends Controller {
         }
 
         // check on user plan
-        $postNumber = User::where('company_id', $request->user()->company_id)->count();
-        $planPostNumber = optional(optional($request->user())->getCurrentPlan())->max_post;
+        $postNumber = User::where('company_id', $user->company_id)->count();
+        $planPostNumber = optional(optional($user)->getCurrentPlan())->max_post;
 
-        if ($postNumber >= $planPostNumber && $request->user()->company_id != 1) {
-            return responseJson(0, __(str_replace('{n}', $planPostNumber, 'your cant create more than {n} posts')));
+        if ($postNumber >= $planPostNumber && $user->company_id != 1) {
+            return responseJson(0, __(str_replace('{n}', $planPostNumber, 'you can not create more than {n} posts')));
         }
 
 
@@ -376,7 +376,7 @@ class MainController extends Controller {
             foreach($companies as $company) {
                 $userIds = User::where('company_id', $company->id)->pluck('id')->toArray();
                 $recommendedPostsIds = Post::query()
-                    ->whereIn('user_id', $userIds)
+                    // ->whereIn('user_id', $userIds) 5ly balk ya 3ly ana l3pt hna
                     ->where("status", "accepted")
                     ->where("show_recommended", "1")
                     ->take(optional($company->plan)->recommended_post)
