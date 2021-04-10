@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Routing\Controller;
 use App\Country;
+use App\helper\Helper;
 
 class CountryController extends Controller {
 
@@ -41,6 +42,11 @@ class CountryController extends Controller {
             $data = $request->all();
 
             $resource = Country::create($data);
+
+            if ($request->hasFile('icon')) {
+                $resource->icon = Helper::uploadImg($request->file("icon"), "/country/");
+            }
+
             watch(__('add Country ') . $resource->name, "fa fa-building-o");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
@@ -59,6 +65,15 @@ class CountryController extends Controller {
         try {
             $data = $request->all();
             $resource->update($data);
+
+            if ($request->hasFile('icon')) {
+                if (file_exists(public_path($resource->icon)))  {
+                    unlink(public_path($resource->icon));
+                }
+
+                $resource->icon = Helper::uploadImg($request->file("icon"), "/country/");
+            }
+
             watch(__('edit Country ') . $resource->name, "fa fa-building-o");
         } catch (\Exception $th) {
             return responseJson(0, $th->getMessage());
