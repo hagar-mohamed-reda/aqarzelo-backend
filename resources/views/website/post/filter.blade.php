@@ -43,7 +43,7 @@
                         @endforeach
                     </select>
 
-                    <select class="form-control w3-round select2-filter"
+                    <select class="form-control w3-round select2-"
                     v-model="filter.city_id" style="margin-bottom: 7px"
                     onchange="app.filter.city_id=this.value"  >
                         <option value="null" >{{ __("words.city") }}</option>
@@ -53,7 +53,7 @@
                     </select>
                     <br>
 
-                    <select class="form-control w3-round select2-filter"
+                    <select class="form-control w3-round select2-"
                     onchange="app.filter.area_id=this.value"
                     v-model="filter.area_id"  style="margin-bottom: 7px"  >
                         <option value="null" >{{ __("words.area") }}</option>
