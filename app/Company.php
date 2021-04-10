@@ -50,7 +50,13 @@ class Company extends Authenticatable implements Profilable {
 
     public function getPlanIdAttribute() {
         $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
-        return optional($item)->plan_id;
+        $plan = optional($item)->plan_id;
+
+        if (!$plan) {
+            $plan = Plan::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
+        }
+
+        return $plan;
     }
 
     public function getPlanAttribute() {
