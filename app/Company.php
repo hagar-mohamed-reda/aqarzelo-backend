@@ -50,18 +50,24 @@ class Company extends Authenticatable implements Profilable {
 
     public function getPlanIdAttribute() {
         $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
-        $plan = optional($item)->plan_id;
+        $plan = optional($item);
+
+        if (!$plan) {
+            $plan = Plan::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
+        }
+
+        return optional($plan)->id;
+    }
+
+    public function getPlanAttribute() {
+        $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
+        $plan = Plan::where('id', optional($item)->plan_id)->first();
 
         if (!$plan) {
             $plan = Plan::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
         }
 
         return $plan;
-    }
-
-    public function getPlanAttribute() {
-        $item = PlanAssign::where('model_id', $this->id)->latest()->where('model_type', $this->type)->first();
-        return Plan::where('id', optional($item)->plan_id)->first();
     }
 
     public function getCanDeleteAttribute() {
