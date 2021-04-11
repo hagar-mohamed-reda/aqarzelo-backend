@@ -125,6 +125,11 @@
                                   onclick="page.post.type = 'rent'"
                                   v-bind:class="post.type == 'rent'? 'light-theme-background' : ''"
                                   style="border: 1px solid #00b0bd;margin: 5px" >{{ __('mobile.rent') }}</span>
+                                  <span
+                                  class="w3-tag w3-white w3-round-xlarge btn light-theme-background-hover"
+                                  onclick="page.post.type = 'sale or rent'"
+                                  v-bind:class="post.type == 'saleorrent'? 'light-theme-background' : ''"
+                                  style="border: 1px solid #00b0bd;margin: 5px" >{{ __('mobile.sale_or_rent') }}</span>
                               </div>
                           </p>
                         </div>

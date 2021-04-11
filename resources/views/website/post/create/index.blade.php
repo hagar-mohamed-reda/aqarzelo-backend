@@ -297,6 +297,7 @@ else
                                         <select class="form-control w3-round input-sm" v-model="post.type"  onchange="setType(this.value)"  >
                                             <option value="sale" >{{ __('words.sell') }}</option>
                                             <option value="rent" >{{ __('words.rent') }}</option>
+                                            <option value="sale or rent" >{{ __('words.sell_or_rent') }}</option>
                                         </select>
                                     </td>
                                     <td>{{ __('words.space') }} *</td>
