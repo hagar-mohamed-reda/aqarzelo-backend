@@ -58,6 +58,13 @@
     *, .font {
         font-family: 'Cairo', sans-serif;
     }
+    .gmnoprint{
+        top: 75px !important;
+    }
+    .gm-svpc{
+        top: 0 !important;
+        left: 178px !important;
+    }
 
 </style>
 
