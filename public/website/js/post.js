@@ -511,7 +511,7 @@ function toggleRecommended() {
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
         recommendedFlag = true;
-        toggleFilterSidebar();
+        //toggleFilterSidebar();
     }
 
 }
