@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -29,7 +29,7 @@ var PostCeriteria = (function () {
     }
 
     /**
-     * 
+     *
      * @param {type} url
      * @param {type} action
      * @returns {}
@@ -84,7 +84,7 @@ function toggleMapSidebar() {
 }
 
 /**
- * 
+ *
  * @param {type} param
  */
 function loadAllPosts(filters) {
@@ -96,7 +96,7 @@ function loadAllPosts(filters) {
 
 /**
  * get location and call feedback
- * 
+ *
  */
 function getLocation() {
     if (navigator.geolocation)
@@ -111,7 +111,7 @@ function getLocation() {
 
 /**
  * draw marker on the map
- * 
+ *
  * @param {type} location
  * @param {type} map
  * @returns {undefined}
@@ -131,7 +131,7 @@ function addMarker(location, label, icon, html) {
     var style = document.createElement('style');
     style.markers = [];
     document.getElementsByTagName('head')[0].appendChild(style);
-    
+
     if (icon == undefined)
         icon = public_path + "/website/icons/marker.png";
     // Add the marker at the clicked location, and add the next-available label
@@ -139,13 +139,13 @@ function addMarker(location, label, icon, html) {
     var marker = new google.maps.Marker({
         position: location,
         map: map,
-        animation: google.maps.Animation.DROP, 
+        animation: google.maps.Animation.DROP,
         icon: {
           url: icon,
           labelOrigin: { x: 12, y: 40}
-        }, 
-        title: label, 
-        label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '12px', text: label }, 
+        },
+        title: label,
+        label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '12px', text: label },
         labelInBackground: true
     });
     var selector = ['#', map.getDiv().id, ' img[src="', marker.getIcon(), '"]'].join('');
@@ -153,7 +153,7 @@ function addMarker(location, label, icon, html) {
         style.markers.push(selector);
         style.sheet.insertRule([selector, '{background-color:', color, ';}'].join(''), 0);
     }
-    
+
     console.log(label);
 
 
@@ -166,30 +166,30 @@ function addMarker(location, label, icon, html) {
     marker.addListener('click', function () {
         closeAllInfoWindow();
         infowindow.open(map, marker);
-    }); 
+    });
     //infowindow.open(map, marker);
-    var cnv=document.createElement("canvas");  
+    var cnv=document.createElement("canvas");
     var cntx = cnv.getContext("2d");
     cnv.style.backgroundColor = "rgb(0,0,0)";
     console.log(cnv);
     cnv.width= 150;
-    cnv.height = 30; 
- 
+    cnv.height = 30;
+
     cntx.strokeStyle = "#06D9B2";
 	cntx.lineWidth = 0.3;
     cntx.shadowBlur = 4;
     cntx.shadowColor = "black";
     cntx.fillStyle = "#fff";
 	cntx.strokeRect(5, 5, 110, 20);
-	cntx.fillRect(5, 5, 110, 20); 
-    marker.setIcon(cnv.toDataURL('image/png')); 
-            
+	cntx.fillRect(5, 5, 110, 20);
+    marker.setIcon(cnv.toDataURL('image/png'));
+
     return marker;
 }
 
 /**
  * clear all markers on the map
- * 
+ *
  * @returns {undefined}
  */
 function clearMarkers() {
@@ -201,7 +201,7 @@ function clearMarkers() {
 
 /**
  * set all posts marker on the map
- * 
+ *
  * @param {Array} posts
  */
 function drawPostsMarkers(posts) {
@@ -213,13 +213,13 @@ function drawPostsMarkers(posts) {
         if (post.images[0] != undefined)
             html = html.replace("{src}", post.images[0].image);
         html = html.replace("{title}", post.title);
-        
+
         if (post.description)
             html = html.replace("{description}", post.description.substring(0, 100) + "...");
-        
+
         html = html.replace("{price}", post.price);
         html = html.replace("{post}", post.id);
-        
+
         div.innerHTML = html;
 
         div.onclick = function () {
@@ -236,7 +236,7 @@ function drawPostsMarkers(posts) {
 
 /**
  * search about post with current location
- *   
+ *
  * @returns {}
  */
 function searchWithCurrentLocation() {
@@ -254,7 +254,7 @@ function searchWithCurrentLocation() {
             search();
 
             $(".recommended-post").animate({
-                bottom: -300
+                bottom: -275
             }, 'slow');
             $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
             recommendedFlag = true;
@@ -265,13 +265,13 @@ function searchWithCurrentLocation() {
 
 /**
  * get recommends post for the user
- *   
+ *
  * @returns {}
  */
 function loadRecommends() {
     $.get(public_path + "/api/post/recommended", function (data) {
         if (data.status == 1) {
-            
+
             app.recommends = data.data;
 
             var i = 0;
@@ -280,7 +280,7 @@ function loadRecommends() {
                 app.recommends[i].price_per_meter = (app.recommends[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
             }
             setTimeout(function(){
-                toggleRecommended(); 
+                toggleRecommended();
                 setOwlCarousel();
             }, 3000);
         }
@@ -306,7 +306,7 @@ function togglePostSidebar(element) {
 
 function w3_open() {
     var windowSize = window.innerWidth;
-    
+
     if (windowSize <= 600) {
         $("#mySidebar").animate({width: '70%'});
         $("#main").animate({width: '30%'});
@@ -350,12 +350,12 @@ function setOwlCarousel() {
             }
         }
     });
-    recommendOwl.on('mousewheel', '.owl-stage', function (e) { 
+    recommendOwl.on('mousewheel', '.owl-stage', function (e) {
         if (e.originalEvent.deltaY>0) {
             recommendOwl.trigger('next.owl');
         } else {
             recommendOwl.trigger('prev.owl');
-        } 
+        }
         e.preventDefault();
     });
 }
@@ -471,19 +471,19 @@ function toggleFilterSidebar() {
         }, 'slow');
         $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-left" ></i>' + $('.filterToggleSidebarBtnText').html());
         filterSidebarFlag = false;
-         
+
     } else {
         $("#filterSidebar").animate({
             right: 0
         }, 'slow');
         $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-right" ></i>' + $('.filterToggleSidebarBtnText').html());
         filterSidebarFlag = true;
-        
-        
+
+
         $('[data-toggle="tooltip"]').tooltip('show');
         // close recommended
         $(".recommended-post").animate({
-            bottom: -300
+            bottom: -275
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
         recommendedFlag = true;
@@ -498,8 +498,8 @@ function toggleRecommended() {
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-down" ></i>');
         recommendedFlag = false;
-        
-        // close filter 
+
+        // close filter
         $("#filterSidebar").animate({
             right: right
         }, 'slow');
@@ -507,7 +507,7 @@ function toggleRecommended() {
         filterSidebarFlag = false;
     } else {
         $(".recommended-post").animate({
-            bottom: -300
+            bottom: -275
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
         recommendedFlag = true;
@@ -527,29 +527,29 @@ function showPost(data) {
     app.currentPost = data;
     app.currentPostId = data.id;
     app.loadding360 = true;
-     
+
     data.price = (data.price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
-    data.price_per_meter = (data.price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", ""); 
-    
+    data.price_per_meter = (data.price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
+
     // show post id
     window.history.pushState('', 'Title', public_path + "/map?post_id=" + data.id);
 
     //setOwlCarousel();
     _setWaterMark();
     setTimeout(function () {
-     
+
         setCurrentPostChart();
         // set water mark
         _setWaterMark();
         // set nicescroll
         setNicescroll();
-        // 
+        //
         formAjax(false, function(r){
-            if (r.status == 0) { 
+            if (r.status == 0) {
                 window.location = public_path + "/login";
             }
         });
-        // 
+        //
         w3_open();
         //
         setFavouriteBtn();
@@ -572,9 +572,9 @@ function search() {
     $(".result").slideDown(500);
     app.posts = [];
     app.result_message = '';
-    
+
     $(".post-loading-state").show();
-    
+
     $(".post-no-found-state").hide();
 
     var data = jQuery.param(app.filter);
@@ -585,7 +585,7 @@ function search() {
             app.posts[i].price = (app.posts[i].price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
             app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
         }
-            
+
         drawPostsMarkers(r.data);
         var message = (LANG == "en") ? r.message_en : r.message_ar;
 
@@ -593,10 +593,10 @@ function search() {
             map.setCenter({lat: parseFloat(app.posts[0].lat), lng: parseFloat(app.posts[0].lng)});
 
         app.result_message = message;
-        
+
         if (r.data.length <= 0)
             $(".post-no-found-state").show();
-            
+
         $(".post-loading-state").hide();
     });
 }
@@ -679,7 +679,7 @@ function setFilterRanges() {
 
 function _setWaterMark() {
     /*
-    $(".wm").each(function(){ 
+    $(".wm").each(function(){
         var _this = this;
         watermark([_this.src, public_path+"/website/image/zelo.png"])
           .image(watermark.image.lowerRight(0.5))
@@ -707,24 +707,24 @@ $(document).ready(function () {
 
     // load recommended posts
     loadRecommends();
- 
+
     // set spinner of bedroom and bathroom
     setFilterSpinner();
-    
+
     // set range of price and space
     setFilterRanges();
-    
+
     // toggle recommended
     toggleRecommended();
 
 
-    
+
     // prep comment form
     $(".comment-form").submit(function () {
         loadPost(app.currentPostId);
-    }); 
- 
-  
+    });
+
+
     // set tooltip
     setTimeout(function () {
         $(function () {
@@ -732,9 +732,9 @@ $(document).ready(function () {
         });
 
     }, 2000);
-    
+
     //
-    
+
 
 });
 
