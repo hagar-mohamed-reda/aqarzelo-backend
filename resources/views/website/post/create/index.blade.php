@@ -448,6 +448,10 @@ else
                                         <input  id="installment" name="payment_method" type="radio">
                                         <label  for="installment" class="radio-label">{{ __('words.installment') }}</label>
                                     </div>
+                                    <div class="radio w3-cell" onclick="app.post.payment_method='cash or installment'" >
+                                        <input  id="cashorinstallment" name="payment_method" type="radio">
+                                        <label  for="cashorinstallment" class="radio-label">{{ __('words.cash or installment') }}</label>
+                                    </div>
                                 </td>
                             </tr>
                             <tr>

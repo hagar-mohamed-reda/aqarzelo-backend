@@ -114,6 +114,12 @@
                                     onclick="page.post.payment_method = 'installment';"
                                     style="border: 1px solid #00b0bd;margin: 5px" >{{ __('words.installment') }}</span>
 
+                                    <span
+                                    class="w3-tag w3-white w3-round-xlarge btn light-theme-background-hover"
+                                    v-bind:class="post.payment_method == 'cash or installment'? 'light-theme-background' : ''"
+                                    onclick="page.post.payment_method = 'cash or installment';"
+                                    style="border: 1px solid #00b0bd;margin: 5px" >{{ __('words.cash_or_installment') }}</span>
+
                                 </div>
                             </p>
                           </div>
