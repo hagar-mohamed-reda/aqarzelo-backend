@@ -1,4 +1,4 @@
-<div class="w3-display-bottommiddle w3-block w3-white shadow w3-round recommend-background recommended-post animated" style="z-index: 1!important;height: 275px;width: 70%"  >
+<div class="w3-display-bottommiddle w3-block w3-white shadow w3-round recommend-background recommended-post animated" style="z-index: 1!important;height: 250px;width: 70%"  >
 
     <div class="w3-display-topleft w3-padding" style="z-index: 2;top: -38px;left: 30px;" onclick="toggleRecommended()"  >
         <button

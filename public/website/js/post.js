@@ -254,7 +254,7 @@ function searchWithCurrentLocation() {
             search();
 
             $(".recommended-post").animate({
-                bottom: -275
+                bottom: -250
             }, 'slow');
             $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
             recommendedFlag = true;
@@ -483,7 +483,7 @@ function toggleFilterSidebar() {
         $('[data-toggle="tooltip"]').tooltip('show');
         // close recommended
         $(".recommended-post").animate({
-            bottom: -275
+            bottom: -250
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
         recommendedFlag = true;
@@ -507,7 +507,7 @@ function toggleRecommended() {
         filterSidebarFlag = false;
     } else {
         $(".recommended-post").animate({
-            bottom: -275
+            bottom: -250
         }, 'slow');
         $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
         recommendedFlag = true;

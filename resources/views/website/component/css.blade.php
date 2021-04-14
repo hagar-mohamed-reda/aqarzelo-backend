@@ -65,6 +65,12 @@
         top: 0 !important;
         left: 178px !important;
     }
+    .gm-style-cc div:first-child() div:nth-child(2){
+        display: none
+    }
+    /*.gmnoprint{
+        display: none
+    }*/
 
 </style>
 
