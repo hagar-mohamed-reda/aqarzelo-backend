@@ -61,15 +61,21 @@
     #filterToggleSidebarBtn .fa-angle-left {
         font-size:20px !important;
     }
+    #filterToggleSidebarBtn .fa-angle-right {
+        font-size:20px !important;
+    }
     .gmnoprint{
-        top: 75px !important;
+        bottom: 75% !important;
     }
     /*.gm-style .gmnoprint{
         display: none
     }*/
     .gm-svpc{
-        top: 0 !important;
+        top: -40px !important;
         left: 178px !important;
+    }
+    #map{
+        height: 100% !important;
     }
     .gm-style-cc div:first-child() div:nth-child(2){
         display: none
