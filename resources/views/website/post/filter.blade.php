@@ -5,11 +5,11 @@
         <br>
         <br>
         <br>
-        <div class="w3-display-topleft w3-padding" style="z-index: 2;top: 150px;left: -82px;" onclick="toggleFilterSidebar()"  >
+        <div class="w3-display-topleft w3-padding" style="z-index: 2;top: 150px;left: -63.7px;" onclick="toggleFilterSidebar()"  >
             <button
                 class="w3-white shadow btn btn-flat animated delay-2s zoomIn "
-                style="border-radius: 0px!important;transform: rotate(-90deg);width: 123px;height: 40px;"
-                id="filterToggleSidebarBtn" ><i class="fa fa-angle-right" >  </i>
+                style="border-radius: 0px!important;transform: rotate(-90deg);width: 80px;height: 45px;"
+                id="filterToggleSidebarBtn" ><i class="fa fa-angle-right" style="display: inline-block;font-size:20px !important;">  </i>
                 </button>
 
                 <div class="hidden filterToggleSidebarBtnText" >

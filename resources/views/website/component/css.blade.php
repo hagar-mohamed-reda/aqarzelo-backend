@@ -58,9 +58,15 @@
     *, .font {
         font-family: 'Cairo', sans-serif;
     }
+    #filterToggleSidebarBtn .fa-angle-left {
+        font-size:20px !important;
+    }
     .gmnoprint{
         top: 75px !important;
     }
+    /*.gm-style .gmnoprint{
+        display: none
+    }*/
     .gm-svpc{
         top: 0 !important;
         left: 178px !important;
