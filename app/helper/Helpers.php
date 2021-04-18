@@ -4,8 +4,8 @@ if (!function_exists('uploadImg')) {
     function uploadImg($file, $folder = '/', $action, $oldPath=null) {
 
         $filename = "";
-        if ($file) { 
-            
+        if ($file) {
+
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '' . rand(11111, 99999) . '.' . $extension; // renameing image
             $dest = public_path('/' . $folder);
@@ -18,7 +18,7 @@ if (!function_exists('uploadImg')) {
             }
             $action($filename);
         }
-         
+
         return $filename;
     }
 }
@@ -47,7 +47,12 @@ if (!function_exists('trans')) {
             if ($translation) {
                 $translate =  $translation->word_en;
 
-                if ($translate) {
+                if (session('locale') == 'ar') {
+                    $translate =  $translation->word_ar;
+                    return $translate;
+
+                }else if(session('locale') == 'en'){
+                    $translate =  $translation->word_en;
                     return $translate;
                 }
             } else {
@@ -67,7 +72,7 @@ if (!function_exists('trans')) {
         //        }
         //
         //        return app('translator')->trans($key, $replace, $locale);
-    }
+    }//end of trans
 
 }
 
@@ -176,7 +181,7 @@ if (!function_exists('randColor')) {
     }
 }
 
-  
+
 /**
  * rand css class for text color from w3.css classes
  *
@@ -191,8 +196,8 @@ if (!function_exists('randTextColor')) {
             "w3-text-blue",
             "w3-text-purple",
             "w3-text-deep-purple",
-            "w3-text-indigo",  
-            "w3-text-teal", 
+            "w3-text-indigo",
+            "w3-text-teal",
             "w3-text-orange",
             "w3-text-blue-gray",
             "w3-text-brown",
@@ -200,7 +205,7 @@ if (!function_exists('randTextColor')) {
 
         return $colors[array_rand($colors)];
     }
-}  
+}
 
 /**
  * rand css class color from w3.css classes
@@ -210,20 +215,20 @@ if (!function_exists('randTextColor')) {
 if (!function_exists('getSetting')) {
     function getSetting($id) {
         $setting = App\Setting::find($id);
-        if (!$setting) 
+        if (!$setting)
             $setting = App\Setting::create([
                 "id" => $id,
                 "name" => '-',
                 "value" => '-',
             ]);
-        
+
         return $setting->value;
     }
 }
 
 /**
- * reponse json 
- * 
+ * reponse json
+ *
  * @return Array
  */
 if (!function_exists('responseJson')) {

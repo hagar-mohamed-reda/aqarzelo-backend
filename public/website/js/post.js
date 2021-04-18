@@ -582,8 +582,18 @@ function search() {
         app.posts = r.data;
         var i = 0;
         for(i = 0; i < app.posts.length; i ++) {
-            app.posts[i].price = (app.posts[i].price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
-            app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
+            //app.posts[i].price = (app.posts[i].price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
+            //app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
+            if(app.posts[i].price > 1000000){
+                var x = app.posts[i].price/1000000
+                app.posts[i].price = x.toString() + 'M' ;
+            }
+            else if(app.posts[i].price > 1000){
+                var x = app.posts[i].price/1000
+                app.posts[i].price = x.toString() + 'K' ;
+            }else{
+                app.posts[i].price = app.posts[i].price
+            }
         }
 
         drawPostsMarkers(r.data);

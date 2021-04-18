@@ -112,6 +112,7 @@ else
                   <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
                     <li class="w3-hover-light-gray w3-padding" style="height: 40px!important">
                         <a href="{{ url('/locale/ar') }}" class="w3-display-container " >
+                        {{-- <a href="http://localhost:82/aqarzelo-backend/locale/ar" class="w3-display-container " > --}}
 
                             <img src="{{ url('/images/egypt.png') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
 
@@ -121,6 +122,7 @@ else
                     <li class="w3-border-bottom w3-border-gray" ></li>
                     <li class="w3-hover-light-gray w3-padding" style="height: 40px!important" >
                         <a href="{{ url('/locale/en') }}" class="w3-display-container">
+                        {{-- <a href="http://localhost:82/aqarzelo-backend/locale/en" class="w3-display-container"> --}}
 
                             <img src="{{ url('/images/english_flag.jpg') }}" class="fa w3-circle w3-left" width="30px" height="30px" >
 
