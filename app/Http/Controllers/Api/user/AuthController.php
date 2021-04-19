@@ -111,9 +111,11 @@ class AuthController extends Controller {
                 if ($user->company->active == "not_active")
                     return Message::error("company_not_active", trans("company_not_active"));
 
-                if ($user->type != "user" || $user->type != "owner")
-                    return Message::error("login in mobile available for owner or user", trans("login_in_mobile_available_for_owner_or_user"));
+                if ($user->type == "user" || $user->type == "owner"){
 
+                }else{
+                    return Message::error("login in mobile available for owner or user", trans("login_in_mobile_available_for_owner_or_user"));
+                }
                 if (!$user->api_token) {
                     $user->api_token = Helper::randamToken();
                     $user->update();
