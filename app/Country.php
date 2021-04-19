@@ -26,6 +26,10 @@ class Country extends Model
     {
         return $this->hasMany('App\City');
     }
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
 
     public static function roles() {
         return [

@@ -416,7 +416,7 @@ class MainController extends Controller {
             $posts = Post::query()
                         ->whereIn('id', $postsIds)
                         ->orderBy('recommended_sort')
-                        ->get();
+                        ->paginate(10);
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
         } catch (Exception $e) {

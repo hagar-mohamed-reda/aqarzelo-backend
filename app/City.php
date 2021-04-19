@@ -13,11 +13,11 @@ class City extends Model
     protected $appends = [
         'can_delete'
     ];
-    
+
     public function getCanDeleteAttribute() {
         return !Post::where('city_id', $this->id)->exists() || !Area::where('city_id', $this->id)->exists();
     }
-    
+
     public function country() {
         return $this->belongsTo("App\Country");
     }
@@ -26,7 +26,11 @@ class City extends Model
     {
         return $this->hasMany('App\Area');
     }
-    
+    public function posts()
+    {
+        return $this->hasMany('App\Post');
+    }
+
     public static function roles() {
         return [
             "country_id" => "required",

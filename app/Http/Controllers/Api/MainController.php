@@ -22,7 +22,10 @@ class MainController extends Controller {
      * @return Array City
      */
     public function getCountries() {
-        $countries = Country::all();
+        if ($request->has("is_filter"))
+            $countries = Country::post()->exists()->get();
+        else
+            $countries = Country::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $countries);
     }
 
@@ -31,8 +34,11 @@ class MainController extends Controller {
      *
      * @return Array City
      */
-    public function getCities() {
-        $cities = City::all();
+    public function getCities(Request $request) {
+        if ($request->has("is_filter"))
+            $cities = City::post()->exists()->get();
+        else
+            $cities = City::all();
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $cities);
     }
 
@@ -43,10 +49,15 @@ class MainController extends Controller {
      * @return Array Area
      */
     public function getAreas(Request $request) {
-        if ($request->has("city_id"))
-            $areas = Area::where("city_id", $request->city_id)->get();
-        else
+        if($request->has("is_filter")){
+            if ($request->has("city_id"))
+                $areas = Area::post()->exists()->where("city_id", $request->city_id)->get();
+            else
+                $areas = Area::all();
+        }else{
             $areas = Area::all();
+        }
+
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $areas);
     }
 
