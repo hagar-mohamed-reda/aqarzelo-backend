@@ -74,9 +74,9 @@
         top: -40px !important;
         left: 178px !important;
     }
-    #map{
+    /*#map{
         height: 100% !important;
-    }
+    }*/
     .gm-style-cc div:first-child() div:nth-child(2){
         display: none
     }

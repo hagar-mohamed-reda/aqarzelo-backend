@@ -379,150 +379,150 @@ else
 
                         <div class="post-data-step post-data-step-3" >
 
-                        <table class="w3-table w3-padding " >
-                            <tr>
+                            <table class="w3-table w3-padding " >
+                                <tr>
 
-                                <td>
-                                    {{ __('words.country') }} *
-                                </td>
-                                <td>
-                                    <select class="form-control w3-round input-sm country-select" v-model="post.country_id"   >
-                                        @foreach(App\Country::all() as $item)
-                                        <option value="{{ $item->id }}" >{{ session("locale") == "ar"? $item->name_ar : $item->name_en }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {{ __('words.city') }} *
-                                </td>
-                                <td>
-                                    <select class="form-control w3-round input-sm city-select" v-model="post.city_id" onchange="changeArea(this.value)" >
-                                        @foreach(App\City::all() as $city)
-                                        <option value="{{ $city->id }}" v-if="post.country_id == '{{ $city->country_id }}'" >{{ session("locale") == "ar"? $city->name_ar : $city->name_en }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>
-                                    {{ __('words.owner_type') }} *
-                                </td>
-                                <td>
-                                  <div class="radio w3-cell" onclick="app.post.owner_type='owner'" >
-                                    <input  id="owner" name="owner_type" type="radio">
-                                    <label  for="owner" class="radio-label">{{ __('words.owner') }}</label>
-                                  </div>
-                                  <div class="radio w3-cell" onclick="app.post.owner_type='developer'" >
-                                    <input  id="developer" name="owner_type" type="radio">
-                                    <label  for="developer" class="radio-label">{{ __('words.developer') }}</label>
-                                  </div>
-                                  <div class="radio w3-cell" onclick="app.post.owner_type='mediator'" >
-                                    <input  id="mediator" name="owner_type" type="radio">
-                                    <label  for="mediator" class="radio-label">{{ __('words.mediator') }}</label>
-                                  </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    {{ __('words.area') }} *
-                                </td>
-                                <td>
-                                    <select class="form-control w3-round  input-sm area-select" v-model="post.area_id"   >
-                                        @foreach(App\Area::all() as $area)
-                                        <option
-                                        class="area-option"
-                                        value="{{ $area->id }}"
-                                        v-bind:city="{{ $area->city->id }}"  >{{ session("locale") == "ar"? $area->name_ar : $area->name_en }}</option>
-                                        @endforeach
-                                    </select>
-                                </td>
-                                <td>{{ __('words.payment_method') }} *</td>
-                                <td>
-                                    <div class="radio w3-cell" onclick="app.post.payment_method='cash'" >
-                                        <input  id="cash" name="payment_method" type="radio">
-                                        <label  for="cash" class="radio-label">{{ __('words.cash') }}</label>
+                                    <td>
+                                        {{ __('words.country') }} *
+                                    </td>
+                                    <td>
+                                        <select class="form-control w3-round input-sm country-select" v-model="post.country_id"   >
+                                            @foreach(App\Country::all() as $item)
+                                            <option value="{{ $item->id }}" >{{ session("locale") == "ar"? $item->name_ar : $item->name_en }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ __('words.city') }} *
+                                    </td>
+                                    <td>
+                                        <select class="form-control w3-round input-sm city-select" v-model="post.city_id" onchange="changeArea(this.value)" >
+                                            @foreach(App\City::all() as $city)
+                                            <option value="{{ $city->id }}" v-if="post.country_id == '{{ $city->country_id }}'" >{{ session("locale") == "ar"? $city->name_ar : $city->name_en }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>
+                                        {{ __('words.owner_type') }} *
+                                    </td>
+                                    <td>
+                                    <div class="radio w3-cell" onclick="app.post.owner_type='owner'" >
+                                        <input  id="owner" name="owner_type" type="radio">
+                                        <label  for="owner" class="radio-label">{{ __('words.owner') }}</label>
                                     </div>
-                                    <div class="radio w3-cell" onclick="app.post.payment_method='installment'" >
-                                        <input  id="installment" name="payment_method" type="radio">
-                                        <label  for="installment" class="radio-label">{{ __('words.installment') }}</label>
+                                    <div class="radio w3-cell" onclick="app.post.owner_type='developer'" >
+                                        <input  id="developer" name="owner_type" type="radio">
+                                        <label  for="developer" class="radio-label">{{ __('words.developer') }}</label>
                                     </div>
-                                    <div class="radio w3-cell" onclick="app.post.payment_method='cash or installment'" >
-                                        <input  id="cashorinstallment" name="payment_method" type="radio">
-                                        <label  for="cashorinstallment" class="radio-label">{{ __('words.cash or installment') }}</label>
+                                    <div class="radio w3-cell" onclick="app.post.owner_type='mediator'" >
+                                        <input  id="mediator" name="owner_type" type="radio">
+                                        <label  for="mediator" class="radio-label">{{ __('words.mediator') }}</label>
                                     </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="category_hidden_1" >{{ __('words.floor_number') }}</td>
-                                <td class="category_hidden_1">
-                                     <input type="number" class="form-control input-sm" v-model="post.floor_number" min="0"  placeholder="{{ __('words.floor_number') }}">
-                                </td>
-                                <td class="category_hidden_2">
-                                    {{ __('words.more_details') }}
-                                </td>
-                                <td class="category_hidden_2">
-                                    <div style="" >
-
-                                        <div class="radio w3-cell radios"  >
-                                            <input  id="furnished" name="furnished" v-model="post.furnished" type="checkbox">
-                                            <label  for="furnished" class="radio-label">{{ __('words.furnished') }}</label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        {{ __('words.area') }} *
+                                    </td>
+                                    <td>
+                                        <select class="form-control w3-round  input-sm area-select" v-model="post.area_id"   >
+                                            @foreach(App\Area::all() as $area)
+                                            <option
+                                            class="area-option"
+                                            value="{{ $area->id }}"
+                                            v-bind:city="{{ $area->city->id }}"  >{{ session("locale") == "ar"? $area->name_ar : $area->name_en }}</option>
+                                            @endforeach
+                                        </select>
+                                    </td>
+                                    <td>{{ __('words.payment_method') }} *</td>
+                                    <td>
+                                        <div class="radio w3-cell" onclick="app.post.payment_method='cash'" >
+                                            <input  id="cash" name="payment_method" type="radio">
+                                            <label  for="cash" class="radio-label">{{ __('words.cash') }}</label>
                                         </div>
-
-                                        <div class="radio w3-cell radios"  >
-                                            <input  id="has_parking" name="has_parking" v-model="post.has_parking" type="checkbox">
-                                            <label  for="has_parking" class="radio-label">{{ __('words.has_parking') }}</label>
+                                        <div class="radio w3-cell" onclick="app.post.payment_method='installment'" >
+                                            <input  id="installment" name="payment_method" type="radio">
+                                            <label  for="installment" class="radio-label">{{ __('words.installment') }}</label>
                                         </div>
-
-                                        <div class="radio w3-cell radios"  >
-                                            <input  id="has_garden" name="has_garden" v-model="post.has_garden" type="checkbox">
-                                            <label  for="has_garden" class="radio-label">{{ __('words.has_garden') }}</label>
+                                        <div class="radio w3-cell" onclick="app.post.payment_method='cash or installment'" >
+                                            <input  id="cashorinstallment" name="payment_method" type="radio">
+                                            <label  for="cashorinstallment" class="radio-label">{{ __('words.cash or installment') }}</label>
                                         </div>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td >{{ __('words.description') }}</td>
-                                <td colspan="3" >
-                                    <textarea class="form-control input-sm" style="resize: vertical;" v-model="post.description"  placeholder="{{ __('words.description') }}"></textarea>
-                                </td>
-                            </tr>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="category_hidden_1" >{{ __('words.floor_number') }}</td>
+                                    <td class="category_hidden_1">
+                                        <input type="number" class="form-control input-sm" v-model="post.floor_number" min="0"  placeholder="{{ __('words.floor_number') }}">
+                                    </td>
+                                    <td class="category_hidden_2">
+                                        {{ __('words.more_details') }}
+                                    </td>
+                                    <td class="category_hidden_2">
+                                        <div style="" >
 
-                            <tr>
-                                <td class="category_hidden_2">
-                                    {{ __('words.finishing') }} *
-                                </td>
-                                <td colspan="3" class="category_hidden_2" >
-                                    <div style="" >
-                                      <div class="radio w3-cell" onclick="app.post.finishing_type='extra_super_lux'" >
-                                        <input  id="extra_super_lux" name="finishing_type" type="radio">
-                                        <label  for="extra_super_lux" class="radio-label">{{ __('words.extra_super_lux') }}</label>
-                                      </div>
-                                       <div class="radio w3-cell" onclick="app.post.finishing_type='super_lux'" >
-                                        <input  id="super_lux" name="finishing_type" type="radio">
-                                        <label  for="super_lux" class="radio-label">{{ __('words.super_lux') }}</label>
-                                      </div>
-                                        <div class="radio w3-cell" onclick="app.post.finishing_type='lux'" >
-                                        <input  id="lux" name="finishing_type" type="radio">
-                                        <label  for="lux" class="radio-label">{{ __('words.lux') }}</label>
-                                      </div>
-                                        <div class="radio w3-cell" onclick="app.post.finishing_type='semi_finished'" >
-                                        <input  id="semi_finished" name="finishing_type" type="radio">
-                                        <label  for="semi_finished" class="radio-label">{{ __('words.semi_finished') }}</label>
-                                      </div>
-                                        <div class="radio w3-cell" onclick="app.post.finishing_type='core&chel'" >
-                                        <input  id="core&chel" name="finishing_type" type="radio">
-                                        <label  for="core&chel" class="radio-label">{{ __('words.core&chel') }}</label>
-                                      </div>
-                                        <div class="radio w3-cell" onclick="app.post.finishing_type='without_finished'" >
-                                        <input  id="without_finished" name="finishing_type" type="radio">
-                                        <label  for="without_finished" class="radio-label">{{ __('words.without_finished') }}</label>
-                                      </div>
-                                    </div>
-                                </td>
-                            </tr>
-                        </table>
+                                            <div class="radio w3-cell radios"  >
+                                                <input  id="furnished" name="furnished" v-model="post.furnished" type="checkbox">
+                                                <label  for="furnished" class="radio-label">{{ __('words.furnished') }}</label>
+                                            </div>
+
+                                            <div class="radio w3-cell radios"  >
+                                                <input  id="has_parking" name="has_parking" v-model="post.has_parking" type="checkbox">
+                                                <label  for="has_parking" class="radio-label">{{ __('words.has_parking') }}</label>
+                                            </div>
+
+                                            <div class="radio w3-cell radios"  >
+                                                <input  id="has_garden" name="has_garden" v-model="post.has_garden" type="checkbox">
+                                                <label  for="has_garden" class="radio-label">{{ __('words.has_garden') }}</label>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td >{{ __('words.description') }}</td>
+                                    <td colspan="3" >
+                                        <textarea class="form-control input-sm" style="resize: vertical;" v-model="post.description"  placeholder="{{ __('words.description') }}"></textarea>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td class="category_hidden_2">
+                                        {{ __('words.finishing') }} *
+                                    </td>
+                                    <td colspan="3" class="category_hidden_2" >
+                                        <div style="" >
+                                        <div class="radio w3-cell" onclick="app.post.finishing_type='extra_super_lux'" >
+                                            <input  id="extra_super_lux" name="finishing_type" type="radio">
+                                            <label  for="extra_super_lux" class="radio-label">{{ __('words.extra_super_lux') }}</label>
+                                        </div>
+                                        <div class="radio w3-cell" onclick="app.post.finishing_type='super_lux'" >
+                                            <input  id="super_lux" name="finishing_type" type="radio">
+                                            <label  for="super_lux" class="radio-label">{{ __('words.super_lux') }}</label>
+                                        </div>
+                                            <div class="radio w3-cell" onclick="app.post.finishing_type='lux'" >
+                                            <input  id="lux" name="finishing_type" type="radio">
+                                            <label  for="lux" class="radio-label">{{ __('words.lux') }}</label>
+                                        </div>
+                                            <div class="radio w3-cell" onclick="app.post.finishing_type='semi_finished'" >
+                                            <input  id="semi_finished" name="finishing_type" type="radio">
+                                            <label  for="semi_finished" class="radio-label">{{ __('words.semi_finished') }}</label>
+                                        </div>
+                                            <div class="radio w3-cell" onclick="app.post.finishing_type='core&chel'" >
+                                            <input  id="core&chel" name="finishing_type" type="radio">
+                                            <label  for="core&chel" class="radio-label">{{ __('words.core&chel') }}</label>
+                                        </div>
+                                            <div class="radio w3-cell" onclick="app.post.finishing_type='without_finished'" >
+                                            <input  id="without_finished" name="finishing_type" type="radio">
+                                            <label  for="without_finished" class="radio-label">{{ __('words.without_finished') }}</label>
+                                        </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
                             <center>
                                 <button
                                     class="w3-btn w3-padding w3-round-xxlarge w3-large  animated fadeInLeft fa fa-angle-left"
