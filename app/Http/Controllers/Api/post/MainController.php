@@ -412,11 +412,17 @@ class MainController extends Controller {
                     $postsIds[] = $post;
                 }
             }
-
-            $posts = Post::query()
+            if ($request->has('page')) {
+                $posts = Post::query()
                         ->whereIn('id', $postsIds)
                         ->orderBy('recommended_sort')
-                        ->get();
+                        ->paginate(10);
+            }else{
+                $posts = Post::query()
+                            ->whereIn('id', $postsIds)
+                            ->orderBy('recommended_sort')
+                            ->get();
+            }
 
             return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
         } catch (Exception $e) {

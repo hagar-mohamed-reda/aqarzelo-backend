@@ -21,7 +21,7 @@ class MainController extends Controller {
      *
      * @return Array City
      */
-    public function getCountries() {
+    public function getCountries(Request $request) {
         if ($request->has("is_filter"))
             $countries = Country::post()->exists()->get();
         else

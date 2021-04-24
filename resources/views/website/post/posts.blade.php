@@ -53,6 +53,10 @@ else
         }
     }
 
+    .select2{
+        margin-bottom: 5px
+    }
+
 
  </style>
 @endsection()
