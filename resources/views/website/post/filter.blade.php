@@ -33,32 +33,32 @@
                 <br>
                 </li>
                 <li>
-                    <select class="form-control w3-round select2-filter" style="margin-bottom: 7px" >
-                        <option value="undefind" selected>{{ __("words.country") }}</option>
+                    <select class="form-control w3-round select2-filter" v-model="filter.country_id" style="margin-bottom: 7px" >
+                        <option value="undefind" selected disabled>{{ __("words.country") }}</option>
                         @foreach(App\Country::all() as $item)
                         <option value="{{ $item->id }}" >{{ session("locale")=="en"? $item->name_en : $item->name_ar }}</option>
                         @endforeach
                     </select>
                     <select class="form-control w3-round select2-filter" v-model="filter.city_id" style="margin-bottom: 7px" >
-                        <option value="null" >{{ __("words.city") }}</option>
+                        <option value="null" disabled>{{ __("words.city") }}</option>
                         @foreach(App\City::all() as $city)
                         <option value="{{ $city->id }}" v-if="filter.country_id=='{{ $city->country_id }}'"  >{{ session("locale")=="en"? $city->name_en : $city->name_ar }}</option>
                         @endforeach
                     </select>
                     <select class="form-control w3-round select2-filter" v-model="filter.area_id"  style="margin-bottom: 7px"  >
-                        <option value="null" >{{ __("words.area") }}</option>
+                        <option value="null" disabled>{{ __("words.area") }}</option>
                         @foreach(App\Area::all() as $area)
                         <option value="{{ $area->id }}" v-if="filter.city_id=='{{ $area->city->id }}'" >{{ session("locale")=="en"? $area->name_en : $area->name_ar }}</option>
                         @endforeach
                     </select>
                     <select class="form-control w3-round select2-filter" v-model="filter.category_id" style="margin-bottom: 7px" >
-                        <option value="null" >{{ __("words.category") }}</option>
+                        <option value="null" disabled>{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
                         <option value="{{ $category->id }}" >{{ session("locale")=="en"? $category->name_en : $category->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control w3-round select2-filter" style="margin-bottom: 7px" >
-                        <option value="null" >{{ __("words.sale_&_rent") }}</option>
+                    <select class="form-control w3-round select2-filter" v-model="filter.type" style="margin-bottom: 7px" >
+                        <option value="null" disabled>{{ __("words.sale_&_rent") }}</option>
                         <option value="sale" >{{ __('sale') }}</option>
                         <option value="rent" >{{ __('rent') }}</option>
                     </select>
