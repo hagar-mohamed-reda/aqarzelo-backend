@@ -23,7 +23,7 @@ class MainController extends Controller {
      */
     public function getCountries(Request $request) {
         if ($request->has("is_filter")){
-            $countries = new Country();
+            $countries =Country::all();
             if($countries->getPostsAttribute())
                 $countries->get();
         }
