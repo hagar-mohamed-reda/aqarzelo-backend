@@ -22,10 +22,13 @@ class MainController extends Controller {
      * @return Array City
      */
     public function getCountries(Request $request) {
-        if ($request->has("is_filter"))
-            $countries = Country::posts()->exists()->get();
-        else
+        if ($request->has("is_filter")){
+            $countries = new Country();
+            $countries->posts()->exists()->get();
+        }
+        else{
             $countries = Country::all();
+        }
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $countries);
     }
 
@@ -35,10 +38,13 @@ class MainController extends Controller {
      * @return Array City
      */
     public function getCities(Request $request) {
-        if ($request->has("is_filter"))
-            $cities = City::posts()->exists()->get();
-        else
+        if ($request->has("is_filter")){
+            $cities = new City();
+            $cities->posts()->exists()->get();
+        }
+        else{
             $cities = City::all();
+        }
         return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $cities);
     }
 
@@ -50,10 +56,13 @@ class MainController extends Controller {
      */
     public function getAreas(Request $request) {
         if($request->has("is_filter")){
-            if ($request->has("city_id"))
-                $areas = Area::posts()->exists()->where("city_id", $request->city_id)->get();
-            else
+            if ($request->has("city_id")){
+                $areas = new Area();
+                $areas->posts()->exists()->where("city_id", $request->city_id)->get();
+            }
+            else{
                 $areas = Area::all();
+            }
         }else{
             $areas = Area::all();
         }
