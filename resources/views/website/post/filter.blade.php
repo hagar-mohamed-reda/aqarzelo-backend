@@ -41,7 +41,7 @@
                     </select>
                     <select class="form-control w3-round" v-model="filter.city_id" style="margin-bottom: 7px;padding: 0px 12px;" >
                         <option value="null" disabled>{{ __("words.city") }}</option>
-                        @foreach(DB::select('select * from cities where id in(select distinct(city_id) from posts ORDER BY cities.name_en ASC)') as $city)
+                        @foreach(DB::select('select * from cities where id in(select distinct(city_id) from posts) ORDER BY cities.name_en ASC') as $city)
                         <option value="{{ $city->id }}" v-if="filter.country_id=='{{ $city->country_id }}'"  >{{ session("locale")=="en"? $city->name_en : $city->name_ar }}</option>
                         @endforeach
                     </select>
