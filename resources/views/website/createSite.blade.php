@@ -22,8 +22,8 @@ else
     <div class="row step step-1" style="overflow: auto" >
         <div class="col-lg-7 col-md-7 col-sm-6 w3-padding"   >
             <span class="w3-xxlarge text-uppercase" >{{ __("words.choose_template") }}</span>
-            <div class="alert alert-info" >
-                {{ __("words.create_template_for_company_only") }}
+            <div class="alert alert-info" style="color: #f00;direction: rtl;">
+                {{ __("words.create_website_available_for_company_and_agent") }}
             </div>
             <br>
             <div style="width: 30%;height: 5px;margin-top: 5px;" class="dark-theme-background w3-border-bottom w3-border-gray" ></div>
