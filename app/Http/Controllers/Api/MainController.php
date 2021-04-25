@@ -13,6 +13,7 @@ use App\Category;
 use App\User;
 use App\Setting;
 use App\Country;
+use DB;
 
 class MainController extends Controller {
 
@@ -23,9 +24,8 @@ class MainController extends Controller {
      */
     public function getCountries(Request $request) {
         if ($request->has("is_filter")){
-            $countries =Country::all();
-            if($countries->getPostsAttribute())
-                $countries->get();
+            // $countries = DB::select('select countries.* from countries JOIN posts on posts.country_id = countries.id limet 1');
+            $countries = DB::select('select * from countries where id in(select distinct(country_id) from posts)');
         }
         else{
             $countries = Country::all();
@@ -40,9 +40,7 @@ class MainController extends Controller {
      */
     public function getCities(Request $request) {
         if ($request->has("is_filter")){
-            $cities = new City();
-            if($cities->posts()->exists())
-                $cities->posts()->get();
+            $cities = DB::select('select * from cities where id in(select distinct(city_id) from posts)');
         }
         else{
             $cities = City::all();
@@ -59,9 +57,7 @@ class MainController extends Controller {
     public function getAreas(Request $request) {
         if($request->has("is_filter")){
             if ($request->has("city_id")){
-                $areas = new Area();
-                if($areas->posts()->exists())
-                    $areas->posts()->where("city_id", $request->city_id)->get();
+                $areas = DB::select('select * from areas where id in(select distinct(area_id) from posts)');
             }
             else{
                 $areas = Area::all();
