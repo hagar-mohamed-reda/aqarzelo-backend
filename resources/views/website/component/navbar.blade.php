@@ -95,7 +95,7 @@ else
                   </ul>
                 </li>
                 <li class="padding">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 25%" >
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><!--style="padding-top: 25%" -->
 
                         <img src="{{ url('/website/icons/lang.png') }}" class="fa w3-round" style="padding-top: 5px!important" width="20px"> {{ __("words.lang") }}
                         <!--
