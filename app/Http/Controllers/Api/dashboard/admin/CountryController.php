@@ -34,7 +34,7 @@ class CountryController extends Controller {
         try {
 
             //return dump(toClass($data)->api_token);
-            $validator = validator($request->json()->all(), Country::roles());
+            $validator = validator($request->all(), Country::roles());
 
             if ($validator->fails()) {
                 return responseJson(0, $validator->errors()->first());
@@ -49,7 +49,7 @@ class CountryController extends Controller {
             }
 
             watch(__('add Country ') . $resource->name, "fa fa-building-o");
-        } catch (\Exception $th) {
+        } catch (Exception $th) {
             return responseJson(0, $th->getMessage());
         }
 
