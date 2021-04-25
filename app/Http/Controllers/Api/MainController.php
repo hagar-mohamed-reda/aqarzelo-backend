@@ -25,7 +25,7 @@ class MainController extends Controller {
         if ($request->has("is_filter")){
             $countries = new Country();
             if($countries->posts()->exists())
-                $countries->posts()->get();
+                $countries->getPostsAttribute();
         }
         else{
             $countries = Country::all();

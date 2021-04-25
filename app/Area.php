@@ -12,11 +12,15 @@ class Area extends Model
     ];
 
     protected $appends = [
-        'can_delete', 'country_id'
+        'can_delete', 'country_id','posts'
     ];
 
     public function getCanDeleteAttribute() {
         return !Post::where('area_id', $this->id)->exists();
+    }
+    
+    public function getPostsAttribute() {
+        return Post::where('area_id', $this->id)->exists();
     }
 
     public function getCountryIdAttribute() {

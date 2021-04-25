@@ -11,11 +11,14 @@ class Country extends Model
     ];
 
     protected $appends = [
-        'can_delete', 'icon_url'
+        'can_delete', 'icon_url', 'posts'
     ];
 
     public function getCanDeleteAttribute() {
         return !Post::where('country_id', $this->id)->exists() || !City::where('country_id', $this->id)->exists();
+    }
+    public function getPostsAttribute() {
+        return Post::where('area_id', $this->id)->exists();
     }
 
     public function getIconUrlAttribute() {
