@@ -76,7 +76,7 @@ else
     </div>
     <div class="modal-dialog modal-lg test" >
         <div class="w3-row w3-modal-content transparent"  >
-            <div class="w3-col l6 m6 s6 transparent" >
+            <div class="w3-col l4 m4 s4 transparent" >
                 <div class="media animated fadeInUp">
                 <div class="media-left">
                   <a href="https://www.google.com/maps?ll=30.00907,31.188283&z=15&t=m&hl=en&gl=EG&mapclient=embed&cid=14447840851503612123" target="_blank" >
@@ -95,7 +95,7 @@ else
                 </div>
               </div>
             </div>
-            <div class="w3-col l6 m6 s6 transparent" >
+            <div class="w3-col l4 m4 s4 transparent" >
                 <div class="media animated fadeInUp">
                 <div class="media-left">
                   <a href="https://mail.google.com/mail" target="_blank" >
@@ -105,6 +105,21 @@ else
                 <div class="media-body">
                   <h4 class="media-heading">{{ __("words.email") }}</h4>
                   info@aqarzelo.com
+                </div>
+              </div>
+            </div>
+            <div class="w3-col l4 m4 s4 transparent" >
+                <div class="media animated fadeInUp">
+                <div class="media-left">
+                  <a href="https://mail.google.com/mail" target="_blank" >
+                      <img class="media-object" width="50px" src="{{ url('/website/icons/phone.png') }}" alt="">
+                  </a>
+                </div>
+                <div class="media-body">
+                  <h4 class="media-heading">{{ __("words.phones") }}</h4>
+                  01000122247
+                  <br>
+                  01157891967
                 </div>
               </div>
             </div>

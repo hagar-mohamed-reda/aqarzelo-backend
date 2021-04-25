@@ -56,13 +56,6 @@ else
                     <div class="w3-center">
                         <button
                             type="button"
-                            onclick="$('.input-radio-agent')[0].checked=true;$('.plans').show(100);$('.input-radio-plan').attr('required', 'required');$('.commercial_no input').removeAttr('required');$('.commercial_no').hide()"
-                            class="w3-btn w3-padding w3-round "
-                            style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white" >
-                            <input type="radio" required="" class="input-radio-agent" name="model_type" value="agent"  >{{ __('agent') }}
-                        </button>
-                        <button
-                            type="button"
                             onclick="$('.input-radio-owner')[0].checked=true;$('.plans').hide(100);$('.input-radio-plan').removeAttr('required');$('.commercial_no input').removeAttr('required');$('.commercial_no').hide()"
                             class="w3-btn w3-padding w3-round "
                             style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white" >
@@ -70,10 +63,18 @@ else
                         </button>
                         <button
                             type="button"
+                            onclick="$('.input-radio-agent')[0].checked=true;$('.plans').show(100);$('.input-radio-plan').attr('required', 'required');$('.commercial_no input').removeAttr('required');$('.commercial_no').hide()"
+                            class="w3-btn w3-padding w3-round "
+                            style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white" >
+                            <input type="radio" required="" class="input-radio-agent" name="model_type" value="agent"  >{{ __('agent') }}
+                        </button>
+
+                        <button
+                            type="button"
                             onclick="$('.input-radio-company')[0].checked=true;$('.plans').hide(100);$('.input-radio-plan').removeAttr('required');$('.commercial_no input').attr('required', 'required');$('.commercial_no').show(500)"
                             class="w3-btn w3-padding w3-round "
                             style="background-image: linear-gradient(to right, #02A2A7 , #06D9B2);color:white" >
-                            <input type="radio" required="" class="input-radio-company" name="model_type" value="company"  >{{ __('company') }}
+                            <input type="radio" required="" class="input-radio-company" name="model_type" value="company"  >{{ __('developer_brokerage_company ') }}
                         </button>
                     </div>
                     {{ csrf_field() }}
