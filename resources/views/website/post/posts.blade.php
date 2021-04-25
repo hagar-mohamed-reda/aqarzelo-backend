@@ -113,9 +113,11 @@ app = new Vue({
         loadding360: true,
         recommends: [],
         filter: {
+            country_id:null,
             city_id: null,
             area_id: null,
             category_id: null,
+            type:null,
             bedroom_number: 0,
             bathroom_number: 0,
         },

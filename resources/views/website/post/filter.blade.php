@@ -34,7 +34,7 @@
                 </li>
                 <li>
                     <select class="form-control w3-round" v-model="filter.country_id" style="margin-bottom: 7px" >
-                        <option value="undefind" selected disabled>{{ __("words.country") }}</option>
+                        <option value="null" selected disabled>{{ __("words.country") }}</option>
                         @foreach(App\Country::all() as $item)
                         <option value="{{ $item->id }}" >{{ session("locale")=="en"? $item->name_en : $item->name_ar }}</option>
                         @endforeach
