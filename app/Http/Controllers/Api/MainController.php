@@ -24,7 +24,8 @@ class MainController extends Controller {
     public function getCountries(Request $request) {
         if ($request->has("is_filter")){
             $countries = new Country();
-            $countries->posts()->exists()->get();
+            if($countries->posts()->exists())
+                $countries->posts()->get();
         }
         else{
             $countries = Country::all();
@@ -40,7 +41,8 @@ class MainController extends Controller {
     public function getCities(Request $request) {
         if ($request->has("is_filter")){
             $cities = new City();
-            $cities->posts()->exists()->get();
+            if($cities->posts()->exists())
+                $cities->posts()->get();
         }
         else{
             $cities = City::all();
@@ -58,7 +60,8 @@ class MainController extends Controller {
         if($request->has("is_filter")){
             if ($request->has("city_id")){
                 $areas = new Area();
-                $areas->posts()->exists()->where("city_id", $request->city_id)->get();
+                if($areas->posts()->exists())
+                    $areas->posts()->where("city_id", $request->city_id)->get();
             }
             else{
                 $areas = Area::all();
