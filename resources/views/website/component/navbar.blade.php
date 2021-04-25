@@ -28,7 +28,7 @@ else
                     <a href="{{ url('/') }}" class="navbar-list-item" ><i class="fa fa-home" style="padding:5px"   ></i> {{ __("words.home") }} </a>
                 </li>
                 <li class="padding w3-">
-                    <a href="{{ url('/map') }}" class="navbar-list-item" ><i class="fa fa-map-marker"  style="padding:5px"  ></i>{{ __("words.map") }}</a>
+                    <a href="{{ url('/map') }}" class="navbar-list-item" style="border: 2px solid #05CEB0;"><i class="fa fa-map-marker"  style="padding:5px;"  ></i>{{ __("words.map") }}</a>
                 </li>
                 <li class="padding w3-">
                     <a href="{{ url('/create-post') }}" class="navbar-list-item" ><i class="fa fa-bank"  style="padding:5px"  ></i>{{ __("words.create_post") }}</a>
@@ -66,7 +66,7 @@ else
                 <li class="padding">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"   >
 
-                        <img src="{{ url('/images/egypt.png') }}"   class="fa w3-round" width="25px" >
+                        <img src="{{ url('/images/egypt.png') }}"   class="fa w3-round" width="25px" > {{ __("words.country") }}
                         <!--
                             data-toggle="tooltip" data-placement="top" title="{{ __('words.text_appear_in_tooltip') }}"
                        <i class="fa fa-globe" style="font-size: 32px!important;" ></i>
@@ -94,10 +94,10 @@ else
                     @endforeach
                   </ul>
                 </li>
-                <li class="dropdown">
+                <li class="padding">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 25%" >
 
-                        <img src="{{ url('/website/icons/lang.png') }}" class="fa w3-round" style="padding-top: 5px!important" width="20px">
+                        <img src="{{ url('/website/icons/lang.png') }}" class="fa w3-round" style="padding-top: 5px!important" width="20px"> {{ __("words.lang") }}
                         <!--
                        <i class="fa fa-globe" style="font-size: 32px!important;" ></i>
                          <img src="{{ url('/images/world.png') }}" class="fa w3-round" width="30px" >
