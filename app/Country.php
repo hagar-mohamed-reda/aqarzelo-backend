@@ -18,7 +18,7 @@ class Country extends Model
         return !Post::where('country_id', $this->id)->exists() || !City::where('country_id', $this->id)->exists();
     }
     public function getPostsAttribute() {
-        return Post::where('area_id', $this->id)->exists();
+        return !Post::where('area_id', $this->id)->exists();
     }
 
     public function getIconUrlAttribute() {
