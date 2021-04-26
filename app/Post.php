@@ -33,6 +33,10 @@ class Post extends Model {
         'user_review', 'favourite', 'show_logo', 'logo_url'
     ];
 
+    public function getJson(){
+        return $this;
+    }
+
     public function getShowLogoAttribute() {
         $plan = optional(optional($this->user)->company)->plan;
 

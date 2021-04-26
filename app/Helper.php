@@ -283,4 +283,12 @@ final class Helper {
         session(["response" => $response]);
     }
 
+    public static function jsonFilter($data) {
+        $filterArray = [];
+        foreach($data as $item)
+            $filterArray[] = $item->getJson();
+
+        return $filterArray;
+    }
+
 }

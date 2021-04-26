@@ -240,6 +240,17 @@ else
             for (var i = 0; i < posts.length; i++) {
                 var post = posts[i];
 
+                if(post.price > 1000000){
+                    var x = post.price/1000000
+                    post.price = x.toString() + 'M' ;
+                }
+                else if(post.price > 1000){
+                    var x = post.price/1000
+                    post.price = x.toString() + 'K' ;
+                }else{
+                    post.price = post.price
+                }
+
                 var marker = new addMarker({lat: parseFloat(post.lat), lng: parseFloat(post.lng)}, post.price+"", function(){
                    //new showCurrentPost(post);
                    //console.log(post);
