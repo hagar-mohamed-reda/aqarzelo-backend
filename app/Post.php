@@ -27,7 +27,7 @@ class Post extends Model {
      * @var array
      */
     protected $appends = [
-        'category', 'images', 'city',
+        'category', 'images', 'city','country',
         'area', 'rate', 'views',
         'rates', 'chart_data', 'contact_phone',
         'user_review', 'favourite', 'show_logo', 'logo_url'
@@ -168,6 +168,9 @@ class Post extends Model {
     public function getCityAttribute() {
         return $this->city()->first();
     }
+    public function getCountryAttribute() {
+        return $this->country()->first();
+    }
 
     /**
      * return area object
@@ -228,6 +231,9 @@ class Post extends Model {
         return $this->belongsTo('App\User', 'user_id');
     }
 
+    public function country() {
+        return $this->belongsTo('App\Country', 'country_id');
+    }
     public function city() {
         return $this->belongsTo('App\City', 'city_id');
     }
