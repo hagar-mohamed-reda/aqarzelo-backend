@@ -171,7 +171,6 @@ function addMarker(location, label, icon, html) {
     var cnv = document.createElement("canvas");
     var cntx = cnv.getContext("2d");
     cnv.style.backgroundColor = "rgb(0,0,0)";
-    console.log(cnv);
     cnv.width = 100;
     cnv.height = 30;
 
