@@ -21,7 +21,7 @@ var recommendOwl = null;
 var right = "-" + $(".filter-sidebar-content").css("width");
 
 
-var PostCeriteria = (function () {
+var PostCeriteria = (function() {
 
 
     function PostCeriteria() {
@@ -34,8 +34,8 @@ var PostCeriteria = (function () {
      * @param {type} action
      * @returns {}
      */
-    PostCeriteria.prototype.load = function (url, action) {
-        $.get(url, function (response) {
+    PostCeriteria.prototype.load = function(url, action) {
+        $.get(url, function(response) {
             action(response);
             //
             $(".posts-content").show();
@@ -48,11 +48,11 @@ var PostCeriteria = (function () {
      * @param {type} lng
      * @returns {Array} return list of posts
      */
-    PostCeriteria.prototype.filterDistance = function (lat, lng) {
+    PostCeriteria.prototype.filterDistance = function(lat, lng) {
         var url = this.baseurl + "lat=" + lat + "&lng=" + lng;
         console.log(url);
 
-        this.load(url, function (response) {
+        this.load(url, function(response) {
             app.posts = response.data;
         });
     };
@@ -69,7 +69,7 @@ var PostCeriteria = (function () {
  */
 function setNicescroll() {
     $(".nicescroll").niceScroll();
-    $(document).mousemove(function () {
+    $(document).mousemove(function() {
         $(".nicescroll").getNiceScroll().resize();
     });
 }
@@ -89,7 +89,7 @@ function toggleMapSidebar() {
  */
 function loadAllPosts(filters) {
     var url = public_path + "/api/post/search";
-    $.get(url, function (response) {
+    $.get(url, function(response) {
         app.posts = response.data;
     });
 }
@@ -100,12 +100,12 @@ function loadAllPosts(filters) {
  */
 function getLocation() {
     if (navigator.geolocation)
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
 
             // set current location
-            map.setCenter({lat: lat, lng: lng});
+            map.setCenter({ lat: lat, lng: lng });
         });
 }
 
@@ -120,7 +120,7 @@ function getLocation() {
 var infoWindows = [];
 
 function closeAllInfoWindow() {
-    for(var i = 0; i < infoWindows.length; i ++) {
+    for (var i = 0; i < infoWindows.length; i++) {
         infoWindows[i].close();
     }
 }
@@ -141,8 +141,8 @@ function addMarker(location, label, icon, html) {
         map: map,
         animation: google.maps.Animation.DROP,
         icon: {
-          url: icon,
-          labelOrigin: { x: 12, y: 40}
+            url: icon,
+            labelOrigin: { x: 12, y: 40 }
         },
         title: label,
         label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '12px', text: label },
@@ -163,25 +163,25 @@ function addMarker(location, label, icon, html) {
 
     infoWindows.push(infowindow);
 
-    marker.addListener('click', function () {
+    marker.addListener('click', function() {
         closeAllInfoWindow();
         infowindow.open(map, marker);
     });
     //infowindow.open(map, marker);
-    var cnv=document.createElement("canvas");
+    var cnv = document.createElement("canvas");
     var cntx = cnv.getContext("2d");
     cnv.style.backgroundColor = "rgb(0,0,0)";
     console.log(cnv);
-    cnv.width= 150;
+    cnv.width = 100;
     cnv.height = 30;
 
     cntx.strokeStyle = "#06D9B2";
-	cntx.lineWidth = 0.3;
+    cntx.lineWidth = 0.3;
     cntx.shadowBlur = 4;
     cntx.shadowColor = "black";
     cntx.fillStyle = "#fff";
-	cntx.strokeRect(5, 5, 110, 20);
-	cntx.fillRect(5, 5, 110, 20);
+    cntx.strokeRect(5, 5, 110, 20);
+    cntx.fillRect(5, 5, 110, 20);
     marker.setIcon(cnv.toDataURL('image/png'));
 
     return marker;
@@ -222,14 +222,14 @@ function drawPostsMarkers(posts) {
 
         div.innerHTML = html;
 
-        div.onclick = function () {
+        div.onclick = function() {
             showPost(post);
         };
 
         var container = document.createElement("div");
         container.appendChild(div);
 
-        var marker = addMarker({lat: parseFloat(post.lat), lng: parseFloat(post.lng)}, post.price, null, $(container).html());
+        var marker = addMarker({ lat: parseFloat(post.lat), lng: parseFloat(post.lng) }, post.price, null, $(container).html());
         markers.push(marker);
     }
 }
@@ -241,7 +241,7 @@ function drawPostsMarkers(posts) {
  */
 function searchWithCurrentLocation() {
     if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(function (position) {
+        navigator.geolocation.getCurrentPosition(function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
 
@@ -250,7 +250,7 @@ function searchWithCurrentLocation() {
             app.filter.lng = lng;
 
             // set current location
-            map.setCenter({lat: lat, lng: lng});
+            map.setCenter({ lat: lat, lng: lng });
             search();
 
             $(".recommended-post").animate({
@@ -269,17 +269,17 @@ function searchWithCurrentLocation() {
  * @returns {}
  */
 function loadRecommends() {
-    $.get(public_path + "/api/post/recommended", function (data) {
+    $.get(public_path + "/api/post/recommended", function(data) {
         if (data.status == 1) {
 
             app.recommends = data.data;
 
             var i = 0;
-            for(i = 0; i < app.recommends.length; i ++) {
+            for (i = 0; i < app.recommends.length; i++) {
                 app.recommends[i].price = (app.recommends[i].price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
                 app.recommends[i].price_per_meter = (app.recommends[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "");
             }
-            setTimeout(function(){
+            setTimeout(function() {
                 toggleRecommended();
                 setOwlCarousel();
             }, 3000);
@@ -308,18 +308,18 @@ function w3_open() {
     var windowSize = window.innerWidth;
 
     if (windowSize <= 600) {
-        $("#mySidebar").animate({width: '70%'});
-        $("#main").animate({width: '30%'});
+        $("#mySidebar").animate({ width: '70%' });
+        $("#main").animate({ width: '30%' });
     } else {
-        $("#mySidebar").animate({width: '40%'});
-        $("#main").animate({width: '60%'});
+        $("#mySidebar").animate({ width: '40%' });
+        $("#main").animate({ width: '60%' });
     }
     //document.getElementById("openNav").style.display = 'none';
 }
 
 function w3_close() {
-    $("#mySidebar").animate({width: '0%'});
-    $("#main").animate({width: '100%'});
+    $("#mySidebar").animate({ width: '0%' });
+    $("#main").animate({ width: '100%' });
     //document.getElementById("openNav").style.display = "inline-block";
 }
 
@@ -350,8 +350,8 @@ function setOwlCarousel() {
             }
         }
     });
-    recommendOwl.on('mousewheel', '.owl-stage', function (e) {
-        if (e.originalEvent.deltaY>0) {
+    recommendOwl.on('mousewheel', '.owl-stage', function(e) {
+        if (e.originalEvent.deltaY > 0) {
             recommendOwl.trigger('next.owl');
         } else {
             recommendOwl.trigger('prev.owl');
@@ -361,7 +361,7 @@ function setOwlCarousel() {
 }
 
 function setFavouriteBtn() {
-    $(".favourite-btn").click(function () {
+    $(".favourite-btn").click(function() {
         if ($(this).hasClass("fa-heart-o")) {
             $(this).removeClass("fa-heart-o");
             $(this).addClass("fa-heart");
@@ -370,7 +370,7 @@ function setFavouriteBtn() {
             $(this).addClass("fa-heart-o");
         }
 
-        $.get(public_path + "/post/toggle/favourite?post_id=" + app.currentPost.id, function (r) {
+        $.get(public_path + "/post/toggle/favourite?post_id=" + app.currentPost.id, function(r) {
             if (r.status == 1) {
                 success(r.message_en);
             } else {
@@ -401,11 +401,11 @@ function setCurrentPostChart() {
             data: {
                 labels: app.currentPost.chart_data.x,
                 datasets: [{
-                        label: chartTitle.replace("{city}", (LANG == "en")? app.currentPost.city.name_en : app.currentPost.city.name_ar),
-                        backgroundColor: 'rgba(2, 169, 168, 0.5)',
-                        borderColor: 'rgb(2, 150, 168)',
-                        data: app.currentPost.chart_data.y
-                    }]
+                    label: chartTitle.replace("{city}", (LANG == "en") ? app.currentPost.city.name_en : app.currentPost.city.name_ar),
+                    backgroundColor: 'rgba(2, 169, 168, 0.5)',
+                    borderColor: 'rgb(2, 150, 168)',
+                    data: app.currentPost.chart_data.y
+                }]
             },
             // Configuration options go here
             options: {}
@@ -415,16 +415,16 @@ function setCurrentPostChart() {
 
 function setRatebar() {
     var rate = new Ratebar($(".rate")[0]);
-    rate.setOnRate(function () {
+    rate.setOnRate(function() {
         $(".rate-value").val(rate.value);
     });
 }
 
 function setPanoramaView(path) {
-//    var viewer = new PhotoSphereViewer({
-//        container: 'viewer',
-//        panorama: path
-//    });
+    //    var viewer = new PhotoSphereViewer({
+    //        container: 'viewer',
+    //        panorama: path
+    //    });
     //var panorama = new PANOLENS.ImagePanorama(path);
     //var viewer = new PANOLENS.Viewer();
     //viewer.add(panorama);
@@ -517,7 +517,7 @@ function toggleRecommended() {
 }
 
 function loadPost(id) {
-    $.get(public_path + "/api/post/get?post_id=" + id, function (r) {
+    $.get(public_path + "/api/post/get?post_id=" + id, function(r) {
         showPost(r.data);
 
     });
@@ -536,7 +536,7 @@ function showPost(data) {
 
     //setOwlCarousel();
     _setWaterMark();
-    setTimeout(function () {
+    setTimeout(function() {
 
         setCurrentPostChart();
         // set water mark
@@ -544,7 +544,7 @@ function showPost(data) {
         // set nicescroll
         setNicescroll();
         //
-        formAjax(false, function(r){
+        formAjax(false, function(r) {
             if (r.status == 0) {
                 window.location = public_path + "/login";
             }
@@ -562,7 +562,7 @@ function showPost(data) {
         //
     }, 500);
 
-    setTimeout(function(){
+    setTimeout(function() {
         app.loadding360 = false;
     }, 3000);
 }
@@ -578,20 +578,19 @@ function search() {
     $(".post-no-found-state").hide();
 
     var data = jQuery.param(app.filter);
-    $.get(public_path + "/api/post/search?" + data, function (r) {
+    $.get(public_path + "/api/post/search?" + data, function(r) {
         app.posts = r.data;
         var i = 0;
-        for(i = 0; i < app.posts.length; i ++) {
+        for (i = 0; i < app.posts.length; i++) {
             //app.posts[i].price = (app.posts[i].price).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
             //app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
-            if(app.posts[i].price > 1000000){
-                var x = app.posts[i].price/1000000
-                app.posts[i].price = x.toString() + 'M' ;
-            }
-            else if(app.posts[i].price > 1000){
-                var x = app.posts[i].price/1000
-                app.posts[i].price = x.toString() + 'K' ;
-            }else{
+            if (app.posts[i].price > 1000000) {
+                var x = app.posts[i].price / 1000000
+                app.posts[i].price = x.toString() + 'M';
+            } else if (app.posts[i].price > 1000) {
+                var x = app.posts[i].price / 1000
+                app.posts[i].price = x.toString() + 'K';
+            } else {
                 app.posts[i].price = app.posts[i].price
             }
         }
@@ -600,7 +599,7 @@ function search() {
         var message = (LANG == "en") ? r.message_en : r.message_ar;
 
         if (app.posts[0] != null)
-            map.setCenter({lat: parseFloat(app.posts[0].lat), lng: parseFloat(app.posts[0].lng)});
+            map.setCenter({ lat: parseFloat(app.posts[0].lat), lng: parseFloat(app.posts[0].lng) });
 
         app.result_message = message;
 
@@ -611,7 +610,7 @@ function search() {
     });
 }
 
-var changePriceSlideValues = function () {
+var changePriceSlideValues = function() {
     var prices = $(".price-range").val().split(",");
 
     app.filter.price1 = prices[0];
@@ -619,7 +618,7 @@ var changePriceSlideValues = function () {
 
 }
 
-var changeSpaceSlideValues = function () {
+var changeSpaceSlideValues = function() {
     var spaces = $(".space-range").val().split(",");
 
     app.filter.space1 = spaces[0];
@@ -644,10 +643,10 @@ function reset() {
 
 function setFilterSpinner() {
     // preparse number spinner for bedroom_number
-    $(document).on('click', '.number-bedroom-spinner button', function () {
+    $(document).on('click', '.number-bedroom-spinner button', function() {
         var btn = $(this),
-                oldValue = btn.closest('.number-bedroom-spinner').find('input').val().trim(),
-                newVal = 0;
+            oldValue = btn.closest('.number-bedroom-spinner').find('input').val().trim(),
+            newVal = 0;
 
         if (btn.attr('data-dir') == 'up') {
             app.filter.bedroom_number = parseInt(oldValue) + 1;
@@ -660,10 +659,10 @@ function setFilterSpinner() {
         }
         btn.closest('.number-bedroom-spinner').find('input').val(app.filter.bedroom_number);
     });
-    $(document).on('click', '.number-bathroom-spinner button', function () {
+    $(document).on('click', '.number-bathroom-spinner button', function() {
         var btn = $(this),
-                oldValue = btn.closest('.number-bathroom-spinner').find('input').val().trim(),
-                newVal = 0;
+            oldValue = btn.closest('.number-bathroom-spinner').find('input').val().trim(),
+            newVal = 0;
 
         if (btn.attr('data-dir') == 'up') {
             app.filter.bathroom_number = parseInt(oldValue) + 1;
@@ -680,11 +679,11 @@ function setFilterSpinner() {
 
 function setFilterRanges() {
     ranger1 = $($(".ranger")[0]).slider({})
-            .on("slide", changePriceSlideValues)
-            .data('slider');
+        .on("slide", changePriceSlideValues)
+        .data('slider');
     ranger2 = $($(".ranger")[1]).slider({})
-            .on("slide", changeSpaceSlideValues)
-            .data('slider');
+        .on("slide", changeSpaceSlideValues)
+        .data('slider');
 }
 
 function _setWaterMark() {
@@ -703,8 +702,8 @@ function _setWaterMark() {
 /**
  * on document ready load init library
  */
-$(document).ready(function () {
-//window.onload = function() {
+$(document).ready(function() {
+    //window.onload = function() {
     if (app.currentPostId != null) {
         loadPost(app.currentPostId);
     }
@@ -730,14 +729,14 @@ $(document).ready(function () {
 
 
     // prep comment form
-    $(".comment-form").submit(function () {
+    $(".comment-form").submit(function() {
         loadPost(app.currentPostId);
     });
 
 
     // set tooltip
-    setTimeout(function () {
-        $(function () {
+    setTimeout(function() {
+        $(function() {
             $('[data-toggle="tooltip"]').tooltip()
         });
 
@@ -747,6 +746,3 @@ $(document).ready(function () {
 
 
 });
-
-
-
