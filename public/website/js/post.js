@@ -586,12 +586,12 @@ function search() {
             //app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
             if (app.posts[i].price > 1000000) {
                 var x = app.posts[i].price / 1000000
-                app.posts[i].price = x.toString() + 'M';
+                app.posts[i].price = x.toString() + 'M ' + app.posts[i].country.currency;
             } else if (app.posts[i].price > 1000) {
                 var x = app.posts[i].price / 1000
-                app.posts[i].price = x.toString() + 'K';
+                app.posts[i].price = x.toString() + 'K ' + app.posts[i].country.currency;
             } else {
-                app.posts[i].price = app.posts[i].price
+                app.posts[i].price = app.posts[i].price + ' ' + app.posts[i].country.currency;
             }
         }
 
