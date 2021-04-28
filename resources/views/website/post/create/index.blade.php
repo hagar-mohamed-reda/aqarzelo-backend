@@ -283,7 +283,7 @@ else
                                         <input type="text" class="form-control input-sm" v-model="post.title"  placeholder="{{ __('words.title') }}">
                                     </td>
                                     <td>
-                                        {{ __('words.title_ar') }} *
+                                        {{ __('words.title_ar') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                         <input type="text" class="form-control input-sm" v-model="post.title_ar"  placeholder="{{ __('words.title_ar') }}">
@@ -291,7 +291,7 @@ else
                                 </tr>
                                 <tr>
                                     <td>
-                                        {{ __('words.sell_or_rent') }} *
+                                        {{ __('words.sell_or_rent') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                         <select class="form-control w3-round input-sm" v-model="post.type"  onchange="setType(this.value)"  >
@@ -300,28 +300,28 @@ else
                                             <option value="sale or rent" >{{ __('words.sell_or_rent') }}</option>
                                         </select>
                                     </td>
-                                    <td>{{ __('words.space') }} *</td>
+                                    <td>{{ __('words.space') }} <span style='color: red;'>*</span></td>
                                     <td>
                                          <input type="number" min="1"  class="form-control input-sm" v-model="post.space"  placeholder="{{ __('words.space') }}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="category_hidden_2">{{ __('words.bedroom_number') }} *</td>
+                                    <td class="category_hidden_2">{{ __('words.bedroom_number') }} <span style='color: red;'>*</span></td>
                                     <td class="category_hidden_2">
                                          <input type="number" min="0"  class="form-control input-sm" v-model="post.bedroom_number"  placeholder="{{ __('words.bedroom_number') }}">
                                     </td>
-                                    <td class="category_hidden_2">{{ __('words.bathroom_number') }} *</td>
+                                    <td class="category_hidden_2">{{ __('words.bathroom_number') }} <span style='color: red;'>*</span></td>
                                     <td class="category_hidden_2">
                                          <input type="number" min="0"  class="form-control input-sm" v-model="post.bathroom_number"  placeholder="{{ __('words.bathroom_number') }}">
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td class="sale_type" >{{ __('words.price_per_meter') }} *</td>
+                                    <td class="sale_type" >{{ __('words.price_per_meter') }} <span style='color: red;'>*</span></td>
                                     <td class="sale_type">
                                          <input type="number" min="1"  class="form-control input-sm" v-model="post.price_per_meter"  placeholder="{{ __('words.price_per_meter') }}">
                                     </td>
                                     <td>
-                                        <span class='sale_type' >{{ __('words.price') }} *</span>
+                                        <span class='sale_type' >{{ __('words.price') }} <span style='color: red;'>*</span></span>
                                         <span class='rent_type' style="display: none" >{{ __('words.price_per_month') }}</span>
                                     </td>
                                     <td>
@@ -330,10 +330,10 @@ else
                                 </tr>
                                 <tr>
                                     <td>
-                                        {{ __('words.category') }} *
+                                        {{ __('words.category') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
-                                        <select class="form-control w3-round  input-sm" v-model="post.category_id" onchange="setCategory(this.value)"   >
+                                        <select id='orderCategory' class="form-control w3-round  input-sm" v-model="post.category_id" onchange="setCategory(this.value)"   >
                                             @foreach(App\Category::all() as $category)
                                             <option value="{{ $category->id }}" >{{ session("locale") == "ar"? $category->name_ar : $category->name_en }}</option>
                                             @endforeach
@@ -383,7 +383,7 @@ else
                                 <tr>
 
                                     <td>
-                                        {{ __('words.country') }} *
+                                        {{ __('words.country') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                         <select class="form-control w3-round input-sm country-select" v-model="post.country_id"   >
@@ -397,7 +397,7 @@ else
                                 </tr>
                                 <tr>
                                     <td>
-                                        {{ __('words.city') }} *
+                                        {{ __('words.city') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                         <select class="form-control w3-round input-sm city-select" v-model="post.city_id" onchange="changeArea(this.value)" >
@@ -407,7 +407,7 @@ else
                                         </select>
                                     </td>
                                     <td>
-                                        {{ __('words.owner_type') }} *
+                                        {{ __('words.owner_type') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                     <div class="radio w3-cell" onclick="app.post.owner_type='owner'" >
@@ -426,7 +426,7 @@ else
                                 </tr>
                                 <tr>
                                     <td>
-                                        {{ __('words.area') }} *
+                                        {{ __('words.area') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td>
                                         <select class="form-control w3-round  input-sm area-select" v-model="post.area_id"   >
@@ -438,7 +438,7 @@ else
                                             @endforeach
                                         </select>
                                     </td>
-                                    <td>{{ __('words.payment_method') }} *</td>
+                                    <td>{{ __('words.payment_method') }} <span style='color: red;'>*</span></td>
                                     <td>
                                         <div class="radio w3-cell" onclick="app.post.payment_method='cash'" >
                                             <input  id="cash" name="payment_method" type="radio">
@@ -491,7 +491,7 @@ else
 
                                 <tr>
                                     <td class="category_hidden_2">
-                                        {{ __('words.finishing') }} *
+                                        {{ __('words.finishing') }} <span style='color: red;'>*</span>
                                     </td>
                                     <td colspan="3" class="category_hidden_2" >
                                         <div style="" >
@@ -778,6 +778,15 @@ $(document).ready(function () {
 
     // prevent redirect of browser
     new Droper($('#container')[0], function (bin, file) {});
+</script>
+<script>
+var options = $("#orderCategory option");                    // Collect options
+options.detach().sort(function(a,b) {               // Detach from select, then Sort
+    var at = $(a).text();
+    var bt = $(b).text();
+    return (at > bt)?1:((at < bt)?-1:0);            // Tell the sort function how to order
+});
+options.appendTo("#orderCategory");
 </script>
 @endsection
 

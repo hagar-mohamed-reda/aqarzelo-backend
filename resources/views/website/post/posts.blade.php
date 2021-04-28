@@ -249,6 +249,7 @@ options.detach().sort(function(a,b) {               // Detach from select, then 
     return (at > bt)?1:((at < bt)?-1:0);            // Tell the sort function how to order
 });
 options.appendTo("#orderCategory");
+$("#orderCategory").prepend("<option value='null' disabled selected>{{ __('words.category') }}</option>");
 
 
 $('.countryFilter').on("change",function(){

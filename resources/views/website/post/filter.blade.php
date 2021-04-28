@@ -52,7 +52,6 @@
                         @endforeach
                     </select>
                     <select id='orderCategory' class="form-control w3-round select2-filter categoryFilter" v-model="filter.category_id" style="margin-bottom: 7px;padding: 0px 12px;" >
-                        <option value="null" disabled selected>{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
                         <option value="{{ $category->id }}" >{{ session("locale")=="en"? $category->name_en : $category->name_ar }}</option>
                         @endforeach
