@@ -33,31 +33,31 @@
                 <br>
                 </li>
                 <li>
-                    <select class="form-control w3-round" v-model="filter.country_id" style="margin-bottom: 7px;padding: 0px 12px;" >
+                    <select class="form-control w3-round select2-filter countryFilter" v-model="filter.country_id" style="margin-bottom: 7px;padding: 0px 12px;" >
                         <option value="null" selected disabled>{{ __("words.country") }}</option>
                         @foreach(DB::select('select * from countries where id in(select distinct(country_id) from posts) ORDER BY countries.name_en ASC') as $item)
                         <option value="{{ $item->id }}" >{{ session("locale")=="en"? $item->name_en : $item->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control w3-round" v-model="filter.city_id" style="margin-bottom: 7px;padding: 0px 12px;" >
+                    <select class="form-control w3-round select2-filter cityFilter" v-model="filter.city_id" style="margin-bottom: 7px;padding: 0px 12px;" >
                         <option value="null" disabled>{{ __("words.city") }}</option>
                         @foreach(DB::select('select * from cities where id in(select distinct(city_id) from posts) ORDER BY cities.name_en ASC') as $city)
                         <option value="{{ $city->id }}" v-if="filter.country_id=='{{ $city->country_id }}'"  >{{ session("locale")=="en"? $city->name_en : $city->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control w3-round" v-model="filter.area_id"  style="margin-bottom: 7px;padding: 0px 12px;"  >
+                    <select class="form-control w3-round select2-filter areaFilter" v-model="filter.area_id"  style="margin-bottom: 7px;padding: 0px 12px;"  >
                         <option value="null" disabled>{{ __("words.area") }}</option>
                         @foreach(DB::select('select * from areas where id in(select distinct(area_id) from posts) ORDER BY areas.name_en ASC') as $area)
                         <option value="{{ $area->id }}" v-if="filter.city_id=='{{ $area->city_id }}'" >{{ session("locale")=="en"? $area->name_en : $area->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select id='orderCategory' class="form-control w3-round" v-model="filter.category_id" style="margin-bottom: 7px;padding: 0px 12px;" >
-                        <option value="null" disabled>{{ __("words.category") }}</option>
+                    <select id='orderCategory' class="form-control w3-round select2-filter categoryFilter" v-model="filter.category_id" style="margin-bottom: 7px;padding: 0px 12px;" >
+                        <option value="null" disabled selected>{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
                         <option value="{{ $category->id }}" >{{ session("locale")=="en"? $category->name_en : $category->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control w3-round" v-model="filter.type" style="margin-bottom: 7px;padding: 0px 12px;" >
+                    <select class="form-control w3-round select2-filter saleFilter" v-model="filter.type" style="margin-bottom: 7px;padding: 0px 12px;" >
                         <option value="null" disabled>{{ __("words.sale_&_rent") }}</option>
                         <option value="sale" >{{ __('sale') }}</option>
                         <option value="rent" >{{ __('rent') }}</option>

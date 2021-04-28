@@ -250,10 +250,22 @@ options.detach().sort(function(a,b) {               // Detach from select, then 
 });
 options.appendTo("#orderCategory");
 
-// $('.countryFilter').on('select2:select', function (e: any) {
-//     alert("Hello! I am an alert box!!");
-//     filter.country_id = $('.countryFilter').val();
-// })
+
+$('.countryFilter').on("change",function(){
+    app.filter.country_id = $(this).val();
+});
+$('.cityFilter').on("change",function(){
+    app.filter.city_id = $(this).val();
+});
+$('.areaFilter').on("change",function(){
+    app.filter.area_id = $(this).val();
+});
+$('.categoryFilter').on("change",function(){
+    app.filter.category_id = $(this).val();
+});
+$('.saleFilter').on("change",function(){
+    app.filter.type = $(this).val();
+});
 </script>
 @endsection
 
