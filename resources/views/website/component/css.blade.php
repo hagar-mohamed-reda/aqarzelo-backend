@@ -60,9 +60,11 @@
     }
     #filterToggleSidebarBtn .fa-angle-left {
         font-size:20px !important;
+        font-weight: bolder !important;
     }
     #filterToggleSidebarBtn .fa-angle-right {
         font-size:20px !important;
+        font-weight: bolder !important;
     }
     .gmnoprint{
         bottom: 75% !important;
