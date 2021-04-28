@@ -241,6 +241,20 @@ $('.select2-filter').select2();
 <script src="{{ url('/website') }}/js/map.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD4ow5PXyqH-gJwe2rzihxG71prgt4NRFQ&callback=initMap"
 async defer></script>
+<script>
+var options = $("#orderCategory option");                    // Collect options
+options.detach().sort(function(a,b) {               // Detach from select, then Sort
+    var at = $(a).text();
+    var bt = $(b).text();
+    return (at > bt)?1:((at < bt)?-1:0);            // Tell the sort function how to order
+});
+options.appendTo("#orderCategory");
+
+// $('.countryFilter').on('select2:select', function (e: any) {
+//     alert("Hello! I am an alert box!!");
+//     filter.country_id = $('.countryFilter').val();
+// })
+</script>
 @endsection
 
 

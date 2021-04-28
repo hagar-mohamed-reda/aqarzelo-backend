@@ -51,7 +51,7 @@
                         <option value="{{ $area->id }}" v-if="filter.city_id=='{{ $area->city_id }}'" >{{ session("locale")=="en"? $area->name_en : $area->name_ar }}</option>
                         @endforeach
                     </select>
-                    <select class="form-control w3-round" v-model="filter.category_id" style="margin-bottom: 7px;padding: 0px 12px;" >
+                    <select id='orderCategory' class="form-control w3-round" v-model="filter.category_id" style="margin-bottom: 7px;padding: 0px 12px;" >
                         <option value="null" disabled>{{ __("words.category") }}</option>
                         @foreach(App\Category::all() as $category)
                         <option value="{{ $category->id }}" >{{ session("locale")=="en"? $category->name_en : $category->name_ar }}</option>
@@ -61,6 +61,7 @@
                         <option value="null" disabled>{{ __("words.sale_&_rent") }}</option>
                         <option value="sale" >{{ __('sale') }}</option>
                         <option value="rent" >{{ __('rent') }}</option>
+                        <option value="sale or rent" >{{ __('words.sell_or_rent') }}</option>
                     </select>
                 </li>
                 <li>

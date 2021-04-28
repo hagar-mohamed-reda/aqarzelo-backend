@@ -255,7 +255,7 @@ function searchWithCurrentLocation() {
             $(".recommended-post").animate({
                 bottom: -250
             }, 'slow');
-            $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
+            $(".recommended-post .icon").html('<i class="fa fa-angle-up" style="font-size: 17px !important;font-weight: bolder !important;" ></i>');
             recommendedFlag = true;
             toggleFilterSidebar();
         });
@@ -484,7 +484,7 @@ function toggleFilterSidebar() {
         $(".recommended-post").animate({
             bottom: -250
         }, 'slow');
-        $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
+        $(".recommended-post .icon").html('<i class="fa fa-angle-up" style="font-size: 17px !important;font-weight: bolder !important;" ></i>');
         recommendedFlag = true;
     }
 
@@ -495,7 +495,7 @@ function toggleRecommended() {
         $(".recommended-post").animate({
             bottom: 0
         }, 'slow');
-        $(".recommended-post .icon").html('<i class="fa fa-angle-down" ></i>');
+        $(".recommended-post .icon").html('<i class="fa fa-angle-down" style="font-size: 17px !important;font-weight: bolder !important;" ></i>');
         recommendedFlag = false;
 
         // close filter
@@ -508,7 +508,7 @@ function toggleRecommended() {
         $(".recommended-post").animate({
             bottom: -250
         }, 'slow');
-        $(".recommended-post .icon").html('<i class="fa fa-angle-up" ></i>');
+        $(".recommended-post .icon").html('<i class="fa fa-angle-up" style="font-size: 17px !important;font-weight: bolder !important;" ></i>');
         recommendedFlag = true;
         //toggleFilterSidebar();
     }
