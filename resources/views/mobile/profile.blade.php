@@ -112,7 +112,7 @@ else
         <div class="application-header w3-display-container" style="height: 300px;background: transparent;background-image: none"  >
             <br>
             <div class="w3-bar w3-padding w3-display-container">
-              <a href="#" class="w3-bar-item btn" onclick="back()" >
+              <a class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-left w3-text-white w3-xlarge shadow" ></span>
               </a>
             </div>

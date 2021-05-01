@@ -86,8 +86,9 @@ else
                 <!-- application bottom nav -->
                 @include("mobile.bottomNav")
 
-                <div class="result-show w3-display-bottomleft w3-block" >
-                    <div class="owl-carousel owl-theme" style="width: 100%;direction: ltr!important" >
+                <div class="result-show w3-display-bottomleft w3-block">
+                <b id='checkDirection' style='background-color: black !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
+                    <div class="owl-carousel owl-theme hideRecomended" style="width: 100%;direction: ltr!important" >
                         <div class="item" v-for="post in posts" >
                             <div class="result-show-item shadow" onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))" v-bind:data-id="post.id" >
                                 <img v-if="post.images[0]" v-bind:src="post.images[0].image" >

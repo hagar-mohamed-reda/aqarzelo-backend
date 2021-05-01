@@ -145,7 +145,7 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
 
     <div class="w3-display-topleft w3-padding" style="z-index: 10" >
         <br>
-        <b class="fa fa-angle-left btn w3-text-white w3-large" onclick="back()" ></b>
+        <b style='background-color: black !important;font-weight: bolder;' class="fa fa-angle-left btn w3-text-white w3-large" onclick="back('return')" ></b>
     </div>
 
     <div class="owl-carousel-container w3-display-container" >
@@ -229,9 +229,11 @@ style="z-index: 999999!important;background-color: #06D9B2!important!important;"
 application-grad-back
      -->
 
+
     <div class="result-show w3-display-bottomleft w3-block " style="z-index: 10;position: fixed;" >
+    <b id='checkDirection' style='background-color: black !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
         <div
-        class="owl-carousel owl-theme application-grad-back"
+        class="owl-carousel owl-theme application-grad-back hideRecomended"
         id="recommend-carsousel" style="width: 100%;direction: ltr!important" >
             <div class="item"
             v-for="post in posts"
@@ -264,7 +266,7 @@ application-grad-back
             <li>
                 <div class="media">
                   <div class="media-left">
-                    <a href="#">
+                    <a>
                       <img
                       class="media-object w3-circle"
                       width="40px"

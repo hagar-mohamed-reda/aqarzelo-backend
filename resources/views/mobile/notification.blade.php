@@ -82,7 +82,7 @@ else
                     v-bind:data-id="notification.post? notification.post.id : ''"
                     style="padding: 0px!important">
                       <div class="media-left" style="padding: 0px!important" >
-                        <a href="#">
+                        <a>
                           <img class="media-object" v-if="notification.post" v-bind:src="notification.post.images[0]? notification.post.images[0].image: '{{ url('/images/logo.png') }}'" width="100px" height="90px" alt="...">
 
                            <img class="media-object" v-if="!notification.post" src="{{ url('/images/logo.png') }}" width="100px" height="90px" alt="...">

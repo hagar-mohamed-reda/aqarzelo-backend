@@ -208,9 +208,15 @@ else
             });
         }
 
-        function back() {
+        function back(callback = null) {
+            if(callback == null) {
+            console.log(last_paths)
+            console.log(last_paths.length);
             if (last_paths.length > 0) {
                 var p = last_paths.pop();
+                console.log(current_path);
+                console.log(p);
+                console.log(last_paths.length);
 
                 if (current_path == p)
                         p = last_paths.pop();
@@ -225,6 +231,19 @@ else
             }
 
             return loadPage('phone/home');
+            } else {
+                return loadPage('phone/home');
+            }
+        }
+        function hideRecomended() {
+            $('.hideRecomended').slideToggle("slow");
+            if($('#checkDirection').hasClass('fa-angle-down')) {
+                $('#checkDirection').removeClass('fa-angle-down')
+                $('#checkDirection').addClass('fa-angle-up')
+            } else {
+                $('#checkDirection').removeClass('fa-angle-up')
+                $('#checkDirection').addClass('fa-angle-down')
+            }
         }
 
         function errorToast(message, action=null) {
