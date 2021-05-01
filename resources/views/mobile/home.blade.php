@@ -70,10 +70,10 @@ else
     <div class="home dark-theme-background" id="page" v-bind:style="'height: ' + height + 'px'" >
         <div class="application-header" >
             <div class="w3-bar w3-padding">
-              <a href="#" class="w3-bar-item btn" onclick="loadPage('phone/setting')">
+              <a class="w3-bar-item btn" onclick="loadPage('phone/setting')">
                   <span class="fa fa-cog w3-xlarge w3-text-white" ></span>
               </a>
-              <a href="#" class="w3-bar-item btn w3-{{ session("direction")=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
+              <a class="w3-bar-item btn w3-{{ session('direction')=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
                 <span class="fa fa-filter w3-xlarge w3-text-white"  ></span>
               </a>
             </div>

@@ -57,16 +57,15 @@ else
     }
 
 </style>
-
 <!-- html content -->
 <div class="home dark-theme-background filter-modal" id="page" v-bind:style="'height: ' + height + 'px'" >
     <div class="application-header" >
         <br>
         <div class="w3-bar w3-padding w3-display-container">
-            <a href="#" class="w3-bar-item btn" onclick="back()" >
-                <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
+            <a style='box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);' class="w3-bar-item btn" onclick="back('return')" >
+                <span class="fa fa-angle-{{ session('direction')=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
             </a>
-            <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
+            <a class="w3-bar-item btn w3-display-topmiddle"  >
                 <span class="w3-text-white w3-xlarge" >{{ __('mobile.filter') }}</span>
             </a>
         </div>
@@ -75,13 +74,13 @@ else
         <br>
             <ul class="w3-ul filters w3-padding" >
                 <li class="select-item" >
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.country_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg select2-filter " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.country_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.country") }}</option>
                         @foreach(App\Country::all() as $item)
                         <option value="{{ $item->id }}" >{{ session("direction") == 'rtl'? $item->name_ar : $item->name_en }}</option>
                         @endforeach
                     </select>
-                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" >
+                    <select class="w3-round-large w3-light-gray btn btn-default w3-block btn-lg  " style="margin-bottom: 10px!important;height: 50px;padding-left:25px!important;padding-right:25px!important"  v-model="filter.city_id" style="margin-bottom: 7px" >
                         <option value="null" >{{ __("words.city") }}</option>
                         @foreach(App\City::all() as $city)
                         <option value="{{ $city->id }}" v-if="filter.country_id == '{{ $city->country_id }}'" >{{ session("direction") == 'rtl'? $city->name_ar : $city->name_en }}</option>

@@ -358,5 +358,6 @@ else
             loadSplash();
 
         });
+
     </script>
 </html>

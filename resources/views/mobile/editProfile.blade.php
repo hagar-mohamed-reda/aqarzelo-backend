@@ -52,10 +52,10 @@ else
         <div class="application-header" >
             <br>
             <div class="w3-bar w3-padding w3-display-container">
-              <a href="#" class="w3-bar-item btn" onclick="back()" >
+              <a style='box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);' class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-left w3-text-white w3-xlarge" ></span>
               </a>
-              <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
+              <a class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.edit_profile') }}</span>
               </a>
             </div>

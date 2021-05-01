@@ -1,18 +1,18 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         }
 
         .w3-modal-content {
@@ -28,7 +28,7 @@ else
             margin-bottom: 15px!important;
         }
 
-        .small-height-item { 
+        .small-height-item {
             border: 0px!important;
         }
 
@@ -39,8 +39,8 @@ else
         .small-height-item img {
             width: 10vw!important;
         }
-        
-        
+
+
     </style>
 
     <!-- html content -->
@@ -48,12 +48,12 @@ else
         <div class="application-header" >
             <br>
             <div class="w3-bar w3-padding w3-display-container">
-              <a href="#" class="w3-bar-item btn" onclick="back()" >
+              <a style='box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);' class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-left w3-text-white w3-xlarge" ></span>
-              </a>   
-              <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
+              </a>
+              <a class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.help') }}</span>
-              </a>   
+              </a>
             </div>
         </div>
         <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 80) + 'px'" >
@@ -67,16 +67,16 @@ else
                 <b v-html="help" class="w3-large" ></b>
             </div>
         </div>
-        
-        
-        
+
+
+
 
     </div>
 
- 
 
-    
-    <script> 
+
+
+    <script>
 
         function loadHelp() {
             var data = {
@@ -90,7 +90,7 @@ else
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 help: ''
             },
             methods: {
@@ -100,10 +100,10 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){  
+        });
+
+        $(document).ready(function(){
              loadHelp();
-              
+
         });
     </script>
