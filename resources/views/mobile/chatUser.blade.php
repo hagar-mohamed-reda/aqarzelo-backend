@@ -1,23 +1,23 @@
 @php
 
 if (session("locale"))
-    App()->setLocale(session("locale")); 
+    App()->setLocale(session("locale"));
 else
-    App()->setLocale("ar"); 
+    App()->setLocale("ar");
 
 @endphp
 <!-- css styles  -->
 <style type="text/css">
-    .home { 
-        background-size: 100% 100%; 
+    .home {
+        background-size: 100% 100%;
         background-repeat: no-repeat;
-        width: 100%; 
-        background: #DEDEDE; 
+        width: 100%;
+        background: #DEDEDE;
         }
 
         .w3-modal-content {
             background-color: transparent!important;
-        }  
+        }
 
         .application-container {
             overflow: hidden!important;
@@ -43,8 +43,8 @@ else
             width: 0px;
             display: none;
         }
-        
-        
+
+
     </style>
 
     <!-- html content -->
@@ -52,21 +52,21 @@ else
         <div class="application-header" >
             <br>
             <div class="w3-bar w3-padding w3-display-container">
-              <a href="#" class="w3-bar-item btn" onclick="back()" >
+              <a style='box-shadow: inset 0 3px 5px rgb(0 0 0 / 13%);' class="w3-bar-item btn" onclick="back()" >
                   <span class="fa fa-angle-left w3-text-white w3-xlarge" ></span>
-              </a>   
-              <a href="#" class="w3-bar-ite  w3-right"  >
-                <input 
-                type="text" 
+              </a>
+              <a class="w3-bar-ite  w3-right"  >
+                <input
+                type="text"
                 v-model="search_value"
                 onkeyup="search()"
-                placeholder="{{ __('mobile.search') }}.." 
-                class="form-control search-chat-input w3-round-xxlarge"  >  
-              </a>   
+                placeholder="{{ __('mobile.search') }}.."
+                class="form-control search-chat-input w3-round-xxlarge"  >
+              </a>
 
               <div class="w3-display-top{{ session("direction")=='rtl'? 'left' : 'right' }} w3-padding" >
-                  <b 
-                  class="fa fa-search w3-large btn" 
+                  <b
+                  class="fa fa-search w3-large btn"
                   v-bind:class="searchInputShow==-1? 'w3-text-white' : 'w3-text-gray'"
                   onclick="toggleSearchInput();page.searchInputShow*=-1" ></b>
               </div>
@@ -74,17 +74,17 @@ else
         </div>
 
         <div class="application-container w3-display-container" v-bind:style="'height: ' + (height - 80) + 'px'" >
-            <div class="chat-top-bar w3-padding"  > 
+            <div class="chat-top-bar w3-padding"  >
                 <b class="w3-padding w3-xlarge text-capitalize" >{{ __('mobile.messages') }}</b>
             </div>
 
 
             <div class="chat-user-container w3-padding"  v-bind:style="'height: ' + (height - 140) + 'px'" >
-                 <ul class="w3-ul" > 
-                    <li 
+                 <ul class="w3-ul" >
+                    <li
                     v-for="user in users"
-                    v-bind:data-id="user.id" 
-                    class="chat-user-item" 
+                    v-bind:data-id="user.id"
+                    class="chat-user-item"
                     onclick="loadPage('phone/chat?user_to='+$(this).attr('data-id'))" >
                         <div class="media">
                           <div class="media-left">
@@ -99,19 +99,19 @@ else
                         </div>
                     </li>
                 </ul>
-            </div> 
+            </div>
         </div>
-         
-        
-        
-        
+
+
+
+
 
     </div>
 
- 
 
-    
-    <script> 
+
+
+    <script>
         function toggleSearchInput() {
             if (page.searchInputShow == -1)
                 $('.search-chat-input').animate({
@@ -125,7 +125,7 @@ else
                 }, 'slow');
         }
 
-        function search() { 
+        function search() {
             if (page.search_value.length <= 0) {
                 $(".chat-user-item").show();
                 return;
@@ -135,9 +135,9 @@ else
             $(".chat-user-item").each(function() {
                 var self = this;
                 if ($(this).text().indexOf(page.search_value) >= 0) {
-                    $(self).show(); 
+                    $(self).show();
                 }
-            }); 
+            });
         }
 
         function loadChatUsers() {
@@ -151,7 +151,7 @@ else
 
         var page = new Vue({
             el: '#page',
-            data: { 
+            data: {
                 users: [],
                 search_value: '',
                 searchInputShow: -1,
@@ -166,10 +166,10 @@ else
                     return window.innerHeight;
                 }
             }
-        }); 
-        
-        $(document).ready(function(){  
+        });
+
+        $(document).ready(function(){
             loadChatUsers();
-              
+
         });
     </script>

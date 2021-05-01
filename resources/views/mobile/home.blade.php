@@ -70,10 +70,10 @@ else
     <div class="home dark-theme-background" id="page" v-bind:style="'height: ' + height + 'px'" >
         <div class="application-header" >
             <div class="w3-bar w3-padding">
-              <a href="#" class="w3-bar-item btn" onclick="loadPage('phone/setting')">
+              <a class="w3-bar-item btn" onclick="loadPage('phone/setting')">
                   <span class="fa fa-cog w3-xlarge w3-text-white" ></span>
               </a>
-              <a href="#" class="w3-bar-item btn w3-{{ session("direction")=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
+              <a class="w3-bar-item btn w3-{{ session('direction')=='rtl'? 'left' : 'right' }} " onclick="loadPage('phone/filter')" >
                 <span class="fa fa-filter w3-xlarge w3-text-white"  ></span>
               </a>
             </div>
@@ -87,7 +87,7 @@ else
                 @include("mobile.bottomNav")
 
                 <div class="result-show w3-display-bottomleft w3-block">
-                <b id='checkDirection' style='background-color: black !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
+                <b id='checkDirection' style='background-image: repeating-linear-gradient(to bottom, #02A2A7, #06D9B2) !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
                     <div class="owl-carousel owl-theme hideRecomended" style="width: 100%;direction: ltr!important" >
                         <div class="item" v-for="post in posts" >
                             <div class="result-show-item shadow" onclick="loadPage('phone/post/show?post_id='+$(this).attr('data-id'))" v-bind:data-id="post.id" >

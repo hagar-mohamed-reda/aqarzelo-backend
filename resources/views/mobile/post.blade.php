@@ -231,7 +231,7 @@ application-grad-back
 
 
     <div class="result-show w3-display-bottomleft w3-block " style="z-index: 10;position: fixed;" >
-    <b id='checkDirection' style='background-color: black !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
+    <b id='checkDirection' style='background-image: repeating-linear-gradient(to bottom, #02A2A7, #06D9B2) !important;font-weight: bolder;' class="fa fa-angle-down btn w3-text-white w3-large" onclick="hideRecomended()" ></b>
         <div
         class="owl-carousel owl-theme application-grad-back hideRecomended"
         id="recommend-carsousel" style="width: 100%;direction: ltr!important" >
