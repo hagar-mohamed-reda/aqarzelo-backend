@@ -71,8 +71,8 @@ else
                             <b class="text-uppercase w3-large w3-padding" >{{ __('mobile.log_in') }}</b>
                         </a>
 
-                        <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                            <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                        <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                            <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                         </a>
                     </div>
                 </li>
@@ -86,8 +86,8 @@ else
                             </b>
                         </a>
 
-                        <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                            <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                        <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                            <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                         </a>
                     </div>
                 </li>
@@ -98,8 +98,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.chat') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -113,8 +113,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.edit_profile') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
                 <!-- change password  -->
@@ -124,8 +124,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.change_password') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
                 <!-- my posts  -->
@@ -136,8 +136,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.posts') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -148,8 +148,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.notification') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -163,8 +163,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.language') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -175,8 +175,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.contact') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -187,8 +187,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.help') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -200,8 +200,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.share') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
 
@@ -212,8 +212,8 @@ else
                         <b class="text-capitalize w3-  w3-padding" >{{ __('mobile.logout') }}</b>
                     </a>
 
-                    <a class="w3-bar-item w3-{{ session("direction")=='rtl'? 'left' : 'right' }}" >
-                        <span class="fa fa-angle-{{ session("direction")=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
+                    <a class="w3-bar-item w3-{{ session('direction')=='rtl'? 'left' : 'right' }}" >
+                        <span class="fa fa-angle-{{ session('direction')=='rtl'? 'left' : 'right' }} w3-xlarge w3-text-gray w3-padding" ></span>
                     </a>
                 </li>
             </ul>

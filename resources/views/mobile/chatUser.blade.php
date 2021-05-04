@@ -64,7 +64,7 @@ else
                 class="form-control search-chat-input w3-round-xxlarge"  >
               </a>
 
-              <div class="w3-display-top{{ session("direction")=='rtl'? 'left' : 'right' }} w3-padding" >
+              <div class="w3-display-top{{ session('direction')=='rtl'? 'left' : 'right' }} w3-padding" >
                   <b
                   class="fa fa-search w3-large btn"
                   v-bind:class="searchInputShow==-1? 'w3-text-white' : 'w3-text-gray'"

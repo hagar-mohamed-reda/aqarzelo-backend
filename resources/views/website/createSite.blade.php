@@ -49,7 +49,7 @@ else
             </center>
             </div>
             <br> <br>
-            <div>
+            <div style='display: none;'>
                 <button class="fa fa-ellipsis-h float-btn w3-margin shadow" onclick="$('.services-btn').toggle()" ></button>
 
                 <button onclick="window.location='{{ optional(App\Setting::find(9))->value }}'" href="" role="button"

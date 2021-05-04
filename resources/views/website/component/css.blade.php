@@ -58,16 +58,16 @@
     *, .font {
         font-family: 'Cairo', sans-serif;
     }
-    #filterToggleSidebarBtn .fa-angle-left {
+    #filterToggleSidebarBtn .fa-angle-up {
         font-size:20px !important;
         font-weight: bolder !important;
     }
-    #filterToggleSidebarBtn .fa-angle-right {
+    #filterToggleSidebarBtn .fa-angle-down {
         font-size:20px !important;
         font-weight: bolder !important;
     }
     .gmnoprint{
-        bottom: 75% !important;
+        bottom: 85% !important;
     }
     /*.gm-style .gmnoprint{
         display: none

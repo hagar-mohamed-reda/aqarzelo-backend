@@ -21,7 +21,7 @@ else
               v-bind:data-step="step>1? (step-1) : '1'"
               onclick="page.step == 1? back() : goto($(this).attr('data-step'))"
               class="w3-bar-item btn"   >
-                  <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
+                  <span class="fa fa-angle-{{ session('direction')=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
               </a>
               <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.create_post') }}</span>

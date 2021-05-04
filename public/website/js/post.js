@@ -145,7 +145,7 @@ function addMarker(location, label, icon, html) {
             labelOrigin: { x: 12, y: 40 }
         },
         title: label,
-        label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '12px', text: label },
+        label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bolder', fontSize: '14px', text: label },
         labelInBackground: true
     });
     var selector = ['#', map.getDiv().id, ' img[src="', marker.getIcon(), '"]'].join('');
@@ -168,20 +168,20 @@ function addMarker(location, label, icon, html) {
         infowindow.open(map, marker);
     });
     //infowindow.open(map, marker);
-    var cnv = document.createElement("canvas");
-    var cntx = cnv.getContext("2d");
-    cnv.style.backgroundColor = "rgb(0,0,0)";
-    cnv.width = 100;
-    cnv.height = 30;
+    // var cnv = document.createElement("canvas");
+    // var cntx = cnv.getContext("2d");
+    // cnv.style.backgroundColor = "rgb(0,0,0)";
+    // cnv.width = 80;
+    // cnv.height = 30;
 
-    cntx.strokeStyle = "#06D9B2";
-    cntx.lineWidth = 0.3;
-    cntx.shadowBlur = 4;
-    cntx.shadowColor = "black";
-    cntx.fillStyle = "#fff";
-    cntx.strokeRect(5, 5, 110, 20);
-    cntx.fillRect(5, 5, 110, 20);
-    marker.setIcon(cnv.toDataURL('image/png'));
+    // cntx.strokeStyle = "#06D9B2";
+    // cntx.lineWidth = 0.3;
+    // cntx.shadowBlur = 4;
+    // cntx.shadowColor = "black";
+    // cntx.fillStyle = "#fff";
+    // cntx.strokeRect(5, 5, 110, 20);
+    // cntx.fillRect(5, 5, 110, 20);
+    // marker.setIcon('../../asset/textures/location-pin.png');
 
     return marker;
 }
@@ -381,7 +381,8 @@ function setFavouriteBtn() {
 }
 
 function navigateTo(element) {
-    var top = $("a[name=" + element + "]").offset().top + 100;
+    var testDiv = document.getElementById(`${element}`);
+    var top = testDiv.offsetTop - 301;
     $('.post-content').animate({
         scrollTop: 0
     });
@@ -468,14 +469,14 @@ function toggleFilterSidebar() {
         $("#filterSidebar").animate({
             right: right
         }, 'slow');
-        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-left" ></i>' + $('.filterToggleSidebarBtnText').html());
+        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-up" ></i>' + $('.filterToggleSidebarBtnText').html());
         filterSidebarFlag = false;
 
     } else {
         $("#filterSidebar").animate({
             right: 0
         }, 'slow');
-        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-right" ></i>' + $('.filterToggleSidebarBtnText').html());
+        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-down" ></i>' + $('.filterToggleSidebarBtnText').html());
         filterSidebarFlag = true;
 
 
@@ -502,7 +503,7 @@ function toggleRecommended() {
         $("#filterSidebar").animate({
             right: right
         }, 'slow');
-        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-left" ></i>' + $('.filterToggleSidebarBtnText').html());
+        $("#filterToggleSidebarBtn").html('<i class="fa fa-angle-up" ></i>' + $('.filterToggleSidebarBtnText').html());
         filterSidebarFlag = false;
     } else {
         $(".recommended-post").animate({
@@ -585,12 +586,12 @@ function search() {
             //app.posts[i].price_per_meter = (app.posts[i].price_per_meter).toLocaleString('en-US', { style: 'currency', currency: 'EGP', }).replace(".00", "")+'m';
             if (app.posts[i].price > 1000000) {
                 var x = app.posts[i].price / 1000000
-                app.posts[i].price = x.toString() + 'M ' + app.posts[i].country.currency;
+                app.posts[i].price = x.toString() + 'M ';
             } else if (app.posts[i].price > 1000) {
                 var x = app.posts[i].price / 1000
-                app.posts[i].price = x.toString() + 'K ' + app.posts[i].country.currency;
+                app.posts[i].price = x.toString() + 'K ';
             } else {
-                app.posts[i].price = app.posts[i].price + ' ' + app.posts[i].country.currency;
+                app.posts[i].price = app.posts[i].price;
             }
         }
 

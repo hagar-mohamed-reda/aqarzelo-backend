@@ -9,7 +9,7 @@
             <button
                 class="w3-white shadow btn btn-flat animated delay-2s zoomIn "
                 style="border-radius: 0px!important;transform: rotate(-90deg);width: 80px;height: 45px;"
-                id="filterToggleSidebarBtn" ><i class="fa fa-angle-right" style="display: inline-block;font-size:20px !important;">  </i>
+                id="filterToggleSidebarBtn" ><i class="fa fa-angle-up" style="display: inline-block;font-size:20px !important;">  </i>
                 </button>
 
                 <div class="hidden filterToggleSidebarBtnText" >
@@ -135,6 +135,6 @@
 
 </div>
 
-<div class="search-location-btn"  >
+<div class="search-location-btn">
     <span class="fa fa-map-marker btn w3-white shadow btn-flat light-theme-background w3-text-white" style="float: left;padding: 12px;font-size: 26px!important;" data-toggle="tooltip" data-placement="right" title="{{ __('words.search_with_your_location') }}" ></span>
 </div>

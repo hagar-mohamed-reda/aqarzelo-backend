@@ -66,7 +66,7 @@ else
                 <li class="padding">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"   >
 
-                        <img src="{{ url('/images/egypt.png') }}"   class="fa w3-round" width="25px" > {{ __("words.country") }}
+                        <img src="{{ url('/images/egypt.png') }}"   class="fa w3-round" width="25px" ><span style='vertical-align: middle;'> {{ __("words.country") }}</span>
                         <!--
                             data-toggle="tooltip" data-placement="top" title="{{ __('words.text_appear_in_tooltip') }}"
                        <i class="fa fa-globe" style="font-size: 32px!important;" ></i>
@@ -79,7 +79,7 @@ else
                         -->
                         <span class="caret"></span>
                     </a>
-                  <ul class="dropdown-menu " style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
+                  <ul class="dropdown-menu " style="{{ session('direction') == 'ltr'? 'right' : 'left'  }}: 0px!important"  >
 
                     @foreach(App\Country::all() as $item)
                     <li role="separator" class="divider"></li>
@@ -97,7 +97,7 @@ else
                 <li class="padding">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" ><!--style="padding-top: 25%" -->
 
-                        <img src="{{ url('/website/icons/lang.png') }}" class="fa w3-round" style="padding-top: 5px!important" width="20px"> {{ __("words.lang") }}
+                        <img src="{{ url('/website/icons/lang.png') }}" class="fa w3-round" width="20px"> <span style='vertical-align: middle;'> {{ __("words.lang") }}</span>
                         <!--
                        <i class="fa fa-globe" style="font-size: 32px!important;" ></i>
                          <img src="{{ url('/images/world.png') }}" class="fa w3-round" width="30px" >
@@ -109,7 +109,7 @@ else
                         -->
                         <span class="caret"></span>
                     </a>
-                  <ul class="dropdown-menu" style="{{ session("direction") == "ltr"? 'right' : 'left'  }}: 0px!important"  >
+                  <ul class="dropdown-menu" style="{{ session('direction') == 'ltr'? 'right' : 'left'  }}: 0px!important"  >
                     <li class="w3-hover-light-gray w3-padding" style="height: 40px!important">
                         <a href="{{ url('/locale/ar') }}" class="w3-display-container " >
                         {{-- <a href="http://localhost:82/aqarzelo-backend/locale/ar" class="w3-display-container " > --}}

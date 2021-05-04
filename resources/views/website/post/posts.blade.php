@@ -227,7 +227,7 @@ function initMap() {
 
     };
     map = new google.maps.Map(document.getElementById('map'), options);
-    map.controls[google.maps.ControlPosition.LEFT_TOP].push(locationSearchDiv);
+    map.controls[google.maps.ControlPosition.LEFT_BOTTOM].push(locationSearchDiv);
 
 
 }
@@ -268,6 +268,5 @@ $('.saleFilter').on("change",function(){
     app.filter.type = $(this).val();
 });
 </script>
+
 @endsection
-
-

@@ -62,7 +62,7 @@ else
             <br>
             <div class="w3-bar w3-padding w3-display-container">
               <a href="#" class="w3-bar-item btn" onclick="back()" >
-                  <span class="fa fa-angle-{{ session("direction")=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
+                  <span class="fa fa-angle-{{ session('direction')=='rtl'? 'right' : 'left' }} w3-text-white w3-xlarge" ></span>
               </a>
               <a href="#" class="w3-bar-item btn w3-display-topmiddle"  >
                   <span class="w3-text-white w3-xlarge" >{{ __('mobile.notifications') }}</span>

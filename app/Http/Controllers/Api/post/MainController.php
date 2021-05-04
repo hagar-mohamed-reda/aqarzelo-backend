@@ -366,7 +366,7 @@ class MainController extends Controller {
             if ($search)
                 $posts = $query->get();
 
-            return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
+            return Message::success(trans("Property Found", ["number" => count($posts)]), trans("العقارات المتاحه", ["number" => count($posts)]), $posts);
         } catch (Exception $e) {
             return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
         }
@@ -417,15 +417,17 @@ class MainController extends Controller {
                         ->whereIn('id', $postsIds)
                         ->orderBy('recommended_sort')
                         ->paginate(10);
+                        // {{ __('words.login_first') }}
+                        // Property Found
 
-                return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), Helper::jsonFilter($posts));
+                return Message::success(trans("Property Found", ["number" => count($posts)]), trans("العقارات المتاحه", ["number" => count($posts)]), Helper::jsonFilter($posts));
 
             }else{
                 $posts = Post::query()
                             ->whereIn('id', $postsIds)
                             ->orderBy('recommended_sort')
                             ->get();
-                return Message::success(trans("messages_en.post_found", ["number" => count($posts)]), trans("messages_ar.post_found", ["number" => count($posts)]), $posts);
+                return Message::success(trans("Property Found", ["number" => count($posts)]), trans("العقارات المتاحه", ["number" => count($posts)]), $posts);
             }
 
         } catch (Exception $e) {
