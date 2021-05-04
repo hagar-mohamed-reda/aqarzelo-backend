@@ -37,7 +37,13 @@ else
         padding: 15px;
         cursor: pointer;;
     }
-    .youtube-video {
+    .youtube-video1 {
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        display: none;
+    }
+    .youtube-video2 {
         width: 100%;
         height: 100%;
         z-index: 3;
@@ -135,15 +141,32 @@ else
 
 
             <div class="w3-col l6 m6 s6  w3-padding"  >
+                <h3 style="text-align: center"><span class="w3-xlarge text-uppercase w3-text-gray" >{{ __("words.360_degree_view") }}</span></h3>
                 <div style="" class="help-video-background w3-display-container animated zoomIn" >
                     <div class="w3-display-bottomleft" >
-                        <span class="w3-large fa fa-play youtube-icon w3-red shadow" onclick="openYoutubeVideo()" ></span>
+                        <span class="w3-large fa fa-play youtube-icon w3-red shadow" onclick="openYoutubeVideo1()" ></span>
                     </div>
-                    <div class="w3-display-topleft youtube-video" >
+                    <div class="w3-display-topleft youtube-video1" >
                         <div class="w3-display-topright w3-padding" >
-                            <button class="w3-button w3-btn w3-round dark-theme-background" onclick="closeYoutubeVideo()" >&times</button>
+                            <button class="w3-button w3-btn w3-round dark-theme-background" onclick="closeYoutubeVideo1()" >&times</button>
                         </div>
-                        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VsCqEu6CIKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        {{-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VsCqEu6CIKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                        <iframe width="100%" height="100%" src="{{url('/video/360_degree.mp4')}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+            <div class="w3-col l6 m6 s6  w3-padding"  >
+                <h3 style="text-align: center"><span class="w3-xlarge text-uppercase w3-text-gray" >{{ __("words.gps") }}</span></h3>
+                <div style="" class="help-video-background w3-display-container animated zoomIn" >
+                    <div class="w3-display-bottomleft" >
+                        <span class="w3-large fa fa-play youtube-icon w3-red shadow" onclick="openYoutubeVideo2()" ></span>
+                    </div>
+                    <div class="w3-display-topleft youtube-video2" >
+                        <div class="w3-display-topright w3-padding" >
+                            <button class="w3-button w3-btn w3-round dark-theme-background" onclick="closeYoutubeVideo2()" >&times</button>
+                        </div>
+                        {{-- <iframe width="100%" height="100%" src="https://www.youtube.com/embed/VsCqEu6CIKg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> --}}
+                        <iframe width="100%" height="100%" src="{{url('/video/gps.mp4')}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -160,12 +183,19 @@ else
 
 @section("js")
 <script>
-    function closeYoutubeVideo() {
-        $(".youtube-video").fadeOut(600)
+    function closeYoutubeVideo1() {
+        $(".youtube-video1").fadeOut(600)
     }
 
-    function openYoutubeVideo() {
-        $(".youtube-video").fadeIn(600)
+    function openYoutubeVideo1() {
+        $(".youtube-video1").fadeIn(600)
+    }
+    function closeYoutubeVideo2() {
+        $(".youtube-video2").fadeOut(600)
+    }
+
+    function openYoutubeVideo2() {
+        $(".youtube-video2").fadeIn(600)
     }
 
     $(document).ready(function () {
