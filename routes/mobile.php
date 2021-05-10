@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
- 
+
 
 
 //********************************************************
@@ -24,7 +24,8 @@ Route::get('/phone', function () {
         }
     }
     return view("mobile.index");
-}); 
+
+});
 Route::get('/phone/splash', function () {
     return view("mobile.splash");
 });
@@ -75,16 +76,15 @@ Route::get('/phone/post/show', function () {
 });
 Route::get('/phone/post/create', function () {
     return view("mobile.createPost.index");
-}); 
+});
 Route::get('/phone/chat', function () {
     return view("mobile.chat");
-}); 
+});
 Route::get('/phone/chat/users', function () {
     return view("mobile.chatUser");
-}); 
+});
 
 
 Route::get('/phone/test', function () {
     dump(Request::url());
-}); 
- 
+});

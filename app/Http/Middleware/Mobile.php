@@ -27,7 +27,28 @@ class Mobile
             (strpos($request->server('HTTP_USER_AGENT'), 'Android') !== false) ||
             (strpos($request->server('HTTP_USER_AGENT'), 'iPhone') !== false)
             ) {
-            return redirect("/phone");
+                ?>
+    <html>
+    <head>
+    <script>
+            var url = document.URL;
+            if(url.includes('post_id')) {
+                var value  = url.match(/post_id=(\d+)/i)[1];
+                localStorage.setItem('last_link', 'phone/post/show?post_id='+ value)
+                var y = setInterval(() => {
+                    var x = localStorage.getItem('last_link')
+                    if(x.includes('phone/post/show?post_id=')) {
+                        <?php return redirect("/phone"); ?>
+                        clearInterval(y);
+                    }
+                }, 100);
+
+            }
+        </script>
+        </head>
+        </html>
+        <?php
+            // return redirect("/phone");
         }
 
         return $next($request);

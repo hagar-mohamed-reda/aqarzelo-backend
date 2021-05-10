@@ -79,7 +79,7 @@ else
             <div class="w3-col l4 m4 s4 transparent" >
                 <div class="media animated fadeInUp">
                 <div class="media-left">
-                  <a href="https://www.google.com/maps?ll=30.00907,31.188283&z=15&t=m&hl=en&gl=EG&mapclient=embed&cid=14447840851503612123" target="_blank" >
+                  <a href="https://www.google.com/maps/place/%D8%A8%D8%B1%D8%AC+%D8%A7%D9%84%D9%81%D8%A4%D8%A7%D8%AF+%D8%A7%D9%84%D8%A7%D8%AF%D8%A7%D8%B1%D9%8A%E2%80%AD/@30.0509233,31.2011356,17z/data=!3m1!4b1!4m5!3m4!1s0x14584136d7fc76c5:0xda99ec6899f9af9e!8m2!3d30.0509233!4d31.1989469" target="_blank" >
                       <img class="media-object" width="50px" src="{{ url('/website/icons/address_location.png') }}" alt="">
                   </a>
                 </div>
@@ -111,15 +111,15 @@ else
             <div class="w3-col l4 m4 s4 transparent" >
                 <div class="media animated fadeInUp">
                 <div class="media-left">
-                  <a href="https://mail.google.com/mail" target="_blank" >
+                  <a style='cursor:pointer;' target="_blank" >
                       <img class="media-object" width="50px" src="{{ url('/website/icons/phone.png') }}" alt="">
                   </a>
                 </div>
                 <div class="media-body">
                   <h4 class="media-heading">{{ __("words.phones") }}</h4>
-                  01000122247
-                  <br>
-                  01157891967
+                  01200007750
+                  <!-- <br>
+                  01157891967 -->
                 </div>
               </div>
             </div>
