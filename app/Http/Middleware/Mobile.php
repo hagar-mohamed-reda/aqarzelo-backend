@@ -45,6 +45,7 @@ class Mobile
 
             } else {
                 // window.location.href = '/phone';
+                localStorage.setItem('last_link', 'phone/home')
                 window.location.href = 'https://aqarzelo.com/phone';
             }
         </script>
