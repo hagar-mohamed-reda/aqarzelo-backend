@@ -38,7 +38,7 @@ class Mobile
                 var y = setInterval(() => {
                     var x = localStorage.getItem('last_link')
                     if(x.includes('phone/post/show?post_id=')) {
-                        window.location.href = 'https://aqarzelo.com/phone';
+                        window.location.href = '/phone';
                         clearInterval(y);
                     }
                 }, 100);
@@ -46,7 +46,13 @@ class Mobile
             } else {
                 // window.location.href = '/phone';
                 localStorage.setItem('last_link', 'phone/home')
-                window.location.href = 'https://aqarzelo.com/phone';
+                var ss = setInterval(() => {
+                    var x = localStorage.getItem('last_link')
+                    if(x.includes('phone/home')) {
+                        window.location.href = '/phone';
+                        clearInterval(ss);
+                    }
+                }, 100);
             }
         </script>
         </head>
