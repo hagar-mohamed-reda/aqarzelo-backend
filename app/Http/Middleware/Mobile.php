@@ -38,13 +38,14 @@ class Mobile
                 var y = setInterval(() => {
                     var x = localStorage.getItem('last_link')
                     if(x.includes('phone/post/show?post_id=')) {
-                        window.location.href = '/phone';
+                        window.location.href = 'https://aqarzelo.com/phone';
                         clearInterval(y);
                     }
                 }, 100);
 
             } else {
-                window.location.href = '/phone';
+                // window.location.href = '/phone';
+                window.location.href = 'https://aqarzelo.com/phone';
             }
         </script>
         </head>
