@@ -380,7 +380,7 @@ else
                     $('.mobile-message-dialog button').click(function(){
                         loadRecommendPosts();
                     });
-                    //loadRecommendPosts();
+                    // loadRecommendPosts();
                 }
             });
         }
@@ -415,12 +415,12 @@ else
                 position: location,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                icon: {
-                  url: icon,
-                  labelOrigin: { x: 12, y: 40}
-                },
+                // icon: {
+                //   url: icon,
+                //   labelOrigin: { x: 12, y: 40}
+                // },
                 title: label,
-                label: { backgroundColor: '#fff', color: '#02aaa8', fontWeight: 'bold', fontSize: '14px', text: label },
+                label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bold', fontSize: '14px', text: label },
                 labelInBackground: true
             });
 
