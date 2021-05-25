@@ -417,7 +417,7 @@ else
                 animation: google.maps.Animation.DROP,
                 icon: {
                 //   url: icon,
-                  labelOrigin: { x: 12, y: 40}
+                  labelOrigin: { x: 12, y: 60}
                 },
                 title: label,
                 label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bolder', fontSize: '13px', text: label },
