@@ -408,7 +408,7 @@ else
         }
 
         function addMarker(location, label, action, postId) {
-            var icon = public_path + "/mobile/images/pin0.png";
+            var icon = public_path + "/mobile/images/location-pin.png";
             // Add the marker at the clicked location, and add the next-available label
             // from the array of alphabetical characters.
             var marker = new google.maps.Marker({
@@ -417,7 +417,7 @@ else
                 animation: google.maps.Animation.DROP,
                 icon: {
                   url: icon,
-                  labelOrigin: { x: 12, y: 60}
+                  labelOrigin: { x: 12, y: 30}
                 },
                 title: label,
                 label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bolder', fontSize: '13px', text: label },
