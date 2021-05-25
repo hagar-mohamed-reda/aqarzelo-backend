@@ -416,7 +416,7 @@ else
                 map: map,
                 animation: google.maps.Animation.DROP,
                 icon: {
-                //   url: icon,
+                  url: icon,
                   labelOrigin: { x: 12, y: 60}
                 },
                 title: label,
