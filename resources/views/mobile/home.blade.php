@@ -415,12 +415,12 @@ else
                 position: location,
                 map: map,
                 animation: google.maps.Animation.DROP,
-                // icon: {
+                icon: {
                 //   url: icon,
-                //   labelOrigin: { x: 12, y: 40}
-                // },
+                  labelOrigin: { x: 12, y: 40}
+                },
                 title: label,
-                label: { backgroundColor: '#fff', color: 'white', fontWeight: 'bolder', fontSize: '13px', text: label },
+                label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bolder', fontSize: '13px', text: label },
                 labelInBackground: true
             });
 
