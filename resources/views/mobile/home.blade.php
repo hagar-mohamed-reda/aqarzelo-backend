@@ -418,7 +418,7 @@ else
                 icon: {
                 //   url: icon,
                 //   labelOrigin: { x: 12, y: 30}
-                color: black
+                color: 'black'
                 },
                 title: label,
                 label: { backgroundColor: '#fff', color: 'white', fontWeight: 'bolder', fontSize: '8px', text: label , bottom: '0px' },
