@@ -93,12 +93,12 @@ class PlanController extends Controller
             PlanAssign::where('model_id', $request->model_id)->where('model_type', $request->model_type)->delete();
 
             // add new
-            PlanAssign::create([
-                "model_id" => $request->model_id,
-                "model_type" => $request->model_type,
-                "plan_id" => $resource->id,
-                "date" => date('Y-m-d')
-            ]);
+            // PlanAssign::create([
+            //     "model_id" => $request->model_id,
+            //     "model_type" => $request->model_type,
+            //     "plan_id" => $resource->id,
+            //     "date" => date('Y-m-d')
+            // ]);
 
             watch(__('edit Plan ') . $resource->name, "fa fa-map");
         } catch (\Exception $th) {
