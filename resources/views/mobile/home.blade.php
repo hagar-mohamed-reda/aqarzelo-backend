@@ -420,7 +420,7 @@ else
                 //   labelOrigin: { x: 12, y: 30}
                 // },
                 title: label,
-                label: { backgroundColor: '#fff', color: 'black', fontWeight: 'bolder', fontSize: '13px', text: label , bottom: '0px' },
+                label: { backgroundColor: '#fff', color: 'white', fontWeight: 'bolder', fontSize: '10px', text: label , bottom: '0px' },
                 labelInBackground: true
             });
 
