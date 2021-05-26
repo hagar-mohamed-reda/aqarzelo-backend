@@ -444,11 +444,11 @@ else
 
                 if(post.price > 1000000){
                     var x = post.price/1000000
-                    post.price = x.toString() + ' M' ;
+                    post.price = x.toString() + 'M' ;
                 }
                 else if(post.price > 1000){
                     var x = post.price/1000
-                    post.price = x.toString() + ' K' ;
+                    post.price = x.toString() + 'K' ;
                 }else{
                     post.price = post.price
                 }
