@@ -151,7 +151,7 @@ class AuthController extends Controller {
         $user = User::auth($request);
 
         if (!$user)
-            return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
+            return Message::error(trans("Login First"), trans("سجل الدخول أولا"));
 
 
         // check if this email is exist
@@ -162,10 +162,10 @@ class AuthController extends Controller {
 
         try {
             if ($user != $user1 && !$user1 && $request->has("email"))
-                return Message::error(trans("messages_en.email_unique"), trans("messages_ar.email_unique"));
+                return Message::error(trans("This Email Already Used"), trans("هذا البريد الإلكتروني مستخدم بالفعل"));
 
             if ($user != $user2 && !$user2 && $request->has("phone"))
-                return Message::error(trans("messages_en.phone_unique"), trans("messages_ar.phone_unique"));
+                return Message::error(trans("This Phone Already Used"), trans("هذا الهاتف مستخدم بالفعل"));
 
             $data = $request->all();
             if ($request->password)
@@ -190,9 +190,9 @@ class AuthController extends Controller {
 
             $user->update();
 
-            return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $user->fresh());
+            return Message::success(trans("Done"), trans("تم"), $user->fresh());
         } catch (\Exception $exc) {
-            return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
+            return Message::error(trans("Error"), trans("خطأ"));
         }
     }
 
@@ -218,7 +218,7 @@ class AuthController extends Controller {
         }
 
         if (!$user)
-            return Message::error(trans("messages_en.login_first"), trans("messages_ar.login_first"));
+            return Message::error(trans("Login First"), trans("سجل الدخول أولا"));
 
         try {
             $data = $request->all();
@@ -226,12 +226,12 @@ class AuthController extends Controller {
             if (Hash::check($request->old_password, $user->password)) {
                 $user->password = bcrypt($request->password);
                 $user->update();
-                return Message::success(trans("messages_en.done"), trans("messages_ar.done"), $user->fresh());
+                return Message::success(trans("Done"), trans("تم"), $user->fresh());
             }
 
-            return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
+            return Message::error(trans("Error"), trans("خطأ"));
         } catch (\Exception $exc) {
-            return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
+            return Message::error(trans("Error"), trans("خطأ"));
         }
     }
 
