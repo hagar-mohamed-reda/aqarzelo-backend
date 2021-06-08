@@ -375,7 +375,7 @@ class AuthController extends Controller {
                 $user = User::create($data);
 
                 if (!$user)
-                    return Message::success(trans("messages_en.phone_or_password_error"), trans("messages_ar.phone_or_password_error"), null);
+                    return Message::success(trans("Your Phone Or Password Is Not Correct"), trans("رقم الهاتف أو كلمة المرور غير صحيح"), null);
             }
             if (!$user->isActive()) {
                 return Message::error(trans("messages_en.account_not_active"), trans("messages_ar.account_not_active"));
