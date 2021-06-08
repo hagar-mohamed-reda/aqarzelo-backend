@@ -99,7 +99,7 @@ class AuthController extends Controller {
             //$user = User::where('phone', $request->phone)->first();
 
             if (!$user) {
-                return Message::error(trans("messages_en.phone_or_password_error"), trans("messages_ar.phone_or_password_error"));
+                return Message::error(trans("Your Phone Or Password Is Not Correct"), trans("رقم الهاتف أو كلمة المرور غير صحيح"));
             }
 
             if (Hash::check($request->password, $user->password)) {
@@ -127,7 +127,7 @@ class AuthController extends Controller {
             return Message::error(trans("messages_en.error"), trans("messages_ar.error"));
         }
 
-        return Message::error(trans("messages_en.phone_or_password_error"), trans("messages_ar.phone_or_password_error"));
+        return Message::error(trans("Your Phone Or Password Is Not Correct"), trans("رقم الهاتف أو كلمة المرور غير صحيح"));
     }
 
     /**
