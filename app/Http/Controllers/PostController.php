@@ -376,8 +376,8 @@ class PostController extends Controller
                         trans("messages_ar.post_alert", ["number" => $post->id]), trans("messages_en.post_alert", ["number" => $post->id]), $message_ar, $message_en, $post->id
                 );
 
-        $title_ar = trans("messages_ar.new_post", ["user" => $post->user->name]);
-        $title_en = trans("messages_en.new_post", ["user" => $post->user->name]);
+        $title_ar = trans("منشور جديد", ["user" => $post->user->name]);
+        $title_en = trans("New Post", ["user" => $post->user->name]);
 
         // notify all user
         User::notifyAll($title_ar, $title_en, $post->title, $post->title, $post->id);

@@ -129,8 +129,8 @@ class MainController extends Controller {
 
 
                     // title of notification
-                    $title_ar = trans("messages_ar.new_post", ["user" => $user->name]);
-                    $title_en = trans("messages_en.new_post", ["user" => $user->name]);
+                    $title_ar = trans("منشور جديد", ["user" => $user->name]);
+                    $title_en = trans("New Post", ["user" => $user->name]);
 
                     // notify all user
                     User::notifyAll($title_ar, $title_en, $post->title, $post->title, $post->id);
