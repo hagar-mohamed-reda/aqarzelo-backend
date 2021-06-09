@@ -188,7 +188,7 @@ class User extends Authenticatable implements Profilable {
             "message" => $message,
         ]);
         // notify the another user
-        $user->notify(trans("messages_en.new_message_from", ["user" => $this->name]), trans("messages_en.new_message_from", ["user" => $this->name]), $message, $message, null, $user->id);
+        $user->notify(trans("New Message From", ["user" => $this->name]), trans("New Message From", ["user" => $this->name]), $message, $message, null, $user->id);
 
         return $chat;
     }
