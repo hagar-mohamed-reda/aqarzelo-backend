@@ -31,7 +31,7 @@ class PriceCriteria implements PostCriteria
      * @return QueryBuilder
      */
     public function filter($query) {   
-        return $query->whereBetween('price_per_meter', [(int)$this->price1, (int)$this->price2]);
+        return $query->whereBetween('price', [(int)$this->price1, (int)$this->price2]);
     }
      
 }
